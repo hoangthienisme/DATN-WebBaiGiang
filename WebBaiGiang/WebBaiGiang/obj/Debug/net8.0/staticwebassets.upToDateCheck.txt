@@ -1,5 +1,8 @@
+wwwroot\css\account.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\anhkha.jpg
+wwwroot\img\anhkha.png
 wwwroot\img\loupe.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
