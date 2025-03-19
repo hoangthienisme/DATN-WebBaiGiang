@@ -16,10 +16,17 @@ html {
   position: relative;
   min-height: 100%;
 }
+html, body {
+    height: 100%;
+}
 
 body {
-    
-  margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
 }
 .text-center h1{
     text-align:center;
@@ -29,9 +36,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2.4rem;
+    padding: 20px 2.4rem; 
     background: white;
     border-bottom: 1px solid #ddd;
+    align-items: center;
 }
 
 .navbar-logo {
@@ -47,7 +55,7 @@ body {
     border-radius: 30px;
     padding: 5px 15px;
     width: 300px;
-    position: relative; /* Thêm dòng này để icon không bay lung tung */
+    position: relative; 
 }
 
     .navbar-search img {
@@ -63,8 +71,8 @@ body {
         border: none;
         outline: none;
         width: 100%;
-        padding-left: 35px; /* Chừa khoảng trống bên trái để không che icon */
-        background: transparent; /* Nếu muốn input trong suốt */
+        padding-left: 35px; 
+        background: transparent; 
     }
 
 .navbar-links {
@@ -75,7 +83,7 @@ body {
 
     .navbar-links a {
         text-decoration: none;
-        color: black;
+        color: white;
         font-weight: bold;
     }
 
@@ -83,7 +91,7 @@ body {
     font-size: 15px;
     height: 35px;
     padding: 5px 10px;
-    border-radius: 5px; 
+    border-radius: 5px;
     border: 1px solid #6a11cb;
     color: #6a11cb;
     background: white;

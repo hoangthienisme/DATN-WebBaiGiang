@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\WebBaiGiang.nr2t6cyz8b.bundle.scp.css"
     },
     {
+      "Id": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
+      "PackagePath": "staticwebassets\\css\\account.css"
+    },
+    {
       "Id": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.jpg",
+      "PackagePath": "staticwebassets\\img\\anhkha.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.png",
+      "PackagePath": "staticwebassets\\img\\anhkha.png"
     },
     {
       "Id": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\loupe.png",

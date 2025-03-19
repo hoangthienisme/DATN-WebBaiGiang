@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uqIr8Hg7VGIDs+PjnTftYpBq4TBoqOyDjSt23dp+5WY=",
+  "Hash": "jqIsdbPjJ3LXZ/alJBQrFUr2N7sFXp5G8pNVCfnDFhY=",
   "Source": "WebBaiGiang",
   "BasePath": "_content/WebBaiGiang",
   "Mode": "Default",
@@ -59,6 +59,27 @@
       "OriginalItemSpec": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebBaiGiang.bundle.scp.css"
     },
     {
+      "Identity": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "css/account#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hai2ujm1q7",
+      "Integrity": "54yjIxmFJSOpnmKiIsp5DNHFxnrzKEGnX/guphEuUKY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\account.css"
+    },
+    {
       "Identity": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -73,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "d2zcesxa39",
-      "Integrity": "hYrg3fsXgld1Vd4NXdufSXPrUIwTwvtn+8TAgLPpEyM=",
+      "Fingerprint": "mapstyzfkv",
+      "Integrity": "8puFr86aCBSDsz5nG7sqJLzNh5vneVq4OFl+vRi3r60=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -99,6 +120,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "img/anhkha#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2xaj4uzq6n",
+      "Integrity": "+tUIrQZbRxzXeRm5ybfwXHdpD9SGauHa/lZX92awhe0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\anhkha.jpg"
+    },
+    {
+      "Identity": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.png",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "img/anhkha#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ggpvazpq0i",
+      "Integrity": "oFje4N8pYDglDdiwQkOKOOR3v4bZfnSe8TgrGjEQ2IE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\anhkha.png"
     },
     {
       "Identity": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\loupe.png",
@@ -1342,6 +1405,88 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/account.css",
+      "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "440"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"54yjIxmFJSOpnmKiIsp5DNHFxnrzKEGnX/guphEuUKY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 14:49:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-54yjIxmFJSOpnmKiIsp5DNHFxnrzKEGnX/guphEuUKY="
+        }
+      ]
+    },
+    {
+      "Route": "css/account.hai2ujm1q7.css",
+      "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "440"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"54yjIxmFJSOpnmKiIsp5DNHFxnrzKEGnX/guphEuUKY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 14:49:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hai2ujm1q7"
+        },
+        {
+          "Name": "label",
+          "Value": "css/account.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-54yjIxmFJSOpnmKiIsp5DNHFxnrzKEGnX/guphEuUKY="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1352,7 +1497,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4632"
+          "Value": "4602"
         },
         {
           "Name": "Content-Type",
@@ -1360,11 +1505,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hYrg3fsXgld1Vd4NXdufSXPrUIwTwvtn+8TAgLPpEyM=\""
+          "Value": "\"8puFr86aCBSDsz5nG7sqJLzNh5vneVq4OFl+vRi3r60=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 19 Mar 2025 06:20:59 GMT"
+          "Value": "Wed, 19 Mar 2025 14:40:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1374,12 +1519,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hYrg3fsXgld1Vd4NXdufSXPrUIwTwvtn+8TAgLPpEyM="
+          "Value": "sha256-8puFr86aCBSDsz5nG7sqJLzNh5vneVq4OFl+vRi3r60="
         }
       ]
     },
     {
-      "Route": "css/site.d2zcesxa39.css",
+      "Route": "css/site.mapstyzfkv.css",
       "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1389,7 +1534,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4632"
+          "Value": "4602"
         },
         {
           "Name": "Content-Type",
@@ -1397,11 +1542,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hYrg3fsXgld1Vd4NXdufSXPrUIwTwvtn+8TAgLPpEyM=\""
+          "Value": "\"8puFr86aCBSDsz5nG7sqJLzNh5vneVq4OFl+vRi3r60=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 19 Mar 2025 06:20:59 GMT"
+          "Value": "Wed, 19 Mar 2025 14:40:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1411,7 +1556,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "d2zcesxa39"
+          "Value": "mapstyzfkv"
         },
         {
           "Name": "label",
@@ -1419,7 +1564,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hYrg3fsXgld1Vd4NXdufSXPrUIwTwvtn+8TAgLPpEyM="
+          "Value": "sha256-8puFr86aCBSDsz5nG7sqJLzNh5vneVq4OFl+vRi3r60="
         }
       ]
     },
@@ -1502,6 +1647,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "img/anhkha.2xaj4uzq6n.jpg",
+      "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "75565"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+tUIrQZbRxzXeRm5ybfwXHdpD9SGauHa/lZX92awhe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 14:28:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2xaj4uzq6n"
+        },
+        {
+          "Name": "label",
+          "Value": "img/anhkha.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+tUIrQZbRxzXeRm5ybfwXHdpD9SGauHa/lZX92awhe0="
+        }
+      ]
+    },
+    {
+      "Route": "img/anhkha.ggpvazpq0i.png",
+      "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "813947"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oFje4N8pYDglDdiwQkOKOOR3v4bZfnSe8TgrGjEQ2IE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 14:33:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ggpvazpq0i"
+        },
+        {
+          "Name": "label",
+          "Value": "img/anhkha.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oFje4N8pYDglDdiwQkOKOOR3v4bZfnSe8TgrGjEQ2IE="
+        }
+      ]
+    },
+    {
+      "Route": "img/anhkha.jpg",
+      "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "75565"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+tUIrQZbRxzXeRm5ybfwXHdpD9SGauHa/lZX92awhe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 14:28:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+tUIrQZbRxzXeRm5ybfwXHdpD9SGauHa/lZX92awhe0="
+        }
+      ]
+    },
+    {
+      "Route": "img/anhkha.png",
+      "AssetFile": "D:\\DATN\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "813947"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oFje4N8pYDglDdiwQkOKOOR3v4bZfnSe8TgrGjEQ2IE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 14:33:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oFje4N8pYDglDdiwQkOKOOR3v4bZfnSe8TgrGjEQ2IE="
         }
       ]
     },
@@ -6366,7 +6675,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 19 Mar 2025 04:35:58 GMT"
+          "Value": "Wed, 19 Mar 2025 13:29:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6403,7 +6712,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 19 Mar 2025 04:35:58 GMT"
+          "Value": "Wed, 19 Mar 2025 13:29:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6448,7 +6757,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 19 Mar 2025 04:35:58 GMT"
+          "Value": "Wed, 19 Mar 2025 13:29:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6493,7 +6802,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 19 Mar 2025 04:35:58 GMT"
+          "Value": "Wed, 19 Mar 2025 13:29:17 GMT"
         },
         {
           "Name": "Cache-Control",
