@@ -1,0 +1,247 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    
+  margin-bottom: 60px;
+}
+.text-center h1{
+    text-align:center;
+}
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.4rem;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 300px;
+    position: relative; /* Thêm dòng này để icon không bay lung tung */
+}
+
+    .navbar-search img {
+        position: absolute;
+        left: 10px;
+        width: 18px;
+        height: 18px;
+        pointer-events: none;
+    }
+
+    .navbar-search input {
+        height: 30px;
+        border: none;
+        outline: none;
+        width: 100%;
+        padding-left: 35px; /* Chừa khoảng trống bên trái để không che icon */
+        background: transparent; /* Nếu muốn input trong suốt */
+    }
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .navbar-links a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+
+.navbar-button {
+    font-size: 15px;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 5px; 
+    border: 1px solid #6a11cb;
+    color: #6a11cb;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .navbar-button:hover {
+        background: #6a11cb;
+        color: white;
+    }
+
+.navbar-button-primary {
+    background: #6a11cb;
+    color: white;
+}
+
+.navbar-cart {
+    font-size: 20px;
+    cursor: pointer;
+}
+.navbar-logo {
+    
+}
+    .navbar-logo a {
+        text-decoration: none;
+        color: blue; 
+        display: flex;
+        align-items: center;
+    }
+
+/* MENU NGANG */
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+    .navbar-menu > li {
+        position: relative;
+    }
+
+    .navbar-menu a {
+        font-size:17px;
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+        padding: 10px;
+        display: block;
+    }
+.arrow {
+    margin-left: 5px;
+    font-weight: bold;
+    color: gray;
+}
+
+
+    .navbar-menu .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        list-style: none;
+        padding: 0;
+        border: 1px solid #ddd;
+        min-width: 200px;
+        z-index: 1000;
+    }
+
+        .navbar-menu .dropdown-menu li {
+            position: relative;
+        }
+
+        .navbar-menu .dropdown-menu a {
+            padding: 10px;
+            display: block;
+            color: black;
+        }
+
+    .navbar-menu .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    /* SUBMENU CON */
+    .navbar-menu .dropdown-menu .dropdown-menu {
+        left: 100%;
+        top: 0;
+    }
+/*Footer*/
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1 1 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .footer-section p {
+        margin: 5px 0;
+    }
+
+.footer-nav {
+    display: flex;
+    flex: 1 1 60%;
+    justify-content: space-around;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+    .footer-column ul li {
+        margin-bottom: 5px;
+    }
+
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+            .footer-column ul li a:hover {
+                text-decoration: underline;
+            }
+
+.footer-social {
+    text-align: center;
+    flex: 1 1 20%;
+}
+
+    .footer-social img {
+        width: 30px;
+        margin: 5px;
+    }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+}
