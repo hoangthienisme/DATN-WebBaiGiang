@@ -19,3 +19,155 @@
         .HaveAccount a:hover {
             text-decoration: underline;
         }
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f3f4f6; 
+    padding: 0 10px;
+}
+
+.login-register-box {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.singup-register-box {
+    height:100%;
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.register-image {
+    width: 50%;
+    display: none;
+}
+
+    .register-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+@media (min-width: 768px) {
+    .register-image {
+        display: block;
+    }
+}
+
+.register-form {
+    width: 55%;
+    max-width: 600px;
+    padding: 80px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+    .register-form h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 16px;
+    }
+.form-group {
+    margin-bottom: 16px;
+}
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        color: #374151;
+        margin-bottom: 4px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+        .form-group input:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
+        }
+.submit-btn {
+    width: 100%;
+    background-color: #9333ea;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .submit-btn .icon {
+        margin-right: 8px;
+    }
+.login-submit-btn {
+    margin-top:10%;
+    width: 100%;
+    background-color: #9333ea;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .login-submit-btn .icon {
+        margin-right: 8px;
+    }
+.other-options {
+    text-align: center;
+    margin-top: 16px;
+    color: #6b7280;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+    .social-icons button {
+        padding: 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        background: white;
+        cursor: pointer;
+    }
+
+    .social-icons img {
+        width: 24px;
+    }
+.have-account {
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+}
+
+    .have-account a {
+        color: #3b82f6;
+        text-decoration: none;
+    }
+
+        .have-account a:hover {
+            text-decoration: underline;
+        }

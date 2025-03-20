@@ -1,39 +1,34 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Đăng ký tài khoản";
+    ViewBag.Title = "Đăng nhập tài khoản";
 
 }
 <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
 <div class="register-container">
-    <div class="singup-register-box">
+    <div class="login-register-box">
         <div class="register-image">
             <img src="@Url.Content("~/img/anhkha.png")" alt="Ảnh Kha" />
         </div>
         <div class="register-form">
-            <h2>Đăng ký với Email</h2>
+            <h2>Đăng nhập </h2>
             <form method="post" action="/Account/SignUp">
                 <div class="form-group">
-                    <label>Họ và tên</label>
-                    <input type="text" name="fullname">
-                </div>
-
-                <div class="form-group">
-                    <label>Mật khẩu</label>
+                    <label>Email</label>
                     <input type="password" name="password">
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
+                    <label>Mật khẩu</label>
                     <input type="email" name="email">
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="login-submit-btn">
                     <span class="icon">📩</span> Tiếp tục với Email
                 </button>
             </form>
 
             <div class="other-options">
-                <span>Các tùy chọn đăng ký khác</span>
+                <span>Các tùy chọn đăng nhập khác</span>
                 <div class="social-icons">
                     <button><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google"></button>
                     <button><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></button>
@@ -41,8 +36,8 @@
                 </div>
             </div>
 
-            <span class="have-account">Bạn đã có tài khoản?
-                <a href="/Account/Login">Đăng nhập</a>
+            <span class="have-account">Bạn chưa có tài khoản?
+                <a href="/Account/SignUp">Đăng Ký</a>
             </span>
         </div>
     </div>
