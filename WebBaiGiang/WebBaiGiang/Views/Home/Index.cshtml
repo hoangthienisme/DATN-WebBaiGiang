@@ -1,8 +1,121 @@
-﻿@{
+﻿@* @model WebBaiGiang.Models.HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
-
+<link href="~/css/index.css" rel="stylesheet" />
 <div class="text-center">
-    <h1 class="display-4">Body ở đây nhé </h1>
+    <!-- 1. Slideshow Khóa học nổi bật -->
+    <div class="slideshow-container" id="slideshow-container">
+        <div class="slides" id="slides">
+            @foreach (var course in Model.FeaturedCourses)
+            {
+                <div class="slide" style="background-image: url('@course.Image');">
+                    <h2>@course.CourseName</h2>
+                    <p>@course.ShortDescription</p>
+                    <button class="btn-explore" onclick="location.href='/Course/Details/@course.IdCourse'">Khám phá ngay</button>
+                </div>
+            }
+        </div>
+        <button class="prev" onclick="moveSlide('slides', 'slideshow-container', -1, @Model.FeaturedCourses.Count)">❮</button>
+        <button class="next" onclick="moveSlide('slides', 'slideshow-container', 1, @Model.FeaturedCourses.Count)">❯</button>
+    </div>
 
+    <!-- 2. Khóa học của giảng viên -->
+    <div class="courses-section" id="courses-container">
+        <h1 class="display-4">Khóa học của giảng viên - Học kỳ hiện tại</h1>
+        <div class="course-list" id="course-list">
+            @foreach (var course in Model.Courses)
+            {
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="@course.Image" alt="@course.IdCourseNavigation.CourseName" onerror="this.src='/images/default.jpg'">
+                    </div>
+                    <h3>@course.IdCourseNavigation.CourseName</h3>
+                    <p>GV: @course.IdLecturerNavigation.IdUserNavigation.FullName</p>
+                    <button onclick="location.href='/ClassCourse/Details/@course.'">Xem chi tiết lớp học phần</button>
+                </div>
+            }
+        </div>
+        <button class="prev" onclick="moveSlide('course-list', 'courses-container', -1, @Model.Courses.Count)">❮</button>
+        <button class="next" onclick="moveSlide('course-list', 'courses-container', 1, @Model.Courses.Count)">❯</button>
+    </div>
+
+    <!-- 3. Đề xuất -->
+    <div class="recommend-section" id="recommend-container">
+        <h1 class="display-4">Đề xuất cho bạn</h1>
+        <div class="course-list" id="recommend-list">
+            @foreach (var rec in Model.Recommendations)
+            {
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="@rec.Image" alt="@rec.CourseName" onerror="this.src='/images/default.jpg'">
+                    </div>
+                    <h3>@rec.CourseName</h3>
+                    <p>@rec.ShortDescription</p>
+                </div>
+            }
+        </div>
+        <button class="prev" onclick="moveSlide('recommend-list', 'recommend-container', -1, @Model.Recommendations.Count)">❮</button>
+        <button class="next" onclick="moveSlide('recommend-list', 'recommend-container', 1, @Model.Recommendations.Count)">❯</button>
+    </div>
+
+    <!-- 4. Feedback -->
+    <div class="feedback-section" id="feedback-container">
+        <h1 class="display-4">Phản hồi từ người dùng</h1>
+        <div class="feedback-list" id="feedback-list">
+            @foreach (var feedback in Model.Feedbacks)
+            {
+                <div class="feedback-item">
+                    <p>"@feedback.Comment"</p>
+                    <p>- @feedback.IdStudentNavigation.IdUserNavigation.FullName (Học viên)</p>
+                </div>
+            }
+        </div>
+        <button class="prev" onclick="moveSlide('feedback-list', 'feedback-container', -1, @Model.Feedbacks.Count)">❮</button>
+        <button class="next" onclick="moveSlide('feedback-list', 'feedback-container', 1, @Model.Feedbacks.Count)">❯</button>
+    </div>
 </div>
+
+<!-- JavaScript -->
+<script>
+    function moveSlide(elementId, containerId, direction, totalItems) {
+        const element = document.getElementById(elementId);
+        let currentIndex = parseInt(element.dataset.index || 0);
+        currentIndex += direction;
+
+        if (currentIndex >= totalItems) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = totalItems - 1;
+
+        element.dataset.index = currentIndex;
+
+        if (containerId === 'slideshow-container') {
+            element.style.transform = `translateX(-${currentIndex * 100}%)`;
+        } else {
+            const itemWidth = containerId === 'recommend-list' ? 50 : 33.33; 
+            element.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+            updateButtons(elementId, containerId, totalItems);
+        }
+    }
+
+    function updateButtons(elementId, containerId, totalItems) {
+        const container = document.getElementById(containerId);
+        const currentIndex = parseInt(document.getElementById(elementId).dataset.index || 0);
+
+        container.classList.remove('show-prev', 'show-next');
+
+        if (currentIndex > 0) {
+            container.classList.add('show-prev');
+        }
+
+        if (currentIndex < totalItems - (containerId === 'recommend-list' ? 2 : 3)) {
+            container.classList.add('show-next');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateButtons('course-list', 'courses-container', @Model.Courses.Count);
+        updateButtons('recommend-list', 'recommend-container', @Model.Recommendations.Count);
+        updateButtons('feedback-list', 'feedback-container', @Model.Feedbacks.Count);
+    });
+</script> *@
