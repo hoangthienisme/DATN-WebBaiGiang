@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -25,8 +29,24 @@
       "PackagePath": "staticwebassets\\img\\anhkha.png"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\electrical.jpg",
+      "PackagePath": "staticwebassets\\img\\electrical.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\loupe.png",
       "PackagePath": "staticwebassets\\img\\loupe.png"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\mechanical.jpg",
+      "PackagePath": "staticwebassets\\img\\mechanical.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\python.jpg",
+      "PackagePath": "staticwebassets\\img\\python.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\webdesign.jpg",
+      "PackagePath": "staticwebassets\\img\\webdesign.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\js\\site.js",

@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\account.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\account.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\webbaigiang.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\webbaigiang.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +46,118 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFQAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T04:35:38.541Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "site.css",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\site.css",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAADkAAAAAAAAAAAAjwFQAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-19T04:47:58.549Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SignUp.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\SignUp.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Account\\SignUp.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\SignUp.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Account\\SignUp.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T13:13:54.855Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-20T15:42:24.264Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T15:58:21.205Z"
+              "Title": "index.css",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
+              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\index.css",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
+              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\index.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-21T12:14:32.061Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "account.css",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
-              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\account.css",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css*",
-              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\account.css*",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAwCAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-19T14:01:03.331Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Program.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Program.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Program.cs",
-              "RelativeToolTip": "WebBaiGiang\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T13:46:36.015Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "WebBaiGiang\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-19T04:47:39.508Z"
+              "WhenOpened": "2025-03-19T04:47:39.508Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-21T13:17:02.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-21T12:09:38.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T12:09:26.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\HomeViewModel.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\HomeViewModel.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\HomeViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T12:07:43.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WebBaiGiang.csproj",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
+              "RelativeDocumentMoniker": "WebBaiGiang\\WebBaiGiang.csproj",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
+              "RelativeToolTip": "WebBaiGiang\\WebBaiGiang.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-21T12:00:46.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WebBaiGiang\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAgwB4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:24:26.745Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Program.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Program.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Program.cs",
+              "RelativeToolTip": "WebBaiGiang\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T13:46:36.015Z"
             }
           ]
         }

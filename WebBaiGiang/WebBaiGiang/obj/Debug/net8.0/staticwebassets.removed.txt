@@ -1,0 +1,7 @@
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\anhkha.jpg
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\anhkha.png
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\electrical.jpg
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\loupe.png
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\mechanical.jpg
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\python.jpg
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\wwwroot\images\webdesign.jpg
