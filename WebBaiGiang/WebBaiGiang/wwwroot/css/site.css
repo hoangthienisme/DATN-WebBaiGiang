@@ -42,10 +42,14 @@ body {
     align-items: center;
 }
 
-.navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
+.navbar-logo h1 {
+    font-weight: 700;
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-left : 30px;
 }
 
 .navbar-search {
@@ -75,32 +79,21 @@ body {
         background: transparent; 
     }
 
-.navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+
+.navbar-button:hover {
+    color: var(--contrast-color);
+    background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
-
-    .navbar-links  a {
-        text-decoration: none;
-        font-weight: bold;
-    }
-
 .navbar-button {
-    font-size: 15px;
-    height: 35px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #6a11cb;
-    color: #6a11cb;
-    background: white;
-    font-weight: bold;
-    cursor: pointer;
+    border-radius: 50px;
+    color: var(--contrast-color);
+    background: var(--accent-color);
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
 }
-
-    .navbar-button:hover {
-        background: #6a11cb;
-        color: white;
+    .navbar-button a {
+        color: var(--contrast-color);
     }
 
 .navbar-button-primary {
