@@ -9,52 +9,76 @@
     <title>@ViewData["Title"]</title>
     <link href="~/css/giangvien.css" rel="stylesheet" />
 </head>
-
 <body class="page-body">
-    <!-- flex cột -->
 
-        <!-- Layout ngang: nav trái + main phải -->
-        <div class="main-layout">
-            <nav class="side-nav--primary-menu--gihQ-">
-                <ul class="ud-unstyled-list side-nav--menu--kRZ7l">
-                    <li>
-                        <a href="/instructor" class="side-nav--nav-button--H6cSp side-nav--logo-nav-button--pAYC5">
-                            <h1>GV</h1>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/instructor/courses">
-                            <img src="~/img/video-icon.png" alt="Video Icon" class="ud-icon ud-icon-small" />
-                            <span class="side-nav--title--P8jur">Khóa học</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/instructor/communication/qa/">
-                            <img src="~/img/icon-message.png" alt="Message Icon" class="ud-icon ud-icon-small" />
-                            <span class="side-nav--title--P8jur">Giao tiếp</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/instructor/performance/overview">
-                            <img src="~/img/icon-bar-chart.png" alt="Chart Icon" class="ud-icon ud-icon-small" />
-                            <span class="side-nav--title--P8jur">Hiệu suất</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/instructor/tools">
-                            <img src="~/img/icon-wrench.png" alt="Tools Icon" class="ud-icon ud-icon-small" />
-                            <span class="side-nav--title--P8jur">Công cụ</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-                @RenderBody()
-
-
+    <!-- Header (top bar) -->
+    <header class="header">
+        <div class="left-section">
+            <div class="logo">🎓 BG</div>
         </div>
+        <div class="right-section">
+            <div class="dropdown">
+                <button class="icon-button">🔔</button>
+                <div class="dropdown-content">
+                    <p>Không có thông báo nào</p>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="avatar-button">NT</button>
+                <div class="dropdown-content">
+                    <p><strong>Nguyễn Hoàng Thiện</strong></p>
+                    <p class="email">nguyenhoangthien120304@gmail.com</p>
+                    <hr />
+                    <a href="#">Cài đặt tài khoản</a><br />
+                    <a href="#">Thông báo</a><br />
+                    <a href="#">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout: Sidebar + Main -->
+    <div class="main-layout">
+
+        <!-- Sidebar trái -->
+        <nav class="side-nav--primary-menu--gihQ-">
+            <ul class="ud-unstyled-list side-nav--menu--kRZ7l">
+                <li>
+                    <a href="@Url.Action("Courses", "GiangVien")">
+                        <img src="~/img/video-icon.png" alt="Video Icon" class="ud-icon ud-icon-small" />
+                        <span class="side-nav--title--P8jur">Khóa học</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/instructor/communication/qa/">
+                        <img src="~/img/icon-message.png" alt="Message Icon" class="ud-icon ud-icon-small" />
+                        <span class="side-nav--title--P8jur">Giao tiếp</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/instructor/performance/overview">
+                        <img src="~/img/icon-bar-chart.png" alt="Chart Icon" class="ud-icon ud-icon-small" />
+                        <span class="side-nav--title--P8jur">Hiệu suất</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/instructor/tools">
+                        <img src="~/img/icon-wrench.png" alt="Tools Icon" class="ud-icon ud-icon-small" />
+                        <span class="side-nav--title--P8jur">Công cụ</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Nội dung bên phải -->
+        <main class="main-content">
+            @RenderBody()
+        </main>
+
+    </div>
+
     @Html.Partial("~/Views/Shared/_Footer.cshtml")
-
-
 
 </body>
 </html>

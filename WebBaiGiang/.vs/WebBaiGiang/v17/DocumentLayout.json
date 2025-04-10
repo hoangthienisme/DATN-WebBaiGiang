@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\courses.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\courses.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\giangvien\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\giangvien\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\giangvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\giangvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,43 +26,42 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_LayoutGiangvien.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-10T09:01:53.534Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "giangvien.css",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
-              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\giangvien.css",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
-              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\giangvien.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-04-10T09:01:58.813Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Courses.cshtml",
               "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
               "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
               "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
               "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-10T09:14:52.413Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAADYAAAAAAAAAAAAswEYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-10T10:09:19.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "courses.css",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\courses.css",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\courses.css",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAF4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-10T09:46:30.954Z",
               "EditorCaption": ""
             }
           ]
