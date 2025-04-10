@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+lmecBI3sgxwerf8AZ19g+Dt4X4Wyd675+HVJVNj4KE=",
+  "Hash": "Sb2c9dovA7gYGrI/dr/C2rCM8muwRftFUroBmHvtFMs=",
   "Source": "WebBaiGiang",
   "BasePath": "_content/WebBaiGiang",
   "Mode": "Default",
@@ -80,6 +80,27 @@
       "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "css/courses#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ixmcvz77qp",
+      "Integrity": "6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\courses.css"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -94,8 +115,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "i94y0komo3",
-      "Integrity": "6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw=",
+      "Fingerprint": "iynxas051o",
+      "Integrity": "do5l45EWVA3ouKpj2EwC2vS84dPB9smCYSMOnwnOMXU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\giangvien.css"
@@ -3839,6 +3860,88 @@
       ]
     },
     {
+      "Route": "css/courses.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2126"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 10:28:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/courses.ixmcvz77qp.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2126"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 10:28:51 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ixmcvz77qp"
+        },
+        {
+          "Name": "label",
+          "Value": "css/courses.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ="
+        }
+      ]
+    },
+    {
       "Route": "css/giangvien.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
       "Selectors": [],
@@ -3849,7 +3952,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1980"
+          "Value": "3970"
         },
         {
           "Name": "Content-Type",
@@ -3857,11 +3960,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw=\""
+          "Value": "\"do5l45EWVA3ouKpj2EwC2vS84dPB9smCYSMOnwnOMXU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 09:14:31 GMT"
+          "Value": "Thu, 10 Apr 2025 09:30:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3871,12 +3974,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw="
+          "Value": "sha256-do5l45EWVA3ouKpj2EwC2vS84dPB9smCYSMOnwnOMXU="
         }
       ]
     },
     {
-      "Route": "css/giangvien.i94y0komo3.css",
+      "Route": "css/giangvien.iynxas051o.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3886,7 +3989,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1980"
+          "Value": "3970"
         },
         {
           "Name": "Content-Type",
@@ -3894,11 +3997,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw=\""
+          "Value": "\"do5l45EWVA3ouKpj2EwC2vS84dPB9smCYSMOnwnOMXU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 09:14:31 GMT"
+          "Value": "Thu, 10 Apr 2025 09:30:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3908,7 +4011,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "i94y0komo3"
+          "Value": "iynxas051o"
         },
         {
           "Name": "label",
@@ -3916,7 +4019,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw="
+          "Value": "sha256-do5l45EWVA3ouKpj2EwC2vS84dPB9smCYSMOnwnOMXU="
         }
       ]
     },
