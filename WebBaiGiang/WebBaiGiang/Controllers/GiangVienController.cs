@@ -8,7 +8,7 @@ namespace WebBaiGiang.Controllers
         {
             return View();
         }
-        public IActionResult test()
+        public IActionResult CreateCourses()
         {
             return View();
         }

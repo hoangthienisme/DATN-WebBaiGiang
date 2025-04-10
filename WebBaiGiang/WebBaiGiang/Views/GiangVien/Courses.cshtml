@@ -22,7 +22,7 @@
             <a href="#" onclick="filterCourses('completed')">Đã hoàn thành</a>
         </div>
     </div>
-    <button class="create-course-button" onclick="location.href='@Url.Action("Create", "Course")'">
+    <button class="create-course-button" onclick="location.href='@Url.Action("CreateCourses", "GiangVien")'">
         Tạo khóa học
     </button>
 </div>
@@ -33,14 +33,10 @@
     }
 
     function filterCourses(option) {
-        console.log("Lọc theo:", option); // Bạn có thể gửi yêu cầu fetch ở đây
-        // Ví dụ:
-        // fetch(`/courses?filter=${option}`).then(...)
+        console.log("Lọc theo:", option); 
         alert(`Lọc theo: ${option}`);
         document.getElementById("dropdown-menu").style.display = "none";
     }
-
-    // Đóng menu nếu click ngoài
     document.addEventListener("click", function (e) {
         const dropdown = document.querySelector(".dropdown");
         if (!dropdown.contains(e.target)) {
