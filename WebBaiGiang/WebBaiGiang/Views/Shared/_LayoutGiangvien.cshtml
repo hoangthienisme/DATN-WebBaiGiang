@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Giảng viên";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/giangvien.css" rel="stylesheet" />
+</head>
+
+<body class="page-body">
+    <!-- flex cột -->
+
+        <!-- Layout ngang: nav trái + main phải -->
+        <div class="main-layout">
+            <nav class="side-nav--primary-menu--gihQ-">
+                <ul class="ud-unstyled-list side-nav--menu--kRZ7l">
+                    <li>
+                        <a href="/instructor" class="side-nav--nav-button--H6cSp side-nav--logo-nav-button--pAYC5">
+                            <h1>GV</h1>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/instructor/courses">
+                            <img src="~/img/video-icon.png" alt="Video Icon" class="ud-icon ud-icon-small" />
+                            <span class="side-nav--title--P8jur">Khóa học</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/instructor/communication/qa/">
+                            <img src="~/img/icon-message.png" alt="Message Icon" class="ud-icon ud-icon-small" />
+                            <span class="side-nav--title--P8jur">Giao tiếp</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/instructor/performance/overview">
+                            <img src="~/img/icon-bar-chart.png" alt="Chart Icon" class="ud-icon ud-icon-small" />
+                            <span class="side-nav--title--P8jur">Hiệu suất</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/instructor/tools">
+                            <img src="~/img/icon-wrench.png" alt="Tools Icon" class="ud-icon ud-icon-small" />
+                            <span class="side-nav--title--P8jur">Công cụ</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+                @RenderBody()
+
+
+        </div>
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+
+
+</body>
+</html>

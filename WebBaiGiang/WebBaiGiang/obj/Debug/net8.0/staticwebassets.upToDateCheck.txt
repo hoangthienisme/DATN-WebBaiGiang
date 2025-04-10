@@ -1,4 +1,5 @@
 wwwroot\css\account.css
+wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
 wwwroot\css\site.css
@@ -17,6 +18,9 @@ wwwroot\img\events-item-1.jpg
 wwwroot\img\events-item-2.jpg
 wwwroot\img\favicon.png
 wwwroot\img\hero-bg.jpg
+wwwroot\img\icon-bar-chart.png
+wwwroot\img\icon-message.png
+wwwroot\img\icon-wrench.png
 wwwroot\img\logo.png
 wwwroot\img\loupe.png
 wwwroot\img\mechanical.jpg
@@ -43,6 +47,7 @@ wwwroot\img\trainers\trainer-2.jpg
 wwwroot\img\trainers\trainer-2-2.jpg
 wwwroot\img\trainers\trainer-3.jpg
 wwwroot\img\trainers\trainer-3-2.jpg
+wwwroot\img\video-icon.png
 wwwroot\img\webdesign.jpg
 wwwroot\js\main.js
 wwwroot\js\site.js

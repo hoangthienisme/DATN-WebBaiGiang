@@ -25,9 +25,6 @@ body {
     flex-direction: column;
 }
 
-.footer {
-    margin-top: auto;
-}
 .text-center h1{
     text-align:center;
 }
@@ -180,6 +177,7 @@ body {
     color: white;
     padding: 40px 20px;
     font-family: Arial, sans-serif;
+    margin-top: auto;
 }
 
 .footer-container {
