@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Sb2c9dovA7gYGrI/dr/C2rCM8muwRftFUroBmHvtFMs=",
+  "Hash": "ipJGqHUfv9Q5yV/03KR+gAw6ttOnG/VZn8I+63jI/fU=",
   "Source": "WebBaiGiang",
   "BasePath": "_content/WebBaiGiang",
   "Mode": "Default",
@@ -94,11 +94,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ixmcvz77qp",
-      "Integrity": "6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=",
+      "Fingerprint": "80srauv6hm",
+      "Integrity": "iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\courses.css"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\createcourse.css",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "css/createcourse#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "erovr7t2bn",
+      "Integrity": "5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\createcourse.css"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
@@ -3860,6 +3881,51 @@
       ]
     },
     {
+      "Route": "css/courses.80srauv6hm.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2125"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 10:32:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "80srauv6hm"
+        },
+        {
+          "Name": "label",
+          "Value": "css/courses.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM="
+        }
+      ]
+    },
+    {
       "Route": "css/courses.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
       "Selectors": [],
@@ -3870,7 +3936,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2126"
+          "Value": "2125"
         },
         {
           "Name": "Content-Type",
@@ -3878,11 +3944,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=\""
+          "Value": "\"iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 10:28:51 GMT"
+          "Value": "Thu, 10 Apr 2025 10:32:46 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3892,13 +3958,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ="
+          "Value": "sha256-iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM="
         }
       ]
     },
     {
-      "Route": "css/courses.ixmcvz77qp.css",
-      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+      "Route": "css/createcourse.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\createcourse.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3907,7 +3973,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2126"
+          "Value": "2190"
         },
         {
           "Name": "Content-Type",
@@ -3915,11 +3981,48 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=\""
+          "Value": "\"5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 10:28:51 GMT"
+          "Value": "Thu, 10 Apr 2025 15:36:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY="
+        }
+      ]
+    },
+    {
+      "Route": "css/createcourse.erovr7t2bn.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\createcourse.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 15:36:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3929,15 +4032,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ixmcvz77qp"
+          "Value": "erovr7t2bn"
         },
         {
           "Name": "label",
-          "Value": "css/courses.css"
+          "Value": "css/createcourse.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ="
+          "Value": "sha256-5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY="
         }
       ]
     },

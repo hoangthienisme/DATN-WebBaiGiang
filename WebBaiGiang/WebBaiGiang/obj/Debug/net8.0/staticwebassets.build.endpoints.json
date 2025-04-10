@@ -167,6 +167,51 @@
       ]
     },
     {
+      "Route": "css/courses.80srauv6hm.css",
+      "AssetFile": "css/courses.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2125"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 10:32:46 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "80srauv6hm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM="
+        },
+        {
+          "Name": "label",
+          "Value": "css/courses.css"
+        }
+      ]
+    },
+    {
       "Route": "css/courses.css",
       "AssetFile": "css/courses.css",
       "Selectors": [],
@@ -181,7 +226,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2126"
+          "Value": "2125"
         },
         {
           "Name": "Content-Type",
@@ -189,23 +234,60 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=\""
+          "Value": "\"iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 10:28:51 GMT"
+          "Value": "Thu, 10 Apr 2025 10:32:46 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ="
+          "Value": "sha256-iLhkeRLZ2goeYLrYa+hzBBR6ppphqB7Vc61LXPKpqQM="
         }
       ]
     },
     {
-      "Route": "css/courses.ixmcvz77qp.css",
-      "AssetFile": "css/courses.css",
+      "Route": "css/createcourse.css",
+      "AssetFile": "css/createcourse.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 15:36:16 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY="
+        }
+      ]
+    },
+    {
+      "Route": "css/createcourse.erovr7t2bn.css",
+      "AssetFile": "css/createcourse.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -218,7 +300,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2126"
+          "Value": "2190"
         },
         {
           "Name": "Content-Type",
@@ -226,25 +308,25 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ=\""
+          "Value": "\"5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 10:28:51 GMT"
+          "Value": "Thu, 10 Apr 2025 15:36:16 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ixmcvz77qp"
+          "Value": "erovr7t2bn"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6uU8k2dft2jlV9Tfb9QsO5jH6MvnVgUofYxUsKS7+vQ="
+          "Value": "sha256-5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY="
         },
         {
           "Name": "label",
-          "Value": "css/courses.css"
+          "Value": "css/createcourse.css"
         }
       ]
     },

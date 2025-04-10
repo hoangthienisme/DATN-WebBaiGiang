@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\courses.css"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\createcourse.css",
+      "PackagePath": "staticwebassets\\css\\createcourse.css"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
       "PackagePath": "staticwebassets\\css\\giangvien.css"
     },
