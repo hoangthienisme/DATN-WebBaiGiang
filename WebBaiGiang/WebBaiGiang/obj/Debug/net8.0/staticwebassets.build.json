@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c+dLTbhtR2gihUCzvBhqIDU4ReRHxMnk+q4+/Wgpyl8=",
+  "Hash": "+lmecBI3sgxwerf8AZ19g+Dt4X4Wyd675+HVJVNj4KE=",
   "Source": "WebBaiGiang",
   "BasePath": "_content/WebBaiGiang",
   "Mode": "Default",
@@ -80,6 +80,27 @@
       "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "css/giangvien#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "i94y0komo3",
+      "Integrity": "6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\giangvien.css"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -136,8 +157,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zi4rdom497",
-      "Integrity": "qzzZ8gkGzepMl///b7LQZTXCLDLC6Yq+ZgjBfWnJR7s=",
+      "Fingerprint": "xsshy9oo6c",
+      "Integrity": "761m8cDYP4qPRVEk0cXWuAv9TcR42uhwrE6A6uw4tOM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -456,6 +477,69 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\hero-bg.jpg"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-bar-chart.png",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "img/icon-bar-chart#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fu6avg62pc",
+      "Integrity": "J+C7obOFWGEmlAzMi0ZQPmAmBnahuMw8hfKlpJraHVs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icon-bar-chart.png"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-message.png",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "img/icon-message#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "j6w7hkh1i0",
+      "Integrity": "q28OWaPr44lOcLWlmY8Emo8Fk440rNJrsIjtLEcH/4w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icon-message.png"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-wrench.png",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "img/icon-wrench#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jx04hs1dsy",
+      "Integrity": "STHTfkq+FEvQSQtjeiOZ2FCIZWPgExmvbHEDdI/fiKE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icon-wrench.png"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\logo.png",
@@ -1002,6 +1086,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\trainers\\trainer-3-2.jpg"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\video-icon.png",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "img/video-icon#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8xypg7qkvl",
+      "Integrity": "9Faxnx38zz7BTOVaAqDdmkBZ5HTe1+o37G+QriHi/aM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\video-icon.png"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\webdesign.jpg",
@@ -3734,6 +3839,88 @@
       ]
     },
     {
+      "Route": "css/giangvien.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 09:14:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw="
+        }
+      ]
+    },
+    {
+      "Route": "css/giangvien.i94y0komo3.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 09:14:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i94y0komo3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/giangvien.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6uVLB6SJdY24TwXyLdcg4yHL8vWKGR1gKYYrNBsHokw="
+        }
+      ]
+    },
+    {
       "Route": "css/index.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
       "Selectors": [],
@@ -3908,7 +4095,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4613"
+          "Value": "4599"
         },
         {
           "Name": "Content-Type",
@@ -3916,11 +4103,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qzzZ8gkGzepMl///b7LQZTXCLDLC6Yq+ZgjBfWnJR7s=\""
+          "Value": "\"761m8cDYP4qPRVEk0cXWuAv9TcR42uhwrE6A6uw4tOM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 06:04:13 GMT"
+          "Value": "Thu, 10 Apr 2025 03:24:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3930,12 +4117,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qzzZ8gkGzepMl///b7LQZTXCLDLC6Yq+ZgjBfWnJR7s="
+          "Value": "sha256-761m8cDYP4qPRVEk0cXWuAv9TcR42uhwrE6A6uw4tOM="
         }
       ]
     },
     {
-      "Route": "css/site.zi4rdom497.css",
+      "Route": "css/site.xsshy9oo6c.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3945,7 +4132,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4613"
+          "Value": "4599"
         },
         {
           "Name": "Content-Type",
@@ -3953,11 +4140,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qzzZ8gkGzepMl///b7LQZTXCLDLC6Yq+ZgjBfWnJR7s=\""
+          "Value": "\"761m8cDYP4qPRVEk0cXWuAv9TcR42uhwrE6A6uw4tOM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 06:04:13 GMT"
+          "Value": "Thu, 10 Apr 2025 03:24:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3967,7 +4154,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zi4rdom497"
+          "Value": "xsshy9oo6c"
         },
         {
           "Name": "label",
@@ -3975,7 +4162,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-qzzZ8gkGzepMl///b7LQZTXCLDLC6Yq+ZgjBfWnJR7s="
+          "Value": "sha256-761m8cDYP4qPRVEk0cXWuAv9TcR42uhwrE6A6uw4tOM="
         }
       ]
     },
@@ -5206,6 +5393,252 @@
         {
           "Name": "integrity",
           "Value": "sha256-2h66WIOnpokM/bb6yD/qNaf2IRTDw/MpFWAfGozp7A4="
+        }
+      ]
+    },
+    {
+      "Route": "img/icon-bar-chart.fu6avg62pc.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-bar-chart.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4099"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J+C7obOFWGEmlAzMi0ZQPmAmBnahuMw8hfKlpJraHVs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:28:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fu6avg62pc"
+        },
+        {
+          "Name": "label",
+          "Value": "img/icon-bar-chart.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-J+C7obOFWGEmlAzMi0ZQPmAmBnahuMw8hfKlpJraHVs="
+        }
+      ]
+    },
+    {
+      "Route": "img/icon-bar-chart.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-bar-chart.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4099"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J+C7obOFWGEmlAzMi0ZQPmAmBnahuMw8hfKlpJraHVs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:28:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-J+C7obOFWGEmlAzMi0ZQPmAmBnahuMw8hfKlpJraHVs="
+        }
+      ]
+    },
+    {
+      "Route": "img/icon-message.j6w7hkh1i0.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-message.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"q28OWaPr44lOcLWlmY8Emo8Fk440rNJrsIjtLEcH/4w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:25:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j6w7hkh1i0"
+        },
+        {
+          "Name": "label",
+          "Value": "img/icon-message.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-q28OWaPr44lOcLWlmY8Emo8Fk440rNJrsIjtLEcH/4w="
+        }
+      ]
+    },
+    {
+      "Route": "img/icon-message.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-message.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"q28OWaPr44lOcLWlmY8Emo8Fk440rNJrsIjtLEcH/4w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:25:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-q28OWaPr44lOcLWlmY8Emo8Fk440rNJrsIjtLEcH/4w="
+        }
+      ]
+    },
+    {
+      "Route": "img/icon-wrench.jx04hs1dsy.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-wrench.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"STHTfkq+FEvQSQtjeiOZ2FCIZWPgExmvbHEDdI/fiKE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:29:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jx04hs1dsy"
+        },
+        {
+          "Name": "label",
+          "Value": "img/icon-wrench.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-STHTfkq+FEvQSQtjeiOZ2FCIZWPgExmvbHEDdI/fiKE="
+        }
+      ]
+    },
+    {
+      "Route": "img/icon-wrench.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-wrench.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25904"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"STHTfkq+FEvQSQtjeiOZ2FCIZWPgExmvbHEDdI/fiKE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:29:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-STHTfkq+FEvQSQtjeiOZ2FCIZWPgExmvbHEDdI/fiKE="
         }
       ]
     },
@@ -7338,6 +7771,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-7reoX7XXZNzTmmyr2FNbShn5+4GOEBBNZkn82sgomOw="
+        }
+      ]
+    },
+    {
+      "Route": "img/video-icon.8xypg7qkvl.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\video-icon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8306"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Faxnx38zz7BTOVaAqDdmkBZ5HTe1+o37G+QriHi/aM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:16:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8xypg7qkvl"
+        },
+        {
+          "Name": "label",
+          "Value": "img/video-icon.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9Faxnx38zz7BTOVaAqDdmkBZ5HTe1+o37G+QriHi/aM="
+        }
+      ]
+    },
+    {
+      "Route": "img/video-icon.png",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\video-icon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8306"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Faxnx38zz7BTOVaAqDdmkBZ5HTe1+o37G+QriHi/aM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 16:16:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9Faxnx38zz7BTOVaAqDdmkBZ5HTe1+o37G+QriHi/aM="
         }
       ]
     },
