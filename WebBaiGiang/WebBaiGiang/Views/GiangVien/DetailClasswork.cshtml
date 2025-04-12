@@ -1,0 +1,218 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        background-color: #f9f9f9;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 40px;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        gap: 60px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        position: relative;
+    }
+
+    .left, .right {
+        flex: 1;
+    }
+
+    input[type="text"], textarea, .dropdown-select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+    }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        .dropdown-select:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+            outline: none;
+        }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .dropdown {
+        margin-bottom: 30px;
+    }
+
+        .dropdown label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+    .attachments {
+        display: flex;
+        gap: 30px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .actions {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        font-size: 20px;
+    }
+
+    .submit-button {
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+    }
+
+        .submit-button:hover {
+            background-color: #155ab6;
+            box-shadow: 0 6px 16px rgba(21, 90, 182, 0.4);
+        }
+
+    .attachment-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+        width: 80px;
+    }
+
+        .attachment-item span {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .attachment-item:hover span {
+            color: #1a73e8;
+        }
+
+        .attachment-item img {
+            width: 36px;
+            height: 36px;
+        }
+
+    .rich-buttons {
+        margin-bottom: 20px;
+    }
+
+        .rich-buttons button {
+            padding: 6px 12px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+            .rich-buttons button:hover {
+                background-color: #f0f0f0;
+            }
+</style>
+
+<body>
+    <div class="container">
+        <!-- LEFT SIDE -->
+        <div class="left">
+            <h2>Tài liệu</h2>
+            <input type="text" placeholder="Tiêu đề" />
+            <textarea rows="4" placeholder="Mô tả (không bắt buộc)"></textarea>
+
+            <!-- Rich text actions (bold, italic...) -->
+            <div class="rich-buttons">
+                <button><b>B</b></button>
+                <button><i>I</i></button>
+                <button><u>U</u></button>
+                <button>&#8226;&#8226;&#8226;</button>
+            </div>
+
+            <!-- Attachments -->
+            <div class="attachments">
+                <div class="attachment-item">
+                    <img src="https://img.icons8.com/color/48/google-drive--v1.png" alt="Drive" />
+                    <span>Drive</span>
+                </div>
+                <div class="attachment-item">
+                    <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube" />
+                    <span>YouTube</span>
+                </div>
+                <div class="attachment-item">
+                    <img src="https://img.icons8.com/color/48/add.png" alt="Tạo" />
+                    <span>Tạo</span>
+                </div>
+                <div class="attachment-item">
+                    <img src="https://img.icons8.com/ios-glyphs/48/upload--v1.png" alt="Tải lên" />
+                    <span>Tải lên</span>
+                </div>
+                <div class="attachment-item">
+                    <img src="https://img.icons8.com/ios-filled/48/link--v1.png" alt="Link" />
+                    <span>Đường liên kết</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right">
+            <div class="dropdown">
+                <label for="course">Dành cho</label>
+                <select id="course" class="dropdown-select">
+                    <option>Khóa học 1</option>
+                    <option>Khóa học 2</option>
+                    <option>Khóa học 3</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <label for="students">Giao cho</label>
+                <select id="students" class="dropdown-select">
+                    <option>Tất cả học viên</option>
+                    <option>Chỉ học viên A</option>
+                    <option>Chỉ học viên B</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <label for="topic">Chủ đề</label>
+                <select id="topic" class="dropdown-select">
+                    <option>Không có chủ đề</option>
+                    <option>Chủ đề 1</option>
+                    <option>Chủ đề 2</option>
+                </select>
+            </div>
+            <div class="actions">
+                <button class="submit-button">Giao bài</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

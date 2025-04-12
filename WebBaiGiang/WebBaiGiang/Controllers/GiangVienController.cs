@@ -12,5 +12,17 @@ namespace WebBaiGiang.Controllers
         {
             return View();
         }
+        public IActionResult Stream()
+        {
+            return View();
+        }
+        public IActionResult Classwork()
+        {
+            return View();
+        }
+        public IActionResult DetailClasswork()
+        {
+            return View();
+        }
     }
 }

@@ -28,13 +28,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\createcourse.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2190"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00225qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 15:36:16 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2190"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00225qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 15:36:46 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebBaiGiang/css/createcourse.erovr7t2bn.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\createcourse.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"erovr7t2bn"},{"Name":"integrity","Value":"sha256-5qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY="},{"Name":"label","Value":"_content/WebBaiGiang/css/createcourse.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2190"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00225qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 15:36:16 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2190"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00225qkS1vZBWS3tQprAZ/oMzCmTnJbi8pPHjW4sA6jqAtY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 10 Apr 2025 15:36:46 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebBaiGiang/css/giangvien.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\giangvien.css'))</AssetFile>

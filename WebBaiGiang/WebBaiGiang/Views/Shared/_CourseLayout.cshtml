@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null; // hoặc null nếu không muốn nested
+}
+<div class="conTent">
+    <h3>Khoá học &gt; @ViewBag.TenKhoaHoc</h3>
+</div>
+<div class="navBar-meNu">
+    <a href="@Url.Action("Stream","GiangVien")">Bảng tin</a>
+    <a href="@Url.Action("Classwork","GiangVien")">Bài giảng</a>
+    <a href="@Url.Action("MoiNguoi","GiangVien")">Mọi người</a>
+    <a href="@Url.Action("Diem","GiangVien")">Điểm</a>
+</div>
+
+<style>
+    .conTent h3 {
+        margin-left: 20px;
+        margin-top: 10px;
+        font-family: var(--font-stack-heading-serif);
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.25;
+        letter-spacing: -0.016rem;
+        max-width: 36em;
+    }
+    .navBar-meNu {
+        border-top: 1px solid black;
+        display: flex;
+        justify-content: space-around;
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .navBar-meNu a {
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+            .navBar-meNu a:hover {
+                background-color: #f0f0f0;
+                color: #007bff;
+            }
+</style>
