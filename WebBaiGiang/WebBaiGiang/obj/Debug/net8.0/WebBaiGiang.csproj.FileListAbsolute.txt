@@ -206,3 +206,4 @@ D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\runtimes\win\l
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\obj\Debug\net8.0\WebBaiGiang.csproj.AssemblyReference.cache
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\obj\Debug\net8.0\WebBaiGi.831DFFEC.Up2Date
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\BCrypt.Net-Next.dll

@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 namespace WebBaiGiang.Models;
 
-public partial class BaiGiang
+public partial class HocPhan
 {
     public int Id { get; set; }
 
-    public int ClassId { get; set; }
-
-    public string Title { get; set; } = null!;
-
-    public string? ContentUrl { get; set; }
+    public string Name { get; set; } = null!;
 
     public string? Description { get; set; }
+
+    public int DepartmentId { get; set; }
 
     public DateTime CreatedDate { get; set; }
 
@@ -23,5 +21,7 @@ public partial class BaiGiang
 
     public int? UpdateBy { get; set; }
 
-    public virtual LopHoc Class { get; set; } = null!;
+    public virtual Khoa Department { get; set; } = null!;
+
+    public virtual ICollection<LopHoc> LopHocs { get; set; } = new List<LopHoc>();
 }

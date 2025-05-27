@@ -5,35 +5,37 @@ namespace WebBaiGiang.Models;
 
 public partial class LopHoc
 {
-    public int IdLopHoc { get; set; }
+    public int Id { get; set; }
 
-    public string TenLop { get; set; } = null!;
+    public int SubjectsId { get; set; }
 
-    public int IdKhoaHoc { get; set; }
+    public string Name { get; set; } = null!;
 
-    public int IdGiangVien { get; set; }
+    public string? Description { get; set; }
 
-    public byte TrangThai { get; set; }
+    public string? Picture { get; set; }
 
-    public int NguoiTao { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public DateTime NgayTao { get; set; }
+    public int? CreatedBy { get; set; }
 
-    public int? NguoiCapNhat { get; set; }
+    public DateTime? UpdateDate { get; set; }
 
-    public DateTime? NgayCapNhat { get; set; }
+    public int? UpdateBy { get; set; }
 
     public virtual ICollection<BaiGiang> BaiGiangs { get; set; } = new List<BaiGiang>();
 
     public virtual ICollection<BaiTap> BaiTaps { get; set; } = new List<BaiTap>();
 
+    public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();
+
     public virtual ICollection<DiemDanh> DiemDanhs { get; set; } = new List<DiemDanh>();
 
-    public virtual GiangVien IdGiangVienNavigation { get; set; } = null!;
+    public virtual ICollection<GiangVienLopHoc> GiangVienLopHocs { get; set; } = new List<GiangVienLopHoc>();
 
-    public virtual KhoaHoc IdKhoaHocNavigation { get; set; } = null!;
+    public virtual ICollection<LoiMoi> LoiMois { get; set; } = new List<LoiMoi>();
 
-    public virtual NguoiDung? NguoiCapNhatNavigation { get; set; }
+    public virtual ICollection<SinhVienLopHoc> SinhVienLopHocs { get; set; } = new List<SinhVienLopHoc>();
 
-    public virtual NguoiDung NguoiTaoNavigation { get; set; } = null!;
+    public virtual HocPhan Subjects { get; set; } = null!;
 }

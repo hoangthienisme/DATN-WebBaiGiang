@@ -5,25 +5,19 @@ namespace WebBaiGiang.Models;
 
 public partial class Khoa
 {
-    public int IdKhoa { get; set; }
+    public int Id { get; set; }
 
-    public string TenKhoa { get; set; } = null!;
+    public string Name { get; set; } = null!;
 
-    public string? MoTa { get; set; }
+    public string? Description { get; set; }
 
-    public byte TrangThai { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public int NguoiTao { get; set; }
+    public int? CreatedBy { get; set; }
 
-    public DateTime NgayTao { get; set; }
+    public DateTime? UpdateDate { get; set; }
 
-    public int? NguoiCapNhat { get; set; }
+    public int? UpdateBy { get; set; }
 
-    public DateTime? NgayCapNhat { get; set; }
-
-    public virtual ICollection<KhoaHoc> KhoaHocs { get; set; } = new List<KhoaHoc>();
-
-    public virtual NguoiDung? NguoiCapNhatNavigation { get; set; }
-
-    public virtual NguoiDung NguoiTaoNavigation { get; set; } = null!;
+    public virtual ICollection<HocPhan> HocPhans { get; set; } = new List<HocPhan>();
 }

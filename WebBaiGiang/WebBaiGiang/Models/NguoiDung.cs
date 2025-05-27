@@ -5,31 +5,35 @@ namespace WebBaiGiang.Models;
 
 public partial class NguoiDung
 {
-    public int IdNguoiDung { get; set; }
+    public int Id { get; set; }
 
-    public string TenDangNhap { get; set; } = null!;
-
-    public string MatKhau { get; set; } = null!;
+    public string Name { get; set; } = null!;
 
     public string Email { get; set; } = null!;
 
-    public string VaiTro { get; set; } = null!;
+    public string Password { get; set; } = null!;
 
-    public byte TrangThai { get; set; }
+    public string? Avatar { get; set; }
 
-    public virtual ICollection<GiangVien> GiangViens { get; set; } = new List<GiangVien>();
+    public string? Phone { get; set; }
 
-    public virtual ICollection<KhoaHoc> KhoaHocNguoiCapNhatNavigations { get; set; } = new List<KhoaHoc>();
+    public string? Role { get; set; }
 
-    public virtual ICollection<KhoaHoc> KhoaHocNguoiTaoNavigations { get; set; } = new List<KhoaHoc>();
+    public DateTime CreatedDate { get; set; }
 
-    public virtual ICollection<Khoa> KhoaNguoiCapNhatNavigations { get; set; } = new List<Khoa>();
+    public int? CreatedBy { get; set; }
 
-    public virtual ICollection<Khoa> KhoaNguoiTaoNavigations { get; set; } = new List<Khoa>();
+    public DateTime? UpdateDate { get; set; }
 
-    public virtual ICollection<LopHoc> LopHocNguoiCapNhatNavigations { get; set; } = new List<LopHoc>();
+    public int? UpdateBy { get; set; }
 
-    public virtual ICollection<LopHoc> LopHocNguoiTaoNavigations { get; set; } = new List<LopHoc>();
+    public virtual ICollection<ChiTietDiemDanh> ChiTietDiemDanhs { get; set; } = new List<ChiTietDiemDanh>();
 
-    public virtual ICollection<SinhVien> SinhViens { get; set; } = new List<SinhVien>();
+    public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();
+
+    public virtual ICollection<GiangVienLopHoc> GiangVienLopHocs { get; set; } = new List<GiangVienLopHoc>();
+
+    public virtual ICollection<NopBai> NopBais { get; set; } = new List<NopBai>();
+
+    public virtual ICollection<SinhVienLopHoc> SinhVienLopHocs { get; set; } = new List<SinhVienLopHoc>();
 }

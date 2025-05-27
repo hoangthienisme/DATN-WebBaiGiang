@@ -12,25 +12,33 @@
         <div class="register-form">
             <h2>Đăng ký với Email</h2>
             <form method="post" action="/Account/SignUp">
+                @Html.AntiForgeryToken()
+
                 <div class="form-group">
                     <label>Họ và tên</label>
-                    <input type="text" name="fullname">
+                    <input type="text" name="Name" required />
                 </div>
 
                 <div class="form-group">
                     <label>Mật khẩu</label>
-                    <input type="password" name="password">
+                    <input type="password" name="Password" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Xác nhận mật khẩu</label>
+                    <input type="password" name="ConfirmPassword" required />
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email">
+                    <input type="email" name="Email" required />
                 </div>
 
                 <button type="submit" class="submit-btn">
                     <span class="icon">📩</span> Tiếp tục với Email
                 </button>
             </form>
+
 
             <div class="other-options">
                 <span>Các tùy chọn đăng ký khác</span>
