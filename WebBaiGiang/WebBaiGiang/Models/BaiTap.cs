@@ -5,23 +5,23 @@ namespace WebBaiGiang.Models;
 
 public partial class BaiTap
 {
-    public int IdBaiTap { get; set; }
+    public int Id { get; set; }
 
-    public string TieuDe { get; set; } = null!;
+    public int ClassId { get; set; }
 
-    public string? MoTa { get; set; }
+    public string Title { get; set; } = null!;
 
-    public DateTime HanNop { get; set; }
+    public string? Description { get; set; }
 
-    public string? TepDinhKem { get; set; }
+    public DateTime DueDate { get; set; }
 
-    public int IdLopHoc { get; set; }
+    public bool IsActive { get; set; }
 
-    public DateTime NgayGiao { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public byte TrangThai { get; set; }
+    public int? CreatedBy { get; set; }
 
-    public virtual LopHoc IdLopHocNavigation { get; set; } = null!;
+    public virtual LopHoc Class { get; set; } = null!;
 
-    public virtual ICollection<NopBaiTap> NopBaiTaps { get; set; } = new List<NopBaiTap>();
+    public virtual ICollection<NopBai> NopBais { get; set; } = new List<NopBai>();
 }

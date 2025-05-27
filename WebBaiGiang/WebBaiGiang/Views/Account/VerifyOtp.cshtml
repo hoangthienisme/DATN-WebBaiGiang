@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Xác nhận OTP";
+}
+
+<h2>Nhập mã OTP được gửi tới email</h2>
+
+<form method="post" action="/Account/VerifyOtp">
+    <label>Nhập mã OTP</label>
+    <input type="text" name="otpInput" required />
+    <button type="submit">Xác nhận</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+    {
+        <p style="color:red">@error.ErrorMessage</p>
+    }
+}

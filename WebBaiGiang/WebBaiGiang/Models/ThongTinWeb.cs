@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 namespace WebBaiGiang.Models;
 
-public partial class BaiGiang
+public partial class ThongTinWeb
 {
     public int Id { get; set; }
 
-    public int ClassId { get; set; }
+    public string Name { get; set; } = null!;
 
-    public string Title { get; set; } = null!;
+    public string? LogoUrl { get; set; }
 
-    public string? ContentUrl { get; set; }
-
-    public string? Description { get; set; }
+    public string? SocialLink { get; set; }
 
     public DateTime CreatedDate { get; set; }
 
@@ -22,6 +20,4 @@ public partial class BaiGiang
     public DateTime? UpdateDate { get; set; }
 
     public int? UpdateBy { get; set; }
-
-    public virtual LopHoc Class { get; set; } = null!;
 }
