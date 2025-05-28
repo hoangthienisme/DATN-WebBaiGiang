@@ -26,6 +26,8 @@ public partial class NguoiDung
     public DateTime? UpdateDate { get; set; }
 
     public int? UpdateBy { get; set; }
+    public string? ResetPasswordToken { get; set; }
+    public DateTime? ResetTokenExpiry { get; set; }
 
     public virtual ICollection<ChiTietDiemDanh> ChiTietDiemDanhs { get; set; } = new List<ChiTietDiemDanh>();
 
