@@ -1,36 +1,30 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Đăng nhập tài khoản";
+
 }
 <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
-
 <div class="register-container">
     <div class="login-register-box">
         <div class="register-image">
             <img src="@Url.Content("~/img/anhkha.png")" alt="Ảnh Kha" />
         </div>
         <div class="register-form">
-            <h2>Đăng nhập</h2>
-            <form method="post" action="/Account/Login">
-                @Html.AntiForgeryToken()
+            <h2>Đăng nhập </h2>
+            <form method="post" action="/Account/SignUp">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" required />
+                    <input type="password" name="password">
                 </div>
 
                 <div class="form-group">
                     <label>Mật khẩu</label>
-                    <input type="password" name="password" required />
+                    <input type="email" name="email">
                 </div>
 
                 <button type="submit" class="login-submit-btn">
-                    <span class="icon">🔐</span> Đăng nhập
+                    <span class="icon">📩</span> Tiếp tục với Email
                 </button>
-                <div class="text-center mt-2">
-                    <a asp-controller="Account" asp-action="ForgotPassword" class="forgot-link text-decoration-none text-primary">
-                        Quên mật khẩu?
-                    </a>
-                </div>
             </form>
 
             <div class="other-options">
@@ -42,10 +36,10 @@
                 </div>
             </div>
 
-            <span class="have-account">
-                Bạn chưa có tài khoản?
-                <a href="/Account/SignUp">Đăng ký</a>
+            <span class="have-account">Bạn chưa có tài khoản?
+                <a href="/Account/SignUp">Đăng Ký</a>
             </span>
         </div>
     </div>
 </div>
+

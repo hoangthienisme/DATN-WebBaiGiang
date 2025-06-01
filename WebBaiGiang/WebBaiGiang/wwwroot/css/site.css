@@ -171,10 +171,6 @@ body {
         left: 100%;
         top: 0;
     }
-.group:hover .group-hover\:block {
-    display: block;
-}
-
 /*Footer*/
 .footer {
     background: #2c3e50;

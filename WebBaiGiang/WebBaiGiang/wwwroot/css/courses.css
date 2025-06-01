@@ -104,3 +104,75 @@
     .create-course-button:hover {
         background-color: #5a00a0; 
     }
+
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.courses-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    background: white;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+    .course-card:hover {
+        box-shadow: 0 5px 15px rgb(0 0 0 / 0.2);
+    }
+
+.course-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.course-content {
+    padding: 15px;
+}
+
+    .course-content h4 {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+        color: #2c3e50;
+    }
+
+    .course-content p {
+        font-size: 14px;
+        color: #555;
+        max-height: 70px;
+        overflow: auto;
+        white-space: normal;
+    }
+
+.btn-create-course {
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-create-course:hover {
+        background-color: #0056b3;
+    }
+

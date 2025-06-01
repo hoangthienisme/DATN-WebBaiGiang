@@ -15,7 +15,7 @@ public partial class LopHoc
 
     public string? Picture { get; set; }
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime? CreatedDate { get; set; }
 
     public int? CreatedBy { get; set; }
 
@@ -37,5 +37,5 @@ public partial class LopHoc
 
     public virtual ICollection<SinhVienLopHoc> SinhVienLopHocs { get; set; } = new List<SinhVienLopHoc>();
 
-    public virtual HocPhan Subjects { get; set; } = null!;
+    public virtual HocPhan? Subjects { get; set; } 
 }
