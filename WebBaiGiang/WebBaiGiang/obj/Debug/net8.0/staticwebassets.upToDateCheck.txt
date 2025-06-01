@@ -116,6 +116,7 @@ wwwroot\uploads\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg
 wwwroot\uploads\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg
 wwwroot\uploads\6990e6e3-caa5-438a-8982-c5e136b03b6c_5 diem khac biet.jpg
 wwwroot\uploads\8a1199be-f588-435d-a445-88cbb3caf250_1367490.jpeg
+wwwroot\uploads\bba0dbb5-a1be-471a-a3dd-89b4ab9e64f2_1367490.jpeg
 wwwroot\uploads\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg
 wwwroot\uploads\c5a22c60-af89-4417-927e-7c44171d7543_1367490.jpeg
 wwwroot\uploads\cd9fc830-d29f-4634-8e52-9675e78cd932_1367490.jpeg
