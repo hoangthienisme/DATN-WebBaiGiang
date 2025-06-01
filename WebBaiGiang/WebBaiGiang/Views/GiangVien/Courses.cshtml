@@ -1,5 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+    @model List<WebBaiGiang.Models.LopHoc>
+
 
 }
 <link href="~/css/courses.css" rel="stylesheet" />
@@ -25,6 +27,30 @@
     <button class="create-course-button" onclick="location.href='@Url.Action("CreateCourses", "GiangVien")'">
         Tạo khóa học
     </button>
+    <div class="container">
+        <h3>Danh sách khóa học</h3>
+        <div class="courses-wrapper">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var course in Model)
+            {
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="@course.Picture" alt="Ảnh bìa khóa học" />
+                        </div>
+                        <div class="course-content">
+                            <h4>@course.Name</h4>
+                            <p>@Html.Raw(course.Description)</p>
+                        </div>
+                    </div>
+            }
+        }
+        else
+        {
+            <p>Không có khóa học nào.</p>
+        }
+    </div>
+
 </div>
 <script>
     function toggleDropdown() {
@@ -44,3 +70,4 @@
         }
     });
 </script>
+
