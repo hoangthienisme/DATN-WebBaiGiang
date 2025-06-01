@@ -113,6 +113,7 @@ wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 wwwroot\uploads\17aa5081-2aff-4371-a97a-b0c0a5d9dc10_1367490.jpeg
 wwwroot\uploads\233f6c44-8aee-4cd0-88ff-70ee2c4b76fd_1367490.jpeg
 wwwroot\uploads\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg
+wwwroot\uploads\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg
 wwwroot\uploads\6990e6e3-caa5-438a-8982-c5e136b03b6c_5 diem khac biet.jpg
 wwwroot\uploads\8a1199be-f588-435d-a445-88cbb3caf250_1367490.jpeg
 wwwroot\uploads\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg
