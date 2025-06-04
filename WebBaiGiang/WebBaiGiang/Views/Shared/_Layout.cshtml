@@ -46,6 +46,11 @@
 </head>
 
 <body>
+    @using Microsoft.AspNetCore.Http
+    @{
+        var userEmail = Context.Session.GetString("UserEmail");
+        var userRole = Context.Session.GetString("UserRole");
+    }
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="navbar-logo">
@@ -88,11 +93,29 @@
             <input  type="text" placeholder="Tìm kiếm học phần, giảng viên..." />
             <img src="~/img/loupe.png" />
         </div>
-            <button class="navbar-button">
-                <a href="@Url.Action("Login","Account")">
-                    Bắt đầu học
-                </a>
-            </button>
+        @if (!string.IsNullOrEmpty(userEmail))              
+        {
+               <div class="relative group ml-4">
+                   <div class="flex items-center space-x-2 text-white bg-blue-600 px-4 py-2 rounded-full cursor-pointer">
+                       <i class="fas fa-user-circle text-lg"></i>
+                       <span>👤</span>
+                       <i class="bi bi-chevron-down"></i>
+                   </div>
+                   <ul class="absolute hidden group-hover:block right-0 mt-2 w-48 bg-white shadow-lg rounded-lg text-black z-50">
+                       <li class="px-4 py-2 hover:bg-gray-100"><a href="/Account/Profile">Quản lý tài khoản</a></li>
+                       <li class="px-4 py-2 hover:bg-gray-100"><a href="/Account/ChangePassword">Đổi mật khẩu</a> </li>
+                       <li class="px-4 py-2 hover:bg-gray-100"><a href="/Account/Logout">Đăng xuất</a></li>
+                   </ul>
+               </div>
+               }
+               else
+               {
+               <button class="navbar-button">
+                   <a href="@Url.Action("Login","Account")">
+                       Bắt đầu học
+                   </a>
+               </button>
+               }
     </nav>
 
     <!-- Nội dung trang -->

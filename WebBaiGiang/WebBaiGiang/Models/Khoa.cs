@@ -20,4 +20,6 @@ public partial class Khoa
     public int? UpdateBy { get; set; }
 
     public virtual ICollection<HocPhan> HocPhans { get; set; } = new List<HocPhan>();
+
+    public virtual ICollection<LopHoc> LopHocs { get; set; } = new List<LopHoc>();
 }

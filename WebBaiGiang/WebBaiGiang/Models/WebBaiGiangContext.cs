@@ -15,11 +15,15 @@ public partial class WebBaiGiangContext : DbContext
     {
     }
 
+    public virtual DbSet<Bai> Bais { get; set; }
+
     public virtual DbSet<BaiGiang> BaiGiangs { get; set; }
 
     public virtual DbSet<BaiTap> BaiTaps { get; set; }
 
     public virtual DbSet<ChiTietDiemDanh> ChiTietDiemDanhs { get; set; }
+
+    public virtual DbSet<Chuong> Chuongs { get; set; }
 
     public virtual DbSet<DanhGium> DanhGia { get; set; }
 
@@ -45,10 +49,32 @@ public partial class WebBaiGiangContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;Database=WebBaiGiang;Trusted_Connection=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;Database=WebBaiGiang;Trusted_Connection=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Bai>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Bai__3214EC079B0ED36A");
+
+            entity.ToTable("Bai");
+
+            entity.Property(e => e.ChuongId).HasColumnName("Chuong_Id");
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Description).HasColumnType("text");
+            entity.Property(e => e.Document).HasMaxLength(500);
+            entity.Property(e => e.Title).HasMaxLength(255);
+            entity.Property(e => e.VideoUrl)
+                .HasMaxLength(500)
+                .HasColumnName("VideoURL");
+
+            entity.HasOne(d => d.Chuong).WithMany(p => p.Bais)
+                .HasForeignKey(d => d.ChuongId)
+                .HasConstraintName("FK_Bai_Chuong");
+        });
+
         modelBuilder.Entity<BaiGiang>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__BaiGiang__3214EC07CA07DEEA");
@@ -105,6 +131,23 @@ public partial class WebBaiGiangContext : DbContext
                 .HasForeignKey(d => d.UsersId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ChiTietDi__Users__5DCAEF64");
+        });
+
+        modelBuilder.Entity<Chuong>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Chuong__3214EC0750279F2B");
+
+            entity.ToTable("Chuong");
+
+            entity.Property(e => e.BaiGiangId).HasColumnName("BaiGiang_Id");
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Title).HasMaxLength(255);
+
+            entity.HasOne(d => d.BaiGiang).WithMany(p => p.Chuongs)
+                .HasForeignKey(d => d.BaiGiangId)
+                .HasConstraintName("FK_Chuong_BaiGiang");
         });
 
         modelBuilder.Entity<DanhGium>(entity =>
@@ -222,10 +265,16 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(250);
+            entity.Property(e => e.KhoaId).HasColumnName("Khoa_id");
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Picture).HasMaxLength(250);
             entity.Property(e => e.SubjectsId).HasColumnName("Subjects_id");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Khoa).WithMany(p => p.LopHocs)
+                .HasForeignKey(d => d.KhoaId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LopHoc_Khoa");
 
             entity.HasOne(d => d.Subjects).WithMany(p => p.LopHocs)
                 .HasForeignKey(d => d.SubjectsId)
@@ -247,6 +296,8 @@ public partial class WebBaiGiangContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Password).HasMaxLength(100);
             entity.Property(e => e.Phone).HasMaxLength(20);
+            entity.Property(e => e.ResetPasswordToken).HasMaxLength(200);
+            entity.Property(e => e.ResetTokenExpiry).HasColumnType("datetime");
             entity.Property(e => e.Role).HasMaxLength(20);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });

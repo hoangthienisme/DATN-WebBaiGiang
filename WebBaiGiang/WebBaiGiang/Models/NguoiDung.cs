@@ -27,6 +27,10 @@ public partial class NguoiDung
 
     public int? UpdateBy { get; set; }
 
+    public string? ResetPasswordToken { get; set; }
+
+    public DateTime? ResetTokenExpiry { get; set; }
+
     public virtual ICollection<ChiTietDiemDanh> ChiTietDiemDanhs { get; set; } = new List<ChiTietDiemDanh>();
 
     public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();

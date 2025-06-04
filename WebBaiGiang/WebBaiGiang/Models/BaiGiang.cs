@@ -23,5 +23,7 @@ public partial class BaiGiang
 
     public int? UpdateBy { get; set; }
 
+    public virtual ICollection<Chuong> Chuongs { get; set; } = new List<Chuong>();
+
     public virtual LopHoc Class { get; set; } = null!;
 }

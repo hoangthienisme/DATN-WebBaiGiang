@@ -15,13 +15,15 @@ public partial class LopHoc
 
     public string? Picture { get; set; }
 
-    public DateTime? CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
     public int? CreatedBy { get; set; }
 
     public DateTime? UpdateDate { get; set; }
 
     public int? UpdateBy { get; set; }
+
+    public int KhoaId { get; set; }
 
     public virtual ICollection<BaiGiang> BaiGiangs { get; set; } = new List<BaiGiang>();
 
@@ -33,9 +35,11 @@ public partial class LopHoc
 
     public virtual ICollection<GiangVienLopHoc> GiangVienLopHocs { get; set; } = new List<GiangVienLopHoc>();
 
+    public virtual Khoa? Khoa { get; set; }
+
     public virtual ICollection<LoiMoi> LoiMois { get; set; } = new List<LoiMoi>();
 
     public virtual ICollection<SinhVienLopHoc> SinhVienLopHocs { get; set; } = new List<SinhVienLopHoc>();
 
-    public virtual HocPhan? Subjects { get; set; } 
+    public virtual HocPhan? Subjects { get; set; }
 }

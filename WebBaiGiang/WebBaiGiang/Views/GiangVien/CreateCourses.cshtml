@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
     var subjects = ViewBag.Subjects as List<WebBaiGiang.Models.HocPhan>;
+    var khoas = ViewBag.Khoas as List<WebBaiGiang.Models.Khoa>;
 }
 <link href="~/css/createcourse.css" rel="stylesheet" />
 <div class="container">
@@ -22,7 +23,16 @@
         <!-- Tên khóa học -->
         <label for="Name">Tên khóa học:</label>
         <input type="text" name="Name" id="courseName" placeholder="VD: Giới thiệu về thiết kế UX" required />
-
+        <div class="form-group">
+            <label for="KhoaId">Chọn khoa giảng dạy:</label>
+            <select name="KhoaId" id="KhoaId" required>
+                <option value="">-- Chọn khoa --</option>
+                @foreach (var Khoa in khoas)
+                {
+                    <option value="@Khoa.Id">@Khoa.Name</option>
+                }
+            </select>
+        </div>
         <div class="form-group">
             <label for="SubjectsId">Chọn học phần:</label>
             <select name="SubjectsId" id="SubjectsId" required>

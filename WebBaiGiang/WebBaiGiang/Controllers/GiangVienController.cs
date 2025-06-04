@@ -20,6 +20,9 @@ namespace WebBaiGiang.Controllers
             var myCourses = _context.LopHocs
                 .OrderByDescending(l => l.CreatedDate)
                 .ToList();
+       //     var user = _context.NguoiDungs
+       //.FirstOrDefault(u => u.Email == email);
+
 
             return View(myCourses);
         }
@@ -28,21 +31,35 @@ namespace WebBaiGiang.Controllers
         public IActionResult CreateCourses()
         {
             var subjects = _context.HocPhans.ToList();
+            var khoas = _context.Khoas.ToList();
             ViewBag.Subjects = subjects;
+            ViewBag.Khoas = khoas;
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateCourses(LopHoc lophoc, string DetailedDescription, IFormFile Thumbnail)
         {
+            Console.WriteLine($"KhoaId: {lophoc.KhoaId}, SubjectsId: {lophoc.SubjectsId}, Name: {lophoc.Name}");
+
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState)
+                {
+                    Console.WriteLine($"Key: {error.Key}");
+                    foreach (var e in error.Value.Errors)
+                    {
+                        Console.WriteLine($"  Error: {e.ErrorMessage}");
+                    }
+                }
+            }
             lophoc.Description = DetailedDescription;
 
             if (ModelState.IsValid)
             {
-                // Xử lý lưu ảnh
                 if (Thumbnail != null && Thumbnail.Length > 0)
                 {
                     var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
-                    Directory.CreateDirectory(uploadsFolder); // Tạo thư mục nếu chưa có
+                    Directory.CreateDirectory(uploadsFolder);
 
                     var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(Thumbnail.FileName);
                     var filePath = Path.Combine(uploadsFolder, uniqueFileName);
@@ -54,6 +71,7 @@ namespace WebBaiGiang.Controllers
 
                     lophoc.Picture = "/uploads/" + uniqueFileName;
                 }
+
                 lophoc.CreatedDate = DateTime.Now;
                 _context.LopHocs.Add(lophoc);
                 await _context.SaveChangesAsync();
@@ -61,8 +79,13 @@ namespace WebBaiGiang.Controllers
                 return RedirectToAction("Courses");
             }
 
-            return View("CreateCourses", lophoc);
+            // Nếu lỗi -> load lại ViewBag
+            ViewBag.Subjects = _context.HocPhans.ToList();
+            ViewBag.Khoas = _context.Khoas.ToList();
+
+            return View(); 
         }
+
         public IActionResult Stream()
         {
             return View();

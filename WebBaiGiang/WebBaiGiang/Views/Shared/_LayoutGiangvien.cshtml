@@ -1,13 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Giảng viên";
-}
 
+    var avatar = Context.Session.GetString("UserAvatar");
+    var email = Context.Session.GetString("UserEmail");
+     var name = Context.Session.GetString("UserFullName") ?? "Giảng Viên";
+}
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"]</title>
     <link href="~/css/giangvien.css" rel="stylesheet" />
+
 </head>
 <body class="page-body">
 
@@ -25,14 +29,22 @@
             </div>
 
             <div class="dropdown">
-                <button class="avatar-button">NT</button>
+                <button class="avatar-button">
+                    @if (!string.IsNullOrEmpty(avatar))
+                    {
+                        <img src="@avatar" alt="Avatar" />
+                    }
+                    else
+                    {
+                        <img src="~/img/default-avatar.png" alt="Default Avatar" />
+                    }
+                </button>
                 <div class="dropdown-content">
-                    <p><strong>Nguyễn Hoàng Thiện</strong></p>
-                    <p class="email">nguyenhoangthien120304@gmail.com</p>
+                    <p><strong>@name</strong></p>
                     <hr />
-                    <a href="#">Cài đặt tài khoản</a><br />
-                    <a href="#">Thông báo</a><br />
-                    <a href="#">Đăng xuất</a>
+                    <a href="#">Quản lý tài khoản</a><br />
+                    <a href="#">Đổi mật khẩu</a><br />
+                    <a href="@Url.Action("Logout", "Account")">Đăng xuất</a>
                 </div>
             </div>
         </div>
@@ -51,19 +63,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/instructor/communication/qa/">
+                    <a href="#">
                         <img src="~/img/icon-message.png" alt="Message Icon" class="ud-icon ud-icon-small" />
-                        <span class="side-nav--title--P8jur">Giao tiếp</span>
+                        <span class="side-nav--title--P8jur">Bài giảng</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/instructor/performance/overview">
+                    <a href="#">
                         <img src="~/img/icon-bar-chart.png" alt="Chart Icon" class="ud-icon ud-icon-small" />
                         <span class="side-nav--title--P8jur">Hiệu suất</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/instructor/tools">
+                    <a href="#">
                         <img src="~/img/icon-wrench.png" alt="Tools Icon" class="ud-icon ud-icon-small" />
                         <span class="side-nav--title--P8jur">Công cụ</span>
                     </a>
