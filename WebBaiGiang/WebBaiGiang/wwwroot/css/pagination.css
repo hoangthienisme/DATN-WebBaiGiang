@@ -1,0 +1,32 @@
+﻿
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination-list {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+}
+
+    .pagination-list li {
+        display: inline;
+        margin: 0 5px;
+    }
+
+        .pagination-list li a {
+            text-decoration: none;
+            padding: 6px 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            border-radius: 4px;
+        }
+
+        .pagination-list li.active {
+            font-weight: bold;
+            padding: 6px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+        }

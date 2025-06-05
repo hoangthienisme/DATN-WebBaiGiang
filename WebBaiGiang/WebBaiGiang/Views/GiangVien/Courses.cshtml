@@ -1,13 +1,14 @@
-﻿@{
+﻿@model PhanTrang<WebBaiGiang.Models.LopHoc>
+@{
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
-    @model List<WebBaiGiang.Models.LopHoc>
-
-
 }
+
 <link href="~/css/courses.css" rel="stylesheet" />
+<link href="~/css/pagination.css" rel="stylesheet" />
 <div class="conTent">
     <h3>Khoá học</h3>
 </div>
+
 <div class="search-filter">
     <div class="search-input-wrapper">
         <img src="~/img/loupe.png" class="search-icon" />
@@ -24,25 +25,27 @@
             <a href="#" onclick="filterCourses('completed')">Đã hoàn thành</a>
         </div>
     </div>
+
     <button class="create-course-button" onclick="location.href='@Url.Action("CreateCourses", "GiangVien")'">
         Tạo khóa học
     </button>
-    <div class="container">
-        <h3>Danh sách khóa học</h3>
-        <div class="courses-wrapper">
+</div>
+
+<div class="container">
+    <div class="courses-wrapper">
         @if (Model != null && Model.Any())
         {
             foreach (var course in Model)
             {
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="@course.Picture" alt="Ảnh bìa khóa học" />
-                        </div>
-                        <div class="course-content">
-                            <h4>@course.Name</h4>
-                            <p>@Html.Raw(course.Description)</p>
-                        </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="@course.Picture" alt="Ảnh bìa khóa học" />
                     </div>
+                    <div class="course-content">
+                        <h4>@course.Name</h4>
+                        @Html.Raw(course.Description)
+                    </div>
+                </div>
             }
         }
         else
@@ -51,7 +54,38 @@
         }
     </div>
 
+    <!-- PHÂN TRANG -->
+    <div class="pagination">
+        @if (Model.TotalPages > 1)
+        {
+            <ul class="pagination-list">
+                @if (Model.HasPreviousPage)
+                {
+                    <li><a href="@Url.Action("Courses", new { page = Model.PageIndex - 1 })">← Trước</a></li>
+                }
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    if (i == Model.PageIndex)
+                    {
+                        <li class="active">@i</li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Courses", new { page = i })">@i</a></li>
+                    }
+                }
+
+                @if (Model.HasNextPage)
+                {
+                    <li><a href="@Url.Action("Courses", new { page = Model.PageIndex + 1 })">Sau →</a></li>
+                }
+            </ul>
+        }
+    </div>
 </div>
+
+<!-- Script lọc dropdown -->
 <script>
     function toggleDropdown() {
         const menu = document.getElementById("dropdown-menu");
@@ -59,10 +93,10 @@
     }
 
     function filterCourses(option) {
-        console.log("Lọc theo:", option); 
         alert(`Lọc theo: ${option}`);
         document.getElementById("dropdown-menu").style.display = "none";
     }
+
     document.addEventListener("click", function (e) {
         const dropdown = document.querySelector(".dropdown");
         if (!dropdown.contains(e.target)) {

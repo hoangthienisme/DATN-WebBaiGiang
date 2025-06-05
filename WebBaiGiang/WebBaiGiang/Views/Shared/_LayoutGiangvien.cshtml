@@ -1,9 +1,10 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "Giảng viên";
 
-    var avatar = Context.Session.GetString("UserAvatar");
-    var email = Context.Session.GetString("UserEmail");
-     var name = Context.Session.GetString("UserFullName") ?? "Giảng Viên";
+    var avatar = User.FindFirst("Avatar")?.Value;
+    var email = User.FindFirst(ClaimTypes.Email)?.Value;
+    var name = User.FindFirst(ClaimTypes.Name)?.Value ?? "Giảng Viên";
 }
 <!DOCTYPE html>
 <html>
@@ -11,11 +12,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"]</title>
     <link href="~/css/giangvien.css" rel="stylesheet" />
-
 </head>
 <body class="page-body">
-
-    <!-- Header (top bar) -->
     <header class="header">
         <div class="left-section">
             <div class="logo">🎓 BG</div>
@@ -42,18 +40,14 @@
                 <div class="dropdown-content">
                     <p><strong>@name</strong></p>
                     <hr />
-                    <a href="#">Quản lý tài khoản</a><br />
-                    <a href="#">Đổi mật khẩu</a><br />
-                    <a href="@Url.Action("Logout", "Account")">Đăng xuất</a>
+                    <a href="/Account/Profile">Quản lý tài khoản</a><br />
+                    <a href="/Account/ChangePassword">Đổi mật khẩu</a><br />
+                    <a href="#" onclick="return confirmLogout();">Đăng xuất</a>
                 </div>
             </div>
         </div>
     </header>
-
-    <!-- Layout: Sidebar + Main -->
     <div class="main-layout">
-
-        <!-- Sidebar trái -->
         <nav class="side-nav--primary-menu--gihQ-">
             <ul class="ud-unstyled-list side-nav--menu--kRZ7l">
                 <li>
@@ -82,12 +76,19 @@
                 </li>
             </ul>
         </nav>
-
-        <!-- Nội dung bên phải -->
         <main class="main-content">
             @RenderBody()
         </main>
 
+        <script>
+            function confirmLogout() {
+                if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
+                    window.location.href = '/Account/Logout';
+                    return false;
+                }
+                return false;
+            }
+        </script>
     </div>
 
     @Html.Partial("~/Views/Shared/_Footer.cshtml")

@@ -16,12 +16,12 @@ builder.Services.AddSession(options =>
 });
 
 
-//builder.Services.AddAuthentication("MyCookieAuth")
-//    .AddCookie("MyCookieAuth", options =>
-//    {
-//        options.LoginPath = "/Account/Login";
-//        options.AccessDeniedPath = "/Account/AccessDenied";
-//    });
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+    });
 
 builder.Services.AddAuthorization();
 

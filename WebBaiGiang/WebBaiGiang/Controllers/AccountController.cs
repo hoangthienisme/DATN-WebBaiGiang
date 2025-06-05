@@ -5,6 +5,9 @@ using BCrypt.Net;
 using System.Net.Mail;
 using System.Net;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace WebBaiGiang.Controllers
 {
     public class AccountController : Controller
@@ -32,7 +35,7 @@ namespace WebBaiGiang.Controllers
                 return View(model);
             }
 
-            // Lưu tạm dữ liệu đăng ký vào session (CHƯA LƯU DB)
+            // Lưu tạm dữ liệu 
             HttpContext.Session.SetString("Temp_Name", model.Name);
             HttpContext.Session.SetString("Temp_Email", model.Email);
             HttpContext.Session.SetString("Temp_Password", BCrypt.Net.BCrypt.HashPassword(model.Password));
@@ -63,7 +66,7 @@ namespace WebBaiGiang.Controllers
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 10000, // Rút ngắn timeout
+                    Timeout = 10000, 
                 };
 
                 using var message = new MailMessage(fromAddress, toAddress)
@@ -76,9 +79,8 @@ namespace WebBaiGiang.Controllers
             }
             catch (Exception ex)
             {
-                // Ghi log hoặc tạm thời hiển thị lỗi để debug
                 Console.WriteLine("Email gửi lỗi: " + ex.Message);
-                throw; // hoặc bỏ throw nếu muốn tiếp tục chạy không gửi email
+                throw; 
             }
         }
 
@@ -129,36 +131,44 @@ namespace WebBaiGiang.Controllers
         }
         [HttpPost]
          [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string email, string password)
+    public async Task<IActionResult> Login(string email, string password)
+    {
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                ModelState.AddModelError("", "Email và mật khẩu là bắt buộc.");
-                return View();
-            }
-
-            var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == email);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
-            {
-                ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
-                return View();
-            }
-            HttpContext.Session.SetString("UserEmail", user.Email);
-            HttpContext.Session.SetString("UserRole", user.Role);
-            HttpContext.Session.SetString("UserFullName", user.Name);
-            if (user.Role == "Admin")
-                return RedirectToAction("Dashboard", "Admin");
-
-            if (user.Role == "Teacher")
-                return RedirectToAction("Courses", "GiangVien");
-            TempData["LoginSuccess"] = true;
-
-            return RedirectToAction("Index", "Home");
+            ModelState.AddModelError("", "Email và mật khẩu là bắt buộc.");
+            return View();
         }
-        public IActionResult Logout()
+
+        var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == email);
+        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
+        {
+            ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
+            return View();
+        }
+     var claims = new List<Claim>
+    {   new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Name, user.Name),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(ClaimTypes.Role, user.Role)
+    };
+
+        var identity = new ClaimsIdentity(claims, "Cookies");
+        var principal = new ClaimsPrincipal(identity);
+
+        await HttpContext.SignInAsync("Cookies", principal);
+
+        if (user.Role == "Admin")
+            return RedirectToAction("Dashboard", "Admin");
+        if (user.Role == "Teacher")
+            return RedirectToAction("Courses", "GiangVien");
+
+        return RedirectToAction("Index", "Home");
+    }
+
+        public async Task<IActionResult> Logout()
         {
             // Xóa session
-            HttpContext.Session.Clear();
+            await HttpContext.SignOutAsync("Cookies");
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]
