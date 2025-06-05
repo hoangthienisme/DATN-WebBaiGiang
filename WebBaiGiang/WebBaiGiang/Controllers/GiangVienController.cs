@@ -2,6 +2,7 @@
 using WebBaiGiang.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace WebBaiGiang.Controllers
 {
     [Authorize(Roles = "Admin,Teacher")]
@@ -91,7 +92,118 @@ namespace WebBaiGiang.Controllers
 
             return View(); 
         }
+        [HttpGet]
+        public IActionResult TaoBaiGiang()
+        {
+            var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+            if (!int.TryParse(currentGiangVienIdString, out int currentGiangVienId))
+            {
+                // Xử lý khi không lấy được ID hợp lệ, ví dụ chuyển đến trang đăng nhập hoặc lỗi
+                return RedirectToAction("Login", "Account");
+            }
+
+            ViewBag.LopList = _context.GiangVienLopHocs
+                .Where(glh => glh.IdGv == currentGiangVienId)
+                .Select(glh => new SelectListItem
+                {
+                    Value = glh.IdClass.ToString(),
+                    Text = _context.LopHocs.FirstOrDefault(l => l.Id == glh.IdClass).Name
+                })
+                .ToList();
+
+            var model = new BaiGiangCreateViewModel
+            {
+                ClassIds = new List<int>()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TaoBaiGiang(BaiGiangCreateViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("TaoBaiGiang", model);
+            }
+
+            // Lặp qua từng lớp được chọn
+            foreach (var classId in model.ClassIds)
+            {
+                var baigiang = new BaiGiang
+                {
+                    ClassId = classId,
+                    Title = model.Title,
+                    Description = model.Description,
+                    CreatedDate = DateTime.Now
+                };
+
+                // Xử lý file đính kèm bài giảng
+                if (model.Attachment != null && model.Attachment.Length > 0)
+                {
+                    var fileName = Guid.NewGuid() + Path.GetExtension(model.Attachment.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await model.Attachment.CopyToAsync(stream);
+                    }
+
+                    baigiang.ContentUrl = "/uploads/" + fileName;
+                }
+                int chuongSort = 1;
+                foreach (var chuongVm in model.Chuongs)
+                {
+                    var chuong = new Chuong
+                    {
+                        Title = chuongVm.Title,
+                        SortOrder = chuongSort++,
+                        CreatedDate = DateTime.Now
+                    };
+
+                    int baiSort = 1;
+                    foreach (var baiVm in chuongVm.Bais)
+                    {
+                        var bai = new Bai
+                        {
+                            Title = baiVm.Title,
+                            Description = baiVm.Description,
+                            VideoUrl = baiVm.VideoUrl,
+                            SortOrder = baiSort++,
+                            CreatedDate = DateTime.Now
+                        };
+
+                        // Xử lý file tài liệu bài học (nếu có)
+                        if (baiVm.DocumentFile != null && baiVm.DocumentFile.Length > 0)
+                        {
+                            var fileName = Guid.NewGuid() + Path.GetExtension(baiVm.DocumentFile.FileName);
+                            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
+
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await baiVm.DocumentFile.CopyToAsync(stream);
+                            }
+
+                            bai.Document = "/uploads/" + fileName;
+                        }
+
+                        chuong.Bais.Add(bai);
+                    }
+
+                    baigiang.Chuongs.Add(chuong);
+                }
+                _context.BaiGiangs.Add(baigiang);
+            }
+           
+            await _context.SaveChangesAsync();
+            return RedirectToAction("BaiGiang","GiangVien");
+        }
+        public IActionResult BaiGiang()
+        {
+            var baiGiangs = _context.BaiGiangs.ToList();
+            return View(baiGiangs);
+        }
         public IActionResult Stream()
         {
             return View();
@@ -104,5 +216,6 @@ namespace WebBaiGiang.Controllers
         {
             return View();
         }
+
     }
 }
