@@ -1,10 +1,35 @@
-﻿@model IEnumerable<WebBaiGiang.Models.BaiGiang>
+﻿@model PhanTrang<WebBaiGiang.Models.BaiGiang>
 @{
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
 }
+<link href="~/css/pagination.css" rel="stylesheet" />
+<link href="~/css/baigiang.css" rel="stylesheet" />
 
-<div class="container mt-4">
-    <h4 class="mb-4 fw-bold">Danh sách bài giảng</h4>
+<div class="conTent">
+    <h3>BaiGiang</h3>
+</div>
+<div class="search-filter">
+    <div class="search-input-wrapper">
+        <img src="~/img/loupe.png" class="search-icon" />
+        <input type="text" placeholder="Tìm bài giảng..." class="search-input-courses" />
+    </div>
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown()">
+            Mới nhất <span class="arrow-down">▼</span>
+        </button>
+        <div class="dropdown-content" id="dropdown-menu">
+            <a href="#" onclick="filterCourses('newest')">Mới nhất</a>
+            <a href="#" onclick="filterCourses('oldest')">Cũ nhất</a>
+            <a href="#" onclick="filterCourses('incomplete')">Chưa hoàn thành</a>
+            <a href="#" onclick="filterCourses('completed')">Đã hoàn thành</a>
+        </div>
+    </div>
+
+    <button class="create-baigiang-button" onclick="location.href='@Url.Action("TaoBaiGiang", "GiangVien")'">
+        Tạo bài giảng
+    </button>
+</div>
+<div class="container mt-4" style="margin-left: 60px;">
 
     @foreach (var item in Model)
     {
@@ -30,3 +55,52 @@
         </div>
     }
 </div>
+<!-- PHÂN TRANG -->
+<div class="pagination">
+    @if (Model.TotalPages > 1)
+    {
+        <ul class="pagination-list">
+            @if (Model.HasPreviousPage)
+            {
+                <li><a href="@Url.Action("BaiGiang", new { page = Model.PageIndex - 1 })">← Trước</a></li>
+            }
+
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                if (i == Model.PageIndex)
+                {
+                    <li class="active">@i</li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("BaiGiang", new { page = i })">@i</a></li>
+                }
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <li><a href="@Url.Action("BaiGiang", new { page = Model.PageIndex + 1 })">Sau →</a></li>
+            }
+        </ul>
+    }
+</div>
+<!-- Script lọc dropdown -->
+<script>
+    function toggleDropdown() {
+        const menu = document.getElementById("dropdown-menu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function filterCourses(option) {
+        alert(`Lọc theo: ${option}`);
+        document.getElementById("dropdown-menu").style.display = "none";
+    }
+
+    document.addEventListener("click", function (e) {
+        const dropdown = document.querySelector(".dropdown");
+        if (!dropdown.contains(e.target)) {
+            document.getElementById("dropdown-menu").style.display = "none";
+        }
+    });
+</script>
+
