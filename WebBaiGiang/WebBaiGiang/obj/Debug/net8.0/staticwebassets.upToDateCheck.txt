@@ -1,4 +1,5 @@
 wwwroot\css\account.css
+wwwroot\css\baigiang.css
 wwwroot\css\courses.css
 wwwroot\css\createcourse.css
 wwwroot\css\giangvien.css
@@ -125,8 +126,10 @@ wwwroot\uploads\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg
 wwwroot\uploads\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg
 wwwroot\uploads\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf
 wwwroot\uploads\67bd3fa9-a5bc-4b8d-8a8b-ebe0bb215cbe.pdf
+wwwroot\uploads\6966a77b-d310-4dfa-bcdf-ea548d98a5cf.docx
 wwwroot\uploads\6990e6e3-caa5-438a-8982-c5e136b03b6c_5 diem khac biet.jpg
 wwwroot\uploads\6d572049-90d7-4fd0-9093-ec235d5e7acc.pdf
+wwwroot\uploads\6fad0ab9-fca3-469f-b564-af2aeccbb971.pdf
 wwwroot\uploads\70c7f056-2465-4dbb-beae-6e429f5621f7_1367490.jpeg
 wwwroot\uploads\71c7b223-3982-465e-b386-d04ee8f979f2_1367490.jpeg
 wwwroot\uploads\8873aa56-3bea-4f6f-bfbe-e1cf718b73b8.pdf

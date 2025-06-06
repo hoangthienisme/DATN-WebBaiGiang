@@ -199,10 +199,27 @@ namespace WebBaiGiang.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("BaiGiang","GiangVien");
         }
-        public IActionResult BaiGiang()
+        public async Task<IActionResult> BaiGiang(int page =1)
         {
-            var baiGiangs = _context.BaiGiangs.ToList();
-            return View(baiGiangs);
+            int pageSize = 6;
+            
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out int userId))
+            {
+                return Unauthorized();
+            }
+            // Tìm các lớp học mà giáo viên này dạy
+            var classIds = _context.GiangVienLopHocs
+                .Where(gl => gl.IdGv == userId)
+                .Select(gl => gl.IdClass)
+                .ToList();
+
+            //  Lấy bài giảng thuộc các lớp đó
+            var baigiang = _context.BaiGiangs
+                .Where(bg => classIds.Contains(bg.ClassId))
+                .OrderByDescending(bg => bg.CreatedDate);
+            var paginatedCourses = await PhanTrang<BaiGiang>.CreateAsync(baigiang, page, pageSize);
+            return View(paginatedCourses);
         }
         public IActionResult Stream()
         {
