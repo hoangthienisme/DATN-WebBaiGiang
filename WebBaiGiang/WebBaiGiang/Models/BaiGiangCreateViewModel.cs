@@ -32,4 +32,9 @@ namespace WebBaiGiang.Models
 
         public int SortOrder { get; set; }
     }
+    public class BaiGiangEditViewModel : BaiGiangCreateViewModel
+    {
+        public int Id { get; set; }
+    }
+
 }

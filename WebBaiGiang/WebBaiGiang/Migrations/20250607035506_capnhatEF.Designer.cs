@@ -12,8 +12,8 @@ using WebBaiGiang.Models;
 namespace WebBaiGiang.Migrations
 {
     [DbContext(typeof(WebBaiGiangContext))]
-    [Migration("20250528133438_AddResetPasswordFields")]
-    partial class AddResetPasswordFields
+    [Migration("20250607035506_capnhatEF")]
+    partial class capnhatEF
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,51 @@ namespace WebBaiGiang.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("WebBaiGiang.Models.Bai", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChuongId")
+                        .HasColumnType("int")
+                        .HasColumnName("Chuong_Id");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Document")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("VideoUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("VideoURL");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Bai__3214EC079B0ED36A");
+
+                    b.HasIndex("ChuongId");
+
+                    b.ToTable("Bai", (string)null);
+                });
 
             modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
                 {
@@ -139,6 +184,39 @@ namespace WebBaiGiang.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("ChiTietDiemDanh", (string)null);
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.Chuong", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BaiGiangId")
+                        .HasColumnType("int")
+                        .HasColumnName("BaiGiang_Id");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getdate())");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id")
+                        .HasName("PK__Chuong__3214EC0750279F2B");
+
+                    b.HasIndex("BaiGiangId");
+
+                    b.ToTable("Chuong", (string)null);
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.DanhGium", b =>
@@ -377,6 +455,13 @@ namespace WebBaiGiang.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("KhoaId")
+                        .HasColumnType("int")
+                        .HasColumnName("Khoa_id");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -398,6 +483,8 @@ namespace WebBaiGiang.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK__LopHoc__3214EC0728E5A9A5");
+
+                    b.HasIndex("KhoaId");
 
                     b.HasIndex("SubjectsId");
 
@@ -442,11 +529,11 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("ResetPasswordToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime?>("ResetTokenExpiry")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Role")
                         .HasMaxLength(20)
@@ -570,6 +657,18 @@ namespace WebBaiGiang.Migrations
                     b.ToTable("ThongTinWeb", (string)null);
                 });
 
+            modelBuilder.Entity("WebBaiGiang.Models.Bai", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.Chuong", "Chuong")
+                        .WithMany("Bais")
+                        .HasForeignKey("ChuongId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Bai_Chuong");
+
+                    b.Navigation("Chuong");
+                });
+
             modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
                 {
                     b.HasOne("WebBaiGiang.Models.LopHoc", "Class")
@@ -609,6 +708,18 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("Attendance");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.Chuong", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.BaiGiang", "BaiGiang")
+                        .WithMany("Chuongs")
+                        .HasForeignKey("BaiGiangId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Chuong_BaiGiang");
+
+                    b.Navigation("BaiGiang");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.DanhGium", b =>
@@ -684,11 +795,19 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.LopHoc", b =>
                 {
+                    b.HasOne("WebBaiGiang.Models.Khoa", "Khoa")
+                        .WithMany("LopHocs")
+                        .HasForeignKey("KhoaId")
+                        .IsRequired()
+                        .HasConstraintName("FK_LopHoc_Khoa");
+
                     b.HasOne("WebBaiGiang.Models.HocPhan", "Subjects")
                         .WithMany("LopHocs")
                         .HasForeignKey("SubjectsId")
                         .IsRequired()
                         .HasConstraintName("FK__LopHoc__Subjects__403A8C7D");
+
+                    b.Navigation("Khoa");
 
                     b.Navigation("Subjects");
                 });
@@ -731,9 +850,19 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("IdSvNavigation");
                 });
 
+            modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
+                {
+                    b.Navigation("Chuongs");
+                });
+
             modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>
                 {
                     b.Navigation("NopBais");
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.Chuong", b =>
+                {
+                    b.Navigation("Bais");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.DiemDanh", b =>
@@ -749,6 +878,8 @@ namespace WebBaiGiang.Migrations
             modelBuilder.Entity("WebBaiGiang.Models.Khoa", b =>
                 {
                     b.Navigation("HocPhans");
+
+                    b.Navigation("LopHocs");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.LopHoc", b =>

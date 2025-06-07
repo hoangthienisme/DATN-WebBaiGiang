@@ -24,6 +24,7 @@ public partial class LopHoc
     public int? UpdateBy { get; set; }
 
     public int KhoaId { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public virtual ICollection<BaiGiang> BaiGiangs { get; set; } = new List<BaiGiang>();
 

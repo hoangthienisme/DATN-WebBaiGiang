@@ -178,3 +178,10 @@
         background-color: #0056b3;
     }
 
+.course-card {
+    position: relative;
+}
+
+.dropdown-menu {
+    z-index: 1050;
+}
