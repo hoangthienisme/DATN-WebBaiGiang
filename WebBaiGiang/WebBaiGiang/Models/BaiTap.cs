@@ -13,13 +13,14 @@ public partial class BaiTap
 
     public string? Description { get; set; }
 
-    public DateTime DueDate { get; set; }
+    public DateTime? DueDate { get; set; }
 
     public bool IsActive { get; set; }
 
     public DateTime CreatedDate { get; set; }
 
     public int? CreatedBy { get; set; }
+    public string? ContentUrl { get; set; }
 
     public virtual LopHoc Class { get; set; } = null!;
 

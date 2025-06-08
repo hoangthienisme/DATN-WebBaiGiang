@@ -124,6 +124,9 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Class_id");
 
+                    b.Property<string>("ContentUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
@@ -134,7 +137,7 @@ namespace WebBaiGiang.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<DateTime>("DueDate")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime");
 
                     b.Property<bool>("IsActive")

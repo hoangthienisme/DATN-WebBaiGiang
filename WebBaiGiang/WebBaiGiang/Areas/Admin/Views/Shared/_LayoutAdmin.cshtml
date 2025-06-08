@@ -1,0 +1,149 @@
+﻿@{
+    Layout = null;
+    var avatar = User.FindFirst("Avatar")?.Value;
+    var name = User.Identity?.Name ?? "Admin";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Trang quản trị</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        /* Custom style cho avatar */
+        .avatar-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header-top {
+            height: 56px;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+            z-index: 1030;
+        }
+
+        .avatar-button {
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .dropdown-menu-end {
+            right: 0;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-top">
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-dark d-md-none" type="button" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="fs-4 fw-bold">🎓 Quản trị Admin</div>
+        </div>
+        <div class="dropdown">
+            <button class="avatar-button" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                @if (!string.IsNullOrEmpty(avatar))
+                {
+                    <img src="@avatar" alt="Avatar" class="avatar-img" />
+                }
+                else
+                {
+                    <img src="~/img/default-avatar.png" alt="Default Avatar" class="avatar-img" />
+                }
+                <span class="ms-2">@name</span>
+                <i class="bi bi-caret-down-fill ms-1"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                <li><h6 class="dropdown-header">@name</h6></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/Account/Profile">Quản lý tài khoản</a></li>
+                <li><a class="dropdown-item" href="/Account/ChangePassword">Đổi mật khẩu</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#" onclick="return confirmLogout();">Đăng xuất</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="d-flex" style="min-height: calc(100vh - 56px);">
+        <!-- Sidebar -->
+        <div class="bg-dark text-white p-3" style="width: 250px;" id="sidebar">
+            <h4 class="text-center mb-4">🎓 Quản trị</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("Index", "Home", new { area = "Admin" })">
+                        <i class="bi bi-speedometer2"></i> Tổng quan
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("Khoa", "Khoa", new { area = "Admin" })">
+                        <i class="bi bi-diagram-3"></i> Quản lý Khoa
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("HocPhan", "HocPhan", new { area = "Admin" })">
+                        <i class="bi bi-journals"></i> Quản lý Học phần
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("Index", "GiaoVien", new { area = "Admin" })">
+                        <i class="bi bi-person-badge"></i> Quản lý Giáo viên
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("Index", "HocSinh", new { area = "Admin" })">
+                        <i class="bi bi-people-fill"></i> Quản lý Học sinh
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("Index", "HocSinh", new { area = "Admin" })">
+                        <i class="bi bi-people-fill"></i> Thống kê báo cáo 
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="@Url.Action("Index", "HocSinh", new { area = "Admin" })">
+                        <i class="bi bi-people-fill"></i> Quản lý trang web 
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function confirmLogout() {
+            if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
+                window.location.href = '/Account/Logout';
+                return false;
+            }
+            return false;
+        }
+
+        // Bật tắt sidebar trên mobile
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            var sidebar = document.getElementById('sidebar');
+            if (sidebar.style.display === 'none' || getComputedStyle(sidebar).display === 'none') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

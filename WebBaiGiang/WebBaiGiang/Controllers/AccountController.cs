@@ -157,9 +157,11 @@ namespace WebBaiGiang.Controllers
 
         await HttpContext.SignInAsync("Cookies", principal);
 
-        if (user.Role == "Admin")
-            return RedirectToAction("Dashboard", "Admin");
-        if (user.Role == "Teacher")
+            if (user.Role == "Admin")
+            {
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+            if (user.Role == "Teacher")
             return RedirectToAction("Courses", "GiangVien");
 
         return RedirectToAction("Index", "Home");

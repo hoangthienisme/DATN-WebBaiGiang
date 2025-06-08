@@ -44,11 +44,11 @@
                             <i class="bi bi-three-dots-vertical fs-5"></i>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Di chuyển</a></li>
+                            <li><a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a></li>
                             <li><a class="dropdown-item" href="#">Sao chép liên kết</a></li>
                             <li><a class="dropdown-item" asp-action="EditCourses" asp-route-id="@course.Id">Chỉnh sửa</a></li>
                             <li><a class="dropdown-item" href="#">Sao chép</a></li>
-                            <li><a class="text-danger dropdown-item" data-id="@course.Id">Lưu trữ</a></li>
+                            <li><a class="text-danger dropdown-item-hide" data-id="@course.Id">Lưu trữ</a></li>
                         </ul>
                     </div>
 
@@ -124,7 +124,7 @@
 
 <script>
     $(document).ready(function () {
-        $('.dropdown-item').click(function (e) {
+        $('.Dropdown-item-hide').click(function (e) {
             e.preventDefault();
             if (!confirm('Bạn có chắc muốn lưu trữ khóa học này?')) return;
 
