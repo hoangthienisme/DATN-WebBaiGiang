@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using WebBaiGiang.Models;
+using WebBaiGiang.ViewModel;
 
 namespace WebBaiGiang.Controllers
 {
@@ -111,7 +112,7 @@ namespace WebBaiGiang.Controllers
 
             int pageSize = 6;
             var baiGiangsQuery = _context.BaiGiangs
-                .Where(b => b.ClassId == id)
+                //.Where(b => b.ClassId == id)
                 .OrderByDescending(b => b.CreatedDate);
 
             var paginatedBaiGiangs = await PhanTrang<BaiGiang>.CreateAsync(baiGiangsQuery, page, pageSize);

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebBaiGiang.Models
+namespace WebBaiGiang.ViewModel
 {
     public class ResetPasswordViewModel
     {

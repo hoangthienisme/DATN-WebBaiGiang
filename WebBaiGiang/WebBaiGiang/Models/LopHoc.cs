@@ -8,6 +8,7 @@ public partial class LopHoc
     public int Id { get; set; }
 
     public int SubjectsId { get; set; }
+    public int? BaiGiangId { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -26,7 +27,7 @@ public partial class LopHoc
     public int KhoaId { get; set; }
     public bool IsActive { get; set; } = true;
 
-    public virtual ICollection<BaiGiang> BaiGiangs { get; set; } = new List<BaiGiang>();
+    public virtual BaiGiang? BaiGiang { get; set; } = null!;
 
     public virtual ICollection<BaiTap> BaiTaps { get; set; } = new List<BaiTap>();
 

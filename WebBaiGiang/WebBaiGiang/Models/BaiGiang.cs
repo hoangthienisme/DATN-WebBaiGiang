@@ -7,8 +7,6 @@ public partial class BaiGiang
 {
     public int Id { get; set; }
 
-    public int ClassId { get; set; }
-
     public string Title { get; set; } = null!;
 
     public string? ContentUrl { get; set; }
@@ -24,6 +22,6 @@ public partial class BaiGiang
     public int? UpdateBy { get; set; }
 
     public virtual ICollection<Chuong> Chuongs { get; set; } = new List<Chuong>();
+    public virtual ICollection<LopHoc> LopHocs { get; set; } = new List<LopHoc>();
 
-    public virtual LopHoc Class { get; set; } = null!;
 }

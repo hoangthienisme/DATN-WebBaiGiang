@@ -1,4 +1,4 @@
-﻿namespace WebBaiGiang.Models
+﻿namespace WebBaiGiang.ViewModel
 {
     public class ChangePasswordViewModel
     {

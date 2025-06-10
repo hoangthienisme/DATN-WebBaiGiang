@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace WebBaiGiang.Models
+namespace WebBaiGiang.ViewModel
 {
     public class PhanTrang<T> : List<T>
     {
@@ -11,7 +11,7 @@ namespace WebBaiGiang.Models
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
 
-            this.AddRange(items);
+            AddRange(items);
         }
 
         public bool HasPreviousPage => PageIndex > 1;

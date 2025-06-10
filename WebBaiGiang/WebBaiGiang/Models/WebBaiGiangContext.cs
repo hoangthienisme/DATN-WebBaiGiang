@@ -81,17 +81,11 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.ToTable("BaiGiang");
 
-            entity.Property(e => e.ClassId).HasColumnName("Class_id");
             entity.Property(e => e.ContentUrl).HasMaxLength(250);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.Title).HasMaxLength(200);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Class).WithMany(p => p.BaiGiangs)
-                .HasForeignKey(d => d.ClassId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BaiGiang__Class___4F7CD00D");
         });
 
         modelBuilder.Entity<BaiTap>(entity =>
@@ -269,18 +263,28 @@ public partial class WebBaiGiangContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Picture).HasMaxLength(250);
             entity.Property(e => e.SubjectsId).HasColumnName("Subjects_id");
+            entity.Property(e => e.BaiGiangId).HasColumnName("BaiGiang_id");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Khoa).WithMany(p => p.LopHocs)
+            entity.HasOne(d => d.BaiGiang)
+                .WithMany(p => p.LopHocs)
+                .HasForeignKey(d => d.BaiGiangId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LopHoc_BaiGiang");
+
+            entity.HasOne(d => d.Khoa)
+                .WithMany(p => p.LopHocs)
                 .HasForeignKey(d => d.KhoaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_LopHoc_Khoa");
 
-            entity.HasOne(d => d.Subjects).WithMany(p => p.LopHocs)
+            entity.HasOne(d => d.Subjects)
+                .WithMany(p => p.LopHocs)
                 .HasForeignKey(d => d.SubjectsId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__LopHoc__Subjects__403A8C7D");
         });
+
 
         modelBuilder.Entity<NguoiDung>(entity =>
         {

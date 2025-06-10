@@ -1,4 +1,4 @@
-﻿@* @model WebBaiGiang.Models.BaiGiangEditViewModel
+﻿@model WebBaiGiang.ViewModel.BaiGiangEditViewModel
 @{
     Layout = null;
     ViewData["Title"] = "Chỉnh sửa toàn bộ bài giảng";
@@ -6,11 +6,16 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 <div class="container mt-4">
     <h3>Chỉnh sửa toàn bộ bài giảng</h3>
 
     <form asp-action="SuaBaiGiang" method="post" enctype="multipart/form-data">
+        @* Đã sửa asp-action thành EditBaiGiang *@
         <input type="hidden" asp-for="Id" />
 
         <div class="mb-3">
@@ -25,13 +30,55 @@
         </div>
 
         <hr />
+        <h5>Đính kèm File bài giảng (file tổng thể của bài giảng, nếu có)</h5>
+        <div class="mb-3 d-flex flex-wrap gap-3 align-items-center">
+            <input asp-for="Attachment" type="file" class="form-control w-auto" />
+            <span asp-validation-for="Attachment" class="text-danger"></span>
+            @if (!string.IsNullOrEmpty(Model.ExistingAttachmentUrl))
+            {
+                <small class="text-muted">File hiện tại: <a href="@Model.ExistingAttachmentUrl" target="_blank">Xem file</a></small>
+                <input type="hidden" name="ExistingAttachmentUrl" value="@Model.ExistingAttachmentUrl" />
+            }
+        </div>
+
+        <hr />
+
+       <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span id="selectedClassesText">Chưa có lớp nào được chọn...</span>
+                </button>
+                <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style=" max-height: 200px; overflow-y: auto;">
+                    @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
+                    {
+                        @foreach (var item in Model.AvailableClasses)
+                        {
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input class-checkbox" type="checkbox"
+                                           value="@item.Value"
+                                           id="classCheckbox_@item.Value"
+                                           name="SelectedClassIds" @(Model.SelectedClassIds.Contains(int.Parse(item.Value)) ? "checked" : "")>
+                                    <label class="form-check-label" for="classCheckbox_@item.Value">
+                                        @item.Text
+                                    </label>
+                                </div>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li><p class="text-muted ms-2">Không có lớp học nào khả dụng cho bạn.</p></li>
+                    }
+                </ul>
+            </div>
+
 
         <h4>Danh sách chương</h4>
         <div id="chapters-container">
             @for (int c = 0; c < Model.Chuongs.Count; c++)
             {
                 <div class="border p-3 mb-4 chapter-item">
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
                         <label class="fw-bold fs-5">Chương @(c + 1)</label>
                         <button type="button" class="btn btn-sm btn-danger" onclick="removeChapter(this)">Xóa chương</button>
                     </div>
@@ -45,6 +92,7 @@
                         <label class="form-label">Mô tả chương</label>
                         <textarea name="Chuongs[@c].Description" class="form-control" rows="2">@Model.Chuongs[c].Description</textarea>
                     </div>
+                    <input type="hidden" name="Chuongs[@c].Id" value="@Model.Chuongs[c].Id" /> @* THÊM: Để gửi ID chương hiện có *@
 
                     <h5>Bài học trong chương</h5>
                     <div class="lessons-container">
@@ -62,18 +110,25 @@
                                 </div>
 
                                 <div class="mb-2">
-                                    <label class="form-label">Nội dung bài học</label>
-                                    <textarea name="Chuongs[@c].Bais[@l].Content" class="form-control" rows="3">@Model.Chuongs[c].Bais[l].Content</textarea>
+                                    <label class="form-label">Mô tả bài học</label>
+                                    <textarea name="Chuongs[@c].Bais[@l].Description" class="form-control" rows="3">@Model.Chuongs[c].Bais[l].Description</textarea>
                                 </div>
 
                                 <div class="mb-2">
-                                    <label class="form-label">Tài liệu đính kèm</label>
-                                    <input type="file" name="Chuongs[@c].Bais[@l].Attachment" class="form-control" />
-                                    @if (!string.IsNullOrEmpty(Model.Chuongs[c].Bais[l].AttachmentFileName))
+                                    <label class="form-label">URL video (nếu có)</label>
+                                    <input type="text" name="Chuongs[@c].Bais[@l].VideoUrl" value="@Model.Chuongs[c].Bais[l].VideoUrl" class="form-control" placeholder="URL video" />
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Tài liệu đính kèm (cho bài học)</label>
+                                    <input type="file" name="Chuongs[@c].Bais[@l].DocumentFile" class="form-control" />
+                                    @if (!string.IsNullOrEmpty(Model.Chuongs[c].Bais[l].ExistingDocumentUrl))
                                     {
-                                        <small class="text-muted">File hiện tại: @Model.Chuongs[c].Bais[l].AttachmentFileName</small>
+                                        <small class="text-muted">File hiện tại: <a href="@Model.Chuongs[c].Bais[l].ExistingDocumentUrl" target="_blank">Xem file</a></small>
+                                        <input type="hidden" name="Chuongs[@c].Bais[@l].ExistingDocumentUrl" value="@Model.Chuongs[c].Bais[l].ExistingDocumentUrl" />
                                     }
                                 </div>
+                                <input type="hidden" name="Chuongs[@c].Bais[@l].Id" value="@Model.Chuongs[c].Bais[l].Id" /> @* THÊM: Để gửi ID bài học hiện có *@
                             </div>
                         }
                         <button type="button" class="btn btn-outline-primary btn-sm mb-3" onclick="addLesson(this)">+ Thêm bài học</button>
@@ -86,126 +141,123 @@
 
         <div class="mt-4">
             <button type="submit" class="btn btn-primary">Lưu toàn bộ bài giảng</button>
+            <a href="@Url.Action("BaiGiang", "GiangVien")" class="btn btn-secondary">Hủy bỏ</a>
         </div>
     </form>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            // Ngăn dropdown đóng khi click vào checkbox
+            $('.dropdown-menu').on('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Cập nhật text hiển thị trên nút dropdown
+            function updateSelectedClassesText() {
+                const selectedTexts = [];
+                $('.class-checkbox:checked').each(function() {
+                    selectedTexts.push($(this).next('label').text().trim());
+                });
+
+                if (selectedTexts.length === 0) {
+                    $('#selectedClassesText').text('Chưa có lớp nào được chọn...');
+                } else {
+                    $('#selectedClassesText').text(selectedTexts.join(', '));
+                }
+            }
+
+            // Gắn sự kiện change cho tất cả các checkbox lớp
+            $('.class-checkbox').on('change', updateSelectedClassesText);
+
+            // Gọi lần đầu khi tải trang để hiển thị các lớp đã chọn (nếu có)
+            updateSelectedClassesText();
+        });
+    </script>
 }
 
 <script>
-    let chapterCount = @Model.Chuongs.Count;
+        // Đảm bảo model là BaiGiangEditViewModel, không phải BaiGiangCreateViewModel
+        // Dòng này rất quan trọng để JS đọc đúng số lượng chương ban đầu
+        let chapterCount = @(Model is WebBaiGiang.ViewModel.BaiGiangEditViewModel ? Model.Chuongs.Count : 0);
 
-    function addChapter() {
-        const container = document.getElementById("chapters-container");
-        const c = chapterCount++;
-        const chapterDiv = document.createElement("div");
-        chapterDiv.classList.add("border", "p-3", "mb-4", "chapter-item");
-        chapterDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <label class="fw-bold fs-5">Chương ${c + 1}</label>
-                <button type="button" class="btn btn-sm btn-danger" onclick="removeChapter(this)">Xóa chương</button>
-            </div>
+        // Hàm thêm chương mới
+        function addChapter() {
+            const container = document.getElementById("chapters-container");
+            const c = chapterCount++; // Lấy index mới và tăng biến đếm
+            const chapterDiv = document.createElement("div");
+            chapterDiv.classList.add("border", "p-3", "mb-4", "chapter-item");
+            chapterDiv.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="fw-bold fs-5">Chương <span class="math-inline">\{c \+ 1\}</label\>
+    <button type\="button" class\="btn btn\-sm btn\-danger" onclick\="removeChapter\(this\)"\>Xóa chương</button\>
+    </div\>
+    <div class\="mb\-3"\>
+    <label class\="form\-label"\>Tiêu đề chương \*</label\>
+    <input type\="text" name\="Chuongs\[</span>{c}].Title" class="form-control" placeholder="Tên chương" required />
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">Tiêu đề chương *</label>
-                <input type="text" name="Chuongs[${c}].Title" class="form-control" placeholder="Tên chương" required />
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">Mô tả chương</label>
+                    <textarea name="Chuongs[<span class="math-inline">\{c\}\]\.Description" class\="form\-control" rows\="2"\></textarea\>
+    </div\>
+    <input type\="hidden" name\="Chuongs\[</span>{c}].Id" value="0" /> <h5>Bài học trong chương</h5>
+                <div class="lessons-container"></div>
 
-            <div class="mb-3">
-                <label class="form-label">Mô tả chương</label>
-                <textarea name="Chuongs[${c}].Description" class="form-control" rows="2"></textarea>
-            </div>
+                <button type="button" class="btn btn-outline-primary btn-sm mb-3" onclick="addLesson(this)">+ Thêm bài học</button>
+            `;
+            container.appendChild(chapterDiv);
+            updateChapterLabels(); // Cập nhật lại index sau khi thêm
+        }
 
-            <h5>Bài học trong chương</h5>
-            <div class="lessons-container"></div>
+        // Hàm xóa chương
+        function removeChapter(btn) {
+            btn.closest(".chapter-item").remove();
+            updateChapterLabels(); // Cập nhật lại index sau khi xóa
+        }
 
-            <button type="button" class="btn btn-outline-primary btn-sm mb-3" onclick="addLesson(this)">+ Thêm bài học</button>
-        `;
-        container.appendChild(chapterDiv);
-    }
+        // Hàm cập nhật lại index của các trường input sau khi thêm/xóa chương/bài học
+        function updateChapterLabels() {
+            const chapters = document.querySelectorAll("#chapters-container .chapter-item");
+            chapters.forEach((chapter, i) => {
+                // Cập nhật nhãn chương
+                chapter.querySelector("label.fw-bold.fs-5").textContent = `Chương ${i + 1}`;
 
-    function removeChapter(btn) {
-        btn.closest(".chapter-item").remove();
-        updateChapterLabels();
-    }
-
-    function updateChapterLabels() {
-        const chapters = document.querySelectorAll("#chapters-container .chapter-item");
-        chapters.forEach((chapter, i) => {
-            chapter.querySelector("label.fw-bold").textContent = `Chương ${i + 1}`;
-            chapter.querySelectorAll("input, textarea").forEach(input => {
-                if (input.name) {
-                    input.name = input.name.replace(/Chuongs\[\d+\]/, `Chuongs[${i}]`);
-                }
-            });
-            // Cập nhật lesson name index bên trong mỗi chương
-            const lessons = chapter.querySelectorAll(".lesson-item");
-            lessons.forEach((lesson, j) => {
-                lesson.querySelectorAll("input, textarea").forEach(input => {
+                // Cập nhật name attributes của input/textarea/hidden trong chương
+                chapter.querySelectorAll("input, textarea, input[type='hidden']").forEach(input => {
                     if (input.name) {
-                        input.name = input.name.replace(/Chuongs\[\d+\]\.Bais\[\d+\]/, `Chuongs[${i}].Bais[${j}]`);
+                        input.name = input.name.replace(/Chuongs\[\d+\]/, `Chuongs[${i}]`);
                     }
                 });
-                lesson.querySelector("label.fw-bold").textContent = `Bài học ${j + 1}`;
-            });
-        });
-        chapterCount = chapters.length;
-    }
 
-    function addLesson(btn) {
-        const lessonsContainer = btn.parentElement.querySelector(".lessons-container");
-        const chapterDiv = btn.closest(".chapter-item");
-        const cIndex = Array.from(chapterDiv.parentElement.children).indexOf(chapterDiv);
+                // Cập nhật lessons trong chương
+                const lessons = chapter.querySelectorAll(".lesson-item");
+                lessons.forEach((lesson, j) => {
+                    // Cập nhật nhãn bài học
+                    lesson.querySelector("label.fw-bold").textContent = `Bài học ${j + 1}`;
 
-        const lessons = lessonsContainer.querySelectorAll(".lesson-item");
-        const lIndex = lessons.length;
-
-        const lessonDiv = document.createElement("div");
-        lessonDiv.classList.add("border", "p-2", "mb-2", "lesson-item");
-        lessonDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <label class="fw-bold">Bài học ${lIndex + 1}</label>
-                <button type="button" class="btn btn-sm btn-danger" onclick="removeLesson(this)">Xóa bài học</button>
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">Tiêu đề bài học *</label>
-                <input type="text" name="Chuongs[${cIndex}].Bais[${lIndex}].Title" class="form-control" placeholder="Tên bài học" required />
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">Nội dung bài học</label>
-                <textarea name="Chuongs[${cIndex}].Bais[${lIndex}].Content" class="form-control" rows="3"></textarea>
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">Tài liệu đính kèm</label>
-                <input type="file" name="Chuongs[${cIndex}].Bais[${lIndex}].Attachment" class="form-control" />
-            </div>
-        `;
-        lessonsContainer.appendChild(lessonDiv);
-    }
-
-    function removeLesson(btn) {
-        const lessonDiv = btn.closest(".lesson-item");
-        const lessonsContainer = lessonDiv.parentElement;
-        lessonDiv.remove();
-
-        // Cập nhật số thứ tự bài học và name input trong chương đó
-        const lessons = lessonsContainer.querySelectorAll(".lesson-item");
-        lessons.forEach((lesson, i) => {
-            lesson.querySelector("label.fw-bold").textContent = `Bài học ${i + 1}`;
-            lesson.querySelectorAll("input, textarea").forEach(input => {
-                if (input.name) {
-                    input.name = input.name.replace(/Chuongs\[\d+\]\.Bais\[\d+\]/, (match) => {
-                        const chapterIndex = Array.from(lessonsContainer.parentElement.parentElement.children).indexOf(lessonsContainer.parentElement);
-                        return `Chuongs[${chapterIndex}].Bais[${i}]`;
+                    // Cập nhật name attributes của input/textarea/hidden trong bài học
+                    lesson.querySelectorAll("input, textarea, input[type='hidden']").forEach(input => {
+                        if (input.name) {
+                            input.name = input.name.replace(/Chuongs\[\d+\]\.Bais\[\d+\]/, `Chuongs[<span class="math-inline">\{i\}\]\.Bais\[</span>{j}]`);
+                        }
                     });
-                }
+                });
             });
-        });
-    }
-</script>
- *@
+            chapterCount = chapters.length; // Cập nhật lại chapterCount
+        }
+
+        // Hàm thêm bài học mới
+        function addLesson(btn) {
+            const lessonsContainer = btn.parentElement.querySelector(".lessons-container");
+            const chapterDiv = btn.closest(".chapter-item");
+            const cIndex = Array.from(chapterDiv.parentElement.children).indexOf(chapterDiv); // Lấy index của chương cha
+
+            const lIndex = lessonsContainer.children.length; // Lấy index mới cho bài học
+
+            const lessonDiv = document.createElement("div");
+            lessonDiv.classList.add("border", "p-2", "mb-2", "lesson-item");
+            lessonDiv.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center">

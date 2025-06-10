@@ -413,6 +413,26 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\css\\bootstrap-multiselect.css",
+      "PackagePath": "staticwebassets\\lib\\dist\\css\\bootstrap-multiselect.css"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\css\\bootstrap-multiselect.min.css",
+      "PackagePath": "staticwebassets\\lib\\dist\\css\\bootstrap-multiselect.min.css"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\js\\bootstrap-multiselect.js",
+      "PackagePath": "staticwebassets\\lib\\dist\\js\\bootstrap-multiselect.js"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\js\\bootstrap-multiselect.min.js",
+      "PackagePath": "staticwebassets\\lib\\dist\\js\\bootstrap-multiselect.min.js"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\less\\bootstrap-multiselect.less",
+      "PackagePath": "staticwebassets\\lib\\dist\\less\\bootstrap-multiselect.less"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
@@ -463,6 +483,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx",
       "PackagePath": "staticwebassets\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx",
+      "PackagePath": "staticwebassets\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0cd0bf55-e216-4c73-a5eb-4980d584245e.docx",
@@ -545,6 +569,10 @@
       "PackagePath": "staticwebassets\\uploads\\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\561e7ff2-d268-4a04-9548-3600141e7d23.docx",
+      "PackagePath": "staticwebassets\\uploads\\561e7ff2-d268-4a04-9548-3600141e7d23.docx"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg"
     },
@@ -555,6 +583,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5eca4a92-fe33-40d8-a43b-ee44f5c93720.pdf",
       "PackagePath": "staticwebassets\\uploads\\5eca4a92-fe33-40d8-a43b-ee44f5c93720.pdf"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\615ea66f-f072-4335-8c65-ce40c3e985fa_1367490.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\615ea66f-f072-4335-8c65-ce40c3e985fa_1367490.jpeg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf",
@@ -651,6 +683,18 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b7391116-ac4e-4e63-9953-11987f0e429f.pdf",
       "PackagePath": "staticwebassets\\uploads\\b7391116-ac4e-4e63-9953-11987f0e429f.pdf"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a045585e-c526-452d-8314-0005bfd0a85a.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\a045585e-c526-452d-8314-0005bfd0a85a.docx"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg",

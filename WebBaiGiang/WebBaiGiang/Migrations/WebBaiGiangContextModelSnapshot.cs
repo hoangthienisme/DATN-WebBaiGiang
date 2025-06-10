@@ -75,10 +75,6 @@ namespace WebBaiGiang.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int")
-                        .HasColumnName("Class_id");
-
                     b.Property<string>("ContentUrl")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -106,8 +102,6 @@ namespace WebBaiGiang.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK__BaiGiang__3214EC07CA07DEEA");
-
-                    b.HasIndex("ClassId");
 
                     b.ToTable("BaiGiang", (string)null);
                 });
@@ -445,6 +439,10 @@ namespace WebBaiGiang.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("BaiGiangId")
+                        .HasColumnType("int")
+                        .HasColumnName("BaiGiang_id");
+
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
@@ -483,6 +481,8 @@ namespace WebBaiGiang.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK__LopHoc__3214EC0728E5A9A5");
+
+                    b.HasIndex("BaiGiangId");
 
                     b.HasIndex("KhoaId");
 
@@ -669,17 +669,6 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("Chuong");
                 });
 
-            modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
-                {
-                    b.HasOne("WebBaiGiang.Models.LopHoc", "Class")
-                        .WithMany("BaiGiangs")
-                        .HasForeignKey("ClassId")
-                        .IsRequired()
-                        .HasConstraintName("FK__BaiGiang__Class___4F7CD00D");
-
-                    b.Navigation("Class");
-                });
-
             modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>
                 {
                     b.HasOne("WebBaiGiang.Models.LopHoc", "Class")
@@ -795,6 +784,11 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.LopHoc", b =>
                 {
+                    b.HasOne("WebBaiGiang.Models.BaiGiang", "BaiGiang")
+                        .WithMany("LopHocs")
+                        .HasForeignKey("BaiGiangId")
+                        .HasConstraintName("FK_LopHoc_BaiGiang");
+
                     b.HasOne("WebBaiGiang.Models.Khoa", "Khoa")
                         .WithMany("LopHocs")
                         .HasForeignKey("KhoaId")
@@ -806,6 +800,8 @@ namespace WebBaiGiang.Migrations
                         .HasForeignKey("SubjectsId")
                         .IsRequired()
                         .HasConstraintName("FK__LopHoc__Subjects__403A8C7D");
+
+                    b.Navigation("BaiGiang");
 
                     b.Navigation("Khoa");
 
@@ -853,6 +849,8 @@ namespace WebBaiGiang.Migrations
             modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
                 {
                     b.Navigation("Chuongs");
+
+                    b.Navigation("LopHocs");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>
@@ -884,8 +882,6 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.LopHoc", b =>
                 {
-                    b.Navigation("BaiGiangs");
-
                     b.Navigation("BaiTaps");
 
                     b.Navigation("DanhGia");
