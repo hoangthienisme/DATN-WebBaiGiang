@@ -1,0 +1,59 @@
+﻿@model WebBaiGiang.Models.Khoa
+
+@{
+    ViewData["Title"] = "Thêm mới Khoa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-lg border-0 rounded-lg">
+    <div class="card-header bg-primary text-white text-center py-4">
+        <h3 class="mb-0 fw-bold">
+            <i class="bi bi-plus-circle-fill me-2"></i> @ViewData["Title"]
+        </h3>
+    </div>
+    <div class="card-body p-4">
+        @* Hiển thị thông báo thành công/thất bại từ TempData *@
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <form asp-action="Create" asp-controller="Khoa" asp-area="Admin" method="post">
+            @Html.AntiForgeryToken() 
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold">Tên Khoa <span class="text-danger">*</span></label>
+                <input name="Name" class="form-control" placeholder="Nhập tên khoa, ví dụ: Công nghệ thông tin" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                <textarea name="Description" class="form-control" rows="4" placeholder="Mô tả chi tiết về khoa (tùy chọn)"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                <button type="submit" class="btn btn-success btn-lg">
+                    <i class="bi bi-cloud-arrow-up-fill me-2"></i> Thêm Khoa
+                </button>
+                <a asp-action="Khoa" asp-controller="Khoa" asp-area="Admin" class="btn btn-secondary btn-lg">
+                    <i class="bi bi-x-circle-fill me-2"></i> Hủy bỏ
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

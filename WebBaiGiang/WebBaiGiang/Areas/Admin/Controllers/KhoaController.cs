@@ -1,28 +1,153 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebBaiGiang.Models;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace WebBaiGiang.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class KhoaController : Controller
     {
-        private static List<Khoa> dsKhoa = new List<Khoa>
-        {
-            new Khoa { Id = 1, Name = "Công nghệ thông tin", Description = "Khoa CNTT" },
-            new Khoa { Id = 2, Name = "Kinh tế", Description = "Khoa Kinh tế" },
-            new Khoa { Id = 3, Name = "Xây dựng", Description = "Khoa Xây dựng" }
-        };
+        private readonly WebBaiGiangContext _context;
 
-        public IActionResult Khoa(string search)
+        public KhoaController(WebBaiGiangContext context)
         {
-            IEnumerable<Khoa> model = dsKhoa;
+            _context = context;
+        }
+
+        // GET: Danh sách khoa
+        public async Task<IActionResult> Khoa(string search)
+        {
+            ViewBag.CurrentSearch = search;
+
+            var query = _context.Khoas.AsQueryable();
 
             if (!string.IsNullOrEmpty(search))
             {
-                model = model.Where(k => k.Name.Contains(search, System.StringComparison.OrdinalIgnoreCase));
+                query = query.Where(k => k.Name.Contains(search));
+            }
+
+            var result = await query.OrderByDescending(k => k.CreatedDate).ToListAsync();
+            return View(result);
+        }
+
+        // GET: Thêm khoa
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Thêm khoa
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Khoa model)
+        {
+         
+            if (!ModelState.IsValid)
+            {
+                return View(model); 
+            }
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (!int.TryParse(userIdStr, out int userId))
+            {
+               
+                ModelState.AddModelError("", "Không xác định được người tạo.");
+                return View(model);
+            }
+            if (ModelState.IsValid)
+            {
+                model.CreatedDate = DateTime.Now;
+                model.IsActive = true;
+                model.CreatedBy = userId;
+                _context.Khoas.Add(model);
+                await _context.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = "Thêm khoa thành công.";
+                return RedirectToAction("Khoa");
             }
 
             return View(model);
+        }
+
+        // GET: Sửa khoa
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var khoa = await _context.Khoas.FindAsync(id);
+            if (khoa == null)
+            {
+                return NotFound();
+            }
+            return View(khoa);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Khoa model)
+        {
+            if (id != model.Id)
+                return NotFound();
+
+            var khoa = await _context.Khoas.FindAsync(id);
+            if (khoa == null)
+                return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                // Trả lại dữ liệu cũ nếu ModelState sai, giúp giữ nguyên mô tả/tên đã nhập
+                return View(khoa);
+            }
+
+            try
+            {
+                // Lấy ID người dùng từ Claims
+                var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (int.TryParse(userIdStr, out int userId))
+                {
+                    khoa.UpdateBy = userId;
+                }
+
+                // Cập nhật thông tin
+                khoa.Name = model.Name;
+                khoa.Description = model.Description;
+                khoa.UpdateDate = DateTime.Now;
+
+                _context.Update(khoa);
+                await _context.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = "Cập nhật khoa thành công.";
+                return RedirectToAction("Khoa"); // hoặc Index
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return StatusCode(500, "Lỗi cập nhật dữ liệu.");
+            }
+        }
+
+
+        // POST: Ẩn hoặc hiện khoa
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ToggleActiveStatus(int id, bool isActive)
+        {
+            var khoa = await _context.Khoas.FindAsync(id);
+            if (khoa == null) return NotFound();
+
+            khoa.IsActive = isActive;
+            khoa.UpdateDate = DateTime.Now;
+
+            _context.Update(khoa);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = isActive ? "Đã kích hoạt khoa." : "Đã ẩn khoa.";
+            return RedirectToAction("Khoa");
+
         }
     }
 }

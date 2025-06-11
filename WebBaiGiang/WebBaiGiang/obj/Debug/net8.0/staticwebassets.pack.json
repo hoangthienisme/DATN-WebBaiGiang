@@ -625,6 +625,10 @@
       "PackagePath": "staticwebassets\\uploads\\71c7b223-3982-465e-b386-d04ee8f979f2_1367490.jpeg"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\835ce37f-3568-4644-83e2-8a50dbd6ce3c.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\835ce37f-3568-4644-83e2-8a50dbd6ce3c.jpeg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\87279c09-f66b-40ce-8d5c-2f67a6be19af.pdf",
       "PackagePath": "staticwebassets\\uploads\\87279c09-f66b-40ce-8d5c-2f67a6be19af.pdf"
     },
@@ -693,8 +697,24 @@
       "PackagePath": "staticwebassets\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a045585e-c526-452d-8314-0005bfd0a85a.docx",
-      "PackagePath": "staticwebassets\\uploads\\baigiang\\a045585e-c526-452d-8314-0005bfd0a85a.docx"
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg",

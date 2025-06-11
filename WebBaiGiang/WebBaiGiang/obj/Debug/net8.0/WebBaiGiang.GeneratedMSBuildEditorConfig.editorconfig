@@ -36,6 +36,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Areas/Admin/Views/Khoa/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Areas/Admin/Views/Khoa/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvYVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Areas/Admin/Views/Khoa/Khoa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2hvYVxLaG9hLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

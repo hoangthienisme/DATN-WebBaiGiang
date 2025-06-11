@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebBaiGiang.Models; // Your Entity Models
-using WebBaiGiang.ViewModel; // Your ViewModels
+using WebBaiGiang.Models;
+using WebBaiGiang.ViewModel; 
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -54,10 +54,6 @@ namespace WebBaiGiang.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCourses(LopHoc lophoc, string DetailedDescription, IFormFile? Thumbnail) // Make IFormFile nullable for robustness
         {
-            // IMPORTANT: If you are directly binding LopHoc, ensure its DateTime properties are handled.
-            // If LopHoc has a non-nullable DateTime property like 'CreatedDate' or 'UpdateDate' that isn't set by the model binder,
-            // or by 'lophoc.CreatedDate = DateTime.Now;' then it will get the default 0001-01-01 value and cause the error.
-            // In your code, you are setting lophoc.CreatedDate, which is good.
 
             lophoc.Description = DetailedDescription;
 
@@ -66,11 +62,7 @@ namespace WebBaiGiang.Controllers
             {
                 return Unauthorized();
             }
-
-            // Remove validation errors that might arise from properties not directly bound from form (like navigation properties)
-            // or if you have specific DTOs for input.
-            // For example, if your LopHoc model has collections not part of the form.
-            ModelState.Remove(nameof(lophoc.GiangVienLopHocs)); // Example, adjust as needed
+            ModelState.Remove(nameof(lophoc.GiangVienLopHocs));
 
             if (ModelState.IsValid)
             {
@@ -242,14 +234,12 @@ namespace WebBaiGiang.Controllers
 
             if (!int.TryParse(currentGiangVienIdString, out int currentGiangVienId))
             {
-                // Xử lý trường hợp không lấy được ID giảng viên (ví dụ: chưa đăng nhập hoặc lỗi)
-                // Có thể chuyển hướng đến trang lỗi hoặc đăng nhập
-                return RedirectToAction("Login", "Account"); // Giả định có Controller Account
+                return RedirectToAction("Login", "Account");
             }
 
             // Lấy danh sách các lớp học mà giảng viên hiện tại đang dạy
             viewModel.AvailableClasses = await _context.GiangVienLopHocs
-                                                    .Where(glh => glh.IdGv == currentGiangVienId && glh.IdClassNavigation.IsActive == true) // Đảm bảo lớp học đang hoạt động
+                                                    .Where(glh => glh.IdGv == currentGiangVienId && glh.IdClassNavigation.IsActive == true)
                                                     .Select(glh => new SelectListItem
                                                     {
                                                         Value = glh.IdClass.ToString(),
@@ -402,12 +392,10 @@ public async Task<IActionResult> BaiGiang(int page = 1)
             {
                 return NotFound();
             }
-
-            // Lấy bài giảng gốc từ DB
             var baiGiangToUpdate = await _context.BaiGiangs
                                                  .Include(bg => bg.Chuongs)
                                                      .ThenInclude(c => c.Bais)
-                                                 .Include(bg => bg.LopHocs) // Include tập hợp các LopHoc được gán cho bài giảng này
+                                                 .Include(bg => bg.LopHocs)
                                                  .FirstOrDefaultAsync(bg => bg.Id == id);
 
             if (baiGiangToUpdate == null)
@@ -457,15 +445,16 @@ public async Task<IActionResult> BaiGiang(int page = 1)
                                   }).ToList()
             };
 
-            // Lấy tất cả các lớp học mà giảng viên hiện tại đang dạy
+ 
+            // Lấy danh sách các lớp học mà giảng viên hiện tại đang dạy
             viewModel.AvailableClasses = await _context.GiangVienLopHocs
-                                                    .Where(glh => glh.IdGv == currentGiangVienId && glh.IsActive == true)
+                                                    .Where(glh => glh.IdGv == currentGiangVienId && glh.IdClassNavigation.IsActive == true)
                                                     .Select(glh => new SelectListItem
                                                     {
                                                         Value = glh.IdClass.ToString(),
-                                                        Text = glh.IdClassNavigation.Name
+                                                        Text = glh.IdClassNavigation.Name // Lấy tên lớp từ navigation property
                                                     })
-                                                    .Distinct()
+                                                    .Distinct() // Đảm bảo không có lớp trùng lặp nếu có nhiều GiangVienLopHoc cho cùng một lớp
                                                     .ToListAsync();
 
             return View("SuaBaiGiang", viewModel);
@@ -479,8 +468,6 @@ public async Task<IActionResult> BaiGiang(int page = 1)
             {
                 return NotFound();
             }
-
-            // Xóa AvailableClasses khỏi ModelState để tránh lỗi binding
             ModelState.Remove(nameof(model.AvailableClasses));
 
             // Lấy ID giảng viên hiện tại
@@ -489,8 +476,6 @@ public async Task<IActionResult> BaiGiang(int page = 1)
             {
                 return RedirectToAction("Login", "Account");
             }
-
-            // Lấy bài giảng gốc từ DB
             var baiGiangToUpdate = await _context.BaiGiangs
                                                  .Include(bg => bg.Chuongs)
                                                      .ThenInclude(c => c.Bais)
@@ -556,28 +541,33 @@ public async Task<IActionResult> BaiGiang(int page = 1)
                 }
                 baiGiangToUpdate.ContentUrl = null;
             }
-
-            // --- QUẢN LÝ MỐI QUAN HỆ BÀI GIẢNG - LỚP HỌC (Many-to-Many) ---
-            // Xóa tất cả các liên kết hiện tại trong navigation property LopHocs
-            baiGiangToUpdate.LopHocs.Clear();
-
-            // Thêm lại các lớp học được chọn từ model
-            if (model.SelectedClassIds != null && model.SelectedClassIds.Any())
+          
+            var selectedClassIds = model.SelectedClassIds ?? new List<int>();
+            var currentClassIds = baiGiangToUpdate.LopHocs
+                                                  .Select(lh => lh.Id)
+                                                  .ToList();
+            var classesToRemove = baiGiangToUpdate.LopHocs
+                                                  .Where(lh => !selectedClassIds.Contains(lh.Id))
+                                                  .ToList();
+            foreach (var lopHoc in classesToRemove)
             {
-                var selectedLopHocs = await _context.LopHocs
-                                                   .Where(lh => model.SelectedClassIds.Contains(lh.Id))
-                                                   .ToListAsync();
-                foreach (var lopHoc in selectedLopHocs)
+                
+                baiGiangToUpdate.LopHocs.Remove(lopHoc);
+            }
+            var classIdsToAdd = selectedClassIds.Except(currentClassIds).ToList();
+            if (classIdsToAdd.Any())
+            {
+                var classesToAdd = await _context.LopHocs
+                                                 .Where(lh => classIdsToAdd.Contains(lh.Id))
+                                                 .ToListAsync();
+                foreach (var lopHoc in classesToAdd)
                 {
-                    baiGiangToUpdate.LopHocs.Add(lopHoc); // EF Core sẽ tự động tạo liên kết trong bảng trung gian
+                    
+                    baiGiangToUpdate.LopHocs.Add(lopHoc);
                 }
             }
-
-            // --- QUẢN LÝ CHƯƠNG VÀ BÀI HỌC ---
             var currentChuongIdsInDb = baiGiangToUpdate.Chuongs.Select(c => c.Id).ToList();
             var currentBaiIdsInDb = baiGiangToUpdate.Chuongs.SelectMany(c => c.Bais).Select(b => b.Id).ToList();
-
-            // Xóa các bài học không còn trong model
             var baisToRemove = baiGiangToUpdate.Chuongs
                                                .SelectMany(c => c.Bais)
                                                .Where(bai => !model.Chuongs.Any(cm => cm.Bais.Any(bm => bm.Id == bai.Id && bai.Id != 0)))
@@ -591,8 +581,6 @@ public async Task<IActionResult> BaiGiang(int page = 1)
                 }
                 _context.Bais.Remove(bai);
             }
-
-            // Xóa các chương không còn trong model
             var chuongsToRemove = baiGiangToUpdate.Chuongs
                                                   .Where(chuong => !model.Chuongs.Any(cm => cm.Id == chuong.Id && chuong.Id != 0))
                                                   .ToList();
@@ -610,7 +598,6 @@ public async Task<IActionResult> BaiGiang(int page = 1)
                 _context.Chuongs.Remove(chuong);
             }
 
-            // Cập nhật và thêm mới chương và bài học
             foreach (var chuongModel in model.Chuongs)
             {
                 var chuong = baiGiangToUpdate.Chuongs.FirstOrDefault(c => c.Id == chuongModel.Id && chuongModel.Id != 0);
@@ -645,9 +632,8 @@ public async Task<IActionResult> BaiGiang(int page = 1)
                             VideoUrl = baiModel.VideoUrl,
                             SortOrder = baiModel.SortOrder,
                             CreatedDate = DateTime.Now,
-                            ChuongId = chuong.Id
                         };
-                        _context.Bais.Add(bai);
+                        chuong.Bais.Add(bai);
                     }
                     else
                     {

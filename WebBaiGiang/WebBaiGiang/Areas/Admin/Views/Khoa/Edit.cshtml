@@ -1,0 +1,77 @@
+﻿@model WebBaiGiang.Models.Khoa
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Khoa";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-lg border-0 rounded-lg">
+    <div class="card-header bg-primary text-white text-center">
+        <h3 class="my-3">@ViewData["Title"]</h3>
+    </div>
+    <div class="card-body p-4">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <form asp-action="Edit" asp-controller="Khoa" asp-area="Admin" asp-route-id="@Model.Id" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label for="khoaId" class="form-label fw-bold">Mã Khoa</label>
+                <input type="text" id="khoaId" class="form-control" value="@Model.Id" disabled />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold">Tên Khoa *</label>
+                <input name="Name" class="form-control" placeholder="Nhập tên khoa" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                <textarea name ="Description" class="form-control" rows="3" placeholder="Mô tả về khoa (tùy chọn)"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Trạng thái hiện tại</label>
+                <div>
+                    @if (Model.IsActive)
+                    {
+                        <span class="badge bg-success py-2 px-3 fs-6">Đang hoạt động</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger py-2 px-3 fs-6">Đã ẩn</span>
+                    }
+                    <small class="text-muted ms-2">Sử dụng nút "Ẩn/Kích hoạt" trong danh sách để thay đổi trạng thái.</small>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save-fill me-2"></i> Lưu thay đổi
+                </button>
+                <a asp-action="Khoa" asp-controller="Khoa" asp-area="Admin" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left-circle-fill me-2"></i> Quay lại
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    <partial name="_ValidationScriptsPartial" />
+</script>

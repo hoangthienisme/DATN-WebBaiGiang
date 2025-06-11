@@ -153,6 +153,7 @@ wwwroot\uploads\6d572049-90d7-4fd0-9093-ec235d5e7acc.pdf
 wwwroot\uploads\6fad0ab9-fca3-469f-b564-af2aeccbb971.pdf
 wwwroot\uploads\70c7f056-2465-4dbb-beae-6e429f5621f7_1367490.jpeg
 wwwroot\uploads\71c7b223-3982-465e-b386-d04ee8f979f2_1367490.jpeg
+wwwroot\uploads\835ce37f-3568-4644-83e2-8a50dbd6ce3c.jpeg
 wwwroot\uploads\87279c09-f66b-40ce-8d5c-2f67a6be19af.pdf
 wwwroot\uploads\8873aa56-3bea-4f6f-bfbe-e1cf718b73b8.pdf
 wwwroot\uploads\8a1199be-f588-435d-a445-88cbb3caf250_1367490.jpeg
@@ -170,7 +171,11 @@ wwwroot\uploads\b175cff5-2ee8-476f-b24a-eb5da987f382_1367490.jpeg
 wwwroot\uploads\b7391116-ac4e-4e63-9953-11987f0e429f.pdf
 wwwroot\uploads\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg
 wwwroot\uploads\baigiang\35362baa-3caf-48d1-86eb-671e9dfc6216.docx
-wwwroot\uploads\baigiang\a045585e-c526-452d-8314-0005bfd0a85a.docx
+wwwroot\uploads\baigiang\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx
+wwwroot\uploads\baigiang\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx
+wwwroot\uploads\bailearn\080cf53d-fb29-4c6f-a560-55100875875c.docx
+wwwroot\uploads\bailearn\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx
+wwwroot\uploads\bailearn\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf
 wwwroot\uploads\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg
 wwwroot\uploads\c5a22c60-af89-4417-927e-7c44171d7543_1367490.jpeg
 wwwroot\uploads\cd9fc830-d29f-4634-8e52-9675e78cd932_1367490.jpeg
