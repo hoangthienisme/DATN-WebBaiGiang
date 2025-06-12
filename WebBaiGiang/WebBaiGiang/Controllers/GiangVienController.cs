@@ -125,7 +125,7 @@ namespace WebBaiGiang.Controllers
             ViewBag.Subjects = _context.HocPhans.ToList();
             ViewBag.Khoas = _context.Khoas.ToList();
             ViewBag.Description = lopHoc.Description;
-            ViewBag.BaiGiangs = _context.BaiGiangs.ToList(); // For assigning a BaiGiang to a LopHoc
+            ViewBag.BaiGiangs = _context.BaiGiangs.ToList(); 
 
             return View(lopHoc);
         }

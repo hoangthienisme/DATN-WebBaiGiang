@@ -66,7 +66,7 @@ namespace WebBaiGiang.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["SuccessMessage"] = "Thêm khoa thành công.";
-                return RedirectToAction("Khoa");
+                return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
             }
 
             return View(model);
@@ -122,7 +122,8 @@ namespace WebBaiGiang.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["SuccessMessage"] = "Cập nhật khoa thành công.";
-                return RedirectToAction("Khoa"); // hoặc Index
+                return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
+
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -131,23 +132,43 @@ namespace WebBaiGiang.Areas.Admin.Controllers
         }
 
 
-        // POST: Ẩn hoặc hiện khoa
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ToggleActiveStatus(int id, bool isActive)
+        public async Task<IActionResult> An(int id)
         {
             var khoa = await _context.Khoas.FindAsync(id);
-            if (khoa == null) return NotFound();
-
-            khoa.IsActive = isActive;
-            khoa.UpdateDate = DateTime.Now;
-
-            _context.Update(khoa);
-            await _context.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = isActive ? "Đã kích hoạt khoa." : "Đã ẩn khoa.";
-            return RedirectToAction("Khoa");
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            if (khoa != null)
+            {
+                if (int.TryParse(userIdStr, out int userId))
+                {
+                    khoa.UpdateBy = userId;
+                }
+                khoa.IsActive = false;
+                khoa.UpdateDate = DateTime.Now;
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
 
         }
+
+        public async Task<IActionResult> KhoiPhuc(int id)
+        {
+            var khoa = await _context.Khoas.FindAsync(id);
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+           
+            if (khoa != null)
+            {
+                if (int.TryParse(userIdStr, out int userId))
+                {
+                    khoa.UpdateBy = userId;
+                }
+                khoa.IsActive = true;
+                khoa.UpdateDate = DateTime.Now;
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
+
+        }
+
     }
 }

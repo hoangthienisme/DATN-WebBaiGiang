@@ -5,178 +5,112 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<style>
-    /* Custom Styles for Khoa Management View */
-    .card-header-custom {
-    background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient header for card */
-    color: white;
-    border-bottom: none;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem 0.5rem 0 0; /* Rounded top corners */
-    }
+<h2>@ViewData["Title"]</h2>
 
-    .table th, .table td {
-    white-space: nowrap; /* Prevent text wrapping in table cells */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-    vertical-align: middle; /* Vertically align content in cells */
-    }
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <form class="d-flex" method="get" asp-action="Index" asp-controller="Khoa" asp-area="Admin">
+        <input type="text" name="search" class="form-control me-2" placeholder="Tìm kiếm khoa..." value="@ViewBag.CurrentSearch" />
+        <button type="submit" class="btn btn-primary">Tìm</button>
+    </form>
 
-    .table th:first-child, .table td:first-child {
-    width: 10%; /* Set width for ID column */
-    text-align: center;
-    }
-
-    .table th:nth-child(2), .table td:nth-child(2) {
-    width: 25%; /* Set width for Name column */
-    }
-
-    .table th:nth-child(3), .table td:nth-child(3) {
-    /* Description column - allow more space */
-    width: 45%;
-    white-space: normal; /* Allow description to wrap */
-    }
-
-    .table th:last-child, .table td:last-child {
-    width: 20%; /* Set width for Actions column */
-    text-align: center;
-    }
-
-    .action-buttons .btn {
-    margin: 0 0.25rem; /* Spacing between action buttons */
-    min-width: 70px; /* Ensure buttons have a minimum width */
-    }
-
-    .search-input-group .form-control {
-    border-radius: 0.25rem; /* Slightly rounded corners for search input */
-    }
-</style>
-
-<div class="card shadow-lg border-0 rounded-lg">
-    <div class="card-header card-header-custom">
-        <h3 class="mb-0 fw-bold">@ViewData["Title"]</h3>
-    </div>
-    <div class="card-body p-4">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
-            <form class="d-flex mb-3 mb-md-0 search-input-group" method="get" asp-action="Index" asp-controller="Khoa" asp-area="Admin">
-                <input type="text" name="search" class="form-control me-2" placeholder="Tìm kiếm khoa..." value="@ViewBag.CurrentSearch" />
-                <button type="submit" class="btn btn-outline-primary">
-                    <i class="bi bi-search me-1"></i> Tìm
-                </button>
-            </form>
-
-            <a class="btn btn-success" href="@Url.Action("Create", "Khoa", new { area = "Admin" })">
-                <i class="bi bi-plus-circle-fill me-2"></i> Thêm mới Khoa
-            </a>
-        </div>
-
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                @TempData["SuccessMessage"]
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        }
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover align-middle">
-                <thead class="table-dark text-center">
-                    <tr>
-                        <th>Mã</th>
-                        <th>Tên Khoa</th>
-                        <th>Mô tả</th>
-                        <th>Trạng thái</th>
-                        <th>Tác vụ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        foreach (var khoa in Model)
-                        {
-                            <tr data-khoa-id="@khoa.Id">
-                                <td>@khoa.Id</td>
-                                <td>@khoa.Name</td>
-                                <td>@(string.IsNullOrEmpty(khoa.Description) ? "Không có mô tả" : khoa.Description)</td>
-                                <td class="text-center status-badge">
-                                    <span class="badge @(khoa.IsActive ? "bg-success" : "bg-danger")">
-                                        @(khoa.IsActive ? "Đang hoạt động" : "Đã ẩn")
-                                    </span>
-                                </td>
-                                <td class="text-center action-buttons">
-                                    <a class="btn btn-sm btn-primary"
-                                       href="@Url.Action("Edit", "Khoa", new { id = khoa.Id, area = "Admin" })">
-                                        <i class="bi bi-pencil-square me-1"></i> Sửa
-                                    </a>
-
-                                    <button type="button"
-                                            class="btn btn-sm @(khoa.IsActive ? "btn-warning" : "btn-info") toggle-khoa-status"
-                                            data-id="@khoa.Id"
-                                            data-isactive="@khoa.IsActive.ToString().ToLower()"
-                                            title="@(khoa.IsActive ? "Ẩn khoa này" : "Kích hoạt lại khoa")">
-                                        <i class="bi @(khoa.IsActive ? "bi-eye-slash" : "bi-eye") me-1"></i>
-                                        @(khoa.IsActive ? "Ẩn" : "Kích hoạt")
-                                    </button>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="5" class="text-center text-muted py-4">Không có khoa nào được tìm thấy.</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <a class="btn btn-success" href="@Url.Action("Create", "Khoa", new { area = "Admin" })">
+        <i class="bi bi-plus-circle"></i> Thêm mới Khoa
+    </a>
 </div>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
-<script>
-    $(document).ready(function () {
-        $('.toggle-khoa-status').click(function () {
-            const button = $(this);
-            const id = button.data('id');
-            const isActive = button.data('isactive') === true || button.data('isactive') === "true";
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark text-center">
+        <tr>
+            <th>Mã</th>
+            <th>Tên khoa</th>
+            <th>Mô tả</th>
+            <th>Trạng thái</th>
+            <th class="text-center">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var khoa in Model)
+            {
+                <tr>
+                    <td>@khoa.Id</td>
+                    <td>@khoa.Name</td>
+                    <td>@(string.IsNullOrEmpty(khoa.Description) ? "Không có mô tả" : khoa.Description)</td>
+                    <td class="text-center">
+                        @if (khoa.IsActive)
+                        {
+                            <span class="badge bg-success">Đang hoạt động</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Đã ẩn</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", "Khoa", new { id = khoa.Id, area = "Admin" })" title="Sửa">
+                            <i class="bi bi-pencil"></i>
+                        </a>
 
-            const newIsActive = !isActive;
-            const confirmMsg = `Bạn có chắc chắn muốn ${newIsActive ? "kích hoạt" : "ẩn"} khoa này không?`;
+                        @if (khoa.IsActive)
+                        {
+                            <a class="btn btn-sm btn-warning" href="@Url.Action("An", "Khoa", new { id = khoa.Id, area = "Admin" })" title="Ẩn">
+                                <i class="bi bi-eye-slash"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm btn-success" href="@Url.Action("KhoiPhuc", "Khoa", new { id = khoa.Id, area = "Admin" })" title="Khôi phục">
+                                <i class="bi bi-arrow-repeat"></i>
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="5" class="text-center text-muted">Không có khoa nào được tìm thấy.</td></tr>
+        }
+    </tbody>
+</table>
 
-            if (!confirm(confirmMsg)) return;
+@{
+    var currentPage = ViewBag.CurrentPage;
+    var totalPages = ViewBag.TotalPages;
+    var currentSearch = ViewBag.CurrentSearch;
+}
 
-            $.ajax({
-                url: '@Url.Action("ToggleActiveStatus", "Khoa", new { area = "Admin" })',
-                type: 'POST',
-                data: {
-                    id: id,
-                    isActive: newIsActive
-                },
-                success: function (response) {
-                    if (response.success) {
-                        const row = $(`tr[data-khoa-id='${id}']`);
-                        const badgeCell = row.find(".status-badge span");
-                        const icon = button.find('i');
+@if (totalPages > 1)
+{
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", "Khoa", new { area = "Admin", search = currentSearch, page = currentPage - 1 })">
+                    «
+                </a>
+            </li>
 
-                        // Update trạng thái nút
-                        button.data('isactive', newIsActive.toString());
-                        button.toggleClass("btn-warning btn-info");
-                        button.html(`<i class="bi ${newIsActive ? "bi-eye-slash" : "bi-eye"} me-1"></i> ${newIsActive ? "Ẩn" : "Kích hoạt"}`);
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", "Khoa", new { area = "Admin", search = currentSearch, page = i })">@i</a>
+                </li>
+            }
 
-                        // Update badge trạng thái
-                        badgeCell
-                            .removeClass("bg-success bg-danger")
-                            .addClass(newIsActive ? "bg-success" : "bg-danger")
-                            .text(newIsActive ? "Đang hoạt động" : "Đã ẩn");
-                    } else {
-                        alert("Thao tác thất bại: " + (response.message || "Có lỗi xảy ra."));
-                    }
-                },
-                error: function () {
-                    alert("Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại.");
-                }
-            });
-        });
-    });
-</script>
+            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", "Khoa", new { area = "Admin", search = currentSearch, page = currentPage + 1 })">
+                    »
+                </a>
+            </li>
+        </ul>
+    </nav>
+}

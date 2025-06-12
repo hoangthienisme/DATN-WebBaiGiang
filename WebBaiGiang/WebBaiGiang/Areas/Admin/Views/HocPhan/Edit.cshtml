@@ -1,0 +1,56 @@
+﻿@model WebBaiGiang.Models.HocPhan
+
+@{
+    ViewData["Title"] = "Sửa Học Phần";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label fw-bold">Tên học phần</label>
+        <input Name="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+        <textarea Name="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+
+        <label for="DepartmentId" class="form-label fw-bold">Khoa</label>
+
+        <select class="form-control" id="DepartmentId" name="DepartmentId">
+
+            <option value="">-- Chọn Khoa --</option>
+
+            @foreach (var item in (SelectList)ViewBag.DepartmentId)
+
+            {
+
+                <option value="@item.Value">@item.Text</option>
+
+            }
+
+        </select>
+
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+
+    </div>
+
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Lưu</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
