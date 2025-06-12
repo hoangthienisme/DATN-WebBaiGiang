@@ -44,6 +44,8 @@ public partial class WebBaiGiangContext : DbContext
     public virtual DbSet<NopBai> NopBais { get; set; }
 
     public virtual DbSet<SinhVienLopHoc> SinhVienLopHocs { get; set; }
+    public virtual DbSet<BaiTapLopHoc> BaiTapLopHocs { get; set; } = null!;
+
 
     public virtual DbSet<ThongTinWeb> ThongTinWebs { get; set; }
 
@@ -94,17 +96,16 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.ToTable("BaiTap");
 
-            entity.Property(e => e.ClassId).HasColumnName("Class_id");
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.DueDate).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(200);
 
-            entity.HasOne(d => d.Class).WithMany(p => p.BaiTaps)
-                .HasForeignKey(d => d.ClassId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BaiTap__Class_id__52593CB8");
+           
         });
+
+       
+
 
         modelBuilder.Entity<ChiTietDiemDanh>(entity =>
         {
@@ -362,7 +363,18 @@ public partial class WebBaiGiangContext : DbContext
             entity.Property(e => e.SocialLink).HasMaxLength(250);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
+        modelBuilder.Entity<BaiTapLopHoc>()
+   .HasKey(bl => new { bl.BaiTapId, bl.LopHocId });
 
+        modelBuilder.Entity<BaiTapLopHoc>()
+            .HasOne(bl => bl.BaiTap)
+            .WithMany(b => b.BaiTapLopHocs)
+            .HasForeignKey(bl => bl.BaiTapId);
+
+        modelBuilder.Entity<BaiTapLopHoc>()
+            .HasOne(bl => bl.LopHoc)
+            .WithMany(l => l.BaiTapLopHocs)
+            .HasForeignKey(bl => bl.LopHocId);
         OnModelCreatingPartial(modelBuilder);
     }
 

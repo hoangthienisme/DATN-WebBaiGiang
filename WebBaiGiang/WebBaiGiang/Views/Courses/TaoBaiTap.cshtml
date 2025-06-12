@@ -1,5 +1,5 @@
 ﻿@using WebBaiGiang.ViewModel
-@model TaoBaiTapViewModel
+@model BaiTapViewModel
 
 @{
     Layout = null;
@@ -23,38 +23,44 @@
             <label asp-for="Description" class="form-label fw-bold">Mô tả (không bắt buộc)</label>
             <textarea asp-for="Description" class="form-control" rows="3"></textarea>
         </div>
-
         <div class="mb-3">
             <label class="form-label fw-bold">Dành cho lớp</label>
-            <div class="d-flex gap-3 flex-wrap">
-                @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
-                {
-                    foreach (var lop in Model.AvailableClasses)
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span id="selectedClassesText">Chưa có lớp nào được chọn...</span>
+                </button>
+                <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style="max-height: 200px; overflow-y: auto;">
+                    @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
                     {
-                        var id = $"lop{lop.Value}";
-                        <div class="form-check">
-                            <input class="form-check-input"
-                                   type="checkbox"
-                                   name="ClassIds"
-                                   value="@lop.Value"
-                                   id="@id"
-                            @(Model.ClassIds != null && Model.ClassIds.Contains(int.Parse(lop.Value)) ? "checked" : "") />
-                            <label class="form-check-label" for="@id">@lop.Text</label>
-                        </div>
+                        @foreach (var item in Model.AvailableClasses)
+                        {
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input class-checkbox" type="checkbox"
+                                           value="@item.Value"
+                                           id="classCheckbox_@item.Value"
+                                           name="ClassIds"
+                                    @(Model.ClassIds != null && Model.ClassIds.Contains(int.Parse(item.Value)) ? "checked" : "") />
+                                    <label class="form-check-label" for="classCheckbox_@item.Value">
+                                        @item.Text
+                                    </label>
+                                </div>
+                            </li>
+                        }
                     }
-                }
-                else
-                {
-                    <p>Không có lớp học để hiển thị.</p>
-                }
+                    else
+                    {
+                        <li><p class="text-muted ms-2">Không có lớp học nào khả dụng.</p></li>
+                    }
+                </ul>
             </div>
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.ClassIds)</span>
         </div>
 
-        <div class="mb-3">
-            <label asp-for="MaxScore" class="form-label fw-bold">Điểm tối đa</label>
-            <input asp-for="MaxScore" class="form-control" placeholder="Nhập số điểm tối đa (VD: 100)" />
-            <span asp-validation-for="MaxScore" class="text-danger"></span>
-        </div>
+
+
+
+
         <div class="mb-3">
             <label asp-for="DueDate" class="form-label fw-bold">Hạn nộp</label>
             <input asp-for="DueDate" class="form-control" type="datetime-local" />
@@ -66,7 +72,6 @@
             <input asp-for="Attachment" type="file" class="form-control" />
             <span asp-validation-for="Attachment" class="text-danger"></span>
         </div>
-        <input asp-for="LopIdGoc" type="hidden" />
 
         <div class="mt-4">
             <button type="submit" class="btn btn-success">Giao bài tập</button>
@@ -74,6 +79,32 @@
     </form>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+<script>
+    const CLASS_CHECKBOX_SELECTOR = '.class-checkbox';
+    const SELECTED_CLASSES_TEXT_SPAN = $('#selectedClassesText');
+    const DROPDOWN_MENU_SELECTOR = '.dropdown-menu';
+
+    function updateSelectedClassesDropdownText() {
+        const selectedOptions = $(CLASS_CHECKBOX_SELECTOR + ':checked');
+        if (selectedOptions.length === 0) {
+            SELECTED_CLASSES_TEXT_SPAN.text('Chưa có lớp nào được chọn...');
+        } else if (selectedOptions.length > 3) {
+            SELECTED_CLASSES_TEXT_SPAN.text(`${selectedOptions.length} lớp đã chọn`);
+        } else {
+            const labels = selectedOptions.map(function () {
+                return $(this).next('label').text();
+            }).get();
+            SELECTED_CLASSES_TEXT_SPAN.text(labels.join(', '));
+        }
+    }
+
+    $(document).ready(function () {
+        updateSelectedClassesDropdownText();
+        $(CLASS_CHECKBOX_SELECTOR).on('change', updateSelectedClassesDropdownText);
+
+        $(DROPDOWN_MENU_SELECTOR).on('click', function (e) {
+            e.stopPropagation();
+        });
+    });
+</script>
+

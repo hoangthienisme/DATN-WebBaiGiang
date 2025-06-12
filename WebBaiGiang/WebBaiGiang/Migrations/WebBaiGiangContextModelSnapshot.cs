@@ -114,10 +114,6 @@ namespace WebBaiGiang.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int")
-                        .HasColumnName("Class_id");
-
                     b.Property<string>("ContentUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -145,9 +141,25 @@ namespace WebBaiGiang.Migrations
                     b.HasKey("Id")
                         .HasName("PK__BaiTap__3214EC07210C887D");
 
-                    b.HasIndex("ClassId");
-
                     b.ToTable("BaiTap", (string)null);
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.BaiTapLopHoc", b =>
+                {
+                    b.Property<int>("BaiTapId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LopHocId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("NgayGiao")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("BaiTapId", "LopHocId");
+
+                    b.HasIndex("LopHocId");
+
+                    b.ToTable("BaiTapLopHocs");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.ChiTietDiemDanh", b =>
@@ -676,15 +688,23 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("Chuong");
                 });
 
-            modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>
+            modelBuilder.Entity("WebBaiGiang.Models.BaiTapLopHoc", b =>
                 {
-                    b.HasOne("WebBaiGiang.Models.LopHoc", "Class")
-                        .WithMany("BaiTaps")
-                        .HasForeignKey("ClassId")
-                        .IsRequired()
-                        .HasConstraintName("FK__BaiTap__Class_id__52593CB8");
+                    b.HasOne("WebBaiGiang.Models.BaiTap", "BaiTap")
+                        .WithMany("BaiTapLopHocs")
+                        .HasForeignKey("BaiTapId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Class");
+                    b.HasOne("WebBaiGiang.Models.LopHoc", "LopHoc")
+                        .WithMany("BaiTapLopHocs")
+                        .HasForeignKey("LopHocId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaiTap");
+
+                    b.Navigation("LopHoc");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.ChiTietDiemDanh", b =>
@@ -861,6 +881,8 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>
                 {
+                    b.Navigation("BaiTapLopHocs");
+
                     b.Navigation("NopBais");
                 });
 
@@ -888,7 +910,7 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.LopHoc", b =>
                 {
-                    b.Navigation("BaiTaps");
+                    b.Navigation("BaiTapLopHocs");
 
                     b.Navigation("DanhGia");
 

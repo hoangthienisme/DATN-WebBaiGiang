@@ -20,85 +20,196 @@ namespace WebBaiGiang.Controllers
         }
         public IActionResult BaiTap(int id)
         {
-            ViewBag.LopId = id;
-            // Gửi danh sách bài tập ra view
-            var BaiTap = _context.BaiTaps.Where(x => x.ClassId == id).ToList();
-            return View(BaiTap);
+            ViewBag.LopId = _context.BaiTapLopHocs;
+
+            var baiTaps = _context.BaiTapLopHocs
+                .Where(bt => bt.LopHocId == id)
+                .Include(bt => bt.BaiTap) 
+                .Select(bt => bt.BaiTap)
+                .ToList();
+
+            return View(baiTaps);
         }
+
+        // GET: Tạo bài tập
+        [HttpGet]
         public IActionResult TaoBaiTap(int lopId)
         {
-            ViewBag.LopId = lopId;
-            var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            if (!int.TryParse(currentGiangVienIdString, out int currentGiangVienId))
+            var model = new BaiTapViewModel
             {
-                // Xử lý khi không lấy được ID hợp lệ, ví dụ chuyển đến trang đăng nhập hoặc lỗi
-                return RedirectToAction("Login", "Account");
-            }
-
-            var availableClasses = _context.GiangVienLopHocs
-             .Where(glh => glh.IdGv == currentGiangVienId)
-             .Select(glh => new SelectListItem
-             {
-                 Value = glh.IdClass.ToString(),
-                 Text = _context.LopHocs.FirstOrDefault(l => l.Id == glh.IdClass).Name
-             })
-             .ToList();
-
-            var model = new TaoBaiTapViewModel
-            {
-                ClassIds = new List<int>(),
-                AvailableClasses = availableClasses,
-                 LopIdGoc = lopId
+                LopIdGoc = lopId,
+                AvailableClasses = _context.LopHocs
+                    .Select(l => new SelectListItem { Text = l.Name, Value = l.Id.ToString() })
+                    .ToList()
             };
+
             return View(model);
-
-
         }
 
+
+        // POST: Lưu bài tập
         [HttpPost]
-        public async Task<IActionResult> TaoBaiTap(TaoBaiTapViewModel model)
+
+        public async Task<IActionResult> TaoBaiTap(BaiTapViewModel model)
         {
-            if (!ModelState.IsValid)
+            // Validate model và kiểm tra ít nhất một lớp được chọn
+            if (!ModelState.IsValid || model.ClassIds == null || !model.ClassIds.Any())
             {
-                return View("TaoBaiTap", model);
+                // Load lại danh sách lớp học nếu form bị lỗi
+                model.AvailableClasses = _context.LopHocs
+                 .Where(l => l.IsActive)
+                 .Select(l => new SelectListItem
+                 {
+                     Value = l.Id.ToString(),
+                     Text = l.Name
+                 }).ToList();
+
+                model.ClassIds = new List<int> { model.LopIdGoc }; // mặc định chọn lớp gốc nếu có
+
+
+                ModelState.AddModelError("", "Vui lòng chọn ít nhất một lớp học.");
+                return View(model);
             }
 
-
-            foreach (var classId in model.ClassIds)
+            // Xử lý file nếu có
+            string? fileUrl = null;
+            if (model.Attachment != null && model.Attachment.Length > 0)
             {
-                var baiTap = new BaiTap
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                if (!Directory.Exists(uploadsFolder))
                 {
-                    Title = model.Title,
-                    Description = model.Description,
-                    ClassId = classId,
-                    DueDate = model.DueDate,
-                    CreatedDate = DateTime.Now
-                };
-
-                if (model.Attachment != null && model.Attachment.Length > 0)
-                {
-                    var fileName = Guid.NewGuid() + Path.GetExtension(model.Attachment.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await model.Attachment.CopyToAsync(stream);
-                    }
-
-                    baiTap.ContentUrl = "/uploads/" + fileName;
+                    Directory.CreateDirectory(uploadsFolder);
                 }
 
-                _context.BaiTaps.Add(baiTap);
+                var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Attachment.FileName);
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.Attachment.CopyToAsync(stream);
+                }
+
+                fileUrl = "/uploads/" + uniqueFileName;
             }
 
+            model.LopIdGoc = model.ClassIds.FirstOrDefault();
+
+            var baiTap = new BaiTap
+            {
+                Title = model.Title,
+                Description = model.Description,
+                DueDate = model.DueDate,
+                //MaxScore = model.MaxScore,
+                CreatedDate = DateTime.Now,
+                IsActive = true,
+                BaiTapLopHocs = model.ClassIds.Select(id => new BaiTapLopHoc
+                {
+                    LopHocId = id,
+                    NgayGiao = DateTime.Now
+                }).ToList()
+            };
+
+            _context.BaiTaps.Add(baiTap);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("BaiTap", "Courses", new { id = model.LopIdGoc });
 
 
+
         }
 
+        [HttpGet]
+        public IActionResult SuaBaiTap(int id)
+        {
+            var baiTap = _context.BaiTaps
+                .Include(bt => bt.BaiTapLopHocs)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (baiTap == null) return NotFound();
+
+            var model = new BaiTapViewModel
+            {
+                Title = baiTap.Title,
+                Description = baiTap.Description,
+                DueDate = baiTap.DueDate,
+                ContentUrl = baiTap.ContentUrl,
+                ClassIds = baiTap.BaiTapLopHocs?.Select(x => x.BaiTapId).ToList() ?? new(),
+                AvailableClasses = GetAvailableClasses()
+            };
+
+            ViewBag.Id = baiTap.Id;
+            return View( model); 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SuaBaiTap(int id, BaiTapViewModel model)
+        {
+            var baiTap = await _context.BaiTaps
+                .Include(bt => bt.BaiTapLopHocs)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (baiTap == null) return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                model.AvailableClasses = GetAvailableClasses();
+                ViewBag.Id = id;
+                return View( model);
+            }
+
+            baiTap.Title = model.Title;
+            baiTap.Description = model.Description;
+            baiTap.DueDate = model.DueDate;
+            baiTap.ContentUrl = model.ContentUrl;
+
+            if (model.Attachment != null)
+            {
+                var fileName = Path.GetFileName(model.Attachment.FileName);
+                var path = Path.Combine("wwwroot/uploads", fileName);
+                using var stream = new FileStream(path, FileMode.Create);
+                await model.Attachment.CopyToAsync(stream);
+                baiTap.ContentUrl = "/uploads/" + fileName;
+            }
+
+            // Xóa lớp cũ
+            _context.BaiTapLopHocs.RemoveRange(baiTap.BaiTapLopHocs);
+
+            foreach (var classId in model.ClassIds)
+            {
+                _context.BaiTapLopHocs.Add(new BaiTapLopHoc
+                {
+                    BaiTapId = baiTap.Id,
+                    LopHocId = classId,
+                    NgayGiao = DateTime.Now 
+                });
+            }
+
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("BaiTap", "Courses", new { id = model.LopIdGoc });
+        }
+        [HttpPost]
+        public async Task<IActionResult> XoaBaiTap(int id)
+        {
+            var baiTap = await _context.BaiTaps.FindAsync(id);
+            if (baiTap == null) return NotFound();
+
+            var baiTapLops = _context.BaiTapLopHocs.Where(x => x.BaiTapId == id);
+            _context.BaiTapLopHocs.RemoveRange(baiTapLops);
+            _context.BaiTaps.Remove(baiTap);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        private List<SelectListItem> GetAvailableClasses()
+        {
+            return _context.LopHocs.Select(l => new SelectListItem
+            {
+                Value = l.Id.ToString(),
+                Text = l.Name
+            }).ToList();
+        }
         [HttpGet]
         public async Task<IActionResult> DetailCourses(int id, int page = 1)
         {

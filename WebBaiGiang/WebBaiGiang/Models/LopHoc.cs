@@ -29,7 +29,8 @@ public partial class LopHoc
 
     public virtual BaiGiang? BaiGiang { get; set; } = null!;
 
-    public virtual ICollection<BaiTap> BaiTaps { get; set; } = new List<BaiTap>();
+    public virtual ICollection<BaiTapLopHoc> BaiTapLopHocs { get; set; } = new List<BaiTapLopHoc>();
+
 
     public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();
 
