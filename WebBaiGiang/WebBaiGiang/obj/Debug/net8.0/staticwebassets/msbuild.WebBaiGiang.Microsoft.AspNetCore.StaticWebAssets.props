@@ -2340,6 +2340,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2ac29375-335a-4565-9a16-6063e056650a.docx'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebBaiGiang</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebBaiGiang</BasePath>
+      <RelativePath>uploads/2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>d8k3lqidf8</Fingerprint>
+      <Integrity>LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2b883b24-7646-465a-9207-a4f2c7160f24_5 diem khac biet.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>WebBaiGiang</SourceId>

@@ -100,6 +100,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xUYW9CYWlUYXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/DiemDanh/DiemDanh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbURhbmhcRGllbURhbmguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/DiemDanh/TaoPhieu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbURhbmhcVGFvUGhpZXUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/DiemDanh/ThamGia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllbURhbmhcVGhhbUdpYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/GiangVien/BaiGiang.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhbmdWaWVuXEJhaUdpYW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

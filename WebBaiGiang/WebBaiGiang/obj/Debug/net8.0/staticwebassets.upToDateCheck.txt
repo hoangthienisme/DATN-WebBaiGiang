@@ -128,6 +128,7 @@ wwwroot\uploads\182ba7d7-8531-43a9-ac93-711274120a1b_1367490.jpeg
 wwwroot\uploads\1bd14cf7-bd28-4478-8469-f76acfbe1faf.docx
 wwwroot\uploads\233f6c44-8aee-4cd0-88ff-70ee2c4b76fd_1367490.jpeg
 wwwroot\uploads\2ac29375-335a-4565-9a16-6063e056650a.docx
+wwwroot\uploads\2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg
 wwwroot\uploads\2b883b24-7646-465a-9207-a4f2c7160f24_5 diem khac biet.jpg
 wwwroot\uploads\2e6acf8b-99c6-40a3-acb1-2cd5a3a7be93.docx
 wwwroot\uploads\338caec6-4cb5-40d3-b481-3de88f5ce452_bannhua.jpg

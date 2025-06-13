@@ -12,7 +12,7 @@ public partial class ChiTietDiemDanh
     public int UsersId { get; set; }
 
     public string? Status { get; set; }
-
+    public DateTime ThoiGianDiemDanh { get; set; } = DateTime.Now;
     public virtual DiemDanh Attendance { get; set; } = null!;
 
     public virtual NguoiDung Users { get; set; } = null!;

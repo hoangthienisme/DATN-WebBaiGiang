@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebBaiGiang.Models;
 
@@ -11,9 +12,11 @@ using WebBaiGiang.Models;
 namespace WebBaiGiang.Migrations
 {
     [DbContext(typeof(WebBaiGiangContext))]
-    partial class WebBaiGiangContextModelSnapshot : ModelSnapshot
+    [Migration("20250613024843_AddFieldDiemDanh")]
+    partial class AddFieldDiemDanh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -290,9 +293,6 @@ namespace WebBaiGiang.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("ExpiredAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("MaPhieu")
                         .IsRequired()
