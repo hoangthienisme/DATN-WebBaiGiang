@@ -2,18 +2,74 @@
     ViewBag.Title = "Xác nhận OTP";
 }
 
-<h2>Nhập mã OTP được gửi tới email</h2>
-
-<form method="post" action="/Account/VerifyOtp">
-    <label>Nhập mã OTP</label>
-    <input type="text" name="otpInput" required />
-    <button type="submit">Xác nhận</button>
-</form>
-
-@if (!ViewData.ModelState.IsValid)
-{
-    foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-    {
-        <p style="color:red">@error.ErrorMessage</p>
+<style>
+    .otp-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
     }
-}
+
+        .otp-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .otp-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .otp-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .otp-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+            .otp-container button:hover {
+                background-color: #0056b3;
+            }
+
+    .otp-error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="otp-container">
+    <h2>Nhập mã OTP được gửi tới email</h2>
+
+    <form method="post" action="/Account/VerifyOtp">
+        <label for="otpInput">Nhập mã OTP</label>
+        <input type="text" name="otpInput" id="otpInput" required />
+        <button type="submit">Xác nhận</button>
+    </form>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div class="otp-error">@error.ErrorMessage</div>
+        }
+    }
+</div>

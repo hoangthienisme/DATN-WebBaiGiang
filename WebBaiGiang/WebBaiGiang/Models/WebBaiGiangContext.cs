@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,13 +22,11 @@ public partial class WebBaiGiangContext : DbContext
 
     public virtual DbSet<BaiTap> BaiTaps { get; set; }
 
-    public virtual DbSet<ChiTietDiemDanh> ChiTietDiemDanhs { get; set; }
 
     public virtual DbSet<Chuong> Chuongs { get; set; }
 
     public virtual DbSet<DanhGium> DanhGia { get; set; }
 
-    public virtual DbSet<DiemDanh> DiemDanhs { get; set; }
 
     public virtual DbSet<GiangVienLopHoc> GiangVienLopHocs { get; set; }
 
@@ -107,26 +106,7 @@ public partial class WebBaiGiangContext : DbContext
        
 
 
-        modelBuilder.Entity<ChiTietDiemDanh>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__ChiTietD__3214EC07C7D082B4");
 
-            entity.ToTable("ChiTietDiemDanh");
-
-            entity.Property(e => e.AttendanceId).HasColumnName("Attendance_id");
-            entity.Property(e => e.Status).HasMaxLength(10);
-            entity.Property(e => e.UsersId).HasColumnName("Users_id");
-
-            entity.HasOne(d => d.Attendance).WithMany(p => p.ChiTietDiemDanhs)
-                .HasForeignKey(d => d.AttendanceId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ChiTietDi__Atten__5CD6CB2B");
-
-            entity.HasOne(d => d.Users).WithMany(p => p.ChiTietDiemDanhs)
-                .HasForeignKey(d => d.UsersId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ChiTietDi__Users__5DCAEF64");
-        });
 
         modelBuilder.Entity<Chuong>(entity =>
         {
@@ -166,20 +146,6 @@ public partial class WebBaiGiangContext : DbContext
                 .HasConstraintName("FK__DanhGia__Users_i__628FA481");
         });
 
-        modelBuilder.Entity<DiemDanh>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__DiemDanh__3214EC077D220E2F");
-
-            entity.ToTable("DiemDanh");
-
-            entity.Property(e => e.ClassId).HasColumnName("Class_id");
-            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Class).WithMany(p => p.DiemDanhs)
-                .HasForeignKey(d => d.ClassId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DiemDanh__Class___59063A47");
-        });
 
         modelBuilder.Entity<GiangVienLopHoc>(entity =>
         {

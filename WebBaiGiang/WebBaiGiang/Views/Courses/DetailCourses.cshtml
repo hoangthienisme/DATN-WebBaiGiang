@@ -1,5 +1,6 @@
 ﻿@using WebBaiGiang.ViewModel
 @model LopHocViewModel
+
 @{
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
 }
@@ -60,11 +61,10 @@
         <li class="nav-item">
             <a class="nav-link" href="@Url.Action("BaiTap", "Courses", new { id = Model.Id })">Bài tập trên lớp</a>
         </li>
-        <li class="nav-item"><a class="nav-link" href="#">Mọi người</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Điểm</a></li>
         <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("DiemDanh", "DiemDanh", new { id = Model.Id })">Điểm Danh </a>
+            <a class="nav-link" href="#" onclick="showTab('peopleTab')">Mọi người</a>
         </li>
+        <li class="nav-item"><a class="nav-link" href="#">Điểm</a></li>
     </ul>
 
     <!-- Banner ảnh bìa lớp học -->
@@ -73,6 +73,21 @@
             <h3 class="class-title text-white">@Model.Name</h3>
         </div>
     </div>
+    <!-- Nội dung mặc định - bài giảng -->
+    <div id="contentTab">
+        <div class="row">
+            @foreach (var item in Model.BaiGiangs)
+            {
+                <!-- nội dung bài giảng -->
+            }
+        </div>
+    </div>
+
+    <!-- Tab Mọi người -->
+    <div id="peopleTab" style="display: none;">
+        @Html.Partial("_ThemNguoiPartial", new AddUserToClassViewModel { ClassId = Model.Id })
+    </div>
+
 
     <!-- Danh sách bài giảng -->
     <div class="row">
@@ -157,4 +172,10 @@
             });
         }
     };
+</script>
+<script>
+    function showTab(tabId) {
+        document.getElementById("contentTab").style.display = "none";
+        document.getElementById("peopleTab").style.display = "block";
+    }
 </script>

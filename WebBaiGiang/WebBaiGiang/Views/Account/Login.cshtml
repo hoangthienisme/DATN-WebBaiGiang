@@ -1,9 +1,10 @@
-﻿@{
+﻿@model WebBaiGiang.Models.NguoiDung
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Đăng nhập tài khoản";
-
 }
 <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+
 <div class="register-container">
     <div class="login-register-box">
         <div class="register-image">
@@ -15,17 +16,33 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" required />
+                    <input type="email" name="Email" value="@Model?.Email" />
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger text-center" })
                 </div>
 
-                <div class="form-group">
+                <div class="form-group position-relative">
                     <label>Mật khẩu</label>
-                    <input type="password" name="password" required />
+                    <input type="password" id="password" name="Password" class="form-control" />
+                    <button type="button" class="btn btn-sm btn-light position-absolute end-0 me-2"
+                            style="top: 50%; transform: translateY(-50%);margin-top:15px"
+                            onclick="togglePassword(this, 'password')">
+                        👁️
+                    </button>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger text-center" })
                 </div>
+
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState[string.Empty]?.Errors.Count > 0)
+                {
+                    foreach (var error in ViewData.ModelState[string.Empty].Errors)
+                    {
+                        <p style="color:red; text-align:center; margin-top:10px;">@error.ErrorMessage</p>
+                    }
+                }
 
                 <button type="submit" class="login-submit-btn">
                     <span class="icon">📩</span> Đăng nhập
                 </button>
+
                 <div class="text-center mt-2">
                     <a asp-controller="Account" asp-action="ForgotPassword" class="forgot-link text-decoration-none text-primary">
                         Quên mật khẩu?
@@ -50,3 +67,15 @@
     </div>
 </div>
 
+<script>
+    function togglePassword(btn, inputId) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            btn.innerText = "🙈";
+        } else {
+            input.type = "password";
+            btn.innerText = "👁️";
+        }
+    }
+</script>

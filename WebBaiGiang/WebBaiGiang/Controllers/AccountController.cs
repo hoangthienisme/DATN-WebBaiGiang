@@ -9,6 +9,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using WebBaiGiang.ViewModel;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 namespace WebBaiGiang.Controllers
 {
     public class AccountController : Controller
@@ -132,19 +134,18 @@ namespace WebBaiGiang.Controllers
         }
         [HttpPost]
          [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(string email, string password)
+    public async Task<IActionResult> Login(NguoiDung nguoiDung)
     {
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        if (string.IsNullOrEmpty(nguoiDung.Email) || string.IsNullOrEmpty(nguoiDung.Password))
         {
-            ModelState.AddModelError("", "Email và mật khẩu là bắt buộc.");
-            return View();
+            return View(nguoiDung);
         }
 
-        var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == email);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
+        var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == nguoiDung.Email);
+        if (user == null || !BCrypt.Net.BCrypt.Verify(nguoiDung.Password, user.Password))
         {
-            ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
-            return View();
+            ModelState.AddModelError("", " *Email hoặc mật khẩu không đúng.");
+            return View(nguoiDung);
         }
      var claims = new List<Claim>
     {   new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),

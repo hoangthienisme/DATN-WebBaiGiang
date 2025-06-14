@@ -34,7 +34,7 @@ public partial class LopHoc
 
     public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();
 
-    public virtual ICollection<DiemDanh> DiemDanhs { get; set; } = new List<DiemDanh>();
+   
 
     public virtual ICollection<GiangVienLopHoc> GiangVienLopHocs { get; set; } = new List<GiangVienLopHoc>();
 

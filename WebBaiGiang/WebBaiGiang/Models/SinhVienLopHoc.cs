@@ -13,6 +13,7 @@ public partial class SinhVienLopHoc
 
     public bool IsActive { get; set; }
 
+
     public virtual LopHoc IdClassNavigation { get; set; } = null!;
 
     public virtual NguoiDung IdSvNavigation { get; set; } = null!;

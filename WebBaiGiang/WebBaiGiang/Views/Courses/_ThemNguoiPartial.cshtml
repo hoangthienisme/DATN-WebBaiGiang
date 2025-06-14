@@ -1,0 +1,14 @@
+﻿@model WebBaiGiang.ViewModel.AddUserToClassViewModel
+<div class="border rounded p-4 bg-light mt-3">
+    <h5>Thêm người vào lớp</h5>
+    <form asp-action="AddUser" asp-controller="Courses" method="post">
+        <input type="hidden" name="ClassId" value="@Model.ClassId" />
+
+        <div class="mb-3">
+            <label class="form-label">Email người dùng</label>
+            <input name="Email" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Thêm vào lớp</button>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebBaiGiang.ViewModel
+{
+    public class AddUserToClassViewModel
+    {
+        public int ClassId { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập Email")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        public string Email { get; set; }
+
+
+    }
+}

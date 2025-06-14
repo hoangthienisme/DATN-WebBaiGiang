@@ -238,6 +238,38 @@ namespace WebBaiGiang.Controllers
 
             return View(vm);
         }
+        [HttpPost]
+        public async Task<IActionResult> AddUser(AddUserToClassViewModel model)
+        {
+            var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Không tìm thấy người dùng");
+                return View(model);
+            }
+
+            // Kiểm tra đã có trong lớp chưa
+            var exists = await _context.SinhVienLopHocs
+                .AnyAsync(x => x.IdClass == model.ClassId && x.IdSv == user.Id);
+
+            if (!exists)
+            {
+                var svLop = new SinhVienLopHoc
+                {
+                    IdClass = model.ClassId,
+                    IdSv = user.Id,
+                    JoinDate = DateTime.Now,
+                    IsActive = true
+                };
+
+                _context.SinhVienLopHocs.Add(svLop);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("ChiTietLop", new { id = model.ClassId });
+        }
+
+
 
     }
 }
