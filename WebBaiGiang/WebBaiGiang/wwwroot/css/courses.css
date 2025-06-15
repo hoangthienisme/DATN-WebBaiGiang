@@ -1,5 +1,5 @@
 ﻿.conTent h3 {
-    margin-left: 70px;
+    margin-left: 10px;
     margin-top: 10px;
     font-family: var(--font-stack-heading-serif);
     font-weight: 700;
@@ -9,7 +9,6 @@
     max-width: 36em;
 }
 .search-input-courses {
-    margin-left: 20px;
     margin-top: 20px;
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
@@ -82,7 +81,7 @@
 }
 
 .search-input-courses {
-    margin-left : 70px;
+    margin-left : 13px;
     padding: 10px 10px 10px 36px; 
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -90,6 +89,7 @@
     width: 250px;
 }
 .create-course-button {
+    margin-left: 50px;
     background-color: #6A0DAD;
     color: white;
     padding: 10px 20px;
@@ -99,7 +99,6 @@
     cursor: pointer;
     font-size: 15px;
     transition: background-color 0.2s ease;
-    margin-left:40% ;
 }
 
     .create-course-button:hover {
@@ -108,13 +107,13 @@
 
 
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 30px auto;
     font-family: Arial, sans-serif;
 }
 
 .courses-wrapper {
-    margin-left : 60px;
+
     display: flex;
     flex-wrap: wrap;
     gap: 50px;

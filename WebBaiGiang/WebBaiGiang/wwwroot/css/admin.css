@@ -1,9 +1,9 @@
-﻿/* wwwroot/css/giangvien.css */
+﻿/* wwwroot/css/admin.css */
 
 :root {
     --header-height: 56px;
     --sidebar-width: 220px;
-    --primary-color: #007bff; /* Bạn có thể đổi màu chính nếu muốn cho Giảng viên khác Admin */
+    --primary-color: #007bff;
     --sidebar-bg: #f8f9fa;
     --content-bg: #ffffff;
     --border-color: #dee2e6;
@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
+    margin: 0; /* Đảm bảo không có margin mặc định của body */
 }
 
 /* Header */
@@ -33,7 +33,7 @@ body {
     z-index: 1000;
 }
 
-.giangvien-title { /* Đổi tên class để phân biệt với admin-title nếu cần */
+.admin-title {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-color);
@@ -42,7 +42,7 @@ body {
     gap: 8px;
 }
 
-    .giangvien-title i {
+    .admin-title i {
         font-size: 1.6rem;
         color: var(--primary-color);
     }
@@ -50,7 +50,7 @@ body {
 /* Custom Avatar Dropdown (Thay thế Bootstrap Dropdown) */
 .custom-dropdown {
     position: relative;
-    display: inline-block;
+    display: inline-block; /* Quan trọng để dropdown-menu nằm đúng vị trí */
 }
 
 .avatar-img {
@@ -69,9 +69,9 @@ body {
     gap: 6px;
     padding: 0.5rem;
     border-radius: 0.25rem;
-    cursor: pointer;
-    font-size: 1rem;
-    color: var(--text-color);
+    cursor: pointer; /* Cho biết là có thể click */
+    font-size: 1rem; /* Đảm bảo kích thước chữ phù hợp */
+    color: var(--text-color); /* Màu chữ */
 }
 
     .avatar-button:hover {
@@ -79,37 +79,37 @@ body {
     }
 
 .custom-dropdown-menu {
-    display: none;
+    display: none; /* Mặc định ẩn */
     position: absolute;
-    right: 0;
-    top: 100%;
+    right: 0; /* Căn phải với nút */
+    top: 100%; /* Đặt dưới nút */
     background-color: #ffffff;
-    min-width: 160px;
+    min-width: 160px; /* Tăng chiều rộng một chút */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1001;
+    z-index: 1001; /* Đảm bảo nó nằm trên các phần tử khác */
     border: 1px solid var(--border-color);
     border-radius: 0.25rem;
-    list-style: none;
-    padding: 0.5rem 0;
+    list-style: none; /* Bỏ dấu chấm của ul */
+    padding: 0.5rem 0; /* Padding trên dưới */
     margin: 0;
 }
 
     .custom-dropdown-menu.show {
-        display: block;
+        display: block; /* Hiển thị khi có class 'show' */
     }
 
     .custom-dropdown-menu li {
-        list-style: none;
+        list-style: none; /* Đảm bảo không có dấu đầu dòng */
     }
 
 .custom-dropdown-item {
     color: var(--text-color);
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem; /* Tăng padding để dễ click hơn */
     text-decoration: none;
-    display: flex;
+    display: flex; /* Dùng flex để căn chỉnh icon và text */
     align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
+    gap: 8px; /* Khoảng cách giữa icon và text */
+    font-size: 0.95rem; /* Tăng kích thước chữ một chút */
 }
 
     .custom-dropdown-item:hover {
@@ -118,7 +118,7 @@ body {
     }
 
     .custom-dropdown-item.text-danger {
-        color: #dc3545 !important;
+        color: #dc3545 !important; /* Đảm bảo màu đỏ */
     }
 
 .custom-dropdown-divider {
@@ -145,7 +145,7 @@ body {
     top: var(--header-height);
     height: calc(100vh - var(--header-height));
     overflow-y: auto;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Thêm transition cho sidebar */
 }
 
     .sidebar .nav-link {
@@ -157,7 +157,7 @@ body {
         gap: 8px;
         font-size: 0.95rem;
         margin-bottom: 0.25rem;
-        text-decoration: none;
+        text-decoration: none; /* Đảm bảo không có gạch chân link */
     }
 
         .sidebar .nav-link:hover {
@@ -183,7 +183,7 @@ body {
 }
 
 /* Footer */
-.giangvien-footer { /* Đổi tên class để phân biệt với admin-footer */
+.admin-footer {
     background-color: #e9ecef;
     color: #6c757d;
     padding: 0.75rem;
@@ -201,13 +201,14 @@ body {
         transform: translateX(-100%);
         width: 200px;
         z-index: 1000;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Thêm shadow khi ẩn */
     }
 
         .sidebar.show {
             transform: translateX(0);
         }
 
+    /* Hiển thị nút toggle sidebar */
     .header-top .d-md-none {
         display: block !important;
     }
@@ -216,7 +217,7 @@ body {
         margin: 0.5rem;
     }
 
-    .giangvien-title {
+    .admin-title {
         font-size: 1.2rem;
     }
 }
@@ -226,6 +227,7 @@ body {
         transform: translateX(0) !important;
     }
 
+    /* Ẩn nút toggle sidebar */
     .header-top .d-md-none {
         display: none !important;
     }

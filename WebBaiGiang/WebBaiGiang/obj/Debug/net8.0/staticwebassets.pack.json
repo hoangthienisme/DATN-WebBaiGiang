@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\baigiang.css",
       "PackagePath": "staticwebassets\\css\\baigiang.css"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\pagination.css",
       "PackagePath": "staticwebassets\\css\\pagination.css"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
+      "PackagePath": "staticwebassets\\css\\sinhvien.css"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
@@ -79,6 +87,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-details.jpg",
       "PackagePath": "staticwebassets\\img\\course-details.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\default-avatar.jpg",
+      "PackagePath": "staticwebassets\\img\\default-avatar.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\electrical.jpg",

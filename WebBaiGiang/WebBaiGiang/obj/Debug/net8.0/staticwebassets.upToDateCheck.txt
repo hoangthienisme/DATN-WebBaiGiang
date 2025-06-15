@@ -1,4 +1,5 @@
 wwwroot\css\account.css
+wwwroot\css\admin.css
 wwwroot\css\baigiang.css
 wwwroot\css\courses.css
 wwwroot\css\createcourse.css
@@ -6,6 +7,7 @@ wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
 wwwroot\css\pagination.css
+wwwroot\css\sinhvien.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\img\about.jpg
@@ -17,6 +19,7 @@ wwwroot\img\course-1.jpg
 wwwroot\img\course-2.jpg
 wwwroot\img\course-3.jpg
 wwwroot\img\course-details.jpg
+wwwroot\img\default-avatar.jpg
 wwwroot\img\electrical.jpg
 wwwroot\img\events-item-1.jpg
 wwwroot\img\events-item-2.jpg

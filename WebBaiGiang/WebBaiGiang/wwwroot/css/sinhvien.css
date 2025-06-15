@@ -1,64 +1,90 @@
-﻿/* wwwroot/css/giangvien.css */
+﻿/* wwwroot/css/sinhvien.css */
 
 :root {
-    --header-height: 56px;
-    --sidebar-width: 220px;
-    --primary-color: #007bff; /* Bạn có thể đổi màu chính nếu muốn cho Giảng viên khác Admin */
-    --sidebar-bg: #f8f9fa;
-    --content-bg: #ffffff;
-    --border-color: #dee2e6;
-    --text-color: #212529;
+    /* --- Bảng màu hiện đại và hài hòa cho Sinh viên --- */
+    --primary-color: #007bff; /* Xanh dương của Bootstrap, có thể điều chỉnh */
+    --primary-light: #66b3ff; /* Màu xanh sáng hơn */
+    --primary-dark: #0056b3; /* Màu xanh đậm hơn */
+    --secondary-color: #6c757d; /* Xám tiêu chuẩn */
+    --accent-color: #fd7e14; /* Cam làm điểm nhấn */
+
+    --sidebar-bg: #fdfefe; /* Nền sidebar rất nhẹ, gần trắng */
+    --content-bg: #ffffff; /* Nền khu vực nội dung trắng tinh */
+    --body-bg: #eaf6ff; /* Nền tổng thể của body (xanh da trời nhạt, mát mẻ) */
+
+    --text-color-dark: #343a40; /* Chữ đậm, dễ đọc */
+    --text-color-light: #6c757d; /* Chữ nhạt hơn cho phụ đề */
+    --border-color: #e9ecef; /* Viền mềm mại */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Bóng nhẹ */
+    /* --- Kích thước và khoảng cách tổng thể --- */
+    --header-height: 65px; /* Cao hơn một chút */
+    --sidebar-width-desktop: 250px; /* Rộng hơn một chút */
+    --sidebar-width-mobile: 200px; /* Rộng hơn một chút cho mobile */
+    --base-padding: 1.25rem; /* Padding cơ bản tăng lên */
+    --small-gap: 8px;
+    --medium-gap: 16px;
+    --large-gap: 24px;
+    /* Transition mặc định cho hiệu ứng mượt mà */
+    --default-transition: all 0.3s ease-in-out;
 }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f1f3f5;
+    background-color: var(--body-bg); /* Áp dụng màu nền mới */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    color: var(--text-color-dark); /* Màu chữ mặc định cho body */
 }
 
 /* Header */
 .header-top {
     height: var(--header-height);
-    background: #ffffff;
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--primary-color); /* Nền màu primary */
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0 var(--base-padding);
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px var(--shadow-light); /* Bóng nhẹ */
 }
 
-.giangvien-title { /* Đổi tên class để phân biệt với admin-title nếu cần */
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-    .giangvien-title i {
-        font-size: 1.6rem;
-        color: var(--primary-color);
+    .header-top .fw-bold {
+        font-weight: 700 !important;
     }
 
-/* Custom Avatar Dropdown (Thay thế Bootstrap Dropdown) */
+    .header-top .fs-5 {
+        font-size: 1.5rem !important; /* Kích thước tiêu đề lớn hơn */
+    }
+
+    .header-top .btn-outline-light {
+        color: white;
+        border-color: white;
+        font-size: 1.2rem; /* Icon toggle lớn hơn */
+    }
+
+        .header-top .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+/* Custom Avatar Dropdown */
 .custom-dropdown {
     position: relative;
     display: inline-block;
 }
 
 .avatar-img {
-    width: 32px;
-    height: 32px;
+    width: 38px; /* Kích thước avatar lớn hơn */
+    height: 38px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid var(--border-color);
+    border: 2px solid rgba(255, 255, 255, 0.7); /* Viền màu trắng nhẹ */
+    transition: var(--default-transition);
 }
 
 .avatar-button {
@@ -66,36 +92,42 @@ body {
     border: none;
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+    gap: var(--small-gap);
+    padding: 0.75rem 1rem; /* Padding nút lớn hơn */
+    border-radius: 0.5rem; /* Bo tròn hơn */
     cursor: pointer;
     font-size: 1rem;
-    color: var(--text-color);
+    color: white; /* Màu chữ trắng cho header */
+    transition: var(--default-transition);
 }
 
     .avatar-button:hover {
-        background-color: #e9ecef;
+        background-color: rgba(255, 255, 255, 0.15); /* Hiệu ứng hover cho nút trong header */
     }
 
 .custom-dropdown-menu {
     display: none;
     position: absolute;
     right: 0;
-    top: 100%;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: calc(100% + 5px); /* Đặt dưới nút, có khoảng cách nhẹ */
+    background-color: var(--white-bg);
+    min-width: 180px; /* Rộng hơn một chút */
+    box-shadow: 0px 8px 20px var(--shadow-light); /* Bóng sâu hơn và mờ hơn */
     z-index: 1001;
     border: 1px solid var(--border-color);
-    border-radius: 0.25rem;
+    border-radius: 0.5rem; /* Bo tròn hơn */
     list-style: none;
     padding: 0.5rem 0;
     margin: 0;
+    opacity: 0; /* Cho hiệu ứng fade */
+    transform: translateY(10px); /* Cho hiệu ứng trượt */
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 }
 
     .custom-dropdown-menu.show {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .custom-dropdown-menu li {
@@ -103,105 +135,108 @@ body {
     }
 
 .custom-dropdown-item {
-    color: var(--text-color);
-    padding: 0.5rem 0.5rem;
+    color: var(--text-color-dark);
+    padding: 0.85rem 1.25rem; /* Padding item lớn hơn */
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
+    gap: var(--medium-gap); /* Khoảng cách icon và text lớn hơn */
+    font-size: 1rem; /* Kích thước chữ chuẩn */
+    transition: var(--default-transition);
 }
 
     .custom-dropdown-item:hover {
-        background-color: #f1f3f5;
-        color: var(--primary-color);
+        background-color: var(--primary-light); /* Màu sáng của primary khi hover */
+        color: var(--white-bg); /* Chữ trắng */
     }
 
     .custom-dropdown-item.text-danger {
         color: #dc3545 !important;
     }
 
+        .custom-dropdown-item.text-danger:hover {
+            background-color: #dc3545 !important; /* Đảm bảo màu đỏ khi hover */
+            color: white !important;
+        }
+
+
 .custom-dropdown-divider {
     height: 1px;
-    margin: 0.5rem 0;
+    margin: 0.75rem 0; /* Khoảng cách lớn hơn */
     overflow: hidden;
-    background-color: #e9ecef;
+    background-color: var(--border-color);
     border: 0;
 }
 
-/* Main Layout */
-.main-wrapper {
+
+/* Main Content Area */
+.main-wrapper { /* div chứa sidebar và main content */
     display: flex;
     flex-grow: 1;
 }
 
-/* Sidebar */
 .sidebar {
-    width: var(--sidebar-width);
+    min-width: var(--sidebar-width-desktop); /* Default desktop width */
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--border-color);
-    padding: 1rem;
+    padding: var(--base-padding);
     position: sticky;
     top: var(--header-height);
     height: calc(100vh - var(--header-height));
     overflow-y: auto;
-    transition: transform 0.3s ease-in-out;
+    transition: var(--default-transition);
+    box-shadow: 2px 0 5px var(--shadow-light); /* Bóng nhẹ bên phải sidebar */
 }
 
     .sidebar .nav-link {
-        color: var(--text-color);
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
+        color: var(--text-color-dark);
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem; /* Bo tròn hơn */
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 0.95rem;
-        margin-bottom: 0.25rem;
+        gap: var(--medium-gap);
+        font-size: 1rem;
+        margin-bottom: var(--small-gap);
         text-decoration: none;
+        transition: var(--default-transition);
     }
 
         .sidebar .nav-link:hover {
-            background-color: #e9ecef;
+            background-color: var(--primary-light);
+            color: var(--white-bg);
         }
 
         .sidebar .nav-link.active {
             background-color: var(--primary-color);
             color: white;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Thêm bóng cho item active */
         }
 
         .sidebar .nav-link i {
-            font-size: 1rem;
+            font-size: 1.2rem; /* Icon lớn hơn */
         }
 
-/* Content Area */
-.content-area {
+.main-content-area {
     flex-grow: 1;
-    padding: 1rem;
+    padding: var(--large-gap); /* Padding nội dung lớn hơn nhiều */
     background-color: var(--content-bg);
-    margin: 1rem;
-    border-radius: 0.25rem;
+    margin: var(--base-padding); /* Margin quanh khu vực nội dung */
+    border-radius: 0.75rem; /* Bo tròn góc mạnh hơn */
+    box-shadow: 0 4px 15px var(--shadow-light); /* Bóng lớn hơn cho khu vực chính */
 }
 
-/* Footer */
-.giangvien-footer { /* Đổi tên class để phân biệt với admin-footer */
-    background-color: #e9ecef;
-    color: #6c757d;
-    padding: 0.75rem;
-    text-align: center;
-    font-size: 0.85rem;
-    border-top: 1px solid var(--border-color);
-}
 
-/* Responsive (Sửa cú pháp @media) */
+/* Responsive */
 @media (max-width: 767.98px) {
     .sidebar {
         position: fixed;
         top: var(--header-height);
         left: 0;
         transform: translateX(-100%);
-        width: 200px;
-        z-index: 1000;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        width: var(--sidebar-width-mobile);
+        z-index: 1020;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.3);
     }
 
         .sidebar.show {
@@ -212,12 +247,13 @@ body {
         display: block !important;
     }
 
-    .content-area {
-        margin: 0.5rem;
+    .avatar-button .d-sm-inline {
+        display: none !important; /* Ẩn tên trên mobile */
     }
 
-    .giangvien-title {
-        font-size: 1.2rem;
+    .main-content-area {
+        margin: var(--small-gap);
+        padding: var(--base-padding);
     }
 }
 
@@ -230,6 +266,7 @@ body {
         display: none !important;
     }
 }
+
 /* Custom Logout Confirmation Modal Styles */
 .custom-modal {
     display: none; /* Hidden by default */

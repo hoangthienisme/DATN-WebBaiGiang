@@ -59,7 +59,7 @@
         <div class="navbar-logo">
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1 class="sitename">BaiGiang</h1>
+                <h1 class="sitename">LearnHub</h1>
             </a>
         </div>
         <nav id="navmenu" class="navmenu">
@@ -95,39 +95,12 @@
             <input  type="text" placeholder="Tìm kiếm học phần, giảng viên..." />
             <img src="~/img/loupe.png" />
         </div>
-        @if (isLoggedIn)
-        {
-            <div class="relative group ml-4">
-                <div class="flex items-center space-x-2 text-white bg-blue-600 px-4 py-2 rounded-full cursor-pointer">
-                    <i class="fas fa-user-circle text-lg"></i>
-                    <span>@userName</span>
-                    <i class="bi bi-chevron-down"></i>
-                </div>
-                <ul class="absolute hidden group-hover:block right-0 mt-2 w-48 bg-white shadow-lg rounded-lg text-black z-50">
-                    <li class="px-4 py-2 hover:bg-gray-100"><a href="/Account/Profile">Quản lý tài khoản</a></li>
-                    <li class="px-4 py-2 hover:bg-gray-100"><a href="/Account/ChangePassword">Đổi mật khẩu</a></li>
-                    <li class="px-4 py-2 hover:bg-gray-100"><a href="#" onclick="return confirmLogout();">Đăng xuất</a></li>
-                </ul>
-            </div>
-        }
-        else
-        {
             <button class="navbar-button">
                 <a href="@Url.Action("Login","Account")">
                     Bắt đầu học
                 </a>
             </button>
-        }
     </nav>
-    <script>
-        function confirmLogout() {
-            if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
-                window.location.href = '/Account/Logout';
-                return false; 
-            }
-            return false; 
-        }
-    </script>
     <!-- Nội dung trang -->
         @RenderBody()
     @* Footer *@
