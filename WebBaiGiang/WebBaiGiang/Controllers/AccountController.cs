@@ -163,10 +163,16 @@ namespace WebBaiGiang.Controllers
             {
                 return RedirectToAction("Index", "Home", new { area = "Admin" });
             }
-            if (user.Role == "Teacher")
-            return RedirectToAction("Courses", "GiangVien");
+            else if (user.Role == "Teacher")
+            {
+                return RedirectToAction("Courses", "GiangVien");
+            }
+            else if (user.Role == "Student")
+            {
+                return RedirectToAction("Dashboard", "Student");
+            }
 
-        return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home");
     }
 
         public async Task<IActionResult> Logout()

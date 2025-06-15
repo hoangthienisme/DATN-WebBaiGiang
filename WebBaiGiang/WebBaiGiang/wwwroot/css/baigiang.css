@@ -1,5 +1,5 @@
 ﻿.conTent h3 {
-    margin-left: 70px;
+    margin-left: 10px;
     margin-top: 10px;
     font-family: var(--font-stack-heading-serif, 'Segoe UI', sans-serif);
     font-weight: 700;
@@ -11,7 +11,6 @@
 
 /* Search + dropdown + button */
 .search-filter {
-    margin-left: 70px;
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -21,6 +20,7 @@
 
 .search-input-wrapper {
     position: relative;
+    display: inline-block;
 }
 
 .search-icon {
@@ -34,6 +34,7 @@
 }
 
 .search-input-courses {
+    margin-left : 10px ;
     padding: 10px 10px 10px 36px;
     border: 1px solid #ccc;
     border-radius: 999px;
