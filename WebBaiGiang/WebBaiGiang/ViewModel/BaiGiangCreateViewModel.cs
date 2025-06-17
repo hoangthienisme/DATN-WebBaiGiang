@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebBaiGiang.ViewModel
 {
-    public class BaiGiangCreateViewModel : BaiGiangEditViewModel
+    public class BaiGiangCreateViewModel 
     {
         [Required(ErrorMessage = "Vui lòng nhập tên bài giảng!")]
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
-        public IFormFile? Attachment { get; set; }
         public List<int> SelectedClassIds { get; set; } = new List<int>();
+        public List<IFormFile>? Attachments { get; set; }
+        public List<IFormFile>? DocumentFiles { get; set; }   
         public List<SelectListItem> AvailableClasses { get; set; } = new List<SelectListItem>();
         public List<ChuongCreateViewModel> Chuongs { get; set; } = new List<ChuongCreateViewModel>();
     }

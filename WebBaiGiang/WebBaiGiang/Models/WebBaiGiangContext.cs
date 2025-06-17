@@ -47,7 +47,7 @@ public partial class WebBaiGiangContext : DbContext
 
 
     public virtual DbSet<ThongTinWeb> ThongTinWebs { get; set; }
-
+    public virtual DbSet<TaiNguyen> TaiNguyens { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;Database=WebBaiGiang;Trusted_Connection=True;");
@@ -64,7 +64,8 @@ public partial class WebBaiGiangContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Description).HasColumnType("text");
+            entity.Property(e => e.Description)
+                .HasColumnType("nvarchar(max)");
             entity.Property(e => e.Document).HasMaxLength(500);
             entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.VideoUrl)
@@ -84,11 +85,25 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.Property(e => e.ContentUrl).HasMaxLength(250);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.Description)
+            .HasColumnType("nvarchar(max)");
             entity.Property(e => e.Title).HasMaxLength(200);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+            entity.HasMany(e => e.TaiNguyens)
+          .WithOne(t => t.BaiGiang)
+          .HasForeignKey(t => t.BaiGiangId)
+          .OnDelete(DeleteBehavior.Cascade);
         });
+        modelBuilder.Entity<TaiNguyen>(entity =>
+        {
+            entity.HasKey(e => e.Id);
 
+            entity.Property(e => e.Url).HasMaxLength(500).IsRequired();
+
+            entity.Property(e => e.Loai).HasMaxLength(50).IsRequired();
+
+            entity.ToTable("TaiNguyen");
+        });
         modelBuilder.Entity<BaiTap>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__BaiTap__3214EC07210C887D");
@@ -96,7 +111,8 @@ public partial class WebBaiGiangContext : DbContext
             entity.ToTable("BaiTap");
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.Description)
+            .HasColumnType("nvarchar(max)");
             entity.Property(e => e.DueDate).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(200);
 
@@ -177,7 +193,8 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.DepartmentId).HasColumnName("Department_id");
-            entity.Property(e => e.Description).HasMaxLength(250);
+            entity.Property(e => e.Description)
+            .HasColumnType("nvarchar(max)");
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
@@ -194,7 +211,8 @@ public partial class WebBaiGiangContext : DbContext
             entity.ToTable("Khoa");
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Description).HasMaxLength(250);
+            entity.Property(e => e.Description)
+            .HasColumnType("nvarchar(max)");
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
         });
@@ -225,7 +243,8 @@ public partial class WebBaiGiangContext : DbContext
             entity.ToTable("LopHoc");
 
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Description).HasMaxLength(250);
+            entity.Property(e => e.Description)
+            .HasColumnType("nvarchar(max)");
             entity.Property(e => e.KhoaId).HasColumnName("Khoa_id");
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Picture).HasMaxLength(250);

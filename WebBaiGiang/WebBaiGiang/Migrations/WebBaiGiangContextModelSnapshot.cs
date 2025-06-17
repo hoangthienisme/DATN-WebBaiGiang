@@ -40,7 +40,7 @@ namespace WebBaiGiang.Migrations
                         .HasDefaultValueSql("(getdate())");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Document")
                         .HasMaxLength(500)
@@ -86,8 +86,7 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -124,8 +123,7 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime");
@@ -288,8 +286,7 @@ namespace WebBaiGiang.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -328,8 +325,7 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -413,11 +409,14 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("JoinCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("KhoaId")
                         .HasColumnType("int")
@@ -579,6 +578,34 @@ namespace WebBaiGiang.Migrations
                     b.HasIndex("IdClass");
 
                     b.ToTable("SinhVien_LopHoc", (string)null);
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.TaiNguyen", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BaiGiangId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Loai")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BaiGiangId");
+
+                    b.ToTable("TaiNguyen", (string)null);
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.ThongTinWeb", b =>
@@ -786,11 +813,24 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("IdSvNavigation");
                 });
 
+            modelBuilder.Entity("WebBaiGiang.Models.TaiNguyen", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.BaiGiang", "BaiGiang")
+                        .WithMany("TaiNguyens")
+                        .HasForeignKey("BaiGiangId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaiGiang");
+                });
+
             modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
                 {
                     b.Navigation("Chuongs");
 
                     b.Navigation("LopHocs");
+
+                    b.Navigation("TaiNguyens");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>

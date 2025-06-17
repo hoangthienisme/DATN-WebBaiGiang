@@ -497,6 +497,10 @@
       "PackagePath": "staticwebassets\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\08434400-0412-43b2-95e1-1ebd75e4e667.jpg",
+      "PackagePath": "staticwebassets\\uploads\\08434400-0412-43b2-95e1-1ebd75e4e667.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx",
       "PackagePath": "staticwebassets\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx"
     },
@@ -681,6 +685,10 @@
       "PackagePath": "staticwebassets\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\99026f03-6599-412a-9332-07d06e6cddf5_5 diem khac biet (1).jpg",
       "PackagePath": "staticwebassets\\uploads\\99026f03-6599-412a-9332-07d06e6cddf5_5 diem khac biet (1).jpg"
     },
@@ -729,28 +737,192 @@
       "PackagePath": "staticwebassets\\uploads\\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\00073832-775d-4953-ad13-e6127c2d397d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\00073832-775d-4953-ad13-e6127c2d397d.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\01086d28-102c-471c-86fc-5725dc34345a.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\01086d28-102c-471c-86fc-5725dc34345a.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\041a11b7-2429-4515-9ee1-79840c6b7d2a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\041a11b7-2429-4515-9ee1-79840c6b7d2a.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0a9c7368-8a66-4c7e-9353-288c6dcdf1a3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\0a9c7368-8a66-4c7e-9353-288c6dcdf1a3.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0b72fddf-90fc-46ea-8a66-1327e938bb57.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\0b72fddf-90fc-46ea-8a66-1327e938bb57.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0d8d167d-0a9c-4dbc-aa3d-070d02bc78a4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\0d8d167d-0a9c-4dbc-aa3d-070d02bc78a4.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\1637534b-9127-4e1e-a13c-6ee1b5dc7a67.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\1637534b-9127-4e1e-a13c-6ee1b5dc7a67.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\2143f459-e990-42c9-8d76-f0529ad00a5e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\2143f459-e990-42c9-8d76-f0529ad00a5e.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\24521a24-f443-4faf-851d-083f569dc970.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\24521a24-f443-4faf-851d-083f569dc970.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\261a9a3b-52f0-4ec0-b5eb-14336201f3ce.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\261a9a3b-52f0-4ec0-b5eb-14336201f3ce.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\26dbdd2c-aab7-45ee-88b6-f4c4ea4b6455.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\26dbdd2c-aab7-45ee-88b6-f4c4ea4b6455.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\29abf03d-17d6-44df-969e-2d4af152d543.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\29abf03d-17d6-44df-969e-2d4af152d543.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\2fa1b132-08f6-4c46-8cf4-7f7fd45d8612.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\2fa1b132-08f6-4c46-8cf4-7f7fd45d8612.docx"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\6c1c84ee-f072-43e8-8fff-0b92ef8d7251.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\6c1c84ee-f072-43e8-8fff-0b92ef8d7251.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\78bf4ac3-bba6-47bf-ba9f-85a2c90e118b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\78bf4ac3-bba6-47bf-ba9f-85a2c90e118b.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7be0fecc-9e12-4878-9d3a-de941c779f0d.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\7be0fecc-9e12-4878-9d3a-de941c779f0d.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7df54681-9e7a-468f-baca-f7b0343a5084.mp4",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\7df54681-9e7a-468f-baca-f7b0343a5084.mp4"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7f39cfc4-94cb-4695-b3b9-2031ec1cd7d1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\7f39cfc4-94cb-4695-b3b9-2031ec1cd7d1.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\8daa9192-f221-4419-b981-3fcb0d52de41.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\8daa9192-f221-4419-b981-3fcb0d52de41.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\93c2521e-e399-44d2-862b-a5301610fb33.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\93c2521e-e399-44d2-862b-a5301610fb33.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\9c74c5c7-8a60-4246-89dc-1bb447963d3b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\9c74c5c7-8a60-4246-89dc-1bb447963d3b.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a12b57e0-5024-4d83-9906-70bbc65b81ac.docx",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\a12b57e0-5024-4d83-9906-70bbc65b81ac.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a81b8ee0-c255-477e-892d-69746e4f96a6.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\a81b8ee0-c255-477e-892d-69746e4f96a6.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\bdbe4b03-95cb-4d87-807e-099b4179334e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\bdbe4b03-95cb-4d87-807e-099b4179334e.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\bf479dd0-10db-4137-bb04-229b67429f67.mp4",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\bf479dd0-10db-4137-bb04-229b67429f67.mp4"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\cb145143-ed6d-4069-a6fc-89f5d2c45299.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\cb145143-ed6d-4069-a6fc-89f5d2c45299.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d0f13342-6b60-4d80-9d25-4d47a7ebaf24.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\d0f13342-6b60-4d80-9d25-4d47a7ebaf24.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d755ba59-0d39-4d5a-bdef-37134efda04a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\d755ba59-0d39-4d5a-bdef-37134efda04a.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d78e29a2-912d-4db6-a16b-0cb0c43b99fa.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\d78e29a2-912d-4db6-a16b-0cb0c43b99fa.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\db96a267-517d-4176-aa0a-5488faeb1fc6.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\db96a267-517d-4176-aa0a-5488faeb1fc6.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\dc5fdc71-f669-46d1-9197-986170751916.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\dc5fdc71-f669-46d1-9197-986170751916.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\f2106eb7-1d17-4ee8-af33-377ece0bbea2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\baigiang\\f2106eb7-1d17-4ee8-af33-377ece0bbea2.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\53e0ca61-2637-43a0-aac3-a8e8ce943ad6.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\53e0ca61-2637-43a0-aac3-a8e8ce943ad6.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\6c45a97c-dc13-4625-b65e-57fc21a24e08.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\6c45a97c-dc13-4625-b65e-57fc21a24e08.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\7534539e-cf76-40a2-97ed-7ba67e70b236.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\7534539e-cf76-40a2-97ed-7ba67e70b236.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\773c98be-161d-4632-8e19-22d314d20cdc.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\773c98be-161d-4632-8e19-22d314d20cdc.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\872b8546-eac2-4092-b97b-589d900521e9.docx",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\872b8546-eac2-4092-b97b-589d900521e9.docx"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\b38b35fb-7df9-415d-99d9-8e43ec9a8b37.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\b38b35fb-7df9-415d-99d9-8e43ec9a8b37.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\c08289f8-a47b-4cdf-a7ab-7273038234ed.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\c08289f8-a47b-4cdf-a7ab-7273038234ed.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\e44e205b-686a-4237-a444-bdf36154ec27.docx",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\e44e205b-686a-4237-a444-bdf36154ec27.docx"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\f5f18c91-ec95-42b0-83a0-e56347e4a8bf.jpg",
+      "PackagePath": "staticwebassets\\uploads\\bailearn\\f5f18c91-ec95-42b0-83a0-e56347e4a8bf.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg",

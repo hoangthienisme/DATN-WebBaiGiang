@@ -128,37 +128,49 @@ namespace WebBaiGiang.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost]
          [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(NguoiDung nguoiDung)
-    {
-        if (string.IsNullOrEmpty(nguoiDung.Email) || string.IsNullOrEmpty(nguoiDung.Password))
+        public async Task<IActionResult> Login(NguoiDung nguoiDung, string? returnUrl = null)
         {
-            return View(nguoiDung);
-        }
+            if (string.IsNullOrEmpty(nguoiDung.Email) || string.IsNullOrEmpty(nguoiDung.Password))
+            {
+                ViewData["ReturnUrl"] = returnUrl;
+                return View(nguoiDung);
+            }
 
-        var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == nguoiDung.Email);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(nguoiDung.Password, user.Password))
-        {
-            ModelState.AddModelError("", " *Email hoặc mật khẩu không đúng.");
-            return View(nguoiDung);
-        }
-     var claims = new List<Claim>
-    {   new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == nguoiDung.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(nguoiDung.Password, user.Password))
+            {
+                ModelState.AddModelError("", " *Email hoặc mật khẩu không đúng.");
+                ViewData["ReturnUrl"] = returnUrl;
+                return View(nguoiDung);
+            }
+
+            var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
         new Claim(ClaimTypes.Name, user.Name),
         new Claim(ClaimTypes.Email, user.Email),
         new Claim(ClaimTypes.Role, user.Role)
     };
 
-        var identity = new ClaimsIdentity(claims, "Cookies");
-        var principal = new ClaimsPrincipal(identity);
+            var identity = new ClaimsIdentity(claims, "Cookies");
+            var principal = new ClaimsPrincipal(identity);
 
-        await HttpContext.SignInAsync("Cookies", principal);
+            await HttpContext.SignInAsync("Cookies", principal);
 
+            //  Nếu có returnUrl thì redirect về đó trước
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            // Nếu không có returnUrl thì chuyển theo Role
             if (user.Role == "Admin")
             {
                 return RedirectToAction("Index", "Home", new { area = "Admin" });
@@ -173,7 +185,8 @@ namespace WebBaiGiang.Controllers
             }
 
             return RedirectToAction("Index", "Home");
-    }
+        }
+
 
         public async Task<IActionResult> Logout()
         {

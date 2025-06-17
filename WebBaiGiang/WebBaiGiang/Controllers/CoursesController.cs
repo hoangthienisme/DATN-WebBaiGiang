@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
 using System.Security.Claims;
 using WebBaiGiang.Models;
 using WebBaiGiang.ViewModel;
@@ -238,35 +240,105 @@ namespace WebBaiGiang.Controllers
 
             return View(vm);
         }
-        [HttpPost]
-        public async Task<IActionResult> AddUser(AddUserToClassViewModel model)
+        [AllowAnonymous] 
+        public async Task<IActionResult> Join(string code)
         {
-            var user = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == model.Email);
-            if (user == null)
+            var lop = await _context.LopHocs.FirstOrDefaultAsync(x => x.JoinCode == code);
+            if (lop == null) return NotFound();
+
+            if (!User.Identity.IsAuthenticated)
             {
-                ModelState.AddModelError("", "Không tìm thấy người dùng");
-                return View(model);
+                // Chưa đăng nhập, chuyển đến trang đăng nhập + returnUrl
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Join", "Courses", new { code }) });
             }
 
-            // Kiểm tra đã có trong lớp chưa
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            bool isJoined = await _context.SinhVienLopHocs.AnyAsync(x => x.IdClass == lop.Id && x.IdSv == userId);
+
+            ViewBag.IsJoined = isJoined;
+            return View(lop);
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> ConfirmJoin(int lopId)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
             var exists = await _context.SinhVienLopHocs
-                .AnyAsync(x => x.IdClass == model.ClassId && x.IdSv == user.Id);
+                .AnyAsync(x => x.IdClass == lopId && x.IdSv == userId);
 
             if (!exists)
             {
-                var svLop = new SinhVienLopHoc
+                _context.SinhVienLopHocs.Add(new SinhVienLopHoc
                 {
-                    IdClass = model.ClassId,
-                    IdSv = user.Id,
+                    IdClass = lopId,
+                    IdSv = userId,
                     JoinDate = DateTime.Now,
                     IsActive = true
-                };
-
-                _context.SinhVienLopHocs.Add(svLop);
+                });
                 await _context.SaveChangesAsync();
+                TempData["JoinSuccess"] = " Bạn đã tham gia lớp học thành công!";
             }
 
-            return RedirectToAction("ChiTietLop", new { id = model.ClassId });
+            return RedirectToAction("Dashboard", "Student");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Teacher")]
+        public async Task<IActionResult> SendInvitation(InviteStudentViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Nếu model không hợp lệ, có thể xử lý lại hoặc thông báo
+                TempData["Error"] = "Thông tin không hợp lệ.";
+                return RedirectToAction("DetailCourses", new { id = model.ClassId });
+            }
+
+            // Lấy thông tin lớp học (nếu cần)
+            var lop = await _context.LopHocs.FindAsync(model.ClassId);
+            if (lop == null)
+            {
+                TempData["Error"] = "Không tìm thấy lớp học.";
+                return RedirectToAction("DetailCourses", new { id = model.ClassId });
+            }
+
+            // Tạo mã tham gia và URL xác nhận
+            var code = lop.JoinCode;
+            var confirmUrl = Url.Action("Join", "Courses", new { code }, Request.Scheme);
+
+            var subject = "📩 Mời bạn tham gia lớp học: " + lop.Name;
+            var body = $"Xin chào,<br/><br/>Bạn được mời tham gia lớp học <strong>{lop.Name}</strong>.<br/>" +
+                       $"Vui lòng nhấn vào liên kết bên dưới để xác nhận tham gia:<br/>" +
+                       $"<a href='{confirmUrl}'>{confirmUrl}</a><br/><br/>" +
+                       $"Thân ái,<br/>Website Bài Giảng";
+
+            await SendEmail(model.Email, subject, body);
+
+            TempData["Message"] = $"✅ Đã gửi lời mời đến {model.Email}";
+
+            return Redirect("/Courses/DetailCourses/" + model.ClassId + "#peopleTab");
+
+        }
+
+        // Hàm gửi email 
+        private async Task SendEmail(string toEmail, string subject, string body)
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(toEmail));
+            message.From = new MailAddress("nguyenhoangthien120304@gmail.com", "Web Bài Giảng");
+            message.Subject = subject;
+            message.Body = body;
+            message.IsBodyHtml = true;
+
+            using var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("nguyenhoangthien120304@gmail.com", "xqfx kjxd tpmq fmju"),
+                EnableSsl = true
+            };
+
+            await smtp.SendMailAsync(message);
         }
 
 
