@@ -13,6 +13,9 @@
 </div>
 
 <style>
+    .tab-section {
+        margin-top: 20px;
+    }
     .conTent h3 {
         margin-left: 70px;
         margin-top: 10px;
@@ -56,16 +59,13 @@
 
 <div class="container mt-4" style="margin-left:60px">
     <!-- Tabs -->
-    <ul class="nav nav-tabs mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#">Nội dung</a></li>
-        <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("BaiTap", "Courses", new { id = Model.Id })">Bài tập trên lớp</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="showTab('peopleTab')">Mọi người</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="#">Điểm</a></li>
+    <ul class="nav nav-tabs mb-3" id="courseTabs">
+        <li class="nav-item"><a class="nav-link active" data-tab="contentTab">Nội dung</a></li>
+        <li class="nav-item"><a class="nav-link" data-tab="exerciseTab">Bài tập trên lớp</a></li>
+        <li class="nav-item"><a class="nav-link" data-tab="peopleTab">Mọi người</a></li>
+        <li class="nav-item"><a class="nav-link" data-tab="gradeTab">Điểm</a></li>
     </ul>
+
 
     <!-- Banner ảnh bìa lớp học -->
     <div class="header-banner mb-4" style="background-image: url('@Model.Picture');">
@@ -73,57 +73,56 @@
             <h3 class="class-title text-white">@Model.Name</h3>
         </div>
     </div>
-    <!-- Nội dung mặc định - bài giảng -->
-    <div id="contentTab">
+
+    <!-- Tab Mọi người -->
+    <div id="peopleTab"  class="tab-section" style="display: none;">
+        @Html.Partial("_ThemNguoiPartial", new InviteStudentViewModel { ClassId = Model.Id })
+    </div>
+    <!-- Tab Điểm -->
+    <div id="gradeTab" class="tab-section" style="display:none;">
+        <p>Điểm số sẽ hiển thị ở đây</p>
+    </div>
+    <!-- Tab Bài tập -->
+    <div id="exerciseTab" class="tab-section" style="display:none;">
+        <p>Danh sách bài tập sẽ hiển thị ở đây (hoặc partial view)</p>
+    </div>
+
+    <!-- TAB NỘI DUNG - BÀI GIẢNG -->
+    <div id="contentTab" class="tab-section">
         <div class="row">
             @foreach (var item in Model.BaiGiangs)
             {
-                <!-- nội dung bài giảng -->
+                <div class="d-flex justify-content-between align-items-center border-bottom py-3" style="max-width: 90%;">
+                    <div class="d-flex align-items-center" style="gap: 8px;">
+                        <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                            <i class="bi bi-journal-richtext fs-5"></i>
+                        </div>
+                        <span class="fw-semibold">@item.Title</span>
+                    </div>
+                    <div class="d-flex align-items-center" style="gap: 12px;">
+                        <div class="text-muted small">
+                            Đã đăng vào @item.CreatedDate.ToString("HH:mm")
+                        </div>
+                        <div class="dropdown">
+                            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="text-dark text-decoration-none" style="cursor:pointer;">
+                                <i class="bi bi-three-dots-vertical fs-4"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id">Chỉnh sửa</a></li>
+                                <li>
+                                    <form asp-controller="GiangVien" asp-action="XoaBaiGiang" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài giảng này không?');">
+                                        <button type="submit" class="dropdown-item text-danger" style="background:none;">Xóa</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             }
         </div>
-    </div>
 
-    <!-- Tab Mọi người -->
-    <div id="peopleTab" style="display: none;">
-        @Html.Partial("_ThemNguoiPartial", new AddUserToClassViewModel { ClassId = Model.Id })
-    </div>
+       
 
-
-    <!-- Danh sách bài giảng -->
-    <div class="row">
-        @foreach (var item in Model.BaiGiangs)
-        {
-            <div class="d-flex justify-content-between align-items-center border-bottom py-3" style="max-width: 90%;">
-                <div class="d-flex align-items-center" style="gap: 8px;">
-                    <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
-                        <i class="bi bi-journal-richtext fs-5"></i>
-                    </div>
-                    <span class="fw-semibold">@item.Title</span>
-                </div>
-                <div class="d-flex align-items-center" style="gap: 12px;">
-                    <div class="text-muted small">
-                        Đã đăng vào @item.CreatedDate.ToString("HH:mm")
-                    </div>
-                    <div class="dropdown">
-                        <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="text-dark text-decoration-none" style="cursor:pointer;">
-                            <i class="bi bi-three-dots-vertical fs-4"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id">Chỉnh sửa</a></li>
-                            <li>
-                                <form asp-controller="GiangVien" asp-action="XoaBaiGiang" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài giảng này không?');">
-                                    <button type="submit" class="dropdown-item text-danger" style="background:none;">
-                                        Xóa
-                                    </button>
-                                </form>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
 
     <!-- PHÂN TRANG -->
     @if (Model.BaiGiangs != null && Model.BaiGiangs.TotalPages > 1)
@@ -164,18 +163,33 @@
     }
 </div>
 <script>
-    window.onload = function () {
-        if (window.location.href.includes("page=")) {
-            window.scrollTo({
-                top: document.querySelector(".row").offsetTop - 100,
-                behavior: 'smooth'
+    document.querySelectorAll("#courseTabs .nav-link").forEach(tab => {
+        tab.addEventListener("click", function () {
+            // Active tab nav
+            document.querySelectorAll("#courseTabs .nav-link").forEach(t => t.classList.remove("active"));
+            this.classList.add("active");
+
+            // Hide all tab content
+            document.querySelectorAll(".tab-section").forEach(section => {
+                section.style.display = "none";
             });
-        }
-    };
+
+            // Show selected tab
+            const tabId = this.getAttribute("data-tab");
+            document.getElementById(tabId).style.display = "block";
+        });
+    });
 </script>
-<script>
-    function showTab(tabId) {
-        document.getElementById("contentTab").style.display = "none";
-        document.getElementById("peopleTab").style.display = "block";
-    }
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy hash từ URL (VD: #peopleTab)
+            const hash = window.location.hash;
+
+            if (hash) {
+                const tabLink = document.querySelector(`#courseTabs .nav-link[data-tab="${hash.substring(1)}"]`);
+                if (tabLink) tabLink.click(); // Gọi sự kiện click để mở đúng tab
+            }
+        });
+    </script>
+
+

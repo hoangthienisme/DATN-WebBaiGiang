@@ -20,6 +20,7 @@ public partial class BaiGiang
     public DateTime? UpdateDate { get; set; }
 
     public int? UpdateBy { get; set; }
+    public virtual ICollection<TaiNguyen> TaiNguyens { get; set; } = new List<TaiNguyen>();
 
     public virtual ICollection<Chuong> Chuongs { get; set; } = new List<Chuong>();
     public virtual ICollection<LopHoc> LopHocs { get; set; } = new List<LopHoc>();

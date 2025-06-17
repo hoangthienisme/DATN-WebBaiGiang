@@ -26,6 +26,8 @@ public partial class LopHoc
 
     public int KhoaId { get; set; }
     public bool IsActive { get; set; } = true;
+    public string JoinCode { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 8);
+
 
     public virtual BaiGiang? BaiGiang { get; set; } = null!;
 

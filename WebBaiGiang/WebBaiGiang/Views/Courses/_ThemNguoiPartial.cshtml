@@ -1,14 +1,21 @@
-﻿@model WebBaiGiang.ViewModel.AddUserToClassViewModel
-<div class="border rounded p-4 bg-light mt-3">
-    <h5>Thêm người vào lớp</h5>
-    <form asp-action="AddUser" asp-controller="Courses" method="post">
-        <input type="hidden" name="ClassId" value="@Model.ClassId" />
+﻿@model WebBaiGiang.ViewModel.InviteStudentViewModel
+@{
+    ViewBag.Title = "Mời sinh viên vào lớp";
+}
 
-        <div class="mb-3">
-            <label class="form-label">Email người dùng</label>
-            <input name="Email" class="form-control" required />
+<div class="container mt-4">
+    <h3>Mời sinh viên tham gia lớp học</h3>
+    <form asp-action="SendInvitation" method="post">
+        <div class="form-group mb-2">
+            <label>Email sinh viên:</label>
+            <input type="email" class="form-control" name="Email" required />
         </div>
-
-        <button type="submit" class="btn btn-primary">Thêm vào lớp</button>
+        <input type="hidden" name="ClassId" value="@Model.ClassId" />
+        <button type="submit" class="btn btn-primary">Gửi lời mời</button>
     </form>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info mt-3">@TempData["Message"]</div>
+    }
 </div>

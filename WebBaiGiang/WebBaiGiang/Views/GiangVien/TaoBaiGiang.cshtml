@@ -4,7 +4,7 @@
     Layout = null;
     ViewData["Title"] = "Tạo bài giảng mới";
 }
-
+<meta charset="utf-8" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -35,9 +35,16 @@
         <hr />
         <h5>Đính kèm</h5>
         <div class="mb-3 d-flex flex-wrap gap-3 align-items-center">
-            <input asp-for="Attachment" type="file" class="form-control w-auto" />
-            <span asp-validation-for="Attachment" class="text-danger"></span>
+            <input asp-for="Attachments" type="file" class="form-control w-auto" multiple onchange="previewFiles(this, 'imagePreview')" />
+            <span asp-validation-for="Attachments" class="text-danger"></span>
         </div>
+        <div id="imagePreview" class="d-flex flex-wrap gap-3 mt-2"></div>
+
+        <div class="mb-3 d-flex flex-wrap gap-3 align-items-center">
+            <input asp-for="DocumentFiles" type="file" class="form-control w-auto" multiple onchange="previewFiles(this, 'fileNamePreview')" />
+            <span asp-validation-for="DocumentFiles" class="text-danger"></span>
+        </div>
+        <div id="fileNamePreview" class="mt-2"></div>
 
         <div class="mb-3">
             <label class="form-label fw-bold">Dành cho lớp</label>
@@ -78,20 +85,16 @@
 </div>
 
 <script>
-    // --- CONSTANTS & SELECTORS ---
     const CHAPTERS_CONTAINER = $('#chapters-container');
     const CLASS_CHECKBOX_SELECTOR = '.class-checkbox';
     const SELECTED_CLASSES_TEXT_SPAN = $('#selectedClassesText');
     const DROPDOWN_MENU_SELECTOR = '.dropdown-menu';
     const CHAPTER_ITEM_CLASS = 'chapter-item';
     const BAI_ITEM_CLASS = 'bai-item';
-    const BAIS_CONTAINER_CLASS = 'lessons-container'; // Đổi tên cho nhất quán với HTML
+    const BAIS_CONTAINER_CLASS = 'lessons-container';
 
-    let chapterCount = 0; // Biến đếm số chương, dùng cho index của mảng
+    let chapterCount = 0;
 
-    // --- HELPER FUNCTIONS ---
-
-    // Cập nhật text hiển thị lớp đã chọn
     function updateSelectedClassesDropdownText() {
         const selectedOptions = $(CLASS_CHECKBOX_SELECTOR + ':checked');
         if (selectedOptions.length === 0) {
@@ -99,80 +102,80 @@
         } else if (selectedOptions.length > 3) {
             SELECTED_CLASSES_TEXT_SPAN.text(`${selectedOptions.length} lớp đã chọn`);
         } else {
-            const labels = selectedOptions.map(function() {
+            const labels = selectedOptions.map(function () {
                 return $(this).next('label').text();
             }).get();
             SELECTED_CLASSES_TEXT_SPAN.text(labels.join(', '));
         }
     }
 
-    // Hàm tổng hợp để cập nhật lại tất cả các index
     function updateIndices() {
         const chapters = document.querySelectorAll("#chapters-container .chapter-item");
         chapters.forEach((chapterDiv, chapterIdx) => {
-            // Cập nhật tiêu đề hiển thị của chương
             chapterDiv.querySelector('label.fw-bold').innerText = `Chương ${chapterIdx + 1}`;
 
-            // Cập nhật name và data-valmsg-for của các input/textarea trong chương
             chapterDiv.querySelectorAll('[name^="Chuongs["]').forEach(input => {
-                const oldName = input.name;
-                const newName = oldName.replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`);
+                const newName = input.name.replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`);
                 input.name = newName;
                 if (input.dataset.valmsgFor) {
                     input.dataset.valmsgFor = input.dataset.valmsgFor.replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`);
                 }
             });
 
-            // Cập nhật id của container bài học
             const lessonContainer = chapterDiv.querySelector(`.${BAIS_CONTAINER_CLASS}`);
             if (lessonContainer) {
                 lessonContainer.id = `lessons-${chapterIdx}`;
             }
 
-            // Cập nhật onclick của nút thêm bài học
             const addLessonButton = chapterDiv.querySelector('button[onclick^="addLesson("]');
             if (addLessonButton) {
                 addLessonButton.setAttribute('onclick', `addLesson(${chapterIdx})`);
             }
 
-            // Cập nhật name và data-valmsg-for của các input/textarea trong bài học của chương này
             const lessons = chapterDiv.querySelectorAll(`.${BAIS_CONTAINER_CLASS} .${BAI_ITEM_CLASS}`);
             lessons.forEach((lessonDiv, lessonIdx) => {
                 lessonDiv.querySelector('label.fw-bold').innerText = `Bài học ${lessonIdx + 1}`;
                 lessonDiv.querySelectorAll('[name^="Chuongs[' + chapterIdx + '].Bais["]').forEach(input => {
-                    const oldName = input.name;
-                    const newName = oldName
+                    input.name = input.name
                         .replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`)
                         .replace(/Bais\[\d+\]/, `Bais[${lessonIdx}]`);
-                    input.name = newName;
                     if (input.dataset.valmsgFor) {
                         input.dataset.valmsgFor = input.dataset.valmsgFor
                             .replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`)
                             .replace(/Bais\[\d+\]/, `Bais[${lessonIdx}]`);
                     }
                 });
+
+                // Cập nhật ID preview file nếu có
+                const fileInput = lessonDiv.querySelector('input[type="file"]');
+                if (fileInput) {
+                    const newPreviewId = `preview-${chapterIdx}-${lessonIdx}`;
+                    fileInput.setAttribute("onchange", `previewFiles(this, '${newPreviewId}')`);
+                    let previewDiv = lessonDiv.querySelector('div[id^="preview-"]');
+                    if (!previewDiv) {
+                        previewDiv = document.createElement("div");
+                        previewDiv.classList.add("mt-2");
+                        lessonDiv.appendChild(previewDiv);
+                    }
+                    previewDiv.id = newPreviewId;
+                }
             });
         });
-        chapterCount = chapters.length; // Cập nhật lại chapterCount sau khi sắp xếp
+
+        chapterCount = chapters.length;
     }
 
-    // Hàm để áp dụng lại validation cho các phần tử HTML mới được thêm vào
     function enableValidationForNewElements(containerElement) {
-        // Loại bỏ validation cũ để tránh trùng lặp
         $('form').removeData('validator');
         $('form').removeData('unobtrusiveValidation');
-        // Áp dụng lại validation cho toàn bộ form
         $.validator.unobtrusive.parse($('form'));
     }
 
-    // --- DYNAMIC FORM FUNCTIONS ---
-
-    // Thêm một chương mới
-    window.addChapter = function() { // Sử dụng window.addChapter để đảm bảo có thể gọi từ onclick
+    window.addChapter = function () {
         const container = document.getElementById("chapters-container");
-        const chapterIdx = chapterCount; // Sử dụng chapterCount hiện tại làm index
+        const chapterIdx = chapterCount;
         const chapterDiv = document.createElement("div");
-        chapterDiv.classList.add("border", "p-3", "mb-3", CHAPTER_ITEM_CLASS); // Thêm class để dễ quản lý
+        chapterDiv.classList.add("border", "p-3", "mb-3", CHAPTER_ITEM_CLASS);
 
         chapterDiv.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -183,24 +186,22 @@
             <input type="text" name="Chuongs[${chapterIdx}].Title" class="form-control mb-2" placeholder="Tên chương" required />
             <span data-valmsg-for="Chuongs[${chapterIdx}].Title" class="text-danger"></span>
             <input type="number" name="Chuongs[${chapterIdx}].SortOrder" value="${chapterIdx + 1}" class="form-control mb-2" placeholder="Thứ tự" />
-
-
-            <div id="lessons-${chapterIdx}" class="${BAIS_CONTAINER_CLASS} ms-3 border-start ps-3 mt-3">
-                </div>
+            <div id="lessons-${chapterIdx}" class="${BAIS_CONTAINER_CLASS} ms-3 border-start ps-3 mt-3"></div>
             <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="addLesson(${chapterIdx})">+ Thêm bài học</button>
         `;
         container.appendChild(chapterDiv);
-        chapterCount++; // Tăng biến đếm sau khi thêm
-        enableValidationForNewElements(chapterDiv); // Áp dụng validation cho phần tử mới
-        updateIndices(); // Cập nhật lại tất cả các index
+        chapterCount++;
+        enableValidationForNewElements(chapterDiv);
+        updateIndices();
     }
 
-    // Thêm một bài học mới vào một chương cụ thể
-    window.addLesson = function(chapterIndex) { // Sử dụng window.addLesson để đảm bảo có thể gọi từ onclick
+    window.addLesson = function (chapterIndex) {
         const lessonContainer = document.getElementById(`lessons-${chapterIndex}`);
-        const lessonIdx = lessonContainer.children.length; // Lấy index của bài học trong chương đó
+        const lessonIdx = lessonContainer.querySelectorAll(`.${BAI_ITEM_CLASS}`).length;
+        const previewId = `preview-${chapterIndex}-${lessonIdx}`;
+
         const lessonDiv = document.createElement("div");
-        lessonDiv.classList.add("mt-2", "border", "p-2", BAI_ITEM_CLASS); // Thêm class để dễ quản lý
+        lessonDiv.classList.add("mt-2", "border", "p-2", BAI_ITEM_CLASS);
 
         lessonDiv.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -212,34 +213,63 @@
             <span data-valmsg-for="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="text-danger"></span>
             <textarea name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Description" class="form-control mb-1" placeholder="Mô tả bài học"></textarea>
             <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
-            <input type="file" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].DocumentFile" class="form-control mb-2" />
+            <input type="file" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].DocumentFile" class="form-control mb-2"
+                   onchange="previewFiles(this, '${previewId}')" />
+            <div id="${previewId}" class="mt-2"></div>
             <input type="number" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].SortOrder" value="${lessonIdx + 1}" class="form-control mb-1" placeholder="Thứ tự" />
         `;
+
         lessonContainer.appendChild(lessonDiv);
-        enableValidationForNewElements(lessonDiv); // Áp dụng validation cho phần tử mới
-        updateIndices(); // Cập nhật lại tất cả các index
+        enableValidationForNewElements(lessonDiv);
+        updateIndices();
     }
 
-    // Hàm xóa phần tử (chương hoặc bài học)
-    window.removeElement = function(button, className) { // Sử dụng window.removeElement để đảm bảo có thể gọi từ onclick
+    window.removeElement = function (button, className) {
         $(button).closest(`.${className}`).remove();
-        updateIndices(); // Sau khi xóa, cập nhật lại index
-        enableValidationForNewElements(); // Áp dụng lại validation cho toàn bộ form
+        updateIndices();
+        enableValidationForNewElements();
     }
 
-    // Khởi tạo khi trang tải
-    $(document).ready(function() {
-        updateSelectedClassesDropdownText(); // Cập nhật trạng thái dropdown lớp khi tải trang
-        $(CLASS_CHECKBOX_SELECTOR).on('change', updateSelectedClassesDropdownText); // Lắng nghe sự kiện thay đổi checkbox lớp
-
-        // Ngăn chặn đóng dropdown khi click vào bên trong (trừ khi click vào checkbox)
-        $(DROPDOWN_MENU_SELECTOR).on('click', function(e) {
+    $(document).ready(function () {
+        updateSelectedClassesDropdownText();
+        $(CLASS_CHECKBOX_SELECTOR).on('change', updateSelectedClassesDropdownText);
+        $(DROPDOWN_MENU_SELECTOR).on('click', function (e) {
             e.stopPropagation();
         });
 
-        // Khởi tạo chapterCount dựa trên số chương hiện có (nếu có)
-        // và cập nhật lại các index nếu trang tải với dữ liệu có sẵn
         chapterCount = $('#chapters-container').find(`.${CHAPTER_ITEM_CLASS}`).length;
-        updateIndices(); // Gọi lần đầu để đảm bảo các index và label đúng
+        updateIndices();
     });
+
+    // 👉 Hàm xử lý preview file
+    function previewFiles(input, previewContainerId) {
+        const previewContainer = document.getElementById(previewContainerId);
+        previewContainer.innerHTML = "";
+
+        const files = input.files;
+        if (!files || files.length === 0) return;
+
+        Array.from(files).forEach(file => {
+            const fileType = file.type;
+
+            if (fileType.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.style.maxWidth = "120px";
+                    img.style.maxHeight = "120px";
+                    img.classList.add("me-2", "mb-2", "border", "p-1");
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                const fileNameElement = document.createElement("p");
+                fileNameElement.textContent = "📄 " + file.name;
+                fileNameElement.classList.add("mb-1");
+                previewContainer.appendChild(fileNameElement);
+            }
+        });
+    }
 </script>
+

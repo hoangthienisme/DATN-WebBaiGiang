@@ -33,13 +33,23 @@ namespace WebBaiGiang.Controllers
                 return Unauthorized();
             }
 
-            var myCourses = _context.LopHocs
-                .Where(l => l.IsActive == true && l.GiangVienLopHocs.Any(gv => gv.IdGv == userId))
-                .OrderByDescending(l => l.CreatedDate); // Ensure CreatedDate is always valid or nullable
+            var myCoursesQuery = _context.LopHocs
+                .Where(l => l.IsActive && l.GiangVienLopHocs.Any(gv => gv.IdGv == userId))
+                .OrderByDescending(l => l.CreatedDate)
+                .Select(l => new LopHoc 
+                {
+                    Id = l.Id,
+                    Name = l.Name,
+                    Description = l.Description,
+                    Picture = l.Picture,
+                    CreatedDate = l.CreatedDate,
+                    JoinCode = l.JoinCode
+                });
 
-            var paginatedCourses = await PhanTrang<LopHoc>.CreateAsync(myCourses, page, pageSize);
+            var paginatedCourses = await PhanTrang<LopHoc>.CreateAsync(myCoursesQuery, page, pageSize);
             return View(paginatedCourses);
         }
+
 
         [HttpGet]
         public IActionResult CreateCourses()
@@ -211,7 +221,7 @@ namespace WebBaiGiang.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ArchiveCourse(int id)
+        public async Task<IActionResult> ArchiveCourse(int id) // ẩn lớp học
         {
             var course = await _context.LopHocs.FindAsync(id);
             if (course == null)
@@ -257,33 +267,21 @@ namespace WebBaiGiang.Controllers
         {
             ModelState.Remove(nameof(model.AvailableClasses));
 
-            // Lấy ID giảng viên hiện tại để gán vào CreatedBy (nếu có trong BaiGiang entity)
             var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            int? currentGiangVienId = null;
-            if (int.TryParse(currentGiangVienIdString, out int parsedId))
-            {
-                currentGiangVienId = parsedId;
-            }
+            int? currentGiangVienId = int.TryParse(currentGiangVienIdString, out var parsedId) ? parsedId : (int?)null;
 
             if (!ModelState.IsValid)
             {
-                // Nếu có lỗi, cần tải lại danh sách lớp học của giảng viên để hiển thị lại form
-                if (currentGiangVienId.HasValue)
-                {
-                    model.AvailableClasses = await _context.GiangVienLopHocs
-                                                        .Where(glh => glh.IdGv == currentGiangVienId.Value && glh.IdClassNavigation.IsActive == true)
-                                                        .Select(glh => new SelectListItem
-                                                        {
-                                                            Value = glh.IdClass.ToString(),
-                                                            Text = glh.IdClassNavigation.Name
-                                                        })
-                                                        .Distinct()
-                                                        .ToListAsync();
-                }
-                else
-                {
-                    model.AvailableClasses = new List<SelectListItem>(); 
-                }
+                model.AvailableClasses = currentGiangVienId.HasValue
+                    ? await _context.GiangVienLopHocs
+                                    .Where(glh => glh.IdGv == currentGiangVienId.Value && glh.IdClassNavigation.IsActive)
+                                    .Select(glh => new SelectListItem
+                                    {
+                                        Value = glh.IdClass.ToString(),
+                                        Text = glh.IdClassNavigation.Name
+                                    }).Distinct().ToListAsync()
+                    : new List<SelectListItem>();
+
                 return View(model);
             }
 
@@ -291,28 +289,62 @@ namespace WebBaiGiang.Controllers
             {
                 Title = model.Title,
                 Description = model.Description,
-                ContentUrl = null, 
+                ContentUrl = null,
                 CreatedDate = DateTime.Now,
-                CreatedBy = currentGiangVienId 
+                CreatedBy = currentGiangVienId
             };
-            if (model.Attachment != null)
-            {
-                var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "baigiang");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-                var fileName = Guid.NewGuid() + Path.GetExtension(model.Attachment.FileName);
-                var filePath = Path.Combine(uploadsFolder, fileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
+            // Tạo thư mục lưu file
+            var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "baigiang");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+                
+            // Lưu từng file trong danh sách đính kèm
+            if (model.Attachments != null && model.Attachments.Any())
+            {
+                foreach (var file in model.Attachments)
                 {
-                    await model.Attachment.CopyToAsync(stream);
+                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    var loai = file.ContentType.StartsWith("video") ? "video" : "image";
+
+                    baiGiang.TaiNguyens.Add(new TaiNguyen
+                    {
+                        Url = "/uploads/baigiang/" + fileName,
+                        Loai = loai
+                    });
                 }
-                baiGiang.ContentUrl = "/uploads/baigiang/" + fileName;
+            }
+            // Lưu tài liệu (PDF, Word, Excel)
+            if (model.DocumentFiles != null && model.DocumentFiles.Any())
+            {
+                foreach (var file in model.DocumentFiles)
+                {
+                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    baiGiang.TaiNguyens.Add(new TaiNguyen
+                    {
+                        Url = "/uploads/baigiang/" + fileName,
+                        Loai = "tailieu" // Đặt tên khác 'image' hoặc 'video' để dễ phân biệt
+                    });
+                }
             }
 
-  
+            // Xử lý chương và bài học
             foreach (var chuongModel in model.Chuongs)
             {
                 var chuong = new Chuong
@@ -335,48 +367,58 @@ namespace WebBaiGiang.Controllers
 
                     if (baiModel.DocumentFile != null)
                     {
-                        var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "bailearn");
-                        if (!Directory.Exists(uploadsFolder))
+                        var baiUploadFolder = Path.Combine(_env.WebRootPath, "uploads", "bailearn");
+                        if (!Directory.Exists(baiUploadFolder))
                         {
-                            Directory.CreateDirectory(uploadsFolder);
+                            Directory.CreateDirectory(baiUploadFolder);
                         }
-                        var fileName = Guid.NewGuid() + Path.GetExtension(baiModel.DocumentFile.FileName);
-                        var filePath = Path.Combine(uploadsFolder, fileName);
-                        using (var stream = new FileStream(filePath, FileMode.Create))
+
+                        var docFileName = Guid.NewGuid() + Path.GetExtension(baiModel.DocumentFile.FileName);
+                        var docFilePath = Path.Combine(baiUploadFolder, docFileName);
+
+                        using (var stream = new FileStream(docFilePath, FileMode.Create))
                         {
                             await baiModel.DocumentFile.CopyToAsync(stream);
                         }
-                        bai.Document = "/uploads/bailearn/" + fileName;
+
+                        bai.Document = "/uploads/bailearn/" + docFileName;
                     }
+
                     chuong.Bais.Add(bai);
                 }
+
                 baiGiang.Chuongs.Add(chuong);
             }
 
+            // Thêm bài giảng
             _context.BaiGiangs.Add(baiGiang);
             await _context.SaveChangesAsync();
+
+            // Gán bài giảng cho các lớp
             foreach (var classId in model.SelectedClassIds)
             {
                 var lopHoc = await _context.LopHocs.FindAsync(classId);
                 if (lopHoc != null)
                 {
                     lopHoc.BaiGiangId = baiGiang.Id;
-                    lopHoc.UpdateDate = DateTime.Now; 
-                    lopHoc.UpdateBy = currentGiangVienId; 
+                    lopHoc.UpdateDate = DateTime.Now;
+                    lopHoc.UpdateBy = currentGiangVienId;
                     _context.LopHocs.Update(lopHoc);
                 }
             }
+
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Bài giảng đã được tạo thành công và gán cho các lớp đã chọn!";
+            TempData["SuccessMessage"] = "Bài giảng đã được tạo thành công và đính kèm tài nguyên!";
             return RedirectToAction("BaiGiang", "GiangVien");
         }
 
 
-    
 
 
-public async Task<IActionResult> BaiGiang(int page = 1)
+
+
+        public async Task<IActionResult> BaiGiang(int page = 1)
         {
             int pageSize = 6;
             var baigiang = _context.BaiGiangs
@@ -458,6 +500,44 @@ public async Task<IActionResult> BaiGiang(int page = 1)
                                                     .ToListAsync();
 
             return View("SuaBaiGiang", viewModel);
+        }
+        public async Task<IActionResult> ChiTietBaiGiang(int id)
+        {
+            var baiGiang = await _context.BaiGiangs
+                .Include(bg => bg.Chuongs)
+                    .ThenInclude(c => c.Bais)
+                .FirstOrDefaultAsync(bg => bg.Id == id);
+
+            if (baiGiang == null)
+                return NotFound();
+
+            var viewModel = new BaiGiang
+            {
+                Id = baiGiang.Id,
+                Title = baiGiang.Title,
+                Description = baiGiang.Description,
+                ContentUrl = baiGiang.ContentUrl,
+                CreatedDate = baiGiang.CreatedDate,
+
+                Chuongs  = baiGiang.Chuongs.OrderBy(c => c.SortOrder).Select(c => new Chuong
+                {
+                    Id = c.Id,
+                    Title = c.Title,
+                    SortOrder = c.SortOrder,
+                    Bais = c.Bais.OrderBy(b => b.SortOrder).Select(b => new Bai
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Description = b.Description,
+                        VideoUrl = b.VideoUrl,
+                        Document = b.Document,
+
+                        SortOrder = b.SortOrder
+                    }).ToList()
+                }).ToList()
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
