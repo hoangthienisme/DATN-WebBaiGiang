@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using WebBaiGiang.ViewModel;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Microsoft.AspNetCore.Authentication.Google;
 namespace WebBaiGiang.Controllers
 {
     public class AccountController : Controller
@@ -19,6 +20,33 @@ namespace WebBaiGiang.Controllers
         public AccountController(WebBaiGiangContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+        [HttpGet("login-google")]
+        public IActionResult LoginGoogle(string returnUrl = "/")
+        {
+            var properties = new AuthenticationProperties
+            {
+                RedirectUri = returnUrl
+            };
+
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        }
+
+
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var claims = result.Principal.Identities
+                .FirstOrDefault()?.Claims
+                .Select(claim => new
+                {
+                    claim.Type,
+                    claim.Value
+                });
+
+            // Sau này bạn có thể xử lý claims để tạo user, gán role, ghi DB...
+            return Json(claims); // Tạm in ra JSON để kiểm tra
         }
         public IActionResult SignUp()
         {
@@ -181,7 +209,7 @@ namespace WebBaiGiang.Controllers
             }
             else if (user.Role == "Student")
             {
-                return RedirectToAction("Dashboard", "Student");
+                return RedirectToAction("Courses", "SinhVien");
             }
 
             return RedirectToAction("Index", "Home");

@@ -131,6 +131,9 @@ namespace WebBaiGiang.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<double?>("MaxPoint")
+                        .HasColumnType("float");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -398,10 +401,6 @@ namespace WebBaiGiang.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BaiGiangId")
-                        .HasColumnType("int")
-                        .HasColumnName("BaiGiang_id");
-
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
@@ -444,13 +443,29 @@ namespace WebBaiGiang.Migrations
                     b.HasKey("Id")
                         .HasName("PK__LopHoc__3214EC0728E5A9A5");
 
-                    b.HasIndex("BaiGiangId");
-
                     b.HasIndex("KhoaId");
 
                     b.HasIndex("SubjectsId");
 
                     b.ToTable("LopHoc", (string)null);
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.LopHocBaiGiang", b =>
+                {
+                    b.Property<int>("LopHocId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BaiGiangId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("AddedDate")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("LopHocId", "BaiGiangId");
+
+                    b.HasIndex("BaiGiangId");
+
+                    b.ToTable("LopHocBaiGiangs");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.NguoiDung", b =>
@@ -751,11 +766,6 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.LopHoc", b =>
                 {
-                    b.HasOne("WebBaiGiang.Models.BaiGiang", "BaiGiang")
-                        .WithMany("LopHocs")
-                        .HasForeignKey("BaiGiangId")
-                        .HasConstraintName("FK_LopHoc_BaiGiang");
-
                     b.HasOne("WebBaiGiang.Models.Khoa", "Khoa")
                         .WithMany("LopHocs")
                         .HasForeignKey("KhoaId")
@@ -768,11 +778,28 @@ namespace WebBaiGiang.Migrations
                         .IsRequired()
                         .HasConstraintName("FK__LopHoc__Subjects__403A8C7D");
 
-                    b.Navigation("BaiGiang");
-
                     b.Navigation("Khoa");
 
                     b.Navigation("Subjects");
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.LopHocBaiGiang", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.BaiGiang", "BaiGiang")
+                        .WithMany("LopHocBaiGiangs")
+                        .HasForeignKey("BaiGiangId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebBaiGiang.Models.LopHoc", "LopHoc")
+                        .WithMany("LopHocBaiGiangs")
+                        .HasForeignKey("LopHocId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaiGiang");
+
+                    b.Navigation("LopHoc");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.NopBai", b =>
@@ -828,7 +855,7 @@ namespace WebBaiGiang.Migrations
                 {
                     b.Navigation("Chuongs");
 
-                    b.Navigation("LopHocs");
+                    b.Navigation("LopHocBaiGiangs");
 
                     b.Navigation("TaiNguyens");
                 });
@@ -866,6 +893,8 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("GiangVienLopHocs");
 
                     b.Navigation("LoiMois");
+
+                    b.Navigation("LopHocBaiGiangs");
 
                     b.Navigation("SinhVienLopHocs");
                 });

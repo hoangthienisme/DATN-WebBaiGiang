@@ -8,5 +8,6 @@ namespace WebBaiGiang.ViewModel
         public string Name { get; set; }
         public string Picture { get; set; }
         public PhanTrang<BaiGiang> BaiGiangs { get; set; }
+        public List<BaiTap> BaiTaps { get; set; } = new();
     }
 }

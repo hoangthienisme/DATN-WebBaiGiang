@@ -10,6 +10,7 @@ public partial class BaiTap
     public string Title { get; set; } = null!;
 
     public string? Description { get; set; }
+    public double? MaxPoint { get; set; }
 
     public DateTime? DueDate { get; set; }
 

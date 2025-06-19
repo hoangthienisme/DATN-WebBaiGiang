@@ -1,75 +1,179 @@
 ﻿@model List<BaiTap>
 @{
-    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
     var tenlop = ViewBag.TenLop as string;
     var lopId = ViewBag.LopId;
 }
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+
+    .dropdown-toggle {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+
+    .dropdown-toggle:hover {
+    background-color: #0056b3;
+    }
+
+    .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 1;
+    }
+
+    .dropdown-menu a,
+    .dropdown-menu button {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    background: none;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu button:hover {
+    background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-menu {
+    display: block;
+    }
+
+    .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    }
+
+    .three-dots {
+    cursor: pointer;
+    font-size: 24px;
+    }
+</style>
+
+<script>
+    // Toggle all dropdowns
+    document.addEventListener("click", function (e) {
+    const isDropdownBtn = e.target.closest(".dropdown-toggle") || e.target.closest(".three-dots");
+
+    document.querySelectorAll(".dropdown").forEach(drop => {
+    if (!drop.contains(e.target)) {
+    drop.classList.remove("show");
+    }
+    });
+
+    if (isDropdownBtn) {
+    const dropdown = isDropdownBtn.closest(".dropdown");
+    dropdown.classList.toggle("show");
+    }
+    });
+</script>
 
 <div class="container mt-4">
-    <div class="d-flex justify-content-between mb-3">
-        <h4 class="fw-bold">Bài tập của lớp @tenlop</h4>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                + Thêm mới
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="@Url.Action("TaoBaiTap", new { lopId = lopId })">Bài tập</a></li>
-                <li><a class="dropdown-item" href="@Url.Action("TaoBaiKiemTra", new { lopId = lopId })">Bài kiểm tra</a></li>
-            </ul>
-        </div>
+    <div class="d-flex justify-content-between align-items-center mb-4" style="margin-right: 10%;display:flex; justify-content:space-between; align-items:center;">
+        <h4 style="margin:0; font-weight: bold;">Bài tập của lớp @tenlop</h4>
+        @if (User.IsInRole("Teacher"))
+        {
+            <div class="dropdown">
+                <button class="dropdown-toggle">+ Thêm mới</button>
+                <div class="dropdown-menu">
+                    <a href="@Url.Action("TaoBaiTap", new { lopId = lopId })">Bài tập</a>
+                    <a href="@Url.Action("TaoBaiKiemTra", new { lopId = lopId })">Bài kiểm tra</a>
+                </div>
+            </div>
+        }
+
     </div>
 
     @if (!Model.Any())
     {
-        <div class="alert alert-info">Không có bài tập nào cho lớp này.</div>
+        <div style="background-color:#e7f1ff; padding:10px; border-radius:6px; color:#333;">Không có bài tập nào cho lớp này.</div>
     }
 
     @foreach (var item in Model)
     {
-        <div class="d-flex justify-content-between align-items-center border-bottom py-3" style="margin-left: 60px;">
-            <div class="d-flex align-items-center" style="gap: 8px;">
-                <div class="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
-                    <i class="bi bi-pencil-square fs-5"></i>
-                </div>
-                <div>
-                    <div class="fw-semibold">@item.Title</div>
-                    @if (!string.IsNullOrWhiteSpace(item.Description))
-                    {
-                        <div class="text-muted small">@item.Description</div>
-                    }
-                </div>
-            </div>
+        <div class="card" style="max-width: 90%;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; gap:12px;">
+                    <div class="icon-circle">📝</div>
+                    <div>
+                        <div style="font-weight:bold; font-size:18px;">
+                            @if (User.IsInRole("Student"))
+                            {
+                                <a href="@Url.Action("ChiTietBaiTap", "SinhVien", new { id = item.Id })" style="text-decoration:none; color:inherit;">
+                                    @item.Title
+                                </a>
+                            }
+                            else if (User.IsInRole("Teacher"))
+                            {
+                                <a href="@Url.Action("ChiTietBaiTapGV", "Courses", new { baiTapId = item.Id })" style="text-decoration:none; color:inherit;">
+                                    @item.Title
+                                </a>
+                            }
+                            else
+                            {
+                                @item.Title
+                            }
+                        </div>
 
-            <div class="d-flex align-items-center" style="gap: 12px;">
-                <div class="text-muted small">
-                    Hạn nộp: @item.DueDate?.ToString("dd/MM/yyyy HH:mm")
-                </div>
-                <div class="text-muted small">
-                    Đã đăng vào: @item.CreatedDate.ToString("dd/MM/yyyy HH:mm")
-                </div>
-                <div class="dropdown">
-                    <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="text-dark text-decoration-none" style="cursor:pointer;">
-                        <i class="bi bi-three-dots-vertical fs-4"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" asp-action="SuaBaiTap" asp-route-id="@item.Id">Chỉnh sửa</a></li>
-                        <li>
-                            <form asp-action="XoaBaiTap" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài tập này không?');">
-                                <button type="submit" class="dropdown-item text-danger" style="background:none;">
-                                    Xóa
-                                </button>
-                            </form>
-                        </li>
-                        @if (!string.IsNullOrEmpty(item.ContentUrl))
+                        @if (!string.IsNullOrWhiteSpace(item.Description))
                         {
-                            <li><a class="dropdown-item" href="@item.ContentUrl" target="_blank">Xem file đính kèm</a></li>
+                            <div style="color:gray; font-size:14px;">@item.Description</div>
                         }
-                    </ul>
+                        <div style="color:gray; font-size:13px; margin-top:4px;">
+                            🕒 Hạn nộp: @item.DueDate?.ToString("dd/MM/yyyy HH:mm")<br />
+                            📅 Đăng vào: @item.CreatedDate.ToString("dd/MM/yyyy HH:mm")
+                        </div>
+                    </div>
                 </div>
+                @if (User.IsInRole("Teacher"))
+                {
+                    <div class="dropdown">
+                        <div class="three-dots">⋮</div>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a href="@Url.Action("SuaBaiTap", new { id = item.Id })">Chỉnh sửa</a>
+                            <form asp-action="XoaBaiTap" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài tập này không?');">
+                                <button type="submit" class="text-danger">Xóa</button>
+                            </form>
+                            @if (!string.IsNullOrEmpty(item.ContentUrl))
+                            {
+                                <a href="@item.ContentUrl" target="_blank">Xem file đính kèm</a>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
+             
         </div>
     }
 </div>

@@ -49,9 +49,8 @@
                         }
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="copyToClipboard('@joinLink')">Sao chép liên kết</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="copyToClipboard('@joinLink')">Chia sẻ lớp học</a></li>
                             <li><a class="dropdown-item" asp-action="EditCourses" asp-route-id="@course.Id">Chỉnh sửa</a></li>
-                            <li><a class="dropdown-item" href="@joinLink" target="_blank">Lấy link lớp học</a></li>
                             <li><a class="dropdown-item-hide" style="margin-left:15px;z-index: 1050;color : red" data-id="@course.Id">Lưu trữ</a></li>
                         </ul>
 
