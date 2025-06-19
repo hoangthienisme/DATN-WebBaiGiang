@@ -1,0 +1,51 @@
+﻿@model WebBaiGiang.Models.BaiTap
+
+<h3>Chấm bài: @Model.Title</h3>
+<hr />
+@{
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+}
+@if (!Model.NopBais.Any())
+{
+    <p>Chưa có học sinh nào nộp bài.</p>
+}
+else
+{
+    <form method="post" asp-action="ChamDiem">
+        <input type="hidden" name="TestId" value="@Model.Id" />
+        <input type="hidden" name="lopId" value="@ViewBag.LopId" />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Học sinh</th>
+                    <th>File</th>
+                    <th>Ngày nộp</th>
+                    <th>Điểm</th>
+                    <th>Nhận xét</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.NopBais.Count; i++)
+                {
+                    var nopBai = Model.NopBais.ElementAt(i);
+                    <tr>
+                        <td>@nopBai.Users.Name</td>
+                        <td>
+                            <a href="@nopBai.FileUrl" target="_blank">Xem bài</a>
+                        </td>
+                        <td>@nopBai.SubmittedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            <input type="number" name="Points[@i]" value="@nopBai.Point" step="0.1" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="text" name="FeedBacks[@i]" value="@nopBai.FeedBack" class="form-control" />
+                        </td>
+                        <input type="hidden" name="NopBaiIds[@i]" value="@nopBai.Id" />
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Lưu chấm điểm</button>
+    </form>
+}

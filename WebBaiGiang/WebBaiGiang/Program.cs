@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.EntityFrameworkCore;
 using WebBaiGiang.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,13 +17,18 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-
-builder.Services.AddAuthentication("Cookies")
-    .AddCookie("Cookies", options =>
-    {
-        options.LoginPath = "/Account/Login";
-        options.AccessDeniedPath = "/Account/AccessDenied";
-    });
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(options =>
+{
+    options.ClientId = "59769696667-lfjeh889v5eii0n25ue6viefv38f8a3k.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+    options.CallbackPath = "/signin-google"; 
+});
 
 builder.Services.AddAuthorization();
 
@@ -41,9 +48,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

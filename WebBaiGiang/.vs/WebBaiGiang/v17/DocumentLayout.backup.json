@@ -3,56 +3,68 @@
   "WorkspaceRootPath": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\detailcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\detailcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\chitietbaitapgv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\chitietbaitapgv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\invitestudentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\invitestudentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\sinhvien\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\sinhvien\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\_themnguoipartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\_themnguoipartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\join.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\join.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\sinhviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\sinhviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\giangvien\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\giangvien\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\sinhvienlophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\sinhvienlophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\lophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\lophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\taobaitap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\taobaitap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\detailcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\detailcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\baitap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\baitap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\sinhvien\\chitietbaitap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\sinhvien\\chitietbaitap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\giangvien\\chitietbaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\giangvien\\chitietbaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\giangvien\\baigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\giangvien\\baigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\chitietbaitapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\chitietbaitapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\baitapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\baitapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\nopbai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\nopbai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\baitap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\baitap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,172 +78,212 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CoursesController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\CoursesController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\CoursesController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\CoursesController.cs*",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\CoursesController.cs*",
-              "ViewState": "AgIAADkBAAAAAAAAAAAAwEEBAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "SinhVienController.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\SinhVienController.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\SinhVienController.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\SinhVienController.cs",
+              "RelativeToolTip": "WebBaiGiang\\Controllers\\SinhVienController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAADgv1oAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T02:41:11.961Z",
+              "WhenOpened": "2025-06-19T05:00:17.408Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_LayoutGiangvien.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAE8AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T04:44:15.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\appsettings.json",
-              "RelativeDocumentMoniker": "WebBaiGiang\\appsettings.json",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\appsettings.json",
-              "RelativeToolTip": "WebBaiGiang\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-17T04:26:59.982Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InviteStudentViewModel.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\InviteStudentViewModel.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\InviteStudentViewModel.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\InviteStudentViewModel.cs",
-              "RelativeToolTip": "WebBaiGiang\\ViewModel\\InviteStudentViewModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T04:18:46.892Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_ThemNguoiPartial.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\_ThemNguoiPartial.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\_ThemNguoiPartial.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\_ThemNguoiPartial.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\_ThemNguoiPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T04:18:18.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DetailCourses.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml*",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml*",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAAwMEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T04:16:57.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Title": "BaiTap.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\BaiTap.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\BaiTap.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\BaiTap.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\BaiTap.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T03:32:22.153Z",
+              "WhenOpened": "2025-06-19T05:13:43.082Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAKwAAAAAAAAAAADwv7cAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T03:29:35.39Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GiangVienController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\GiangVienController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\GiangVienController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAswBoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T03:05:20.914Z",
+              "Title": "TaoBaiTap.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\TaoBaiTap.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\TaoBaiTap.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\TaoBaiTap.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\TaoBaiTap.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T06:00:35.119Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "ChiTietBaiGiang.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T05:58:04.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Courses.cshtml",
               "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
               "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
               "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
               "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\Courses.cshtml",
-              "ViewState": "AgIAACgAAAAAAAAAAAAwwDUAAABzAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T03:02:27.073Z",
+              "WhenOpened": "2025-06-19T05:57:41.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Join.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\Join.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\Join.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\Join.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\Join.cshtml",
-              "ViewState": "AgIAADUAAAAAAAAAAAAAADUAAAADAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ChiTietBaiTapGV.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\ChiTietBaiTapGV.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\ChiTietBaiTapGV.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\ChiTietBaiTapGV.cshtml*",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\ChiTietBaiTapGV.cshtml*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T03:00:54.897Z",
+              "WhenOpened": "2025-06-19T05:47:02.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SinhVienLopHoc.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\SinhVienLopHoc.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\SinhVienLopHoc.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\SinhVienLopHoc.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\SinhVienLopHoc.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "GiangVienController.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "RelativeToolTip": "WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAEwBkAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T02:59:21.074Z",
+              "WhenOpened": "2025-06-19T05:46:22.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChiTietBaiTap.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\ChiTietBaiTap.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\SinhVien\\ChiTietBaiTap.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\ChiTietBaiTap.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\SinhVien\\ChiTietBaiTap.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T05:36:45.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "LopHoc.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\LopHoc.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\LopHoc.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\LopHoc.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\LopHoc.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAqwB0AAAAAAAAAAAAAAA==",
+              "Title": "ChiTietBaiTapViewModel.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\ChiTietBaiTapViewModel.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\ChiTietBaiTapViewModel.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\ChiTietBaiTapViewModel.cs",
+              "RelativeToolTip": "WebBaiGiang\\ViewModel\\ChiTietBaiTapViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T02:55:43.132Z",
+              "WhenOpened": "2025-06-19T05:35:56.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BaiTapViewModel.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\BaiTapViewModel.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\BaiTapViewModel.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\BaiTapViewModel.cs",
+              "RelativeToolTip": "WebBaiGiang\\ViewModel\\BaiTapViewModel.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAmwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T05:35:30.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "NopBai.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\NopBai.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\NopBai.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\NopBai.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\NopBai.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA1wBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T05:29:40.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BaiTap.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiTap.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\BaiTap.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiTap.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\BaiTap.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAmwA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T05:29:27.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BaiGiang.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\BaiGiang.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\BaiGiang.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\BaiGiang.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\BaiGiang.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAAEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T05:09:50.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DetailCourses.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T05:04:16.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Courses.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\Courses.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\SinhVien\\Courses.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\Courses.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\SinhVien\\Courses.cshtml",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T05:02:33.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\CoursesController.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "WebBaiGiang\\Controllers\\CoursesController.cs",
+              "ViewState": "AgIAAGUBAAAAAAAAAAAuwGYBAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T05:00:34.905Z",
               "EditorCaption": ""
             }
           ]

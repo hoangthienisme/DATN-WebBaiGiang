@@ -159,7 +159,7 @@ namespace WebBaiGiang.Controllers
                 existingLop.Name = lophoc.Name;
                 existingLop.SubjectsId = lophoc.SubjectsId;
                 existingLop.KhoaId = lophoc.KhoaId;
-                existingLop.BaiGiangId = lophoc.BaiGiangId;
+                //existingLop.BaiGiangId = lophoc.BaiGiangId;
                 existingLop.Description = DetailedDescription;
                 existingLop.UpdateDate = DateTime.Now; // <--- Ensure this DateTime is set for updates
                 existingLop.UpdateBy = giangVienId;
@@ -247,7 +247,6 @@ namespace WebBaiGiang.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // Lấy danh sách các lớp học mà giảng viên hiện tại đang dạy
             viewModel.AvailableClasses = await _context.GiangVienLopHocs
                                                     .Where(glh => glh.IdGv == currentGiangVienId && glh.IdClassNavigation.IsActive == true)
                                                     .Select(glh => new SelectListItem
@@ -400,12 +399,17 @@ namespace WebBaiGiang.Controllers
                 var lopHoc = await _context.LopHocs.FindAsync(classId);
                 if (lopHoc != null)
                 {
-                    lopHoc.BaiGiangId = baiGiang.Id;
-                    lopHoc.UpdateDate = DateTime.Now;
-                    lopHoc.UpdateBy = currentGiangVienId;
-                    _context.LopHocs.Update(lopHoc);
+                    var lopHocBaiGiang = new LopHocBaiGiang
+                    {
+                        LopHocId = classId,
+                        BaiGiangId = baiGiang.Id,
+                        AddedDate = DateTime.Now
+                    };
+
+                    _context.LopHocBaiGiangs.Add(lopHocBaiGiang);
                 }
             }
+
 
             await _context.SaveChangesAsync();
 
@@ -437,7 +441,7 @@ namespace WebBaiGiang.Controllers
             var baiGiangToUpdate = await _context.BaiGiangs
                                                  .Include(bg => bg.Chuongs)
                                                      .ThenInclude(c => c.Bais)
-                                                 .Include(bg => bg.LopHocs)
+                                                 //.Include(bg => bg.LopHocs)
                                                  .FirstOrDefaultAsync(bg => bg.Id == id);
 
             if (baiGiangToUpdate == null)
@@ -465,7 +469,7 @@ namespace WebBaiGiang.Controllers
                 Description = baiGiangToUpdate.Description,
                 ExistingAttachmentUrl = baiGiangToUpdate.ContentUrl,
                 // Lấy danh sách các lớp đã gán cho bài giảng này
-                SelectedClassIds = baiGiangToUpdate.LopHocs.Select(lh => lh.Id).ToList(),
+                //SelectedClassIds = baiGiangToUpdate.LopHocs.Select(lh => lh.Id).ToList(),
                 Chuongs = baiGiangToUpdate.Chuongs
                                   .OrderBy(c => c.SortOrder)
                                   .Select(c => new ChuongViewModel
@@ -559,7 +563,7 @@ namespace WebBaiGiang.Controllers
             var baiGiangToUpdate = await _context.BaiGiangs
                                                  .Include(bg => bg.Chuongs)
                                                      .ThenInclude(c => c.Bais)
-                                                 .Include(bg => bg.LopHocs)
+                                                 //.Include(bg => bg.LopHocs)
                                                  .FirstOrDefaultAsync(bg => bg.Id == id);
 
             if (baiGiangToUpdate == null)
@@ -621,18 +625,18 @@ namespace WebBaiGiang.Controllers
                 }
                 baiGiangToUpdate.ContentUrl = null;
             }
-          
+
             var selectedClassIds = model.SelectedClassIds ?? new List<int>();
-            var currentClassIds = baiGiangToUpdate.LopHocs
-                                                  .Select(lh => lh.Id)
+            var currentClassIds = baiGiangToUpdate.LopHocBaiGiangs
+                                                  .Select(lhbg => lhbg.LopHocId)
                                                   .ToList();
-            var classesToRemove = baiGiangToUpdate.LopHocs
-                                                  .Where(lh => !selectedClassIds.Contains(lh.Id))
+            var classesToRemove = baiGiangToUpdate.LopHocBaiGiangs
+                                                  .Where(lh => !selectedClassIds.Contains(lh.LopHocId))
                                                   .ToList();
             foreach (var lopHoc in classesToRemove)
             {
-                
-                baiGiangToUpdate.LopHocs.Remove(lopHoc);
+
+                baiGiangToUpdate.LopHocBaiGiangs.Remove(lopHoc);
             }
             var classIdsToAdd = selectedClassIds.Except(currentClassIds).ToList();
             if (classIdsToAdd.Any())
@@ -642,9 +646,15 @@ namespace WebBaiGiang.Controllers
                                                  .ToListAsync();
                 foreach (var lopHoc in classesToAdd)
                 {
-                    
-                    baiGiangToUpdate.LopHocs.Add(lopHoc);
+                    var lopHocBaiGiang = new LopHocBaiGiang
+                    {
+                        LopHocId = lopHoc.Id,
+                        BaiGiangId = baiGiangToUpdate.Id
+                    };
+
+                    baiGiangToUpdate.LopHocBaiGiangs.Add(lopHocBaiGiang);
                 }
+
             }
             var currentChuongIdsInDb = baiGiangToUpdate.Chuongs.Select(c => c.Id).ToList();
             var currentBaiIdsInDb = baiGiangToUpdate.Chuongs.SelectMany(c => c.Bais).Select(b => b.Id).ToList();
@@ -818,11 +828,7 @@ namespace WebBaiGiang.Controllers
             return RedirectToAction("BaiGiang");
         }
 
-        // --- Other actions (assuming they are complete and working) ---
-        public IActionResult Stream()
-        {
-            return View();
-        }
+
         public IActionResult Classwork()
         {
             return View();

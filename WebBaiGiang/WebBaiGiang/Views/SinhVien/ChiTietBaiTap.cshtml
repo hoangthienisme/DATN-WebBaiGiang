@@ -1,0 +1,35 @@
+﻿@model WebBaiGiang.ViewModel.ChiTietBaiTapViewModel
+
+<h3>@Model.BaiTap.Title</h3>
+<p>@Model.BaiTap.Description</p>
+<p><strong>Hạn nộp:</strong> @Model.BaiTap.DueDate?.ToString("dd/MM/yyyy HH:mm")</p>
+
+@if (!string.IsNullOrEmpty(Model.BaiTap.ContentUrl))
+{
+    <p><a href="@Model.BaiTap.ContentUrl" target="_blank">Tài liệu bài tập</a></p>
+}
+
+<hr />
+<h5>Bài nộp của bạn</h5>
+@{
+    Layout = "~/Views/Shared/_LayoutSinhvien.cshtml";
+
+}
+@if (Model.NopBai != null)
+{
+    <p><strong>Đã nộp lúc:</strong> @Model.NopBai.SubmittedDate.ToString("dd/MM/yyyy HH:mm")</p>
+    <p><strong>File:</strong> <a href="@Model.NopBai.FileUrl" target="_blank">Tải xuống</a></p>
+    <p><strong>Điểm:</strong> @Model.NopBai.Point ?? "Chưa chấm"</p>
+    <p><strong>Phản hồi:</strong> @Model.NopBai.FeedBack ?? "Không có"</p>
+}
+else
+{
+    <form asp-action="NopBai" asp-controller="SinhVien" enctype="multipart/form-data">
+        <input type="hidden" name="TestId" value="@Model.BaiTap.Id" />
+        <div class="mb-3">
+            <label>Chọn tệp nộp:</label>
+            <input type="file" name="Attachment" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Nộp bài</button>
+    </form>
+}

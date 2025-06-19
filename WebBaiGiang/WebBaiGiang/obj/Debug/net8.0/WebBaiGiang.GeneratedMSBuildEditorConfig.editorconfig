@@ -88,6 +88,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xCYWlUYXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Courses/ChiTietBaiTapGV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xDaGlUaWV0QmFpVGFwR1YuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Courses/DetailCourses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xEZXRhaWxDb3Vyc2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -116,20 +120,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhbmdWaWVuXENoaVRpZXRCYWlHaWFuZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/GiangVien/Classwork.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhbmdWaWVuXENsYXNzd29yay5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/GiangVien/Courses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhbmdWaWVuXENvdXJzZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/GiangVien/CreateCourses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhbmdWaWVuXENyZWF0ZUNvdXJzZXMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/GiangVien/DetailClasswork.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lhbmdWaWVuXERldGFpbENsYXNzd29yay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/GiangVien/EditCourses.cshtml]
@@ -184,8 +180,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Student/Dashboard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxEYXNoYm9hcmQuY3NodG1s
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/SinhVien/ChiTietBaiTap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cQ2hpVGlldEJhaVRhcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/SinhVien/Courses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cQ291cnNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/SinhVien/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/_ViewImports.cshtml]

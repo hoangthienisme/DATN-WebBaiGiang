@@ -212,7 +212,9 @@ namespace WebBaiGiang.Controllers
                 Text = l.Name
             }).ToList();
         }
+        [AllowAnonymous]
         [HttpGet]
+
         public async Task<IActionResult> DetailCourses(int id, int page = 1)
         {
             var lop = await _context.LopHocs
@@ -224,22 +226,34 @@ namespace WebBaiGiang.Controllers
             }
 
             int pageSize = 6;
-            var baiGiangsQuery = _context.BaiGiangs
-                //.Where(b => b.ClassId == id)
+
+            // Lấy các bài giảng liên kết với lớp học thông qua LopHocBaiGiang
+            var baiGiangsQuery = _context.LopHocBaiGiangs
+                .Where(lbg => lbg.LopHocId == id)
+                .Include(lbg => lbg.BaiGiang)
+                .Select(lbg => lbg.BaiGiang)
                 .OrderByDescending(b => b.CreatedDate);
 
             var paginatedBaiGiangs = await PhanTrang<BaiGiang>.CreateAsync(baiGiangsQuery, page, pageSize);
+
+            var baiTaps = await _context.BaiTapLopHocs
+                .Where(bt => bt.LopHocId == id)
+                .Include(bt => bt.BaiTap)
+                .Select(bt => bt.BaiTap)
+                .ToListAsync();
 
             var vm = new LopHocViewModel
             {
                 Id = lop.Id,
                 Name = lop.Name,
                 Picture = lop.Picture,
-                BaiGiangs = paginatedBaiGiangs
+                BaiGiangs = paginatedBaiGiangs,
+                BaiTaps = baiTaps
             };
 
             return View(vm);
         }
+
         [AllowAnonymous] 
         public async Task<IActionResult> Join(string code)
         {
@@ -282,7 +296,7 @@ namespace WebBaiGiang.Controllers
                 TempData["JoinSuccess"] = " Bạn đã tham gia lớp học thành công!";
             }
 
-            return RedirectToAction("Dashboard", "Student");
+            return RedirectToAction("Courses", "SinhVien");
         }
 
         [HttpPost]
@@ -341,6 +355,37 @@ namespace WebBaiGiang.Controllers
             await smtp.SendMailAsync(message);
         }
 
+
+        public IActionResult ChiTietBaiTapGV(int baiTapId)
+        {
+            var baiTap = _context.BaiTaps
+                .Include(bt => bt.NopBais)
+                    .ThenInclude(nb => nb.Users)
+                .FirstOrDefault(bt => bt.Id == baiTapId);
+
+            if (baiTap == null)
+                return NotFound();
+
+            return View(baiTap);
+        }
+        [HttpPost]
+        public IActionResult ChamDiem(int[] NopBaiIds, double?[] Points, string?[] FeedBacks, int lopId)
+        {
+            for (int i = 0; i < NopBaiIds.Length; i++)
+            {
+                var nopBai = _context.NopBais.FirstOrDefault(nb => nb.Id == NopBaiIds[i]);
+                if (nopBai != null)
+                {
+                    nopBai.Point = Points[i];
+                    nopBai.FeedBack = FeedBacks[i];
+                }
+            }
+
+            _context.SaveChanges();
+
+            // ✅ Sử dụng lopId đã truyền vào
+            return RedirectToAction("DetailCourses", "Courses", new { lopId = lopId });
+        }
 
 
     }
