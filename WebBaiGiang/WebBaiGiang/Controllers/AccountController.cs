@@ -33,21 +33,62 @@ namespace WebBaiGiang.Controllers
         }
 
 
+        [Route("signin-google")]
         public async Task<IActionResult> GoogleResponse()
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
+            if (!result.Succeeded)
+                return RedirectToAction("Login");
+
             var claims = result.Principal.Identities
                 .FirstOrDefault()?.Claims
-                .Select(claim => new
-                {
-                    claim.Type,
-                    claim.Value
-                });
+                .ToDictionary(c => c.Type, c => c.Value);
 
-            // Sau này bạn có thể xử lý claims để tạo user, gán role, ghi DB...
-            return Json(claims); // Tạm in ra JSON để kiểm tra
+            var email = claims[ClaimTypes.Email];
+            var name = claims[ClaimTypes.Name];
+
+            // Kiểm tra người dùng đã có trong hệ thống chưa
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Email == email);
+
+            if (user == null)
+            {
+                // Tạo user mới
+                user = new NguoiDung
+                {
+                    Name = name,
+                    Email = email,
+                    Password = null, // Không có vì dùng Google
+                    Role = "Student",
+                    CreatedDate = DateTime.Now,
+                    Avatar = "default_avatar.png"
+                };
+                _context.NguoiDungs.Add(user);
+                await _context.SaveChangesAsync();
+            }
+
+            // Đăng nhập bằng Claims
+            var identity = new ClaimsIdentity(new[]
+            {
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Name, user.Name),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(ClaimTypes.Role, user.Role)
+    }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            // Chuyển hướng theo role
+            if (user.Role == "Admin")
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            else if (user.Role == "Teacher")
+                return RedirectToAction("Courses", "GiangVien");
+            else
+                return RedirectToAction("Courses", "SinhVien");
         }
+
         public IActionResult SignUp()
         {
             return View();

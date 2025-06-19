@@ -1,35 +1,121 @@
 ﻿@model WebBaiGiang.ViewModel.ChiTietBaiTapViewModel
-
-<h3>@Model.BaiTap.Title</h3>
-<p>@Model.BaiTap.Description</p>
-<p><strong>Hạn nộp:</strong> @Model.BaiTap.DueDate?.ToString("dd/MM/yyyy HH:mm")</p>
-
-@if (!string.IsNullOrEmpty(Model.BaiTap.ContentUrl))
-{
-    <p><a href="@Model.BaiTap.ContentUrl" target="_blank">Tài liệu bài tập</a></p>
-}
-
-<hr />
-<h5>Bài nộp của bạn</h5>
 @{
     Layout = "~/Views/Shared/_LayoutSinhvien.cshtml";
+}
 
-}
-@if (Model.NopBai != null)
-{
-    <p><strong>Đã nộp lúc:</strong> @Model.NopBai.SubmittedDate.ToString("dd/MM/yyyy HH:mm")</p>
-    <p><strong>File:</strong> <a href="@Model.NopBai.FileUrl" target="_blank">Tải xuống</a></p>
-    <p><strong>Điểm:</strong> @Model.NopBai.Point ?? "Chưa chấm"</p>
-    <p><strong>Phản hồi:</strong> @Model.NopBai.FeedBack ?? "Không có"</p>
-}
-else
-{
-    <form asp-action="NopBai" asp-controller="SinhVien" enctype="multipart/form-data">
-        <input type="hidden" name="TestId" value="@Model.BaiTap.Id" />
-        <div class="mb-3">
-            <label>Chọn tệp nộp:</label>
-            <input type="file" name="Attachment" class="form-control" required />
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title text-primary fw-bold">@Model.BaiTap.Title</h3>
+            <p class="text-muted">@Model.BaiTap.Description</p>
+
+            <div class="mb-2">
+                <strong>🕒 Hạn nộp:</strong>
+                <span class="text-danger">@Model.BaiTap.DueDate?.ToString("dd/MM/yyyy HH:mm")</span>
+            </div>
+
+            <div class="mb-2">
+                <strong>📈 Điểm tối đa:</strong>
+                <span class="text-dark">@Model.BaiTap.MaxPoint</span>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.BaiTap.ContentUrl))
+            {
+                <div class="mb-3">
+                    <strong>📎 Tài liệu bài tập:</strong>
+                    <a href="@Model.BaiTap.ContentUrl" target="_blank" class="btn btn-outline-secondary btn-sm ms-2">
+                        <i class="bi bi-file-earmark-arrow-down"></i> Tải tài liệu
+                    </a>
+                </div>
+            }
         </div>
-        <button type="submit" class="btn btn-primary">Nộp bài</button>
-    </form>
-}
+    </div>
+
+    <hr class="my-4" />
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">📤 Bài nộp của bạn</h5>
+
+            @if (Model.NopBai != null)
+            {
+                <p><strong>✅ Đã nộp lúc:</strong> @Model.NopBai.SubmittedDate.ToString("dd/MM/yyyy HH:mm")</p>
+                <p>
+                    <strong>📎 File:</strong>
+                    <a href="@Model.NopBai.FileUrl" target="_blank" class="btn btn-outline-info btn-sm">
+                        <i class="bi bi-download"></i> Tải xuống
+                    </a>
+                </p>
+
+                @if (Model.NopBai.Point.HasValue)
+                {
+                    <p><strong>📊 Điểm:</strong> @Model.NopBai.Point</p>
+                }
+                else
+                {
+                    <p><strong>📊 Điểm:</strong> <span class="text-muted">Chưa chấm</span></p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.NopBai.FeedBack))
+                {
+                    <p><strong>📝 Phản hồi:</strong> @Model.NopBai.FeedBack</p>
+                }
+                else
+                {
+                    <p><strong>📝 Phản hồi:</strong> <span class="text-muted">Không có</span></p>
+                }
+
+                @if (DateTime.Now <= Model.BaiTap.DueDate && Model.NopBai.Point == null)
+                {
+                    <hr />
+                    <form asp-action="NopBai" asp-controller="SinhVien" enctype="multipart/form-data">
+                        <input type="hidden" name="TestId" value="@Model.BaiTap.Id" />
+                        <input type="hidden" name="lopId" value="@ViewBag.LopId" />
+
+                        <div class="mb-3">
+                            <label for="Attachment" class="form-label"><strong>📎 Chọn lại tệp để nộp:</strong></label>
+                            <input type="file" name="Attachment" id="Attachment" class="form-control" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-warning">
+                            <i class="bi bi-arrow-repeat"></i> Nộp lại bài
+                        </button>
+                    </form>
+                }
+                else if (Model.NopBai.Point != null)
+                {
+                    <p class="text-danger"><i class="bi bi-lock-fill"></i> Bài đã được chấm, không thể nộp lại.</p>
+                }
+                else
+                {
+                    <p class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Đã quá hạn nộp bài.</p>
+                }
+            }
+            else
+            {
+ 
+                if (DateTime.Now <= Model.BaiTap.DueDate)
+                {
+                    <form asp-action="NopBai" asp-controller="SinhVien" enctype="multipart/form-data">
+                        <input type="hidden" name="TestId" value="@Model.BaiTap.Id" />
+                        <input type="hidden" name="lopId" value="@ViewBag.LopId" />
+
+                        <div class="mb-3">
+                            <label for="Attachment" class="form-label"><strong>📎 Chọn tệp để nộp:</strong></label>
+                            <input type="file" name="Attachment" id="Attachment" class="form-control" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-upload"></i> Nộp bài
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <p class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Đã quá hạn nộp bài.</p>
+                }
+            }
+
+
+    </div>
+</div>
