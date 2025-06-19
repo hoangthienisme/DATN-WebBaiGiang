@@ -17,8 +17,8 @@ namespace WebBaiGiang.ViewModel
         [Display(Name = "Link tài liệu")]
         public string? ContentUrl { get; set; }
 
-        //[Display(Name = "Điểm tối đa")]
-        //public int? MaxScore { get; set; }
+        [Display(Name = "Điểm tối đa")]
+        public double? MaxPoint { get; set; }
 
         [Display(Name = "Tệp đính kèm")]
         public IFormFile? Attachment { get; set; }

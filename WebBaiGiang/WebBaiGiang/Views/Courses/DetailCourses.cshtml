@@ -18,6 +18,102 @@
 </div>
 
 <style>
+    /* Search + dropdown + button */
+    .search-filter {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .search-icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        opacity: 0.6;
+    }
+
+    .search-input-courses {
+
+        padding: 10px 10px 10px 36px;
+        border: 1px solid #ccc;
+        border-radius: 999px;
+        font-size: 15px;
+        width: 250px;
+    }
+
+    /* Dropdown */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-button {
+        padding: 10px 20px;
+        border: 1px solid #6a0dad;
+        border-radius: 8px;
+        background-color: white;
+        color: #6a0dad;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .arrow-down {
+        font-size: 12px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        min-width: 180px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+    /* Tạo bài giảng */
+    .create-baigiang-button {
+        background-color: #6A0DAD;
+        color: white;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.2s ease;
+    }
+
+        .create-baigiang-button:hover {
+            background-color: #5a00a0;
+        }
     .conTent h3 {
         margin-left: 70px;
         margin-top: 10px;
@@ -209,12 +305,101 @@
 <!-- Tab: Bài tập -->
 <div id="exerciseTab" class="tab-section">
     @Html.Partial("BaiTap", Model.BaiTaps)
+
+    <!-- PHÂN TRANG BÀI TẬP -->
+    @if (Model.BaiTaps != null && Model.BaiTaps.TotalPages > 1)
+    {
+        <ul class="pagination">
+            @if (Model.BaiTaps.HasPreviousPage)
+            {
+                <li>
+                    <a href="@Url.Action("DetailCourses", new { id = Model.Id, page = Model.BaiTaps.PageIndex - 1 })#exerciseTab">← Trước</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.BaiTaps.TotalPages; i++)
+            {
+                if (i == Model.BaiTaps.PageIndex)
+                {
+                    <li class="active"><span>@i</span></li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("DetailCourses", new { id = Model.Id, page = i })#exerciseTab">@i</a>
+                    </li>
+                }
+            }
+
+            @if (Model.BaiTaps.HasNextPage)
+            {
+                <li>
+                    <a href="@Url.Action("DetailCourses", new { id = Model.Id, page = Model.BaiTaps.PageIndex + 1 })#exerciseTab">Sau →</a>
+                </li>
+            }
+        </ul>
+    }
 </div>
+
 
 <!-- Tab: Nội dung (Bài giảng) -->
 <div id="contentTab" class="tab-section active">
-    @Html.Partial("~/Views/GiangVien/BaiGiang.cshtml", Model.BaiGiangs)
-@*     <!-- PHÂN TRANG -->
+    <div class="search-filter mb-3" style="display: flex; align-items: center; gap: 1rem;">
+        <div class="search-input-wrapper">
+            <img src="~/img/loupe.png" class="search-icon" />
+            <input type="text" placeholder="Tìm bài giảng..." class="search-input-courses" />
+        </div>
+
+        <div class="dropdown" id="filterDropdown" style="position:relative;">
+            <button class="dropdown-button" onclick="toggleDropdown()" type="button" aria-haspopup="true" aria-expanded="false">
+                Mới nhất <span class="arrow-down">▼</span>
+            </button>
+            <div class="dropdown-content" id="dropdown-menu" role="menu" aria-label="Filter options">
+                <a href="#" onclick="filterCourses('newest'); return false;">Mới nhất</a>
+                <a href="#" onclick="filterCourses('oldest'); return false;">Cũ nhất</a>
+                <a href="#" onclick="filterCourses('incomplete'); return false;">Chưa hoàn thành</a>
+                <a href="#" onclick="filterCourses('completed'); return false;">Đã hoàn thành</a>
+            </div>
+        </div>
+        @if (User.IsInRole("Teacher"))
+        {
+            <button class="btn btn-primary create-baigiang-button" onclick="location.href='@Url.Action("TaoBaiGiang", "GiangVien")'">
+                Tạo bài giảng
+            </button>
+        }
+
+    </div>
+    <div class="container mt-4" style="max-width: 90%;">
+        @foreach (var item in Model.BaiGiangs)
+        {
+            <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+                <div class="d-flex align-items-center" style=" gap: 8px;">
+                    <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                        <i class="bi bi-journal-richtext fs-5"></i>
+                    </div>
+                    <a asp-action="ChiTietBaiGiang" asp-route-id="@item.Id" class="fw-semibold text-decoration-none text-dark">
+                        @item.Title
+                    </a>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="text-muted">Đã đăng vào @item.CreatedDate.ToString("HH:mm dd/MM/yyyy")</span>
+                    @if (User.IsInRole("Teacher"))
+                    {
+                        <div class="dropdown">
+                            <span class="icon-three-dots"></span>
+                            <div class="dropdown-content">
+                                <a asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id">Chỉnh sửa</a>
+                                <form asp-controller="GiangVien" asp-action="XoaBaiGiang" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài giảng này không?');">
+                                    <button type="submit" class="text-danger">Xóa</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+   <!-- PHÂN TRANG -->
     @if (Model.BaiGiangs != null && Model.BaiGiangs.TotalPages > 1)
     {
         <ul class="pagination">
@@ -247,7 +432,7 @@
             }
         </ul>
     }
-</div> *@
+</div> 
 
 <!-- JS Tab handling -->
 <script>

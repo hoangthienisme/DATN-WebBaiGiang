@@ -295,3 +295,4 @@ D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\Google.Apis.Dr
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\System.Management.dll
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\credentials.json

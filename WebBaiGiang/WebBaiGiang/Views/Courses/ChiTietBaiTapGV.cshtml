@@ -1,18 +1,18 @@
-﻿@model WebBaiGiang.Models.BaiTap
+﻿@model WebBaiGiang.ViewModel.ChamBaiTapViewModel
 
-<h3>Chấm bài: @Model.Title</h3>
+<h3>Chấm bài: @Model.BaiTap.Title</h3>
 <hr />
 @{
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
 }
-@if (!Model.NopBais.Any())
+@if (!Model.DanhSachNop.Any())
 {
     <p>Chưa có học sinh nào nộp bài.</p>
 }
 else
 {
     <form method="post" asp-action="ChamDiem">
-        <input type="hidden" name="TestId" value="@Model.Id" />
+        <input type="hidden" name="TestId" value="@Model.BaiTap.Id" />
         <input type="hidden" name="lopId" value="@ViewBag.LopId" />
         <table class="table">
             <thead>
@@ -25,9 +25,9 @@ else
                 </tr>
             </thead>
             <tbody>
-                @for (int i = 0; i < Model.NopBais.Count; i++)
+                @for (int i = 0; i < Model.DanhSachNop.Count; i++)
                 {
-                    var nopBai = Model.NopBais.ElementAt(i);
+                    var nopBai = Model.DanhSachNop.ElementAt(i);
                     <tr>
                         <td>@nopBai.Users.Name</td>
                         <td>

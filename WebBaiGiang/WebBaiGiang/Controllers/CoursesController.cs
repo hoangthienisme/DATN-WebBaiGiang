@@ -22,14 +22,14 @@ namespace WebBaiGiang.Controllers
         }
         public IActionResult BaiTap(int id)
         {
-            ViewBag.LopId = _context.BaiTapLopHocs;
+            ViewBag.LopId = id;
 
             var baiTaps = _context.BaiTapLopHocs
-                .Where(bt => bt.LopHocId == id)
-                .Include(bt => bt.BaiTap) 
-                .Select(bt => bt.BaiTap)
-                .ToList();
-
+             .Where(bt => bt.LopHocId == id)
+             .Include(bt => bt.BaiTap)
+             .OrderByDescending(bt => bt.BaiTap.CreatedDate) 
+             .Select(bt => bt.BaiTap)
+             .ToList();
             return View(baiTaps);
         }
 
@@ -37,16 +37,29 @@ namespace WebBaiGiang.Controllers
         [HttpGet]
         public IActionResult TaoBaiTap(int lopId)
         {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out int userId))
+            {
+                return Unauthorized();
+            }
+            var availableClasses = _context.LopHocs
+                .Where(l => l.IsActive && l.GiangVienLopHocs.Any(gv => gv.IdGv == userId))
+                .Select(l => new SelectListItem
+                {
+                    Text = l.Name,
+                    Value = l.Id.ToString()
+                })
+                .ToList();
+
             var model = new BaiTapViewModel
             {
                 LopIdGoc = lopId,
-                AvailableClasses = _context.LopHocs
-                    .Select(l => new SelectListItem { Text = l.Name, Value = l.Id.ToString() })
-                    .ToList()
+                AvailableClasses = availableClasses
             };
 
             return View(model);
         }
+
 
 
         // POST: Lưu bài tập
@@ -101,12 +114,13 @@ namespace WebBaiGiang.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 DueDate = model.DueDate,
-                //MaxScore = model.MaxScore,
+                MaxPoint = model.MaxPoint,
                 CreatedDate = DateTime.Now,
                 IsActive = true,
-                BaiTapLopHocs = model.ClassIds.Select(id => new BaiTapLopHoc
+                ContentUrl = fileUrl,
+                BaiTapLopHocs = model.ClassIds.Select(LopHocId => new BaiTapLopHoc
                 {
-                    LopHocId = id,
+                    LopHocId = LopHocId,
                     NgayGiao = DateTime.Now
                 }).ToList()
             };
@@ -114,7 +128,9 @@ namespace WebBaiGiang.Controllers
             _context.BaiTaps.Add(baiTap);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("BaiTap", "Courses", new { id = model.LopIdGoc });
+            return Redirect("/Courses/DetailCourses/" + model.LopIdGoc + "#exerciseTab");
+
+
 
 
 
@@ -236,11 +252,13 @@ namespace WebBaiGiang.Controllers
 
             var paginatedBaiGiangs = await PhanTrang<BaiGiang>.CreateAsync(baiGiangsQuery, page, pageSize);
 
-            var baiTaps = await _context.BaiTapLopHocs
+            var baiTapsQuery = _context.BaiTapLopHocs
                 .Where(bt => bt.LopHocId == id)
                 .Include(bt => bt.BaiTap)
                 .Select(bt => bt.BaiTap)
-                .ToListAsync();
+                .OrderByDescending(bt => bt.CreatedDate);
+
+            var paginatedBaiTaps = await PhanTrang<BaiTap>.CreateAsync(baiTapsQuery, page, pageSize);
 
             var vm = new LopHocViewModel
             {
@@ -248,10 +266,10 @@ namespace WebBaiGiang.Controllers
                 Name = lop.Name,
                 Picture = lop.Picture,
                 BaiGiangs = paginatedBaiGiangs,
-                BaiTaps = baiTaps
+                BaiTaps = paginatedBaiTaps
             };
 
-            return View(vm);
+            return PartialView(vm);
         }
 
         [AllowAnonymous] 
@@ -361,13 +379,24 @@ namespace WebBaiGiang.Controllers
             var baiTap = _context.BaiTaps
                 .Include(bt => bt.NopBais)
                     .ThenInclude(nb => nb.Users)
+                .Include(bt => bt.BaiTapLopHocs)
                 .FirstOrDefault(bt => bt.Id == baiTapId);
 
-            if (baiTap == null)
-                return NotFound();
+            if (baiTap == null) return NotFound();
 
-            return View(baiTap);
+            var viewModel = new ChamBaiTapViewModel
+            {
+                BaiTap = baiTap,
+                DanhSachNop = baiTap.NopBais.ToList()
+            };
+
+            // Gửi LopId cho view
+            var baiTapLopHoc = baiTap.BaiTapLopHocs.FirstOrDefault();
+            ViewBag.LopId = baiTapLopHoc?.LopHocId ?? 0;
+
+            return View(viewModel); 
         }
+
         [HttpPost]
         public IActionResult ChamDiem(int[] NopBaiIds, double?[] Points, string?[] FeedBacks, int lopId)
         {
@@ -382,9 +411,7 @@ namespace WebBaiGiang.Controllers
             }
 
             _context.SaveChanges();
-
-            // ✅ Sử dụng lopId đã truyền vào
-            return RedirectToAction("DetailCourses", "Courses", new { lopId = lopId });
+            return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
         }
 
 

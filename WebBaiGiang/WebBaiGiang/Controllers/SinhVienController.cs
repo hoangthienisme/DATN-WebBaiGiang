@@ -69,11 +69,13 @@ namespace WebBaiGiang.Controllers
 
             var paginatedBaiGiangs = await PhanTrang<BaiGiang>.CreateAsync(baiGiangsQuery, page, pageSize);
 
-            var baiTaps = await _context.BaiTapLopHocs
+            var baiTapsQuery = _context.BaiTapLopHocs
                 .Where(bt => bt.LopHocId == id)
                 .Include(bt => bt.BaiTap)
                 .Select(bt => bt.BaiTap)
-                .ToListAsync();
+                .OrderByDescending(bt => bt.CreatedDate);
+
+            var paginatedBaiTaps = await PhanTrang<BaiTap>.CreateAsync(baiTapsQuery, page, pageSize);
 
             var vm = new LopHocViewModel
             {
@@ -81,16 +83,18 @@ namespace WebBaiGiang.Controllers
                 Name = lop.Name,
                 Picture = lop.Picture,
                 BaiGiangs = paginatedBaiGiangs,
-                BaiTaps = baiTaps
+                BaiTaps = paginatedBaiTaps
             };
 
-            return View("~/Views/Courses/DetailCourses.cshtml", vm);
+            return View(vm);
         }
         // Controller: Học sinh bấm vào bài tập
         public IActionResult ChiTietBaiTap(int id)
         {
             var baiTap = _context.BaiTaps
+                .AsNoTracking()
                 .Include(b => b.NopBais)
+                .Include(b => b.BaiTapLopHocs)
                 .FirstOrDefault(b => b.Id == id);
 
             if (baiTap == null) return NotFound();
@@ -104,39 +108,69 @@ namespace WebBaiGiang.Controllers
                 BaiTap = baiTap,
                 NopBai = nopBai
             };
-
+            ViewBag.LopId = baiTap.BaiTapLopHocs.FirstOrDefault()?.LopHocId;
             return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> NopBai(int TestId, IFormFile Attachment)
+        public async Task<IActionResult> NopBai(int TestId, IFormFile Attachment, int lopId)
         {
             if (Attachment == null || Attachment.Length == 0)
                 return BadRequest("Không có tệp đính kèm.");
 
-            var fileName = $"{Guid.NewGuid()}_{Attachment.FileName}";
-            var filePath = Path.Combine(_env.WebRootPath, "uploads", fileName);
+            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
+            var existing = await _context.NopBais
+                .FirstOrDefaultAsync(n => n.TestId == TestId && n.UsersId == userId);
+
+            // ❌ Nếu đã chấm điểm thì không cho nộp lại
+            if (existing != null && existing.Point.HasValue)
+            {
+                TempData["Error"] = "Bài tập đã được chấm điểm, bạn không thể nộp lại.";
+                return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
+            }
+
+            // 🧾 Lưu file mới
+            var fileName = $"{Guid.NewGuid()}_{Attachment.FileName}";
+            var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            var filePath = Path.Combine(uploadsFolder, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await Attachment.CopyToAsync(stream);
             }
+            var fileUrl = "/uploads/" + fileName;
 
-            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-
-            var nopBai = new NopBai
+            // Nộp mới hoặc cập nhật nếu chưa chấm
+            if (existing == null)
             {
-                TestId = TestId,
-                UsersId = userId,
-                FileUrl = "/uploads/" + fileName,
-                SubmittedDate = DateTime.Now
-            };
+                var nopBai = new NopBai
+                {
+                    TestId = TestId,
+                    UsersId = userId,
+                    SubmittedDate = DateTime.Now,
+                    FileUrl = fileUrl
+                };
+                _context.NopBais.Add(nopBai);
+            }
+            else
+            {
+                existing.SubmittedDate = DateTime.Now;
+                existing.FileUrl = fileUrl;
+                existing.Point = null;
+                existing.FeedBack = null;
+            }
 
-            _context.NopBais.Add(nopBai);
             await _context.SaveChangesAsync();
+            TempData["Success"] = "Bài tập đã được nộp thành công.";
 
-            return RedirectToAction("ChiTietBaiTap", new { id = TestId });
+            return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
         }
+
+
+
 
     }
 }

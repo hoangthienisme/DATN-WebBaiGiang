@@ -67,7 +67,11 @@
             <input asp-for="DueDate" class="form-control" type="datetime-local" />
             <span asp-validation-for="DueDate" class="text-danger"></span>
         </div>
-
+        <div class="mb-3">
+            <label for="MaxPoint" class="form-label">Điểm tối đa</label>
+            <input type="number" asp-for="MaxPoint" class="form-control" step="0.1" required />
+            <span asp-validation-for="MaxPoint" class="text-danger"></span>
+        </div>
         <div class="mb-3">
             <label asp-for="Attachment" class="form-label fw-bold">Đính kèm (nếu có)</label>
             <input asp-for="Attachment" type="file" class="form-control" />
