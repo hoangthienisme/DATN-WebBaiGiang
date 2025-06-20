@@ -48,7 +48,7 @@ public partial class WebBaiGiangContext : DbContext
 
     public virtual DbSet<LopHocBaiGiang> LopHocBaiGiangs { get; set; }
     public virtual DbSet<ThongTinWeb> ThongTinWebs { get; set; }
-    public virtual DbSet<TaiNguyen> TaiNguyens { get; set; }
+    public virtual DbSet<TaiNguyen> TaiNguyens { get; set; } 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;Database=WebBaiGiang;Trusted_Connection=True;");
@@ -101,13 +101,31 @@ public partial class WebBaiGiangContext : DbContext
         // Entity: TaiNguyen
         modelBuilder.Entity<TaiNguyen>(entity =>
         {
-            entity.HasKey(e => e.Id);
-
             entity.ToTable("TaiNguyen");
 
-            entity.Property(e => e.Url).HasMaxLength(500).IsRequired();
-            entity.Property(e => e.Loai).HasMaxLength(50).IsRequired();
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Url)
+                .HasMaxLength(500)
+                .IsRequired();
+
+            entity.Property(e => e.Loai)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            entity.HasOne(e => e.BaiGiang)
+                .WithMany(b => b.TaiNguyens)
+                .HasForeignKey(e => e.BaiGiangId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.Bai)
+                .WithMany(b => b.TaiNguyens)
+                .HasForeignKey(e => e.BaiId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
+
+
+
 
         // Entity: BaiTap
         modelBuilder.Entity<BaiTap>(entity =>

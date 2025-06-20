@@ -239,6 +239,7 @@ wwwroot\uploads\bailearn\108f20e8-765d-4bf7-a988-43bd17a906e2.jpg
 wwwroot\uploads\bailearn\2540924f-0f85-45d5-93f0-7f2fc3e666b0.jpg
 wwwroot\uploads\bailearn\53e0ca61-2637-43a0-aac3-a8e8ce943ad6.jpg
 wwwroot\uploads\bailearn\5ce25ffe-25c6-4102-80c2-ba27cbc04997.jpg
+wwwroot\uploads\bailearn\6581ca0c-1192-49cd-902b-89648e16de91.jpg
 wwwroot\uploads\bailearn\6c45a97c-dc13-4625-b65e-57fc21a24e08.jpg
 wwwroot\uploads\bailearn\7534539e-cf76-40a2-97ed-7ba67e70b236.jpg
 wwwroot\uploads\bailearn\773c98be-161d-4632-8e19-22d314d20cdc.jpg

@@ -13,10 +13,8 @@ namespace WebBaiGiang.ViewModel
         [Required(ErrorMessage = "Vui lòng chọn ít nhất một lớp học!")]
         public List<int> SelectedClassIds { get; set; } = new List<int>();
 
-        public List<IFormFile>? Attachments { get; set; }
-
+        public List<IFormFile>? ImageFiles { get; set; }
         public List<IFormFile>? DocumentFiles { get; set; }
-
         public List<SelectListItem> AvailableClasses { get; set; } = new List<SelectListItem>();
 
         public List<ChuongCreateViewModel> Chuongs { get; set; } = new List<ChuongCreateViewModel>();

@@ -34,17 +34,29 @@
 
         <hr />
         <h5>Đính kèm</h5>
-        <div class="mb-3 d-flex flex-wrap gap-3 align-items-center">
-            <input asp-for="Attachments" type="file" class="form-control w-auto" multiple onchange="previewFiles(this, 'imagePreview')" />
-            <span asp-validation-for="Attachments" class="text-danger"></span>
+        <!-- Tải lên hình ảnh -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">Tải lên hình ảnh</label>
+            <div class="d-flex flex-wrap gap-3 align-items-center">
+                <input asp-for="ImageFiles" type="file" class="form-control w-auto"
+                       multiple accept="image/*"
+                       onchange="previewFiles(this, 'imagePreview')" />
+                <span asp-validation-for="ImageFiles" class="text-danger"></span>
+            </div>
+            <div id="imagePreview" class="d-flex flex-wrap gap-3 mt-2"></div>
         </div>
-        <div id="imagePreview" class="d-flex flex-wrap gap-3 mt-2"></div>
 
-        <div class="mb-3 d-flex flex-wrap gap-3 align-items-center">
-            <input asp-for="DocumentFiles" type="file" class="form-control w-auto" multiple onchange="previewFiles(this, 'fileNamePreview')" />
-            <span asp-validation-for="DocumentFiles" class="text-danger"></span>
+        <!-- Tải lên tài liệu -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">Tải lên tài liệu</label>
+            <div class="d-flex flex-wrap gap-3 align-items-center">
+                <input asp-for="DocumentFiles" type="file" class="form-control w-auto"
+                       multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+                       onchange="previewFiles(this, 'fileNamePreview')" />
+                <span asp-validation-for="DocumentFiles" class="text-danger"></span>
+            </div>
+            <div id="fileNamePreview" class="mt-2"></div>
         </div>
-        <div id="fileNamePreview" class="mt-2"></div>
 
         <div class="mb-3">
             <label class="form-label fw-bold">Dành cho lớp</label>
@@ -272,4 +284,29 @@
         });
     }
 </script>
+<script>
+    function previewFiles(input, previewId) {
+        const previewContainer = document.getElementById(previewId);
+        previewContainer.innerHTML = "";
 
+        Array.from(input.files).forEach(file => {
+            if (previewId === "imagePreview" && file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.className = "img-thumbnail";
+                    img.style.maxWidth = "120px";
+                    img.style.maxHeight = "120px";
+                    img.alt = file.name;
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                const span = document.createElement("div");
+                span.textContent = "📄 " + file.name;
+                previewContainer.appendChild(span);
+            }
+        });
+    }
+</script>
