@@ -14,11 +14,12 @@ namespace WebBaiGiang.Controllers
     {
         private readonly WebBaiGiangContext _context;
         private readonly IWebHostEnvironment _env;
-
-        public GiangVienController(WebBaiGiangContext context, IWebHostEnvironment env)
+        private readonly GoogleDriveService _googleDriveService;
+        public GiangVienController(WebBaiGiangContext context, IWebHostEnvironment env, GoogleDriveService googleDriveService)
         {
             _context = context;
             _env = env;
+            _googleDriveService = googleDriveService;
         }
 
         // --- Courses (LopHoc) Management ---
@@ -264,126 +265,104 @@ namespace WebBaiGiang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> TaoBaiGiang(BaiGiangCreateViewModel model)
         {
-            // Loại bỏ validation cho trường không nhập trực tiếp
+            // Bỏ kiểm tra AvailableClasses
             ModelState.Remove(nameof(model.AvailableClasses));
 
+            // Lấy ID giảng viên đang đăng nhập
             var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             int? currentGiangVienId = int.TryParse(currentGiangVienIdString, out var parsedId) ? parsedId : (int?)null;
 
             if (!ModelState.IsValid)
             {
-                // Load lại danh sách lớp để trả về View khi lỗi
+                // Load lại danh sách lớp học nếu ModelState không hợp lệ
                 model.AvailableClasses = currentGiangVienId.HasValue
                     ? await _context.GiangVienLopHocs
-                            .Where(glh => glh.IdGv == currentGiangVienId.Value && glh.IdClassNavigation.IsActive)
-                            .Select(glh => new SelectListItem
-                            {
-                                Value = glh.IdClass.ToString(),
-                                Text = glh.IdClassNavigation.Name
-                            }).Distinct().ToListAsync()
+                        .Where(glh => glh.IdGv == currentGiangVienId.Value && glh.IdClassNavigation.IsActive)
+                        .Select(glh => new SelectListItem
+                        {
+                            Value = glh.IdClass.ToString(),
+                            Text = glh.IdClassNavigation.Name
+                        }).Distinct().ToListAsync()
                     : new List<SelectListItem>();
 
                 return View(model);
             }
 
+            // Khởi tạo bài giảng
             var baiGiang = new BaiGiang
             {
                 Title = model.Title,
                 Description = model.Description,
                 CreatedDate = DateTime.Now,
-                CreatedBy = currentGiangVienId
+                CreatedBy = currentGiangVienId,
+                TaiNguyens = new List<TaiNguyen>(),
+                Chuongs = new List<Chuong>()
             };
 
-            // Tạo thư mục lưu file nếu chưa có
-            var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "baigiang");
-            if (!Directory.Exists(uploadsFolder))
-                Directory.CreateDirectory(uploadsFolder);
-
-            // Lưu file hình ảnh và video đính kèm bài giảng
-            if (model.Attachments != null && model.Attachments.Any())
+            // --- Upload ảnh & video ---
+            if (model.ImageFiles?.Any() == true)
             {
-                foreach (var file in model.Attachments)
+                foreach (var file in model.ImageFiles)
                 {
-                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                    var filePath = Path.Combine(uploadsFolder, fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-
                     var loai = file.ContentType.StartsWith("video") ? "video" : "image";
+                    using var stream = file.OpenReadStream();
+                    var url = await _googleDriveService.UploadFileAsync(file.FileName, stream, file.ContentType);
 
                     baiGiang.TaiNguyens.Add(new TaiNguyen
                     {
-                        Url = $"/uploads/baigiang/{fileName}",
+                        Url = url,
                         Loai = loai
                     });
                 }
             }
 
-            // Lưu tài liệu đính kèm (pdf, doc, xls ...)
-            if (model.DocumentFiles != null && model.DocumentFiles.Any())
+            // --- Upload tài liệu ---
+            if (model.DocumentFiles?.Any() == true)
             {
                 foreach (var file in model.DocumentFiles)
                 {
-                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                    var filePath = Path.Combine(uploadsFolder, fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
+                    using var stream = file.OpenReadStream();
+                    var url = await _googleDriveService.UploadFileAsync(file.FileName, stream, file.ContentType);
 
                     baiGiang.TaiNguyens.Add(new TaiNguyen
                     {
-                        Url = $"/uploads/baigiang/{fileName}",
+                        Url = url,
                         Loai = "tailieu"
                     });
                 }
             }
 
-            // Xử lý chương và bài học kèm theo tài liệu của bài học
-            if (model.Chuongs != null)
+            // --- Thêm Chương & Bài ---
+            if (model.Chuongs?.Any() == true)
             {
-                foreach (var chuongModel in model.Chuongs)
+                foreach (var chuongVm in model.Chuongs)
                 {
                     var chuong = new Chuong
                     {
-                        Title = chuongModel.Title,
-                        SortOrder = chuongModel.SortOrder,
-                        CreatedDate = DateTime.Now
+                        Title = chuongVm.Title,
+                        SortOrder = chuongVm.SortOrder,
+                        CreatedDate = DateTime.Now,
+                        Bais = new List<Bai>()
                     };
 
-                    if (chuongModel.Bais != null)
+                    if (chuongVm.Bais?.Any() == true)
                     {
-                        var baiFolder = Path.Combine(_env.WebRootPath, "uploads", "bailearn");
-                        if (!Directory.Exists(baiFolder))
-                            Directory.CreateDirectory(baiFolder);
-
-                        foreach (var baiModel in chuongModel.Bais)
+                        foreach (var baiVm in chuongVm.Bais)
                         {
                             var bai = new Bai
                             {
-                                Title = baiModel.Title,
-                                Description = baiModel.Description,
-                                VideoUrl = baiModel.VideoUrl,
-                                SortOrder = baiModel.SortOrder,
+                                Title = baiVm.Title,
+                                Description = baiVm.Description,
+                                VideoUrl = baiVm.VideoUrl,
+                                SortOrder = baiVm.SortOrder,
                                 CreatedDate = DateTime.Now
                             };
 
-                            // Lưu file tài liệu riêng của bài học (nếu có)
-                            if (baiModel.DocumentFile != null)
+                            if (baiVm.DocumentFile != null)
                             {
-                                var docFileName = Guid.NewGuid() + Path.GetExtension(baiModel.DocumentFile.FileName);
-                                var docFilePath = Path.Combine(baiFolder, docFileName);
-
-                                using (var stream = new FileStream(docFilePath, FileMode.Create))
-                                {
-                                    await baiModel.DocumentFile.CopyToAsync(stream);
-                                }
-
-                                bai.Document = $"/uploads/bailearn/{docFileName}";
+                                using var stream = baiVm.DocumentFile.OpenReadStream();
+                                var url = await _googleDriveService.UploadFileAsync(baiVm.DocumentFile.FileName, stream, baiVm.DocumentFile.ContentType);
+                                bai.Document = url;
                             }
 
                             chuong.Bais.Add(bai);
@@ -394,33 +373,32 @@ namespace WebBaiGiang.Controllers
                 }
             }
 
-            // Thêm bài giảng vào context
+            // Lưu bài giảng
             _context.BaiGiangs.Add(baiGiang);
             await _context.SaveChangesAsync();
 
-            // Gán bài giảng vào các lớp được chọn
-            if (model.SelectedClassIds != null)
+            // --- Gán bài giảng vào lớp học ---
+            if (model.SelectedClassIds?.Any() == true)
             {
                 foreach (var classId in model.SelectedClassIds)
                 {
-                    var lopHoc = await _context.LopHocs.FindAsync(classId);
-                    if (lopHoc != null)
+                    if (await _context.LopHocs.FindAsync(classId) is { } lopHoc)
                     {
-                        var lopHocBaiGiang = new LopHocBaiGiang
+                        _context.LopHocBaiGiangs.Add(new LopHocBaiGiang
                         {
                             LopHocId = classId,
                             BaiGiangId = baiGiang.Id,
                             AddedDate = DateTime.Now
-                        };
-                        _context.LopHocBaiGiangs.Add(lopHocBaiGiang);
+                        });
                     }
                 }
                 await _context.SaveChangesAsync();
             }
 
-            TempData["SuccessMessage"] = "Bài giảng đã được tạo thành công và đính kèm tài nguyên!";
+            TempData["SuccessMessage"] = "Tạo bài giảng thành công, các file đã được upload lên Google Drive!";
             return RedirectToAction("BaiGiang", "GiangVien");
         }
+
 
 
 
@@ -516,6 +494,7 @@ namespace WebBaiGiang.Controllers
             var baiGiang = await _context.BaiGiangs
                 .Include(bg => bg.Chuongs)
                     .ThenInclude(c => c.Bais)
+                    .Include(bg => bg.TaiNguyens)
                 .FirstOrDefaultAsync(bg => bg.Id == id);
 
             if (baiGiang == null)
@@ -529,7 +508,9 @@ namespace WebBaiGiang.Controllers
                 ContentUrl = baiGiang.ContentUrl,
                 CreatedDate = baiGiang.CreatedDate,
 
-                Chuongs  = baiGiang.Chuongs.OrderBy(c => c.SortOrder).Select(c => new Chuong
+                TaiNguyens = baiGiang.TaiNguyens,
+
+                Chuongs = baiGiang.Chuongs.OrderBy(c => c.SortOrder).Select(c => new Chuong
                 {
                     Id = c.Id,
                     Title = c.Title,
@@ -546,7 +527,6 @@ namespace WebBaiGiang.Controllers
                     }).ToList()
                 }).ToList()
             };
-
             return View(viewModel);
         }
 

@@ -3,46 +3,88 @@
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
-    string[] imageExts = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
-    string[] videoExts = new[] { ".mp4", ".webm", ".ogg" };
+    var taiNguyenImages = Model.TaiNguyens?.Where(t => t.Loai == "image");
+    var taiNguyenDocs = Model.TaiNguyens?.Where(t => t.Loai == "doc");
 }
 
 <div class="container mt-4">
     <h2>@Model.Title</h2>
     <p>@Model.Description</p>
 
-    @* Hiển thị nội dung chính *@
-    @if (!string.IsNullOrEmpty(Model.ContentUrl))
+    @if (taiNguyenImages?.Any() == true)
     {
-        var ext = System.IO.Path.GetExtension(Model.ContentUrl).ToLower();
-        var isDriveLink = Model.ContentUrl.Contains("drive.google.com");
-        <div class="mt-3">
-            @if (isDriveLink)
-            {
-                <iframe src="@Model.ContentUrl.Replace("view?usp=sharing", "preview")"
-                        width="100%" height="480" allowfullscreen></iframe>
-            }
-            else if (imageExts.Contains(ext))
-            {
-                <img src="@Model.ContentUrl" class="img-fluid rounded border shadow-sm" style="max-width: 100%; height: auto;" />
-            }
-            else if (videoExts.Contains(ext))
-            {
-                <video controls class="mt-2" style="max-width: 100%; height: auto;">
-                    <source src="@Model.ContentUrl" type="video/mp4" />
-                    Trình duyệt không hỗ trợ video.
-                </video>
-            }
-            else
-            {
-                <a href="@Model.ContentUrl" target="_blank" class="btn btn-outline-primary">Tải tài liệu bài giảng</a>
-            }
+        <div class="mt-4">
+            <h5 class="fw-bold">Ảnh minh họa</h5>
+
+            <div class="d-flex flex-wrap gap-3">
+                @foreach (var img in taiNguyenImages)
+                {
+                    var finalUrl = img.Url;
+                    string fileName = System.IO.Path.GetFileName(finalUrl);
+
+                    // Nếu là link Google Drive
+                    if (finalUrl.Contains("drive.google.com") && finalUrl.Contains("/file/d/"))
+                    {
+                        var match = System.Text.RegularExpressions.Regex.Match(finalUrl, @"/file/d/([a-zA-Z0-9_-]+)");
+                        if (match.Success)
+                        {
+                            var id = match.Groups[1].Value;
+                            finalUrl = $"https://drive.google.com/thumbnail?id={id}";
+                        }
+                    }
+
+                    <div class="text-center border p-2 shadow-sm rounded" style="width: 150px;">
+                        <img src="@finalUrl" alt="Ảnh minh họa"
+                             class="img-fluid rounded mb-2" style="width: 100%; height: 100px; object-fit: cover;" />
+                        <div>
+                            <a href="@img.Url" target="_blank" class="btn btn-sm btn-outline-primary w-100">
+                                Xem đầy đủ
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="text-muted fst-italic">Không có ảnh minh họa</p>
+    }
+
+
+    <!-- Tài liệu tổng -->
+    @if (taiNguyenDocs?.Any() == true)
+    {
+        <div class="mt-4">
+            <h5 class="fw-bold">Tài liệu đính kèm</h5>
+            <ul class="list-group">
+                @foreach (var doc in taiNguyenDocs)
+                {
+                    var isDrive = doc.Url.Contains("drive.google.com");
+                    var previewDoc = isDrive && doc.Url.Contains("view")
+                    ? doc.Url.Replace("view?usp=sharing", "preview")
+                    : doc.Url;
+
+                    <li class="list-group-item">
+                        @if (isDrive)
+                        {
+                            <iframe src="@previewDoc" width="100%" height="400" class="rounded border mb-2" allowfullscreen></iframe>
+                            <br />
+                            <a href="@doc.Url" target="_blank" class="btn btn-outline-secondary">Tải xuống tài liệu</a>
+                        }
+                        else
+                        {
+                            <a href="@doc.Url" target="_blank" class="btn btn-outline-primary">Tải tài liệu</a>
+                        }
+                    </li>
+                }
+            </ul>
         </div>
     }
 
     <hr />
 
-    @* Hiển thị danh sách chương và bài *@
+    <!-- Danh sách chương và bài -->
     @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
     {
         <div class="mt-4">
@@ -51,56 +93,51 @@
                 @foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
                 {
                     <li class="list-group-item">
-                        <strong>@bai.SortOrder. @bai.Title</strong><br />
+                        <strong>@bai.SortOrder. @bai.Title</strong>
                         <p>@bai.Description</p>
 
-                        @* Video *@
-                        @if (!string.IsNullOrEmpty(bai.VideoUrl))
+                        @if (bai.TaiNguyens != null && bai.TaiNguyens.Any())
                         {
-                            var ext = System.IO.Path.GetExtension(bai.VideoUrl).ToLower();
-                            var isDrive = bai.VideoUrl.Contains("drive.google.com");
+                            <div class="mt-2 d-flex flex-wrap gap-3 flex-column">
+                                @foreach (var file in bai.TaiNguyens)
+                                {
+                                    var isDrive = file.Url.Contains("drive.google.com");
+                                    var previewUrl = isDrive && file.Url.Contains("view")
+                                    ? file.Url.Replace("view?usp=sharing", "preview")
+                                    : file.Url;
 
-                            if (isDrive)
-                            {
-                                <iframe src="@bai.VideoUrl.Replace("view?usp=sharing", "preview")"
-                                        width="100%" height="400" allowfullscreen class="mt-2"></iframe>
-                            }
-                            else if (videoExts.Contains(ext))
-                            {
-                                <video width="100%" controls class="mt-2">
-                                    <source src="@bai.VideoUrl" type="video/mp4">
-                                </video>
-                            }
-                            else if (imageExts.Contains(ext))
-                            {
-                                <img src="@bai.VideoUrl" class="img-fluid rounded mt-2" />
-                            }
-                        }
-
-                        @* Tài liệu *@
-                        @if (!string.IsNullOrEmpty(bai.Document))
-                        {
-                            var docExt = System.IO.Path.GetExtension(bai.Document).ToLower();
-                            var isDrive = bai.Document.Contains("drive.google.com");
-                            <div class="mt-2">
-                                @if (isDrive)
-                                {
-                                    <iframe src="@bai.Document.Replace("view?usp=sharing", "preview")"
-                                            width="100%" height="400" allowfullscreen></iframe>
-                                }
-                                else if (imageExts.Contains(docExt))
-                                {
-                                    <img src="@bai.Document" class="img-fluid rounded border" />
-                                }
-                                else if (videoExts.Contains(docExt))
-                                {
-                                    <video controls class="mt-2" style="max-width: 100%;">
-                                        <source src="@bai.Document" type="video/mp4" />
-                                    </video>
-                                }
-                                else
-                                {
-                                    <a href="@bai.Document" target="_blank">Tải tài liệu</a>
+                                    if (file.Loai == "image")
+                                    {
+                                        <img src="@previewUrl" class="img-thumbnail border shadow-sm" style="max-width: 250px;" />
+                                    }
+                                    else if (file.Loai == "video")
+                                    {
+                                        if (isDrive)
+                                        {
+                                            <iframe src="@previewUrl" width="100%" height="400" class="rounded border mb-2" allowfullscreen></iframe>
+                                        }
+                                        else
+                                        {
+                                            <video controls class="rounded border mt-2" style="max-width: 100%;">
+                                                <source src="@file.Url" type="video/mp4" />
+                                            </video>
+                                        }
+                                    }
+                                    else if (file.Loai == "doc")
+                                    {
+                                        <div class="w-100 mb-3">
+                                            @if (isDrive)
+                                            {
+                                                <iframe src="@previewUrl" width="100%" height="400" class="rounded border mb-2" allowfullscreen></iframe>
+                                                <br />
+                                                <a href="@file.Url" target="_blank" class="btn btn-outline-secondary">Tải tài liệu</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@file.Url" target="_blank" class="btn btn-outline-primary">Tải tài liệu</a>
+                                            }
+                                        </div>
+                                    }
                                 }
                             </div>
                         }
