@@ -1,397 +1,218 @@
-﻿@model WebBaiGiang.Models.WebBaiGiangContext
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ - LearnHub</title>
+    <meta name="description" content="Hệ thống quản lý học tập LearnHub" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/css/index.css" rel="stylesheet" />
+</head>
 
-@* @{
-    ViewData["Title"] = "Home Page";
-    var featuredCourses = Model.FeaturedCourses;
-    var lecturerCourses = Model.Courses;
-    var recommendations = Model.Recommendations;
-} *@
-<!DOCTYPE html>
-<html lang="en">
-
-
-
-<body class="index-page">
-    <main class="main">
-
-        <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background">
-
-            <img src="~/img/hero-bg.jpg" alt="" data-aos="fade-in">
-
-            <div class="container">
-                <h2 data-aos="fade-up" data-aos-delay="100">Học hôm nay<br>Dẫn đầu ngày mai</h2>
-                <p data-aos="fade-up" data-aos-delay="200">Chúng ta là những nhà vô địch </p>
-                <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="courses.html" class="btn-get-started">Bắt đầu</a>
-                </div>
+<body>
+    <main>
+        <section class="hero-section animated-bg">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
             </div>
-
-        </section><!-- /Hero Section -->
-        <!-- About Section -->
-        <section id="about" class="about section">
             <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-                        <img src="~/img/about.jpg" class="img-fluid" alt="">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h1 class="hero-title">Nền tảng học tập thông minh</h1>
+                        <p class="hero-subtitle">Kết nối giảng viên và sinh viên trong môi trường học tập hiện đại, tương tác và hiệu quả</p>
+                        <a href="@Url.Action("Login","Account")" class="cta-button">
+                            <i class="bi bi-rocket-takeoff me-2"></i>
+                            Khám phá ngay
+                        </a>
                     </div>
-
-                    <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-                        <h3>Trải nghiệm học tập toàn diện và đáng tin cậy</h3>
-                        <p class="fst-italic">
-                            Chúng tôi cam kết mang đến cho bạn môi trường học tập chất lượng, nội dung được biên soạn kỹ lưỡng và dễ tiếp cận.
-                        </p>
-                        <ul>
-                            <li><i class="bi bi-check-circle"></i> <span> Bài giảng sinh động, dễ hiểu: Mỗi học phần đều được trình bày rõ ràng, kèm ví dụ minh họa và bài tập thực hành.</span></li>
-                            <li><i class="bi bi-check-circle"></i> <span>Giảng viên nhiệt tình, tận tâm: Bạn sẽ được hỗ trợ bởi đội ngũ giảng viên giàu kinh nghiệm trong từng lĩnh vực.</span></li>
-                            <li><i class="bi bi-check-circle"></i> <span>Học mọi lúc, mọi nơi: Bạn có thể học theo tốc độ riêng của mình, không giới hạn thời gian hay địa điểm.</span></li>
-                        </ul>
-                        <a href="@Url.Action("Login","Account")" class="read-more"><span>Bắt đầu học thử nào </span><i class="bi bi-arrow-right"></i></a>
-                    </div>
-
                 </div>
-
             </div>
+        </section>
 
-        </section><!-- /About Section -->
-        <!-- Counts Section -->
-        <section id="counts" class="section counts light-background">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Học sinh</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Khóa học</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-                            <p> Lớp học</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Video bài giảng</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Counts Section -->
-        <!-- Why Us Section -->
-        <section id="why-us" class="section why-us">
-
+        <section class="py-5" style="padding: 6rem 0;">
             <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="why-box">
-                            <h3>Tại sao chọn hệ thống của chúng tôi?</h3>
-                            <p>
-                                Nền tảng hỗ trợ giảng viên và sinh viên quản lý học phần một cách dễ dàng, hiệu quả. Tối ưu hóa quy trình dạy và học với giao diện thân thiện, hiện đại và bảo mật cao.
-                            </p>
-                            <div class="text-center">
-                                <a href="@Url.Action("About","Home")" class="more-btn">
-                                    <span>Tìm hiểu thêm</span> <i class="bi bi-chevron-right"></i>
-                                </a>
+                <div class="text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3 fade-in">Tính năng vượt trội</h2>
+                    <p class="lead text-muted fade-in">Trải nghiệm công nghệ giáo dục tiên tiến nhất</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon primary">
+                                <i class="bi bi-people-fill"></i>
                             </div>
-                        </div>
-                    </div><!-- End Why Box -->
-
-                    <div class="col-lg-8 d-flex align-items-stretch">
-                        <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
-
-                            <div class="col-xl-4">
-                                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                                    <i class="bi bi-clipboard-data"></i>
-                                    <h4>Quản lý học phần thông minh</h4>
-                                    <p>Giúp giảng viên tạo lớp, theo dõi tiến độ và đánh giá sinh viên một cách dễ dàng.</p>
-                                </div>
-                            </div><!-- End Icon Box -->
-
-                            <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
-                                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                                    <i class="bi bi-gem"></i>
-                                    <h4>Giao diện hiện đại, dễ dùng</h4>
-                                    <p>Thiết kế tối ưu trải nghiệm người dùng, hỗ trợ cả máy tính và thiết bị di động.</p>
-                                </div>
-                            </div><!-- End Icon Box -->
-
-                            <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-                                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                                    <i class="bi bi-inboxes"></i>
-                                    <h4>Kết nối & tương tác hiệu quả</h4>
-                                    <p>Giảng viên và sinh viên dễ dàng trao đổi, phản hồi và cập nhật thông tin học tập.</p>
-                                </div>
-                            </div><!-- End Icon Box -->
-
+                            <h4 class="fw-bold mb-3">Quản lý lớp học thông minh</h4>
+                            <p class="text-muted">Tạo lớp học, mời học sinh và quản lý toàn bộ hoạt động học tập một cách dễ dàng và hiệu quả</p>
                         </div>
                     </div>
-
-                </div>
-
-            </div>
-
-        </section><!-- /Why Us Section -->
-        <!-- Features Section -->
-        <section id="features" class="features section bg-gray-50 py-12">
-            <div class="container">
-                <div class="row gy-4">
-                    <div class="col-12 text-center mb-5">
-                        <h2 class="text-3xl font-bold text-blue-700">Tính năng nổi bật</h2>
-                        <p class="text-gray-600 mt-2">Hệ thống mang đến các chức năng hỗ trợ người dùng trong học tập và giảng dạy.</p>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="features-item text-center p-4 shadow-sm rounded bg-white h-100">
-                            <i class="bi bi-mortarboard fs-2 mb-3" style="color: #e80368;"></i>
-                            <h3 class="h6"><a href="#" class="stretched-link text-dark">Quản lý khóa học</a></h3>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon success">
+                                <i class="bi bi-camera-reels"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Bài giảng đa phương tiện</h4>
+                            <p class="text-muted">Tích hợp video, hình ảnh, tài liệu và các công cụ tương tác để tạo trải nghiệm học tập phong phú</p>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="features-item text-center p-4 shadow-sm rounded bg-white h-100">
-                            <i class="bi bi-person-lines-fill fs-2 mb-3" style="color: #5578ff;"></i>
-                            <h3 class="h6"><a href="#" class="stretched-link text-dark">Đăng ký môn học</a></h3>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="features-item text-center p-4 shadow-sm rounded bg-white h-100">
-                            <i class="bi bi-calendar-week fs-2 mb-3" style="color: #ffbb2c;"></i>
-                            <h3 class="h6"><a href="#" class="stretched-link text-dark">Lịch học & thi</a></h3>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
-                        <div class="features-item text-center p-4 shadow-sm rounded bg-white h-100">
-                            <i class="bi bi-graph-up fs-2 mb-3" style="color: #47aeff;"></i>
-                            <h3 class="h6"><a href="#" class="stretched-link text-dark">Theo dõi tiến độ</a></h3>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
-                        <div class="features-item text-center p-4 shadow-sm rounded bg-white h-100">
-                            <i class="bi bi-chat-dots fs-2 mb-3" style="color: #b20969;"></i>
-                            <h3 class="h6"><a href="#" class="stretched-link text-dark">Tương tác giảng viên</a></h3>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
-                        <div class="features-item text-center p-4 shadow-sm rounded bg-white h-100">
-                            <i class="bi bi-shield-lock fs-2 mb-3" style="color: #29cc61;"></i>
-                            <h3 class="h6"><a href="#" class="stretched-link text-dark">Bảo mật thông tin</a></h3>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card fade-in">
+                            <div class="feature-icon danger">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Đánh giá & Phản hồi</h4>
+                            <p class="text-muted">Hệ thống chấm điểm tự động, phản hồi chi tiết và theo dõi tiến độ học tập real-time</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Courses Section -->
-        <section id="courses" class="courses section">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Courses</h2>
-                <p>Popular Courses</p>
-            </div><!-- End Section Title -->
-
+        <section class="steps-section py-5" style="padding: 6rem 0;">
             <div class="container">
-
-                <div class="row">
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="course-item">
-                            <img src="~/img/course-1.jpg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <p class="category">Web Development</p>
-                                    <p class="price">$169</p>
-                                </div>
-
-                                <h3><a href="course-details.html">Website Design</a></h3>
-                                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                                <div class="trainer d-flex justify-content-between align-items-center">
-                                    <div class="trainer-profile d-flex align-items-center">
-                                        <img src="~/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
-                                        <a href="" class="trainer-link">Antonio</a>
-                                    </div>
-                                    <div class="trainer-rank d-flex align-items-center">
-                                        <i class="bi bi-person user-icon"></i>&nbsp;50
-                                        &nbsp;&nbsp;
-                                        <i class="bi bi-heart heart-icon"></i>&nbsp;65
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End Course Item-->
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="course-item">
-                            <img src="~/img/course-2.jpg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <p class="category">Marketing</p>
-                                    <p class="price">$250</p>
-                                </div>
-
-                                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                                <div class="trainer d-flex justify-content-between align-items-center">
-                                    <div class="trainer-profile d-flex align-items-center">
-                                        <img src="~/img/trainers/trainer-2-2.jpg" class="img-fluid" alt="">
-                                        <a href="" class="trainer-link">Lana</a>
-                                    </div>
-                                    <div class="trainer-rank d-flex align-items-center">
-                                        <i class="bi bi-person user-icon"></i>&nbsp;35
-                                        &nbsp;&nbsp;
-                                        <i class="bi bi-heart heart-icon"></i>&nbsp;42
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End Course Item-->
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="course-item">
-                            <img src="~/img/course-3.jpg" class="img-fluid" alt="...">
-                            <div class="course-content">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <p class="category">Content</p>
-                                    <p class="price">$180</p>
-                                </div>
-
-                                <h3><a href="course-details.html">Copywriting</a></h3>
-                                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                                <div class="trainer d-flex justify-content-between align-items-center">
-                                    <div class="trainer-profile d-flex align-items-center">
-                                        <img src="~/img/trainers/trainer-3-2.jpg" class="img-fluid" alt="">
-                                        <a href="" class="trainer-link">Brandon</a>
-                                    </div>
-                                    <div class="trainer-rank d-flex align-items-center">
-                                        <i class="bi bi-person user-icon"></i>&nbsp;20
-                                        &nbsp;&nbsp;
-                                        <i class="bi bi-heart heart-icon"></i>&nbsp;85
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End Course Item-->
-
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3 fade-in">Bắt đầu chỉ với 3 bước</h2>
+                    <p class="lead text-muted fade-in">Đơn giản, nhanh chóng và hiệu quả</p>
                 </div>
-
+                <div class="row position-relative">
+                    <div class="col-lg-4">
+                        <div class="step-card fade-in">
+                            <div class="step-line d-none d-lg-block"></div>
+                            <div class="step-number">1</div>
+                            <div class="step-icon mb-3">
+                                <i class="bi bi-person-plus display-4" style="color: #667eea;"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Tạo tài khoản</h4>
+                            <p class="text-muted">Đăng ký tài khoản giảng viên hoặc sinh viên chỉ trong vài phút</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="step-card fade-in">
+                            <div class="step-line d-none d-lg-block"></div>
+                            <div class="step-number">2</div>
+                            <div class="step-icon mb-3">
+                                <i class="bi bi-building display-4" style="color: #4facfe;"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Thiết lập lớp học</h4>
+                            <p class="text-muted">Tạo lớp học, thêm nội dung bài giảng và tùy chỉnh theo nhu cầu</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="step-card fade-in">
+                            <div class="step-number">3</div>
+                            <div class="step-icon mb-3">
+                                <i class="bi bi-rocket-takeoff display-4" style="color: #f5576c;"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Bắt đầu học tập</h4>
+                            <p class="text-muted">Mời học sinh tham gia và bắt đầu hành trình học tập thú vị</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-        </section><!-- /Courses Section -->
-        <!-- Trainers Index Section -->
-        <section id="trainers-index" class="section trainers-index">
-
+        <section class="faq-section py-5" style="padding: 6rem 0;">
             <div class="container">
-
-                <div class="row">
-
-                    <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member">
-                            <img src="~/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                            <div class="member-content">
-                                <h4>Walter White</h4>
-                                <span>Web Development</span>
-                                <p>
-                                    Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-                                </p>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member">
-                            <img src="~/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                            <div class="member-content">
-                                <h4>Sarah Jhinson</h4>
-                                <span>Marketing</span>
-                                <p>
-                                    Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                                </p>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member">
-                            <img src="~/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                            <div class="member-content">
-                                <h4>William Anderson</h4>
-                                <span>Content</span>
-                                <p>
-                                    Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                                </p>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter-x"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3 fade-in">Câu hỏi thường gặp</h2>
+                    <p class="lead text-muted fade-in">Giải đáp những thắc mắc phổ biến</p>
                 </div>
-
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="accordion fade-in" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        <i class="bi bi-question-circle me-3"></i>
+                                        Làm sao để tham gia lớp học?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Bạn chỉ cần nhận link mời từ giảng viên, click vào link và xác nhận tham gia. Hệ thống sẽ tự động thêm bạn vào lớp học và bạn có thể bắt đầu học ngay lập tức.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        <i class="bi bi-book me-3"></i>
+                                        Cách tạo bài giảng hiệu quả?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Hệ thống hỗ trợ tạo bài giảng đa phương tiện với video, hình ảnh, tài liệu PDF, slide thuyết trình. Bạn có thể sắp xếp nội dung theo logic học tập và thêm các bài tập tương tác.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        <i class="bi bi-currency-dollar me-3"></i>
+                                        Chi phí sử dụng như thế nào?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Hiện tại nền tảng hoàn toàn miễn phí cho tất cả giảng viên và sinh viên. Chúng tôi cam kết mang đến công nghệ giáo dục chất lượng cao mà không tốn kém.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </section><!-- /Trainers Index Section -->
-
+        </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-    <!-- Vendor JS Files -->
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/vendor/php-email-form/validate.js"></script>
-    <script src="~/vendor/aos/aos.js"></script>
-    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    <!-- Main JS File -->
-    <script src="~/js/main.js"></script>
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .glass-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
 
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
 </body>
-
 </html>

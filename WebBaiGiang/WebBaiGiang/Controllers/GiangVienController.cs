@@ -358,12 +358,42 @@ namespace WebBaiGiang.Controllers
                                 CreatedDate = DateTime.Now
                             };
 
-                            if (baiVm.DocumentFile != null)
+                            bai.TaiNguyens = new List<TaiNguyen>();
+
+                            // Upload hình ảnh hoặc video cho bài
+                            if (baiVm.ImageFiles?.Any() == true)
                             {
-                                using var stream = baiVm.DocumentFile.OpenReadStream();
-                                var url = await _googleDriveService.UploadFileAsync(baiVm.DocumentFile.FileName, stream, baiVm.DocumentFile.ContentType);
-                                bai.Document = url;
+                                foreach (var file in baiVm.ImageFiles)
+                                {
+                                    var loai = file.ContentType.StartsWith("video") ? "video" : "image";
+                                    using var stream = file.OpenReadStream();
+                                    var url = await _googleDriveService.UploadFileAsync(file.FileName, stream, file.ContentType);
+
+                                    bai.TaiNguyens.Add(new TaiNguyen
+                                    {
+                                        Url = url,
+                                        Loai = loai
+                                        // BaiId sẽ được EF tự gán khi lưu nếu bạn khai báo quan hệ Bai.TaiNguyens
+                                    });
+                                }
                             }
+
+                            // Upload tài liệu
+                            if (baiVm.DocumentFiles?.Any() == true)
+                            {
+                                foreach (var file in baiVm.DocumentFiles)
+                                {
+                                    using var stream = file.OpenReadStream();
+                                    var url = await _googleDriveService.UploadFileAsync(file.FileName, stream, file.ContentType);
+
+                                    bai.TaiNguyens.Add(new TaiNguyen
+                                    {
+                                        Url = url,
+                                        Loai = "tailieu"
+                                    });
+                                }
+                            }
+
 
                             chuong.Bais.Add(bai);
                         }
@@ -491,11 +521,12 @@ namespace WebBaiGiang.Controllers
         }
         public async Task<IActionResult> ChiTietBaiGiang(int id)
         {
-            var baiGiang = await _context.BaiGiangs
-                .Include(bg => bg.Chuongs)
-                    .ThenInclude(c => c.Bais)
-                    .Include(bg => bg.TaiNguyens)
-                .FirstOrDefaultAsync(bg => bg.Id == id);
+            var baiGiang = _context.BaiGiangs
+     .Include(bg => bg.Chuongs)
+         .ThenInclude(c => c.Bais)
+             .ThenInclude(b => b.TaiNguyens)
+     .Include(bg => bg.TaiNguyens) 
+     .FirstOrDefault(bg => bg.Id == id);
 
             if (baiGiang == null)
                 return NotFound();
@@ -522,9 +553,10 @@ namespace WebBaiGiang.Controllers
                         Description = b.Description,
                         VideoUrl = b.VideoUrl,
                         Document = b.Document,
-
-                        SortOrder = b.SortOrder
+                        SortOrder = b.SortOrder,
+                        TaiNguyens = b.TaiNguyens
                     }).ToList()
+
                 }).ToList()
             };
             return View(viewModel);

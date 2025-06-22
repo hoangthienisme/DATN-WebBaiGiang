@@ -1,33 +1,76 @@
-﻿
+﻿/* Màu sắc tùy chỉnh */
+:root {
+    --primary: #5B9BD5; /* Xanh dương nhạt */
+    --background: #F7F9FC; /* Xám nhạt */
+    --text-muted: #6C757D; /* Xám chữ */
+    --border-light: #E0E7EE; /* Viền nhạt */
+}
+
+/* Container phân trang */
 .pagination {
     margin-top: 20px;
     text-align: center;
+    max-width: 100%; /* Giới hạn chiều rộng */
+    overflow-x: auto; /* Cuộn ngang nếu quá dài */
+    padding: 10px 0;
 }
 
+/* Danh sách phân trang */
 .pagination-list {
-    margin-left: 60px;
     list-style: none;
     padding: 0;
-    display: inline-block;
+    display: inline-flex; /* Sử dụng flex để căn chỉnh */
+    gap: 6px; /* Khoảng cách giữa các nút */
+    white-space: nowrap; /* Ngăn xuống dòng */
+    margin: 0;
 }
 
+    /* Mỗi mục phân trang */
     .pagination-list li {
-        display: inline;
-        margin: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
+        /* Liên kết phân trang */
         .pagination-list li a {
             text-decoration: none;
             padding: 6px 10px;
-            background-color: #f2f2f2;
-            color: #333;
+            background-color: var(--background);
+            color: var(--text-muted);
+            border: 1px solid var(--border-light);
             border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
 
+        /* Trang hiện tại */
         .pagination-list li.active {
-            font-weight: bold;
             padding: 6px 10px;
-            background-color: #007bff;
+            background-color: var(--primary);
             color: white;
+            border: 1px solid var(--primary);
             border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
+
+        /* Hover cho liên kết */
+        .pagination-list li a:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pagination {
+        padding: 8px 10px;
+    }
+
+    .pagination-list li a,
+    .pagination-list li.active {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+    }
+}

@@ -122,10 +122,16 @@
         <ul class="pagination-list">
             @if (Model.HasPreviousPage)
             {
-                <li><a href="@Url.Action("BaiGiang", new { page = Model.PageIndex - 1 })">← Trước</a></li>
+                <li><a href="@Url.Action("BaiGiang", new { page = Model.PageIndex - 10 })">← Trước</a></li>
             }
 
-            @for (int i = 1; i <= Model.TotalPages; i++)
+            <!-- Số trang hiển thị (10 trang mỗi nhóm) -->
+            @{
+                int startPage = ((Model.PageIndex - 1) / 10) * 10 + 1;
+                int endPage = Math.Min(startPage + 9, Model.TotalPages);
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
             {
                 if (i == Model.PageIndex)
                 {
@@ -137,9 +143,9 @@
                 }
             }
 
-            @if (Model.HasNextPage)
+            @if (endPage < Model.TotalPages)
             {
-                <li><a href="@Url.Action("BaiGiang", new { page = Model.PageIndex + 1 })">Sau →</a></li>
+                <li><a href="@Url.Action("BaiGiang", new { page = endPage + 1 })">Sau →</a></li>
             }
         </ul>
     }

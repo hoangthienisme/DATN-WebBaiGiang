@@ -41,10 +41,11 @@ namespace WebBaiGiang.ViewModel
 
         [Url(ErrorMessage = "URL video không hợp lệ!")]
         public string? VideoUrl { get; set; }
-
-        public IFormFile? DocumentFile { get; set; } // Đổi từ Attachment thành DocumentFile để khớp với view
-
         public int SortOrder { get; set; }
+
+        // ✅ THÊM MỚI: Upload nhiều ảnh và tài liệu cho từng bài
+        public List<IFormFile>? ImageFiles { get; set; }
+        public List<IFormFile>? DocumentFiles { get; set; }
     }
 
     // ViewModel for editing existing chapters
