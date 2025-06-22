@@ -1,0 +1,168 @@
+﻿/* Màu sắc tùy chỉnh */
+:root {
+    --primary: #5B9BD5; /* Xanh dương nhạt */
+    --success: #66BB6A; /* Xanh lá nhạt */
+    --info: #4DB6AC; /* Xanh ngọc nhẹ */
+    --danger: #EF9A9A; /* Hồng san hô nhạt */
+    --background: #F7F9FC; /* Xám nhạt */
+    --text-muted: #6C757D; /* Xám chữ */
+    --border-light: #E0E7EE; /* Viền nhạt */
+}
+
+/* Card */
+.card {
+    background-color: var(--background);
+    border: 1px solid var(--border-light);
+    transition: transform 0.2s ease-in-out;
+}
+
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+/* Header bài giảng */
+.card-header.bg-primary {
+    background-color: var(--primary) !important;
+    color: white;
+    border-bottom: none;
+}
+
+/* Tiêu đề chương */
+.card-header.bg-success {
+    background-color: var(--success) !important;
+    color: white;
+    border-bottom: none;
+}
+
+/* Tài nguyên tổng hợp */
+.card-header.bg-info {
+    background-color: var(--info) !important;
+    color: white;
+    border-bottom: none;
+}
+
+/* Nền thẻ nhạt */
+.card.bg-light {
+    background-color: var(--background) !important;
+}
+
+/* Accordion */
+.accordion-button:not(.collapsed) {
+    background-color: var(--background);
+    color: var(--text-muted);
+    box-shadow: none;
+}
+
+.accordion-button {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.accordion-item {
+    border: 1px solid var(--border-light);
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+/* List group */
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    background-color: var(--background);
+    color: var(--text-muted);
+}
+
+    .list-group-item:first-child {
+        border-top: none;
+    }
+
+    .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+/* Nút */
+.btn-primary, .btn-outline-primary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.btn-success, .btn-outline-success:hover {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.btn-danger, .btn-outline-danger:hover {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: white;
+}
+
+.btn-outline-primary, .btn-outline-success, .btn-outline-danger {
+    color: var(--text-muted);
+}
+
+.btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Badge */
+.badge.bg-primary {
+    background-color: var(--primary);
+}
+
+.badge.bg-success {
+    background-color: var(--success);
+}
+
+.badge.bg-danger {
+    background-color: var(--danger);
+}
+
+/* Chữ mô tả */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Viền bài học */
+.border-primary {
+    border-color: var(--primary) !important;
+}
+
+/* Biểu tượng tài liệu */
+i.text-danger {
+    color: var(--danger) !important;
+}
+
+/* Iframe và video */
+iframe, video {
+    border: 1px solid var(--border-light) !important;
+    border-radius: 4px;
+}
+
+.ratio-16x9 {
+    --bs-aspect-ratio: 56.25%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-group {
+        flex-direction: column;
+    }
+
+        .btn-group .btn {
+            border-radius: 0.25rem !important;
+            margin-bottom: 2px;
+        }
+
+    .card {
+        margin-bottom: 12px;
+    }
+
+    .accordion-item {
+        margin-bottom: 6px;
+    }
+}

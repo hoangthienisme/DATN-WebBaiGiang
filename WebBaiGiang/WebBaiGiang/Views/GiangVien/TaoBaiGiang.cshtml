@@ -215,21 +215,40 @@
         const lessonDiv = document.createElement("div");
         lessonDiv.classList.add("mt-2", "border", "p-2", BAI_ITEM_CLASS);
 
-        lessonDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="fw-bold">Bài học ${lessonIdx + 1}</label>
-                <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, '${BAI_ITEM_CLASS}')">Xóa bài học</button>
-            </div>
-            <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Id" value="0" />
-            <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="form-control mb-1" placeholder="Tên bài học" required />
-            <span data-valmsg-for="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="text-danger"></span>
-            <textarea name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Description" class="form-control mb-1" placeholder="Mô tả bài học"></textarea>
-            <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
-            <input type="file" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].DocumentFile" class="form-control mb-2"
-                   onchange="previewFiles(this, '${previewId}')" />
-            <div id="${previewId}" class="mt-2"></div>
-            <input type="number" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].SortOrder" value="${lessonIdx + 1}" class="form-control mb-1" placeholder="Thứ tự" />
-        `;
+           lessonDiv.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <label class="fw-bold">Bài học ${lessonIdx + 1}</label>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, '${BAI_ITEM_CLASS}')">Xóa bài học</button>
+        </div>
+
+        <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Id" value="0" />
+        <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="form-control mb-1" placeholder="Tên bài học" required />
+        <span data-valmsg-for="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="text-danger"></span>
+
+        <textarea name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Description" class="form-control mb-1" placeholder="Mô tả bài học"></textarea>
+        <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
+
+        <!-- Tải lên ảnh hoặc video -->
+        <label class="form-label">Hình ảnh hoặc Video</label>
+        <input type="file"
+               name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].ImageFiles"
+               class="form-control mb-1"
+               multiple accept="image/*,video/*"
+               onchange="previewFiles(this, '${previewId}')" />
+
+        <!-- Tải lên tài liệu -->
+        <label class="form-label">Tài liệu</label>
+        <input type="file"
+               name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].DocumentFiles"
+               class="form-control mb-1"
+               multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+               onchange="previewFiles(this, '${previewId}')" />
+
+        <div id="${previewId}" class="mt-2"></div>
+
+        <input type="number" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].SortOrder" value="${lessonIdx + 1}" class="form-control mb-1" placeholder="Thứ tự" />
+    `;
+
 
         lessonContainer.appendChild(lessonDiv);
         enableValidationForNewElements(lessonDiv);

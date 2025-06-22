@@ -3,6 +3,7 @@ wwwroot\css\admin.css
 wwwroot\css\baigiang.css
 wwwroot\css\courses.css
 wwwroot\css\createcourse.css
+wwwroot\css\chitietbaigiang.css
 wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
@@ -12,7 +13,6 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\img\about.jpg
 wwwroot\img\about-2.jpg
-wwwroot\img\anhkha.jpg
 wwwroot\img\anhkha.png
 wwwroot\img\apple-touch-icon.png
 wwwroot\img\course-1.jpg
@@ -26,6 +26,8 @@ wwwroot\img\events-item-2.jpg
 wwwroot\img\favicon.png
 wwwroot\img\hay.jpg
 wwwroot\img\hero-bg.jpg
+wwwroot\img\hochanh.jpg
+wwwroot\img\hochanh2.jpg
 wwwroot\img\icon-bar-chart.png
 wwwroot\img\icon-message.png
 wwwroot\img\icon-wrench.png

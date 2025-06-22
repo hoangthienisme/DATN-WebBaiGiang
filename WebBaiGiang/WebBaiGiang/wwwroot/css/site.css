@@ -1,184 +1,182 @@
-﻿html {
-  font-size: 14px;
+﻿/* Custom Properties (Variables) - Nên đặt ở đầu file CSS hoặc trong :root */
+:root {
+    --primary-color: #667eea; /* Màu xanh tím */
+    --secondary-color: #5a67d8; /* Màu xanh tím đậm hơn khi hover */
+    --accent-color: #ff6b6b; /* Màu đỏ nổi bật (có thể không dùng nếu không có CTA khác) */
+    --text-color: #333;
+    --light-text-color: #555;
+    --border-color: #ddd;
+    --background-light: #f8f9fa;
+    --background-dark: #2c3e50;
+    --white: #ffffff;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* Base and Reset */
 html, body {
     height: 100%;
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.text-center h1{
-    text-align:center;
+/* Global focus outline */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem var(--white), 0 0 0 0.25rem var(--primary-color);
 }
-/* NAVBAR */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.text-center h1 {
+    text-align: center;
+}
+
+/* =======================================
+   NAVBAR STYLES
+   ======================================= */
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 2.4rem; 
-    background: white;
-    border-bottom: 1px solid #ddd;
-    align-items: center;
+    justify-content: space-between; /* Đẩy các nhóm phần tử ra hai bên */
+    padding: 15px 40px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.navbar-logo h1 {
+.navbar-logo .sitename {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 28px;
     margin: 0;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: var(--accent-color);
-    margin-left : 30px;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
-.navbar-search {
+.navbar-logo a:hover .sitename {
+    color: var(--secondary-color);
+}
+
+.navbar-logo a {
+    text-decoration: none;
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    padding: 5px 15px;
-    width: 300px;
-    position: relative; 
 }
 
-    .navbar-search img {
-        position: absolute;
-        left: 10px;
-        width: 18px;
-        height: 18px;
-        pointer-events: none;
-    }
-
-    .navbar-search input {
-        height: 30px;
-        border: none;
-        outline: none;
-        width: 100%;
-        padding-left: 35px; 
-        background: transparent; 
-    }
-
-
-.navbar-button:hover {
-    color: var(--contrast-color);
-    background: color-mix(in srgb, var(--accent-color), transparent 15%);
-}
-.navbar-button {
-    border-radius: 50px;
-    color: var(--contrast-color);
-    background: var(--accent-color);
-    order: 2;
-    margin: 0 15px 0 0;
-    padding: 6px 15px;
-}
-    .navbar-button a {
-        color: var(--contrast-color);
-    }
-
-.navbar-button-primary {
-    background: #6a11cb;
-    color: white;
-}
-
-.navbar-cart {
-    font-size: 20px;
-    cursor: pointer;
-}
-.navbar-logo {
-    
-}
-    .navbar-logo a {
-        text-decoration: none;
-        color: blue; 
-        display: flex;
-        align-items: center;
-    }
-
-/* MENU NGANG */
-.navbar-menu {
+/* Navigation Menu */
+.navmenu ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
+    margin: 0;
     padding: 0;
 }
 
-    .navbar-menu > li {
-        position: relative;
-    }
-
-    .navbar-menu a {
-        font-size:17px;
-        text-decoration: none;
-        font-weight: bold;
-        color: black;
-        padding: 10px;
-        display: block;
-    }
-.arrow {
-    margin-left: 5px;
-    font-weight: bold;
-    color: gray;
+.navmenu a {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--light-text-color);
+    text-decoration: none;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
+    .navmenu a:hover {
+        color: var(--primary-color);
+    }
 
-    .navbar-menu .dropdown-menu {
-        display: none;
+    .navmenu a::after {
+        content: '';
         position: absolute;
-        top: 100%;
         left: 0;
-        background: white;
-        list-style: none;
-        padding: 0;
-        border: 1px solid #ddd;
-        min-width: 200px;
-        z-index: 1000;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
     }
 
-        .navbar-menu .dropdown-menu li {
-            position: relative;
-        }
-
-        .navbar-menu .dropdown-menu a {
-            padding: 10px;
-            display: block;
-            color: black;
-        }
-
-    .navbar-menu .dropdown:hover > .dropdown-menu {
-        display: block;
+    .navmenu a:hover::after {
+        width: 100%;
     }
 
-    /* SUBMENU CON */
-    .navbar-menu .dropdown-menu .dropdown-menu {
-        left: 100%;
-        top: 0;
-    }
-.group:hover .group-hover\:block {
-     display: block;
+/* Utility Group (Now only contains Auth Buttons) */
+.navbar-utility-group {
+    display: flex; /* Giữ flex để căn chỉnh navbar-auth-buttons */
+    align-items: center;
+    /* Xóa 'gap' ở đây vì không còn nhiều phần tử bên trong */
 }
 
-/*Footer*/
+/* Auth Buttons */
+.navbar-auth-buttons {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa 2 nút */
+    align-items: center;
+}
+
+    .navbar-auth-buttons a {
+        padding: 8px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+.btn-register {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+    .btn-register:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+    }
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+    .btn-login:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+
+/* =======================================
+   FOOTER STYLES (Giữ nguyên)
+   ======================================= */
 .footer {
-    background: #2c3e50;
-    color: white;
+    background: var(--background-dark);
+    color: var(--white);
     padding: 40px 20px;
     font-family: Arial, sans-serif;
     margin-top: auto;
@@ -223,7 +221,7 @@ body {
     }
 
         .footer-column ul li a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
         }
 
@@ -247,4 +245,74 @@ body {
     padding-top: 20px;
     border-top: 1px solid #444;
     margin-top: 20px;
+}
+
+/* =======================================
+   RESPONSIVE STYLES
+   ======================================= */
+@media (max-width: 992px) {
+    .navmenu {
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .navbar-utility-group {
+        flex-grow: 1; /* Để nhóm nút chiếm không gian còn lại */
+        justify-content: flex-end; /* Đẩy các nút sang phải */
+        /* Xóa gap ở đây */
+    }
+
+    .navbar-auth-buttons a {
+        padding: 6px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .navbar-logo .sitename {
+        font-size: 24px;
+    }
+
+    .navbar-utility-group {
+        flex-direction: column; /* Xếp chồng các nút dọc nếu cần thêm */
+        align-items: flex-end; /* Căn phải */
+        gap: 10px; /* Khoảng cách giữa các phần tử nếu có nhiều hơn 1 */
+    }
+
+    .navbar-auth-buttons {
+        width: auto; /* Để nút không chiếm 100% chiều rộng */
+        justify-content: flex-end; /* Căn phải các nút bên trong */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-nav, .footer-social {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo .sitename {
+        font-size: 20px;
+    }
+
+    .navbar-utility-group {
+        gap: 8px;
+    }
+
+    .btn-register, .btn-login {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
 }
