@@ -45,7 +45,7 @@
             </div>
             <div id="imagePreview" class="d-flex flex-wrap gap-3 mt-2"></div>
         </div>
-
+        <hr />
         <!-- Tải lên tài liệu -->
         <div class="mb-3">
             <label class="form-label fw-bold">Tải lên tài liệu</label>
@@ -57,7 +57,15 @@
             </div>
             <div id="fileNamePreview" class="mt-2"></div>
         </div>
-
+        <hr />
+        <h5>Liên kết YouTube</h5>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Nhập liên kết video YouTube (có thể nhập nhiều)</label>
+            <div id="youtube-links-container" class="d-flex flex-column gap-2">
+                <input type="url" name="YoutubeLinks" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addYoutubeLink()">+ Thêm liên kết</button>
+        </div>
         <div class="mb-3">
             <label class="form-label fw-bold">Dành cho lớp</label>
             <div class="dropdown">
@@ -89,7 +97,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="mt-4">
             <button type="submit" class="btn btn-success">Đăng</button>
         </div>
@@ -229,11 +236,11 @@
         <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
 
         <!-- Tải lên ảnh hoặc video -->
-        <label class="form-label">Hình ảnh hoặc Video</label>
+        <label class="form-label">Tải lên hình ảnh</label>
         <input type="file"
                name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].ImageFiles"
                class="form-control mb-1"
-               multiple accept="image/*,video/*"
+               multiple accept="image/*"
                onchange="previewFiles(this, '${previewId}')" />
 
         <!-- Tải lên tài liệu -->
@@ -327,5 +334,16 @@
                 previewContainer.appendChild(span);
             }
         });
+    }
+</script>
+<script>
+    function addYoutubeLink() {
+        const container = document.getElementById("youtube-links-container");
+        const input = document.createElement("input");
+        input.type = "url";
+        input.name = "YoutubeLinks";
+        input.className = "form-control";
+        input.placeholder = "https://www.youtube.com/watch?v=...";
+        container.appendChild(input);
     }
 </script>

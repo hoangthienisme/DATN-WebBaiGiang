@@ -107,11 +107,15 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.Property(e => e.Url)
                 .HasMaxLength(500)
-                .IsRequired();
+                .IsRequired(false); 
 
             entity.Property(e => e.Loai)
                 .HasMaxLength(50)
-                .IsRequired();
+                .IsRequired(); 
+
+            entity.Property(e => e.Data)
+                .HasColumnType("varbinary(max)") 
+                .IsRequired(false); 
 
             entity.HasOne(e => e.BaiGiang)
                 .WithMany(b => b.TaiNguyens)
@@ -123,6 +127,7 @@ public partial class WebBaiGiangContext : DbContext
                 .HasForeignKey(e => e.BaiId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
+
 
 
 
