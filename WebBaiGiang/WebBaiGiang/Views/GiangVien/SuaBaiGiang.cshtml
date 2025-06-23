@@ -1,297 +1,189 @@
 ﻿@model WebBaiGiang.ViewModel.BaiGiangEditViewModel
 @{
-    Layout = null;
-    ViewData["Title"] = "Chỉnh sửa toàn bộ bài giảng";
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+    ViewData["Title"] = "Chỉnh sửa bài giảng";
 }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<h3 class="mb-3">Chỉnh sửa bài giảng</h3>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
 
-<div class="container mt-4">
-    <h3>Chỉnh sửa toàn bộ bài giảng</h3>
+<form asp-action="SuaBaiGiang" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
 
-    <form asp-action="SuaBaiGiang" method="post" enctype="multipart/form-data">
-        @* Đã sửa asp-action thành EditBaiGiang *@
-        <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label fw-bold">Tiêu đề *</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Title" class="form-label fw-bold">Tiêu đề bài giảng *</label>
-            <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề bài giảng" required />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Description" class="form-label fw-bold">Mô tả bài giảng</label>
-            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Mô tả bài giảng"></textarea>
-        </div>
-
-        <hr />
-        <h5>Đính kèm File bài giảng (file tổng thể của bài giảng, nếu có)</h5>
-        <div class="mb-3 d-flex flex-wrap gap-3 align-items-center">
-            <input asp-for="Attachment" type="file" class="form-control w-auto" />
-            <span asp-validation-for="Attachment" class="text-danger"></span>
-            @if (!string.IsNullOrEmpty(Model.ExistingAttachmentUrl))
+    <hr />
+    <h5>Hình ảnh tổng</h5>
+    <div class="mb-3">
+        <input asp-for="ImageFiles" type="file" class="form-control" multiple accept="image/*" />
+        <div class="d-flex flex-wrap gap-2 mt-2">
+            @foreach (var img in Model.ExistingImages)
             {
-                <small class="text-muted">File hiện tại: <a href="@Model.ExistingAttachmentUrl" target="_blank">Xem file</a></small>
-                <input type="hidden" name="ExistingAttachmentUrl" value="@Model.ExistingAttachmentUrl" />
-            }
-        </div>
-
-        <hr />
-
-       <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                <span id="selectedClassesText">Dành cho lớp...</span>
-                </button>
-                <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style=" max-height: 200px; overflow-y: auto;">
-                    @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
-                    {
-                        @foreach (var item in Model.AvailableClasses)
-                        {
-                            <li>
-                                <div class="form-check">
-                                    <input class="form-check-input class-checkbox" type="checkbox"
-                                           value="@item.Value"
-                                           id="classCheckbox_@item.Value"
-                                           name="SelectedClassIds" @(Model.SelectedClassIds.Contains(int.Parse(item.Value)) ? "checked" : "")>
-                                    <label class="form-check-label" for="classCheckbox_@item.Value">
-                                        @item.Text
-                                    </label>
-                                </div>
-                            </li>
-                        }
-                    }
-                    else
-                    {
-                        <li><p class="text-muted ms-2">Không có lớp học nào khả dụng cho bạn.</p></li>
-                    }
-                </ul>
-            </div>
-
-
-        <h4>Danh sách chương</h4>
-        <div id="chapters-container">
-            @for (int c = 0; c < Model.Chuongs.Count; c++)
-            {
-                <div class="border p-3 mb-4 chapter-item">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <label class="fw-bold fs-5">Chương @(c + 1)</label>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="removeChapter(this)">Xóa chương</button>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Tiêu đề chương *</label>
-                        <input type="text" name="Chuongs[@c].Title" value="@Model.Chuongs[c].Title" class="form-control" placeholder="Tên chương" required />
-                    </div>
-                    <input type="hidden" name="Chuongs[@c].Id" value="@Model.Chuongs[c].Id" />
-
-                    <h5>Bài học trong chương</h5>
-                    <div class="lessons-container">
-                        @for (int l = 0; l < Model.Chuongs[c].Bais.Count; l++)
-                        {
-                            <div class="border p-2 mb-2 lesson-item">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <label class="fw-bold">Bài học @(l + 1)</label>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeLesson(this)">Xóa bài học</button>
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Tiêu đề bài học *</label>
-                                    <input type="text" name="Chuongs[@c].Bais[@l].Title" value="@Model.Chuongs[c].Bais[l].Title" class="form-control" placeholder="Tên bài học" required />
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Mô tả bài học</label>
-                                    <textarea name="Chuongs[@c].Bais[@l].Description" class="form-control" rows="3">@Model.Chuongs[c].Bais[l].Description</textarea>
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">URL video (nếu có)</label>
-                                    <input type="text" name="Chuongs[@c].Bais[@l].VideoUrl" value="@Model.Chuongs[c].Bais[l].VideoUrl" class="form-control" placeholder="URL video" />
-                                </div>
-
-                                <div class="mb-2">
-                                    <label class="form-label">Tài liệu đính kèm (cho bài học)</label>
-                                    <input type="file" name="Chuongs[@c].Bais[@l].DocumentFile" class="form-control" />
-                                    @if (!string.IsNullOrEmpty(Model.Chuongs[c].Bais[l].ExistingDocumentUrl))
-                                    {
-                                        <small class="text-muted">File hiện tại: <a href="@Model.Chuongs[c].Bais[l].ExistingDocumentUrl" target="_blank">Xem file</a></small>
-                                        <input type="hidden" name="Chuongs[@c].Bais[@l].ExistingDocumentUrl" value="@Model.Chuongs[c].Bais[l].ExistingDocumentUrl" />
-                                    }
-                                </div>
-                                <input type="hidden" name="Chuongs[@c].Bais[@l].Id" value="@Model.Chuongs[c].Bais[l].Id" /> @* THÊM: Để gửi ID bài học hiện có *@
-                            </div>
-                        }
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-3" onclick="addLesson(this)">+ Thêm bài học</button>
-                    </div>
+                <div class="position-relative">
+                    <img src="@img.Url" class="img-thumbnail" style="max-width: 120px;" />
+                    <input type="checkbox" name="ImagesToDelete" value="@img.Id" title="Xóa ảnh" class="position-absolute top-0 end-0" />
                 </div>
             }
         </div>
+    </div>
 
-        <button type="button" class="btn btn-outline-success mb-4" onclick="addChapter()">+ Thêm chương</button>
-
-        <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Lưu toàn bộ bài giảng</button>
-            <a href="@Url.Action("BaiGiang", "GiangVien")" class="btn btn-secondary">Hủy bỏ</a>
+    <h5>Tài liệu tổng</h5>
+    <div class="mb-3">
+        <input asp-for="DocumentFiles" type="file" class="form-control" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt" />
+        <div class="mt-2">
+            @foreach (var doc in Model.ExistingDocuments)
+            {
+                <div>
+                    📄 <a href="@doc.Url" target="_blank">@System.IO.Path.GetFileName(doc.Url)</a>
+                    <input type="checkbox" name="DocumentsToDelete" value="@doc.Id" title="Xóa tài liệu" />
+                </div>
+            }
         </div>
-    </form>
-</div>
+    </div>
+
+    <h5>Link YouTube tổng</h5>
+    <div class="mb-3" id="youtube-container">
+        @foreach (var link in Model.ExistingYoutubeLinks)
+        {
+            <input type="url" name="YoutubeLinks" class="form-control mb-2" value="@link" placeholder="https://www.youtube.com/watch?v=..." />
+        }
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addYoutubeInput()">+ Thêm link</button>
+    </div>
+
+    <hr />
+    <h5>Chương và bài học</h5>
+    <div id="chapters-container">
+        @for (int c = 0; c < Model.Chuongs.Count; c++)
+        {
+            var chuong = Model.Chuongs[c];
+            <div class="border p-3 mb-3 chapter-item">
+                <h6>Chương @(c + 1)</h6>
+                <input type="hidden" name="Chuongs[@c].Id" value="@chuong.Id" />
+                <input type="text" name="Chuongs[@c].Title" value="@chuong.Title" class="form-control mb-2" placeholder="Tên chương" />
+                <input type="number" name="Chuongs[@c].SortOrder" value="@chuong.SortOrder" class="form-control mb-2" placeholder="Thứ tự" />
+
+                @for (int b = 0; b < chuong.Bais.Count; b++)
+                {
+                    var bai = chuong.Bais[b];
+                    <div class="border p-2 mb-2 bai-item">
+                        <h6>Bài @(b + 1)</h6>
+                        <input type="hidden" name="Chuongs[@c].Bais[@b].Id" value="@bai.Id" />
+                        <input type="text" name="Chuongs[@c].Bais[@b].Title" value="@bai.Title" class="form-control mb-1" placeholder="Tên bài học" />
+                        <textarea name="Chuongs[@c].Bais[@b].Description" class="form-control mb-1" placeholder="Mô tả">@bai.Description</textarea>
+                        <input type="url" name="Chuongs[@c].Bais[@b].VideoUrl" value="@bai.VideoUrl" class="form-control mb-1" placeholder="URL video" />
+
+                        <label class="form-label">Hình ảnh</label>
+                        <input type="file" name="Chuongs[@c].Bais[@b].ImageFiles" class="form-control mb-1" multiple accept="image/*" />
+
+                        @if (bai.ExistingImageUrls != null)
+                        {
+                            foreach (var img in bai.ExistingImageUrls)
+                            {
+                                <img src="@img" class="img-thumbnail me-2 mb-1" style="max-width: 120px;" />
+                            }
+                        }
+
+                        <label class="form-label">Tài liệu</label>
+                        <input type="file" name="Chuongs[@c].Bais[@b].DocumentFiles" class="form-control mb-1" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt" />
+
+                        @if (bai.ExistingDocumentUrls != null)
+                        {
+                            foreach (var doc in bai.ExistingDocumentUrls)
+                            {
+                                <div>
+                                    📄 <a href="@doc" target="_blank">@System.IO.Path.GetFileName(doc)</a>
+                                </div>
+                            }
+                        }
+
+                        <input type="number" name="Chuongs[@c].Bais[@b].SortOrder" value="@bai.SortOrder" class="form-control mb-1" placeholder="Thứ tự" />
+                    </div>
+                }
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addLesson(@c)">+ Thêm bài</button>
+            </div>
+        }
+    </div>
+    <button type="button" class="btn btn-outline-primary mb-3" onclick="addChapter()">+ Thêm chương</button>
+
+    <hr />
+    <h5>Chọn lớp học</h5>
+    <div class="mb-3">
+        @foreach (var item in Model.AvailableClasses)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="@item.Value" name="SelectedClassIds"
+                @(Model.SelectedClassIds.Contains(int.Parse(item.Value)) ? "checked" : "") />
+                <label class="form-check-label">@item.Text</label>
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu thay đổi</button>
+    <a asp-action="BaiGiang" class="btn btn-secondary">Hủy</a>
+</form>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
     <script>
-        $(document).ready(function() {
-            // Ngăn dropdown đóng khi click vào checkbox
-            $('.dropdown-menu').on('click', function(e) {
-                e.stopPropagation();
-            });
+        function addYoutubeInput() {
+            const container = document.getElementById("youtube-container");
+            const input = document.createElement("input");
+            input.type = "url";
+            input.name = "YoutubeLinks";
+            input.placeholder = "https://www.youtube.com/watch?v=...";
+            input.className = "form-control mt-2";
+            container.appendChild(input);
+        }
 
-            // Cập nhật text hiển thị trên nút dropdown
-            function updateSelectedClassesText() {
-                const selectedTexts = [];
-                $('.class-checkbox:checked').each(function() {
-                    selectedTexts.push($(this).next('label').text().trim());
-                });
+        function addLesson(chapterIndex) {
+            const chapter = document.getElementsByClassName("chapter-item")[chapterIndex];
+            const baiContainer = chapter.querySelector(".bai-item:last-of-type")?.parentNode || chapter;
 
-                if (selectedTexts.length === 0) {
-                    $('#selectedClassesText').text('Dành cho lớp...');
-                } else {
-                    $('#selectedClassesText').text(selectedTexts.join(', '));
-                }
-            }
+            const baiIndex = chapter.querySelectorAll(".bai-item").length;
+            const html = `
+                <div class="border p-2 mb-2 bai-item">
+                    <h6>Bài ${baiIndex + 1}</h6>
+                    <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${baiIndex}].Id" value="0" />
+                    <input type="text" name="Chuongs[${chapterIndex}].Bais[${baiIndex}].Title" class="form-control mb-1" placeholder="Tên bài học" />
+                    <textarea name="Chuongs[${chapterIndex}].Bais[${baiIndex}].Description" class="form-control mb-1" placeholder="Mô tả"></textarea>
+                    <input type="url" name="Chuongs[${chapterIndex}].Bais[${baiIndex}].VideoUrl" class="form-control mb-1" placeholder="URL video" />
+                    <label>Hình ảnh</label>
+                    <input type="file" name="Chuongs[${chapterIndex}].Bais[${baiIndex}].ImageFiles" class="form-control mb-1" multiple />
+                    <label>Tài liệu</label>
+                    <input type="file" name="Chuongs[${chapterIndex}].Bais[${baiIndex}].DocumentFiles" class="form-control mb-1" multiple />
+                    <input type="number" name="Chuongs[${chapterIndex}].Bais[${baiIndex}].SortOrder" value="${baiIndex + 1}" class="form-control mb-1" placeholder="Thứ tự" />
+                </div>`;
+            baiContainer.insertAdjacentHTML("beforeend", html);
+        }
 
-            // Gắn sự kiện change cho tất cả các checkbox lớp
-            $('.class-checkbox').on('change', updateSelectedClassesText);
-
-            // Gọi lần đầu khi tải trang để hiển thị các lớp đã chọn (nếu có)
-            updateSelectedClassesText();
-        });
+        function addChapter() {
+            const container = document.getElementById("chapters-container");
+            const chapterIndex = document.querySelectorAll(".chapter-item").length;
+            const html = `
+                <div class="border p-3 mb-3 chapter-item">
+                    <h6>Chương ${chapterIndex + 1}</h6>
+                    <input type="hidden" name="Chuongs[${chapterIndex}].Id" value="0" />
+                    <input type="text" name="Chuongs[${chapterIndex}].Title" class="form-control mb-2" placeholder="Tên chương" />
+                    <input type="number" name="Chuongs[${chapterIndex}].SortOrder" value="${chapterIndex + 1}" class="form-control mb-2" placeholder="Thứ tự" />
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addLesson(${chapterIndex})">+ Thêm bài</button>
+                </div>`;
+            container.insertAdjacentHTML("beforeend", html);
+        }
     </script>
 }
-
-<script>
-    // Hàm này dùng để cập nhật lại các chỉ số (index) của các trường input
-    // để Model Binder của ASP.NET Core có thể đọc chính xác danh sách.
-    function reindexAll() {
-        const chapters = document.querySelectorAll("#chapters-container .chapter-item");
-
-        // Cập nhật lại số lượng chương toàn cục
-        window.chapterCount = chapters.length;
-
-        chapters.forEach((chapter, chapterIndex) => {
-            // Cập nhật nhãn "Chương X"
-            chapter.querySelector("label.fw-bold.fs-5").innerHTML = `Chương ${chapterIndex + 1}`;
-
-            // Cập nhật thuộc tính 'name' cho các input của chương
-            chapter.querySelectorAll("input, textarea").forEach(input => {
-                if (input.name) {
-                    input.name = input.name.replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIndex}]`);
-                }
-            });
-
-            const lessons = chapter.querySelectorAll(".lesson-item");
-            lessons.forEach((lesson, lessonIndex) => {
-                // Cập nhật nhãn "Bài học X"
-                lesson.querySelector("label.fw-bold").innerHTML = `Bài học ${lessonIndex + 1}`;
-
-                // Cập nhật thuộc tính 'name' cho các input của bài học
-                lesson.querySelectorAll("input, textarea").forEach(input => {
-                    if (input.name) {
-                        input.name = input.name.replace(/\.Bais\[\d+\]/, `.Bais[${lessonIndex}]`);
-                    }
-                });
-            });
-        });
-    }
-
-    // Hàm thêm chương mới
-    function addChapter() {
-        const container = document.getElementById("chapters-container");
-        const chapterIndex = container.querySelectorAll('.chapter-item').length;
-
-        const chapterDiv = document.createElement("div");
-        chapterDiv.classList.add("border", "p-3", "mb-4", "chapter-item");
-        chapterDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="fw-bold fs-5">Chương ${chapterIndex + 1}</label>
-                <button type="button" class="btn btn-sm btn-danger" onclick="removeChapter(this)">Xóa chương</button>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Tiêu đề chương *</label>
-                <input type="text" name="Chuongs[${chapterIndex}].Title" class="form-control" placeholder="Tên chương" required />
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Mô tả chương</label>
-                <textarea name="Chuongs[${chapterIndex}].Description" class="form-control" rows="2"></textarea>
-            </div>
-
-            <input type="hidden" name="Chuongs[${chapterIndex}].Id" value="0" />
-
-            <h5>Bài học trong chương</h5>
-            <div class="lessons-container"></div>
-            <button type="button" class="btn btn-outline-primary btn-sm mb-3" onclick="addLesson(this)">+ Thêm bài học</button>
-        `;
-        container.appendChild(chapterDiv);
-    }
-
-    // Hàm xóa chương
-    function removeChapter(btn) {
-        btn.closest(".chapter-item").remove();
-        reindexAll(); // Gọi hàm reindex để cập nhật lại toàn bộ chỉ số
-    }
-
-    // Hàm thêm bài học mới
-    function addLesson(btn) {
-        const chapterItem = btn.closest('.chapter-item');
-        const lessonsContainer = chapterItem.querySelector(".lessons-container");
-
-        // Tìm chỉ số của chương và bài học
-        const chapterIndex = Array.from(document.querySelectorAll('.chapter-item')).indexOf(chapterItem);
-        const lessonIndex = lessonsContainer.querySelectorAll('.lesson-item').length;
-
-        const lessonDiv = document.createElement("div");
-        lessonDiv.classList.add("border", "p-2", "mb-2", "lesson-item");
-        lessonDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <label class="fw-bold">Bài học ${lessonIndex + 1}</label>
-                <button type="button" class="btn btn-sm btn-danger" onclick="removeLesson(this)">Xóa bài học</button>
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">Tiêu đề bài học *</label>
-                <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonIndex}].Title" class="form-control" placeholder="Tên bài học" required />
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">Mô tả bài học</label>
-                <textarea name="Chuongs[${chapterIndex}].Bais[${lessonIndex}].Description" class="form-control" rows="3"></textarea>
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">URL video (nếu có)</label>
-                <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonIndex}].VideoUrl" class="form-control" placeholder="URL video" />
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label">Tài liệu đính kèm (cho bài học)</label>
-                <input type="file" name="Chuongs[${chapterIndex}].Bais[${lessonIndex}].DocumentFile" class="form-control" />
-            </div>
-
-            <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonIndex}].Id" value="0" />
-        `;
-        lessonsContainer.appendChild(lessonDiv);
-    }
-
-    // Hàm xóa bài học
-    function removeLesson(btn) {
-        const chapterItem = btn.closest(".chapter-item");
-        btn.closest(".lesson-item").remove();
-        reindexAll();
-    }
-</script>

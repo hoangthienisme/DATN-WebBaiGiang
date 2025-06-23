@@ -609,13 +609,15 @@ namespace WebBaiGiang.Migrations
                     b.Property<int?>("BaiId")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Loai")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 

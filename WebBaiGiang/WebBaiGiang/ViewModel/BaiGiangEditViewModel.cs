@@ -5,48 +5,63 @@ namespace WebBaiGiang.ViewModel
 {
     public class BaiGiangEditViewModel
     {
-        public int Id { get; set; } // Thêm Id cho trường hợp Edit
+        public int Id { get; set; }
 
-        [Required(ErrorMessage = "Tiêu đề bài giảng không được để trống.")]
-        public string Title { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên bài giảng!")]
+        public string Title { get; set; } = null!;
 
         public string? Description { get; set; }
 
-        public IFormFile? Attachment { get; set; }
-        public string? ExistingAttachmentUrl { get; set; } // Để hiển thị file đã có
+        [Required(ErrorMessage = "Vui lòng chọn ít nhất một lớp học!")]
+        public List<int> SelectedClassIds { get; set; } = new();
 
-        // Danh sách các lớp học khả dụng cho dropdown
-        [Display(Name = "Chọn lớp áp dụng")]
-        public List<SelectListItem>? AvailableClasses { get; set; }
+        public List<IFormFile>? ImageFiles { get; set; }             // Ảnh tổng
+        public List<IFormFile>? DocumentFiles { get; set; }          // Tài liệu tổng
+        public List<string>? YoutubeLinks { get; set; } = new();     // Link YouTube tổng
 
-        // Danh sách ID của các lớp đã chọn (được submit từ form)
-        [Required(ErrorMessage = "Vui lòng chọn ít nhất một lớp học.")]
-        public List<int> SelectedClassIds { get; set; } = new List<int>();
+        // Dữ liệu cũ (để hiện ra và chọn xóa)
+        public List<TaiNguyenViewModel> ExistingImages { get; set; } = new();     // Ảnh tổng cũ
+        public List<TaiNguyenViewModel> ExistingDocuments { get; set; } = new();  // Tài liệu tổng cũ
+        public List<string> ExistingYoutubeLinks { get; set; } = new();           // Link youtube cũ
 
-        // Danh sách các chương
-        public List<ChuongViewModel> Chuongs { get; set; } = new List<ChuongViewModel>();
-    }
-    public class ChuongViewModel
-    {
-        public int Id { get; set; } // Cho trường hợp Edit chương đã có
-        [Required(ErrorMessage = "Tiêu đề chương không được để trống.")]
-        public string Title { get; set; }
-        public string? Description { get; set; }
-        public int SortOrder { get; set; } // Thứ tự sắp xếp
-
-        public List<BaiViewModel> Bais { get; set; } = new List<BaiViewModel>();
+        public List<SelectListItem> AvailableClasses { get; set; } = new();
+        public List<ChuongEditViewModel> Chuongs { get; set; } = new();
     }
 
-    public class BaiViewModel
+
+
+    public class ChuongEditViewModel
     {
-        public int Id { get; set; } // Cho trường hợp Edit bài đã có
-        [Required(ErrorMessage = "Tiêu đề bài học không được để trống.")]
-        public string Title { get; set; }
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập tên chương!")]
+        public string Title { get; set; } = null!;
+
         public string? Description { get; set; }
+
+        public int SortOrder { get; set; }
+
+        public List<BaiEditViewModel> Bais { get; set; } = new();
+    }
+
+    public class BaiEditViewModel
+    {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập tên bài học!")]
+        public string Title { get; set; } = null!;
+
+        public string? Description { get; set; }
+
+        [Url(ErrorMessage = "URL video không hợp lệ!")]
         public string? VideoUrl { get; set; }
-        public int SortOrder { get; set; } // Thứ tự sắp xếp
 
-        public IFormFile? DocumentFile { get; set; }
-        public string? ExistingDocumentUrl { get; set; } // Để hiển thị file đã có
+        public int SortOrder { get; set; }
+
+        public List<IFormFile>? ImageFiles { get; set; }
+        public List<IFormFile>? DocumentFiles { get; set; }
+
+        public List<string>? ExistingImageUrls { get; set; } = new();
+        public List<string>? ExistingDocumentUrls { get; set; } = new();
     }
 }

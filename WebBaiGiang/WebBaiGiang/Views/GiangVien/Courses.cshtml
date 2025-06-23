@@ -3,9 +3,67 @@
 @{
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
 }
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link href="~/css/courses.css" rel="stylesheet" />
 <link href="~/css/pagination.css" rel="stylesheet" />
+
+<style>
+    /* CSS cho dropdown nút ba chấm */
+    .course-dropdown {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 8px;
+        z-index: 1000; /* Đảm bảo không bị che */
+    }
+
+    .dropdown-toggle {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.25rem; /* Kích thước tương đương fs-5 */
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .dropdown-menu {
+        display: none; /* Ẩn mặc định */
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        min-width: 120px;
+        z-index: 1001;
+    }
+
+        .dropdown-menu.show {
+            display: block; /* Hiện khi click */
+        }
+
+    .dropdown-item {
+        display: block;
+        padding: 8px 12px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .dropdown-item:hover {
+            background: #f0f0f0;
+        }
+
+    .dropdown-item-hide {
+        margin-left: 3px;
+        color: red;
+    }
+
+        .dropdown-item-hide:hover {
+            background: #f0f0f0;
+        }
+</style>
+
 <div class="conTent">
     <h3>Khoá học</h3>
 </div>
@@ -40,20 +98,19 @@
             {
                 <div class="course-card position-relative">
                     <!-- Nút ba chấm dropdown -->
-                    <div class="dropdown position-absolute top-0 end-0 m-2">
-                        <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots-vertical fs-5"></i>
+                    <div class="course-dropdown">
+                        <button class="dropdown-toggle" onclick="toggleCourseDropdown(this)">
+                             <!-- Ký tự ba chấm dọc -->
                         </button>
                         @{
                             var joinLink = Url.Action("Join", "Courses", new { code = course.JoinCode }, Context.Request.Scheme);
                         }
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="copyToClipboard('@joinLink')">Chia sẻ lớp học</a></li>
-                            <li><a class="dropdown-item" asp-action="EditCourses" asp-route-id="@course.Id">Chỉnh sửa</a></li>
-                            <li><a class="dropdown-item-hide" style="margin-left:15px;z-index: 1050;color : red" data-id="@course.Id">Lưu trữ</a></li>
-                        </ul>
-
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="copyToClipboard('@joinLink')">Chia sẻ lớp học</a>
+                            <a class="dropdown-item" asp-action="EditCourses" asp-route-id="@course.Id">Chỉnh sửa</a>
+                            <a class="dropdown-item dropdown-item-hide" data-id="@course.Id">Lưu trữ</a>
+                        </div>
                     </div>
 
                     <!-- Nội dung khóa học -->
@@ -65,7 +122,6 @@
                         @Html.Raw(course.Description)
                     </div>
                 </div>
-
             }
         }
         else
@@ -104,29 +160,57 @@
         }
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Script lọc dropdown -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
+    // Toggle dropdown lọc
     function toggleDropdown() {
         const menu = document.getElementById("dropdown-menu");
         menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
+
+    // Toggle dropdown nút ba chấm
+    function toggleCourseDropdown(button) {
+        const dropdownMenu = button.nextElementSibling;
+        const isShown = dropdownMenu.classList.contains("show");
+        // Đóng tất cả dropdown khác
+        document.querySelectorAll(".dropdown-menu.show").forEach(menu => {
+            menu.classList.remove("show");
+        });
+        // Toggle dropdown hiện tại
+        if (!isShown) {
+            dropdownMenu.classList.add("show");
+        }
+    }
+
+    // Đóng dropdown khi click bên ngoài
+    document.addEventListener("click", function (e) {
+        const filterDropdown = document.querySelector(".search-filter .dropdown");
+        const courseDropdowns = document.querySelectorAll(".course-dropdown");
+        // Đóng dropdown lọc
+        if (!filterDropdown.contains(e.target)) {
+            document.getElementById("dropdown-menu").style.display = "none";
+        }
+        // Đóng dropdown nút ba chấm
+        let isInsideCourseDropdown = false;
+        courseDropdowns.forEach(dropdown => {
+            if (dropdown.contains(e.target)) {
+                isInsideCourseDropdown = true;
+            }
+        });
+        if (!isInsideCourseDropdown) {
+            document.querySelectorAll(".dropdown-menu.show").forEach(menu => {
+                menu.classList.remove("show");
+            });
+        }
+    });
 
     function filterCourses(option) {
         alert(`Lọc theo: ${option}`);
         document.getElementById("dropdown-menu").style.display = "none";
     }
 
-    document.addEventListener("click", function (e) {
-        const dropdown = document.querySelector(".dropdown");
-        if (!dropdown.contains(e.target)) {
-            document.getElementById("dropdown-menu").style.display = "none";
-        }
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
     $(document).ready(function () {
         $('.dropdown-item-hide').click(function (e) {
             e.preventDefault();
@@ -141,7 +225,6 @@
                 data: { id: courseId },
                 success: function (response) {
                     if (response.success) {
-                        // Ẩn thẻ khóa học trên giao diện
                         courseCard.fadeOut(500, function () { $(this).remove(); });
                     } else {
                         alert('Lưu trữ thất bại');
@@ -161,6 +244,4 @@
             alert("Không thể sao chép: " + err);
         });
     }
-
 </script>
-
