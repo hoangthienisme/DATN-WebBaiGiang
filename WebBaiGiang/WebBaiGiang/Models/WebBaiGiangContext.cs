@@ -25,7 +25,6 @@ public partial class WebBaiGiangContext : DbContext
 
     public virtual DbSet<Chuong> Chuongs { get; set; }
 
-    public virtual DbSet<DanhGium> DanhGia { get; set; }
 
 
     public virtual DbSet<GiangVienLopHoc> GiangVienLopHocs { get; set; }
@@ -45,6 +44,7 @@ public partial class WebBaiGiangContext : DbContext
 
     public virtual DbSet<SinhVienLopHoc> SinhVienLopHocs { get; set; }
     public virtual DbSet<BaiTapLopHoc> BaiTapLopHocs { get; set; } = null!;
+    public virtual DbSet<BinhLuan> BinhLuans { get; set; }
 
     public virtual DbSet<LopHocBaiGiang> LopHocBaiGiangs { get; set; }
     public virtual DbSet<ThongTinWeb> ThongTinWebs { get; set; }
@@ -178,29 +178,6 @@ public partial class WebBaiGiangContext : DbContext
                   .HasConstraintName("FK_Chuong_BaiGiang");
         });
 
-        // Entity: DanhGium
-        modelBuilder.Entity<DanhGium>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__DanhGia__3214EC07BC54173D");
-
-            entity.Property(e => e.ClassId).HasColumnName("Class_id");
-            entity.Property(e => e.UsersId).HasColumnName("Users_id");
-            entity.Property(e => e.Comment).HasMaxLength(500);
-            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.UpdateDate).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Class)
-                  .WithMany(p => p.DanhGia)
-                  .HasForeignKey(d => d.ClassId)
-                  .OnDelete(DeleteBehavior.ClientSetNull)
-                  .HasConstraintName("FK__DanhGia__Class_i__619B8048");
-
-            entity.HasOne(d => d.Users)
-                  .WithMany(p => p.DanhGia)
-                  .HasForeignKey(d => d.UsersId)
-                  .OnDelete(DeleteBehavior.ClientSetNull)
-                  .HasConstraintName("FK__DanhGia__Users_i__628FA481");
-        });
 
         // Entity: GiangVienLopHoc (many-to-many)
         modelBuilder.Entity<GiangVienLopHoc>(entity =>
@@ -397,6 +374,30 @@ public partial class WebBaiGiangContext : DbContext
 
             entity.Property(e => e.AddedDate).HasColumnType("datetime");
         });
+        modelBuilder.Entity<BinhLuan>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.NoiDung)
+                .IsRequired()
+                .HasMaxLength(1000);
+
+            entity.Property(e => e.NgayTao)
+                .HasColumnType("datetime");
+
+            // Mối quan hệ với NguoiDung
+            entity.HasOne(e => e.NguoiDung)
+                .WithMany(nd => nd.BinhLuans) 
+                .HasForeignKey(e => e.NguoiDungId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Mối quan hệ với BaiGiang
+            entity.HasOne(e => e.BaiGiang)
+                .WithMany(bg => bg.BinhLuans) 
+                .HasForeignKey(e => e.BaiGiangId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
 
         // Entity: ThongTinWeb
         modelBuilder.Entity<ThongTinWeb>(entity =>

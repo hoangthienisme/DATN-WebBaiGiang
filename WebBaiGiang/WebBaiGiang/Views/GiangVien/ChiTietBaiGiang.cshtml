@@ -1,4 +1,4 @@
-﻿@model WebBaiGiang.Models.BaiGiang
+﻿@model WebBaiGiang.ViewModel.ChiTietBaiGiangViewModel
 
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
@@ -339,6 +339,37 @@
                                 </div>
                             </div>
                         </div>
+                        <hr />
+                        <h5>Bình luận</h5>
+
+                        <!-- Form gửi bình luận -->
+                        <form asp-action="ThemBinhLuan" method="post">
+                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
+                            <div class="mb-2">
+                                <textarea name="NoiDung" class="form-control" placeholder="Nhập bình luận của bạn..." rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Gửi bình luận</button>
+                        </form>
+
+                        <hr />
+                        <!-- Danh sách bình luận -->
+                        <div>
+                            @if (Model.BinhLuans != null && Model.BinhLuans.Any())
+                            {
+                                foreach (var bl in Model.BinhLuans)
+                                {
+                                    <div class="border rounded p-2 mb-2">
+                                        <strong>@bl.NguoiDung?.Name</strong> - <span class="text-muted">@bl.NgayTao.ToString("dd/MM/yyyy HH:mm")</span>
+                                        <div>@bl.NoiDung</div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p class="text-muted">Chưa có bình luận nào.</p>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
