@@ -759,6 +759,63 @@ namespace WebBaiGiang.Controllers
 
             return RedirectToAction("ChiTietBaiGiang", new { id = BaiGiangId });
         }
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult SuaBinhLuan(int id)
+        {
+            var bl = _context.BinhLuans.Include(x => x.NguoiDung).FirstOrDefault(x => x.Id == id);
+            if (bl == null) return NotFound();
+
+            var currentUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var currentUserRole = User.FindFirstValue(ClaimTypes.Role);
+
+            if (currentUserRole == "SinhVien" && bl.NguoiDungId != currentUserId)
+                return Forbid();
+
+            return View(bl);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SuaBinhLuan(BinhLuan model)
+        {
+            var binhLuan = await _context.BinhLuans.FindAsync(model.Id);
+            if (binhLuan == null)
+                return NotFound();
+
+            var currentUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var isGiangVien = User.IsInRole("GiangVien");
+
+            if (binhLuan.NguoiDungId != currentUserId && !isGiangVien)
+                return Forbid();
+
+            binhLuan.NoiDung = model.NoiDung;
+            //binhLuan.UpdateDate = DateTime.Now;
+
+            _context.Update(binhLuan);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("ChiTietBaiGiang", "GiangVien", new { id = binhLuan.BaiGiangId });
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult XoaBinhLuan(int id)
+        {
+            var bl = _context.BinhLuans.FirstOrDefault(x => x.Id == id);
+            if (bl == null) return NotFound();
+
+            var currentUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var currentUserRole = User.FindFirstValue(ClaimTypes.Role);
+
+            if (currentUserRole == "SinhVien" && bl.NguoiDungId != currentUserId)
+                return Forbid();
+
+            _context.BinhLuans.Remove(bl);
+            _context.SaveChanges();
+
+            return RedirectToAction("ChiTietBaiGiang", "GiangVien", new { id = bl.BaiGiangId });
+        }
 
         public IActionResult Classwork()
         {
