@@ -32,9 +32,8 @@ public partial class NguoiDung
 
     public DateTime? ResetTokenExpiry { get; set; }
 
-    public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();
-
     public virtual ICollection<GiangVienLopHoc> GiangVienLopHocs { get; set; } = new List<GiangVienLopHoc>();
+    public virtual ICollection<BinhLuan> BinhLuans { get; set; } = new List<BinhLuan>();
 
     public virtual ICollection<NopBai> NopBais { get; set; } = new List<NopBai>();
 

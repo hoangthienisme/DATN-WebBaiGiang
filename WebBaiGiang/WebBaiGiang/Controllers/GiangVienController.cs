@@ -707,47 +707,57 @@ namespace WebBaiGiang.Controllers
             TempData["SuccessMessage"] = "Đã xóa bài giảng thành công!";
             return RedirectToAction("BaiGiang");
         }
+        [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> ChiTietBaiGiang(int id)
         {
             var baiGiang = _context.BaiGiangs
-     .Include(bg => bg.Chuongs)
-         .ThenInclude(c => c.Bais)
-             .ThenInclude(b => b.TaiNguyens)
-     .Include(bg => bg.TaiNguyens)
-     .FirstOrDefault(bg => bg.Id == id);
+             .Include(bg => bg.TaiNguyens)
+             .Include(bg => bg.Chuongs).ThenInclude(c => c.Bais).ThenInclude(b => b.TaiNguyens)
+             .Include(bg => bg.BinhLuans).ThenInclude(bl => bl.NguoiDung)
+             .FirstOrDefault(bg => bg.Id == id);
 
             if (baiGiang == null)
                 return NotFound();
 
-            var viewModel = new BaiGiang
+            var viewModel = new ChiTietBaiGiangViewModel
             {
                 Id = baiGiang.Id,
                 Title = baiGiang.Title,
                 Description = baiGiang.Description,
-                ContentUrl = baiGiang.ContentUrl,
                 CreatedDate = baiGiang.CreatedDate,
-
-                TaiNguyens = baiGiang.TaiNguyens,
-
-                Chuongs = baiGiang.Chuongs.OrderBy(c => c.SortOrder).Select(c => new Chuong
-                {
-                    Id = c.Id,
-                    Title = c.Title,
-                    SortOrder = c.SortOrder,
-                    Bais = c.Bais.OrderBy(b => b.SortOrder).Select(b => new Bai
-                    {
-                        Id = b.Id,
-                        Title = b.Title,
-                        Description = b.Description,
-                        VideoUrl = b.VideoUrl,
-                        Document = b.Document,
-                        SortOrder = b.SortOrder,
-                        TaiNguyens = b.TaiNguyens
-                    }).ToList()
-
-                }).ToList()
+                TaiNguyens = baiGiang.TaiNguyens.ToList(),
+                Chuongs = baiGiang.Chuongs.OrderBy(c => c.SortOrder).ToList(),
+                BinhLuans = baiGiang.BinhLuans.OrderByDescending(b => b.NgayTao).ToList(),
+                BaiGiang = baiGiang
             };
+
             return View(viewModel);
+
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ThemBinhLuan(int BaiGiangId, string NoiDung)
+        {
+            var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(userIdStr, out int userId))
+            {
+                return RedirectToAction("DangNhap", "NguoiDung");
+            }
+
+            var binhLuan = new BinhLuan
+            {
+                BaiGiangId = BaiGiangId,
+                NguoiDungId = userId,
+                NoiDung = NoiDung,
+                NgayTao = DateTime.Now
+            };
+
+            _context.BinhLuans.Add(binhLuan);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("ChiTietBaiGiang", new { id = BaiGiangId });
         }
 
         public IActionResult Classwork()
