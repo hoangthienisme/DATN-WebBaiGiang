@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace WebBaiGiang.Models;
 
@@ -9,9 +8,9 @@ public partial class NguoiDung
     public int Id { get; set; }
 
     public string Name { get; set; } = null!;
-    [Required(ErrorMessage = "*Email là bắt buộc")]
+
     public string Email { get; set; } = null!;
-    [Required(ErrorMessage = "*Mật khẩu là bắt buộc")]
+
     public string Password { get; set; } = null!;
 
     public string? Avatar { get; set; }
@@ -31,6 +30,8 @@ public partial class NguoiDung
     public string? ResetPasswordToken { get; set; }
 
     public DateTime? ResetTokenExpiry { get; set; }
+
+    public virtual ICollection<ChiTietDiemDanh> ChiTietDiemDanhs { get; set; } = new List<ChiTietDiemDanh>();
 
     public virtual ICollection<DanhGium> DanhGia { get; set; } = new List<DanhGium>();
 

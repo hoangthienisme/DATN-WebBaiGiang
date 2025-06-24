@@ -401,5 +401,53 @@ namespace WebBaiGiang.Controllers
             ViewBag.Message = "Đổi mật khẩu thành công! Bạn có thể đăng nhập lại.";
             return View();
         }
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login");
+
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Id == int.Parse(userId));
+            if (user == null) return NotFound();
+
+            ViewBag.Name = user.Name;
+            ViewBag.Email = user.Email;
+            ViewBag.Phone = user.Phone;
+            ViewBag.Avatar = user.Avatar;
+            ViewBag.CreatedDate = user.CreatedDate;
+            ViewBag.Role = user.Role;
+
+            return View();
+        }
+        [HttpGet]
+        public IActionResult EditProfile()
+        {
+            // Lấy thông tin người dùng hiện tại
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login");
+
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Id == int.Parse(userId));
+            if (user == null) return NotFound();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(NguoiDung model)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login");
+
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Id == int.Parse(userId));
+            if (user == null) return NotFound();
+
+            user.Name = model.Name;
+            user.Phone = model.Phone;
+            user.UpdateDate = DateTime.Now;
+            _context.SaveChanges();
+
+            TempData["Success"] = "Cập nhật thành công!";
+            return RedirectToAction("Profile");
+        }
     }
 }

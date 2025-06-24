@@ -10,7 +10,6 @@ public partial class BaiTap
     public string Title { get; set; } = null!;
 
     public string? Description { get; set; }
-    public double? MaxPoint { get; set; }
 
     public DateTime? DueDate { get; set; }
 
@@ -19,6 +18,7 @@ public partial class BaiTap
     public DateTime CreatedDate { get; set; }
 
     public int? CreatedBy { get; set; }
+
     public string? ContentUrl { get; set; }
 
     public virtual ICollection<BaiTapLopHoc> BaiTapLopHocs { get; set; } = new List<BaiTapLopHoc>();

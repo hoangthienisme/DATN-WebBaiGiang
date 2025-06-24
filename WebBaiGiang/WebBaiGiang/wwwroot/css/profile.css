@@ -1,0 +1,63 @@
+﻿.profile - container, .profile - edit - form {
+width: 500px;
+margin: 50px auto;
+background: #fff;
+    padding: 30px;
+    border - radius: 10px;
+    box - shadow: 0 0 15px rgba(0,0,0,0.1);
+    font - family: 'Segoe UI', sans - serif;
+}
+
+.profile - avatar {
+    text - align: center;
+    margin - bottom: 20px;
+}
+
+.profile - avatar img {
+    width: 120px;
+height: 120px;
+border - radius: 50 %;
+border: 3px solid #007bff;
+}
+
+.profile - info p {
+    font-size: 16px;
+margin: 10px 0;
+}
+
+.profile - info strong {
+    width: 120px;
+display: inline - block;
+color: #555;
+}
+
+.profile - form - group {
+    margin - bottom: 20px;
+}
+
+.profile - form - group label {
+    display: block;
+margin - bottom: 5px;
+font - weight: bold;
+}
+
+.profile - form - group input {
+    width: 100 %;
+padding: 10px;
+border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn - save {
+    background - color: #28a745;
+    color: white;
+padding: 12px 20px;
+border: none;
+    border - radius: 5px;
+    font - size: 16px;
+cursor: pointer;
+}
+
+.btn - save:hover {
+    background-color: #218838;
+}

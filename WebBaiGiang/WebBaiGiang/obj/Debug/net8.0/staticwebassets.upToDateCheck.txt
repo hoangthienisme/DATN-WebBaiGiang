@@ -1,13 +1,14 @@
 wwwroot\css\account.css
 wwwroot\css\admin.css
 wwwroot\css\baigiang.css
+wwwroot\css\chitietbaigiang.css
 wwwroot\css\courses.css
 wwwroot\css\createcourse.css
-wwwroot\css\chitietbaigiang.css
 wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
 wwwroot\css\pagination.css
+wwwroot\css\profile.css
 wwwroot\css\sinhvien.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
@@ -343,9 +344,9 @@ wwwroot\vendor\glightbox\css\glightbox.css
 wwwroot\vendor\glightbox\css\glightbox.min.css
 wwwroot\vendor\glightbox\js\glightbox.js
 wwwroot\vendor\glightbox\js\glightbox.min.js
+wwwroot\vendor\php-email-form\validate.js
 wwwroot\vendor\purecounter\purecounter_vanilla.js
 wwwroot\vendor\purecounter\purecounter_vanilla.js.map
-wwwroot\vendor\php-email-form\validate.js
 wwwroot\vendor\swiper\swiper-bundle.min.css
 wwwroot\vendor\swiper\swiper-bundle.min.js
 wwwroot\vendor\swiper\swiper-bundle.min.js.map

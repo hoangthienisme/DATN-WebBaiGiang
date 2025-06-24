@@ -22,6 +22,4 @@ public partial class Bai
     public DateTime? CreatedDate { get; set; }
 
     public virtual Chuong Chuong { get; set; } = null!;
-
-    public ICollection<TaiNguyen> TaiNguyens { get; set; } = new List<TaiNguyen>();
 }

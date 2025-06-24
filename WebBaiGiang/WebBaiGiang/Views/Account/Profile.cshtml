@@ -1,0 +1,24 @@
+﻿@model WebBaiGiang.Models.NguoiDung
+
+@{
+    ViewData["Title"] = "Thông tin cá nhân";
+}
+
+<link rel="stylesheet" href="~/css/profile.css" />
+
+<div class="profile-container">
+    <div class="profile-avatar">
+        <img src="~/images/@ViewBag.Avatar" alt="Avatar" />
+    </div>
+    <div class="profile-info">
+        <p><strong>Họ tên:</strong> @ViewBag.Name</p>
+        <p><strong>Email:</strong> @ViewBag.Email</p>
+        <p><strong>SĐT:</strong> @ViewBag.Phone</p>
+        <p><strong>Ngày tạo:</strong> @((ViewBag.CreatedDate as DateTime?).Value.ToString("dd/MM/yyyy"))</p>
+        <p><strong>Chức vụ:</strong> @ViewBag.Role</p>
+
+        <div style="margin-top: 20px;">
+            <a asp-area="" asp-controller="Account" asp-action="EditProfile">Chỉnh sửa thông tin</a>
+        </div>
+    </div>
+</div>

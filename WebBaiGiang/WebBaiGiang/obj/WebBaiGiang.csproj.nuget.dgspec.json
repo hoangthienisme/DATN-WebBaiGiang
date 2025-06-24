@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj": {}
+    "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj": {}
   },
   "projects": {
-    "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj": {
+    "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
+        "projectUniqueName": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
         "projectName": "WebBaiGiang",
-        "projectPath": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\obj\\",
+        "projectPath": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
+        "packagesPath": "C:\\Users\\viet5\\.nuget\\packages\\",
+        "outputPath": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\viet5\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -100,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

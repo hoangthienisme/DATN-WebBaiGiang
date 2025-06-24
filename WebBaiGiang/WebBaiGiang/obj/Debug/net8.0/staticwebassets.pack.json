@@ -1,1411 +1,1415 @@
 {
   "Files": [
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebBaiGiang.bundle.scp.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebBaiGiang.bundle.scp.css",
       "PackagePath": "staticwebassets\\WebBaiGiang.nr2t6cyz8b.bundle.scp.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\account.css",
       "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\admin.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\baigiang.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\baigiang.css",
       "PackagePath": "staticwebassets\\css\\baigiang.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
       "PackagePath": "staticwebassets\\css\\chitietbaigiang.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
       "PackagePath": "staticwebassets\\css\\courses.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\createcourse.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\createcourse.css",
       "PackagePath": "staticwebassets\\css\\createcourse.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\giangvien.css",
       "PackagePath": "staticwebassets\\css\\giangvien.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\index.css",
       "PackagePath": "staticwebassets\\css\\index.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\main.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\main.css",
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\pagination.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\pagination.css",
       "PackagePath": "staticwebassets\\css\\pagination.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\profile.css",
+      "PackagePath": "staticwebassets\\css\\profile.css"
+    },
+    {
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
       "PackagePath": "staticwebassets\\css\\sinhvien.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\favicon.ico",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\about-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\about-2.jpg",
       "PackagePath": "staticwebassets\\img\\about-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\about.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\about.jpg",
       "PackagePath": "staticwebassets\\img\\about.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\anhkha.png",
       "PackagePath": "staticwebassets\\img\\anhkha.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\apple-touch-icon.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\apple-touch-icon.png",
       "PackagePath": "staticwebassets\\img\\apple-touch-icon.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-1.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-1.jpg",
       "PackagePath": "staticwebassets\\img\\course-1.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-2.jpg",
       "PackagePath": "staticwebassets\\img\\course-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-3.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-3.jpg",
       "PackagePath": "staticwebassets\\img\\course-3.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-details.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\course-details.jpg",
       "PackagePath": "staticwebassets\\img\\course-details.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\default-avatar.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\default-avatar.jpg",
       "PackagePath": "staticwebassets\\img\\default-avatar.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\electrical.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\electrical.jpg",
       "PackagePath": "staticwebassets\\img\\electrical.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\events-item-1.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\events-item-1.jpg",
       "PackagePath": "staticwebassets\\img\\events-item-1.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\events-item-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\events-item-2.jpg",
       "PackagePath": "staticwebassets\\img\\events-item-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\favicon.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\favicon.png",
       "PackagePath": "staticwebassets\\img\\favicon.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hay.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hay.jpg",
       "PackagePath": "staticwebassets\\img\\hay.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hero-bg.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hero-bg.jpg",
       "PackagePath": "staticwebassets\\img\\hero-bg.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hochanh.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hochanh.jpg",
       "PackagePath": "staticwebassets\\img\\hochanh.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hochanh2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\hochanh2.jpg",
       "PackagePath": "staticwebassets\\img\\hochanh2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-bar-chart.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-bar-chart.png",
       "PackagePath": "staticwebassets\\img\\icon-bar-chart.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-message.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-message.png",
       "PackagePath": "staticwebassets\\img\\icon-message.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-wrench.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\icon-wrench.png",
       "PackagePath": "staticwebassets\\img\\icon-wrench.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\logo.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\logo.png",
       "PackagePath": "staticwebassets\\img\\logo.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\loupe.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\loupe.png",
       "PackagePath": "staticwebassets\\img\\loupe.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\mechanical.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\mechanical.jpg",
       "PackagePath": "staticwebassets\\img\\mechanical.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\python.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\python.jpg",
       "PackagePath": "staticwebassets\\img\\python.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-1.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-1.png",
       "PackagePath": "staticwebassets\\img\\tabs\\tab-1.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-2.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-2.png",
       "PackagePath": "staticwebassets\\img\\tabs\\tab-2.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-3.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-3.png",
       "PackagePath": "staticwebassets\\img\\tabs\\tab-3.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-4.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-4.png",
       "PackagePath": "staticwebassets\\img\\tabs\\tab-4.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-5.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-5.png",
       "PackagePath": "staticwebassets\\img\\tabs\\tab-5.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-1.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-1.jpg",
       "PackagePath": "staticwebassets\\img\\team\\team-1.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-2.jpg",
       "PackagePath": "staticwebassets\\img\\team\\team-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-3.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-3.jpg",
       "PackagePath": "staticwebassets\\img\\team\\team-3.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-4.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-4.jpg",
       "PackagePath": "staticwebassets\\img\\team\\team-4.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-5.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-5.jpg",
       "PackagePath": "staticwebassets\\img\\team\\team-5.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-6.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\team\\team-6.jpg",
       "PackagePath": "staticwebassets\\img\\team\\team-6.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-1.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-1.jpg",
       "PackagePath": "staticwebassets\\img\\testimonials\\testimonials-1.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-2.jpg",
       "PackagePath": "staticwebassets\\img\\testimonials\\testimonials-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-3.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-3.jpg",
       "PackagePath": "staticwebassets\\img\\testimonials\\testimonials-3.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-4.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-4.jpg",
       "PackagePath": "staticwebassets\\img\\testimonials\\testimonials-4.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-5.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\testimonials\\testimonials-5.jpg",
       "PackagePath": "staticwebassets\\img\\testimonials\\testimonials-5.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-1-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-1-2.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-1-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-1.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-1.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-1.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-2-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-2-2.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-2-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-2.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-3-2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-3-2.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-3-2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-3.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-3.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-3.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\video-icon.png",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\video-icon.png",
       "PackagePath": "staticwebassets\\img\\video-icon.png"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\webdesign.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\webdesign.jpg",
       "PackagePath": "staticwebassets\\img\\webdesign.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\js\\main.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\js\\site.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\css\\bootstrap-multiselect.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\css\\bootstrap-multiselect.css",
       "PackagePath": "staticwebassets\\lib\\dist\\css\\bootstrap-multiselect.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\css\\bootstrap-multiselect.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\css\\bootstrap-multiselect.min.css",
       "PackagePath": "staticwebassets\\lib\\dist\\css\\bootstrap-multiselect.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\js\\bootstrap-multiselect.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\js\\bootstrap-multiselect.js",
       "PackagePath": "staticwebassets\\lib\\dist\\js\\bootstrap-multiselect.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\js\\bootstrap-multiselect.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\js\\bootstrap-multiselect.min.js",
       "PackagePath": "staticwebassets\\lib\\dist\\js\\bootstrap-multiselect.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\less\\bootstrap-multiselect.less",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\dist\\less\\bootstrap-multiselect.less",
       "PackagePath": "staticwebassets\\lib\\dist\\less\\bootstrap-multiselect.less"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx",
       "PackagePath": "staticwebassets\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\08434400-0412-43b2-95e1-1ebd75e4e667.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\08434400-0412-43b2-95e1-1ebd75e4e667.jpg",
       "PackagePath": "staticwebassets\\uploads\\08434400-0412-43b2-95e1-1ebd75e4e667.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx",
       "PackagePath": "staticwebassets\\uploads\\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0cd0bf55-e216-4c73-a5eb-4980d584245e.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0cd0bf55-e216-4c73-a5eb-4980d584245e.docx",
       "PackagePath": "staticwebassets\\uploads\\0cd0bf55-e216-4c73-a5eb-4980d584245e.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0ff92bfc-209b-43f8-9d1e-8883ab77df45_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0ff92bfc-209b-43f8-9d1e-8883ab77df45_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\0ff92bfc-209b-43f8-9d1e-8883ab77df45_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\13b77758-3f94-4b09-a4a8-ac8ecd9795c2.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\13b77758-3f94-4b09-a4a8-ac8ecd9795c2.docx",
       "PackagePath": "staticwebassets\\uploads\\13b77758-3f94-4b09-a4a8-ac8ecd9795c2.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\14977576-8d62-40b7-8bf7-8b4695e8fd55_cl.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\14977576-8d62-40b7-8bf7-8b4695e8fd55_cl.jpg",
       "PackagePath": "staticwebassets\\uploads\\14977576-8d62-40b7-8bf7-8b4695e8fd55_cl.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\17aa5081-2aff-4371-a97a-b0c0a5d9dc10_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\17aa5081-2aff-4371-a97a-b0c0a5d9dc10_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\17aa5081-2aff-4371-a97a-b0c0a5d9dc10_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\182ba7d7-8531-43a9-ac93-711274120a1b_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\182ba7d7-8531-43a9-ac93-711274120a1b_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\182ba7d7-8531-43a9-ac93-711274120a1b_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\1bd14cf7-bd28-4478-8469-f76acfbe1faf.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\1bd14cf7-bd28-4478-8469-f76acfbe1faf.docx",
       "PackagePath": "staticwebassets\\uploads\\1bd14cf7-bd28-4478-8469-f76acfbe1faf.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\233f6c44-8aee-4cd0-88ff-70ee2c4b76fd_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\233f6c44-8aee-4cd0-88ff-70ee2c4b76fd_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\233f6c44-8aee-4cd0-88ff-70ee2c4b76fd_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2ac29375-335a-4565-9a16-6063e056650a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2ac29375-335a-4565-9a16-6063e056650a.docx",
       "PackagePath": "staticwebassets\\uploads\\2ac29375-335a-4565-9a16-6063e056650a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg",
       "PackagePath": "staticwebassets\\uploads\\2b1da2fb-c978-4fd8-b811-b6b67552d7ab.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2b883b24-7646-465a-9207-a4f2c7160f24_5 diem khac biet.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2b883b24-7646-465a-9207-a4f2c7160f24_5 diem khac biet.jpg",
       "PackagePath": "staticwebassets\\uploads\\2b883b24-7646-465a-9207-a4f2c7160f24_5 diem khac biet.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2e6acf8b-99c6-40a3-acb1-2cd5a3a7be93.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\2e6acf8b-99c6-40a3-acb1-2cd5a3a7be93.docx",
       "PackagePath": "staticwebassets\\uploads\\2e6acf8b-99c6-40a3-acb1-2cd5a3a7be93.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\328ab475-bf6b-48fe-a6ff-e025b3f0785f_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\328ab475-bf6b-48fe-a6ff-e025b3f0785f_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
       "PackagePath": "staticwebassets\\uploads\\328ab475-bf6b-48fe-a6ff-e025b3f0785f_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\338caec6-4cb5-40d3-b481-3de88f5ce452_bannhua.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\338caec6-4cb5-40d3-b481-3de88f5ce452_bannhua.jpg",
       "PackagePath": "staticwebassets\\uploads\\338caec6-4cb5-40d3-b481-3de88f5ce452_bannhua.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\34401f1f-e0ee-4541-93ca-2ccb50c45a37.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\34401f1f-e0ee-4541-93ca-2ccb50c45a37.pdf",
       "PackagePath": "staticwebassets\\uploads\\34401f1f-e0ee-4541-93ca-2ccb50c45a37.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\34a8f44b-c6c0-4963-93ba-6a070d5a488e.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\34a8f44b-c6c0-4963-93ba-6a070d5a488e.pdf",
       "PackagePath": "staticwebassets\\uploads\\34a8f44b-c6c0-4963-93ba-6a070d5a488e.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\3521ec24-314b-4838-804f-f5ee536c3e5c.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\3521ec24-314b-4838-804f-f5ee536c3e5c.pdf",
       "PackagePath": "staticwebassets\\uploads\\3521ec24-314b-4838-804f-f5ee536c3e5c.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
       "PackagePath": "staticwebassets\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\42774524-8c4a-4785-9ccf-bf7c59c76118_anhnen.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\42774524-8c4a-4785-9ccf-bf7c59c76118_anhnen.jpg",
       "PackagePath": "staticwebassets\\uploads\\42774524-8c4a-4785-9ccf-bf7c59c76118_anhnen.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\434d59e2-8f9e-447d-85f0-791396806bd8_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\434d59e2-8f9e-447d-85f0-791396806bd8_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\434d59e2-8f9e-447d-85f0-791396806bd8_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\45942b51-7651-46b4-b679-c5c90b3b9ebb_avt.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\45942b51-7651-46b4-b679-c5c90b3b9ebb_avt.jpg",
       "PackagePath": "staticwebassets\\uploads\\45942b51-7651-46b4-b679-c5c90b3b9ebb_avt.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\45ab6415-618a-450e-9403-b17b2454111d.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\45ab6415-618a-450e-9403-b17b2454111d.docx",
       "PackagePath": "staticwebassets\\uploads\\45ab6415-618a-450e-9403-b17b2454111d.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\47be0d17-4070-46ea-8190-b167015098c8.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\47be0d17-4070-46ea-8190-b167015098c8.docx",
       "PackagePath": "staticwebassets\\uploads\\47be0d17-4070-46ea-8190-b167015098c8.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\56176762-a723-4688-ad22-1699b4bb5070.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\56176762-a723-4688-ad22-1699b4bb5070.docx",
       "PackagePath": "staticwebassets\\uploads\\56176762-a723-4688-ad22-1699b4bb5070.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\561e7ff2-d268-4a04-9548-3600141e7d23.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\561e7ff2-d268-4a04-9548-3600141e7d23.docx",
       "PackagePath": "staticwebassets\\uploads\\561e7ff2-d268-4a04-9548-3600141e7d23.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5aa2d198-cbe5-4959-99f5-458921d3e349.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5aa2d198-cbe5-4959-99f5-458921d3e349.docx",
       "PackagePath": "staticwebassets\\uploads\\5aa2d198-cbe5-4959-99f5-458921d3e349.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\5ab45726-f0d9-4ca3-bab4-9843053fa4bb_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5de06762-b32c-43f3-a210-2d5236053f74_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5de06762-b32c-43f3-a210-2d5236053f74_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\5de06762-b32c-43f3-a210-2d5236053f74_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5e3de25a-f97d-45ae-ab61-17881a797f2e.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5e3de25a-f97d-45ae-ab61-17881a797f2e.docx",
       "PackagePath": "staticwebassets\\uploads\\5e3de25a-f97d-45ae-ab61-17881a797f2e.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5eca4a92-fe33-40d8-a43b-ee44f5c93720.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\5eca4a92-fe33-40d8-a43b-ee44f5c93720.pdf",
       "PackagePath": "staticwebassets\\uploads\\5eca4a92-fe33-40d8-a43b-ee44f5c93720.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\615ea66f-f072-4335-8c65-ce40c3e985fa_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\615ea66f-f072-4335-8c65-ce40c3e985fa_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\615ea66f-f072-4335-8c65-ce40c3e985fa_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf",
       "PackagePath": "staticwebassets\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\661e9cd5-8900-489b-8be9-d147994b15d4.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\661e9cd5-8900-489b-8be9-d147994b15d4.docx",
       "PackagePath": "staticwebassets\\uploads\\661e9cd5-8900-489b-8be9-d147994b15d4.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\67bd3fa9-a5bc-4b8d-8a8b-ebe0bb215cbe.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\67bd3fa9-a5bc-4b8d-8a8b-ebe0bb215cbe.pdf",
       "PackagePath": "staticwebassets\\uploads\\67bd3fa9-a5bc-4b8d-8a8b-ebe0bb215cbe.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6966a77b-d310-4dfa-bcdf-ea548d98a5cf.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6966a77b-d310-4dfa-bcdf-ea548d98a5cf.docx",
       "PackagePath": "staticwebassets\\uploads\\6966a77b-d310-4dfa-bcdf-ea548d98a5cf.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6990e6e3-caa5-438a-8982-c5e136b03b6c_5 diem khac biet.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6990e6e3-caa5-438a-8982-c5e136b03b6c_5 diem khac biet.jpg",
       "PackagePath": "staticwebassets\\uploads\\6990e6e3-caa5-438a-8982-c5e136b03b6c_5 diem khac biet.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6d572049-90d7-4fd0-9093-ec235d5e7acc.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6d572049-90d7-4fd0-9093-ec235d5e7acc.pdf",
       "PackagePath": "staticwebassets\\uploads\\6d572049-90d7-4fd0-9093-ec235d5e7acc.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6fad0ab9-fca3-469f-b564-af2aeccbb971.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\6fad0ab9-fca3-469f-b564-af2aeccbb971.pdf",
       "PackagePath": "staticwebassets\\uploads\\6fad0ab9-fca3-469f-b564-af2aeccbb971.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\705883b0-0904-491f-9446-a17c0650e8b8_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\705883b0-0904-491f-9446-a17c0650e8b8_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
       "PackagePath": "staticwebassets\\uploads\\705883b0-0904-491f-9446-a17c0650e8b8_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\70c7f056-2465-4dbb-beae-6e429f5621f7_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\70c7f056-2465-4dbb-beae-6e429f5621f7_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\70c7f056-2465-4dbb-beae-6e429f5621f7_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\71c7b223-3982-465e-b386-d04ee8f979f2_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\71c7b223-3982-465e-b386-d04ee8f979f2_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\71c7b223-3982-465e-b386-d04ee8f979f2_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\76c48fa0-32c0-481f-a4a7-491a9479610d_YEUCAU.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\76c48fa0-32c0-481f-a4a7-491a9479610d_YEUCAU.pdf",
       "PackagePath": "staticwebassets\\uploads\\76c48fa0-32c0-481f-a4a7-491a9479610d_YEUCAU.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\76e26645-3c25-4056-88d1-1ff5180b1c12.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\76e26645-3c25-4056-88d1-1ff5180b1c12.jpg",
       "PackagePath": "staticwebassets\\uploads\\76e26645-3c25-4056-88d1-1ff5180b1c12.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\835ce37f-3568-4644-83e2-8a50dbd6ce3c.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\835ce37f-3568-4644-83e2-8a50dbd6ce3c.jpeg",
       "PackagePath": "staticwebassets\\uploads\\835ce37f-3568-4644-83e2-8a50dbd6ce3c.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\87279c09-f66b-40ce-8d5c-2f67a6be19af.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\87279c09-f66b-40ce-8d5c-2f67a6be19af.pdf",
       "PackagePath": "staticwebassets\\uploads\\87279c09-f66b-40ce-8d5c-2f67a6be19af.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\886ede05-02c4-4523-b2f4-de83e7515de8_f9340fad-da33-41cd-947e-64f6f8fd4893.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\886ede05-02c4-4523-b2f4-de83e7515de8_f9340fad-da33-41cd-947e-64f6f8fd4893.docx",
       "PackagePath": "staticwebassets\\uploads\\886ede05-02c4-4523-b2f4-de83e7515de8_f9340fad-da33-41cd-947e-64f6f8fd4893.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8873aa56-3bea-4f6f-bfbe-e1cf718b73b8.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8873aa56-3bea-4f6f-bfbe-e1cf718b73b8.pdf",
       "PackagePath": "staticwebassets\\uploads\\8873aa56-3bea-4f6f-bfbe-e1cf718b73b8.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8a1199be-f588-435d-a445-88cbb3caf250_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8a1199be-f588-435d-a445-88cbb3caf250_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\8a1199be-f588-435d-a445-88cbb3caf250_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8a22661f-a02d-46cb-bcef-56a2a38a306d_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8a22661f-a02d-46cb-bcef-56a2a38a306d_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\8a22661f-a02d-46cb-bcef-56a2a38a306d_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8d61620c-a124-4108-8a8b-1e694fd56194_7a87e65c208d93d3ca9c.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\8d61620c-a124-4108-8a8b-1e694fd56194_7a87e65c208d93d3ca9c.jpg",
       "PackagePath": "staticwebassets\\uploads\\8d61620c-a124-4108-8a8b-1e694fd56194_7a87e65c208d93d3ca9c.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\91f28160-f870-424d-8cd9-f721fabd33cf.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\91f28160-f870-424d-8cd9-f721fabd33cf.jpg",
       "PackagePath": "staticwebassets\\uploads\\91f28160-f870-424d-8cd9-f721fabd33cf.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf",
       "PackagePath": "staticwebassets\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg",
       "PackagePath": "staticwebassets\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\99026f03-6599-412a-9332-07d06e6cddf5_5 diem khac biet (1).jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\99026f03-6599-412a-9332-07d06e6cddf5_5 diem khac biet (1).jpg",
       "PackagePath": "staticwebassets\\uploads\\99026f03-6599-412a-9332-07d06e6cddf5_5 diem khac biet (1).jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\9eb6164c-f0d7-484c-9d3d-f25914a22186.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\9eb6164c-f0d7-484c-9d3d-f25914a22186.pdf",
       "PackagePath": "staticwebassets\\uploads\\9eb6164c-f0d7-484c-9d3d-f25914a22186.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\9f5a277e-2742-4ed3-9065-fec55337ab93_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\9f5a277e-2742-4ed3-9065-fec55337ab93_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\9f5a277e-2742-4ed3-9065-fec55337ab93_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\NguyenHoangThien_NguyenQuocViet_Tuan02.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\NguyenHoangThien_NguyenQuocViet_Tuan02.docx",
       "PackagePath": "staticwebassets\\uploads\\NguyenHoangThien_NguyenQuocViet_Tuan02.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a1e9c979-f109-420b-81fb-169133fefc62_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a1e9c979-f109-420b-81fb-169133fefc62_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\a1e9c979-f109-420b-81fb-169133fefc62_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a331bf9c-f5a6-4c98-8a31-17973df0155e_c52efa00-d7eb-4d52-adf0-266e1ec0d05e_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a331bf9c-f5a6-4c98-8a31-17973df0155e_c52efa00-d7eb-4d52-adf0-266e1ec0d05e_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
       "PackagePath": "staticwebassets\\uploads\\a331bf9c-f5a6-4c98-8a31-17973df0155e_c52efa00-d7eb-4d52-adf0-266e1ec0d05e_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a4211c4f-c828-4c0f-9de6-52544bcadb46.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a4211c4f-c828-4c0f-9de6-52544bcadb46.docx",
       "PackagePath": "staticwebassets\\uploads\\a4211c4f-c828-4c0f-9de6-52544bcadb46.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a65e3a62-2ef4-4382-8c15-12bcca5cb11a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a65e3a62-2ef4-4382-8c15-12bcca5cb11a.docx",
       "PackagePath": "staticwebassets\\uploads\\a65e3a62-2ef4-4382-8c15-12bcca5cb11a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a7ec6a30-d15a-4ff7-9335-fe1b995b377d.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\a7ec6a30-d15a-4ff7-9335-fe1b995b377d.pdf",
       "PackagePath": "staticwebassets\\uploads\\a7ec6a30-d15a-4ff7-9335-fe1b995b377d.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\aa2a64fc-8941-47a3-a24f-2649cc7a3be5_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\aa2a64fc-8941-47a3-a24f-2649cc7a3be5_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\aa2a64fc-8941-47a3-a24f-2649cc7a3be5_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\aa91b0cd-be85-445e-8eda-e41a58a83d47.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\aa91b0cd-be85-445e-8eda-e41a58a83d47.docx",
       "PackagePath": "staticwebassets\\uploads\\aa91b0cd-be85-445e-8eda-e41a58a83d47.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\ad93806d-c632-4125-a332-7915594ade65_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\ad93806d-c632-4125-a332-7915594ade65_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\ad93806d-c632-4125-a332-7915594ade65_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b175cff5-2ee8-476f-b24a-eb5da987f382_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b175cff5-2ee8-476f-b24a-eb5da987f382_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\b175cff5-2ee8-476f-b24a-eb5da987f382_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b4f59f9f-bee7-4185-82a5-5169b1cb6eec_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b4f59f9f-bee7-4185-82a5-5169b1cb6eec_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
       "PackagePath": "staticwebassets\\uploads\\b4f59f9f-bee7-4185-82a5-5169b1cb6eec_bbdf592b-831d-45c8-9e13-a3bf17b09879.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b5de7097-f357-4f87-aa37-5ad3c5c3dc26_HinhnenMU-8.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b5de7097-f357-4f87-aa37-5ad3c5c3dc26_HinhnenMU-8.jpg",
       "PackagePath": "staticwebassets\\uploads\\b5de7097-f357-4f87-aa37-5ad3c5c3dc26_HinhnenMU-8.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b7391116-ac4e-4e63-9953-11987f0e429f.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b7391116-ac4e-4e63-9953-11987f0e429f.pdf",
       "PackagePath": "staticwebassets\\uploads\\b7391116-ac4e-4e63-9953-11987f0e429f.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\b8505682-4e4b-4954-a391-d5d5df0851e9_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\00073832-775d-4953-ad13-e6127c2d397d.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\00073832-775d-4953-ad13-e6127c2d397d.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\00073832-775d-4953-ad13-e6127c2d397d.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\01086d28-102c-471c-86fc-5725dc34345a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\01086d28-102c-471c-86fc-5725dc34345a.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\01086d28-102c-471c-86fc-5725dc34345a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\041a11b7-2429-4515-9ee1-79840c6b7d2a.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\041a11b7-2429-4515-9ee1-79840c6b7d2a.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\041a11b7-2429-4515-9ee1-79840c6b7d2a.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0a9c7368-8a66-4c7e-9353-288c6dcdf1a3.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0a9c7368-8a66-4c7e-9353-288c6dcdf1a3.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\0a9c7368-8a66-4c7e-9353-288c6dcdf1a3.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0b72fddf-90fc-46ea-8a66-1327e938bb57.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0b72fddf-90fc-46ea-8a66-1327e938bb57.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\0b72fddf-90fc-46ea-8a66-1327e938bb57.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0d8d167d-0a9c-4dbc-aa3d-070d02bc78a4.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\0d8d167d-0a9c-4dbc-aa3d-070d02bc78a4.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\0d8d167d-0a9c-4dbc-aa3d-070d02bc78a4.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\1637534b-9127-4e1e-a13c-6ee1b5dc7a67.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\1637534b-9127-4e1e-a13c-6ee1b5dc7a67.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\1637534b-9127-4e1e-a13c-6ee1b5dc7a67.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\2143f459-e990-42c9-8d76-f0529ad00a5e.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\2143f459-e990-42c9-8d76-f0529ad00a5e.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\2143f459-e990-42c9-8d76-f0529ad00a5e.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\24521a24-f443-4faf-851d-083f569dc970.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\24521a24-f443-4faf-851d-083f569dc970.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\24521a24-f443-4faf-851d-083f569dc970.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\261a9a3b-52f0-4ec0-b5eb-14336201f3ce.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\261a9a3b-52f0-4ec0-b5eb-14336201f3ce.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\261a9a3b-52f0-4ec0-b5eb-14336201f3ce.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\26dbdd2c-aab7-45ee-88b6-f4c4ea4b6455.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\26dbdd2c-aab7-45ee-88b6-f4c4ea4b6455.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\26dbdd2c-aab7-45ee-88b6-f4c4ea4b6455.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\29abf03d-17d6-44df-969e-2d4af152d543.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\29abf03d-17d6-44df-969e-2d4af152d543.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\29abf03d-17d6-44df-969e-2d4af152d543.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\2fa1b132-08f6-4c46-8cf4-7f7fd45d8612.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\2fa1b132-08f6-4c46-8cf4-7f7fd45d8612.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\2fa1b132-08f6-4c46-8cf4-7f7fd45d8612.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\35362baa-3caf-48d1-86eb-671e9dfc6216.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\3a922298-0164-433c-ac0a-a9d680498794.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\3a922298-0164-433c-ac0a-a9d680498794.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\3a922298-0164-433c-ac0a-a9d680498794.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\6c1c84ee-f072-43e8-8fff-0b92ef8d7251.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\6c1c84ee-f072-43e8-8fff-0b92ef8d7251.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\6c1c84ee-f072-43e8-8fff-0b92ef8d7251.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\78bf4ac3-bba6-47bf-ba9f-85a2c90e118b.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\78bf4ac3-bba6-47bf-ba9f-85a2c90e118b.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\78bf4ac3-bba6-47bf-ba9f-85a2c90e118b.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7be0fecc-9e12-4878-9d3a-de941c779f0d.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7be0fecc-9e12-4878-9d3a-de941c779f0d.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\7be0fecc-9e12-4878-9d3a-de941c779f0d.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7df54681-9e7a-468f-baca-f7b0343a5084.mp4",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7df54681-9e7a-468f-baca-f7b0343a5084.mp4",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\7df54681-9e7a-468f-baca-f7b0343a5084.mp4"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7f39cfc4-94cb-4695-b3b9-2031ec1cd7d1.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\7f39cfc4-94cb-4695-b3b9-2031ec1cd7d1.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\7f39cfc4-94cb-4695-b3b9-2031ec1cd7d1.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\8daa9192-f221-4419-b981-3fcb0d52de41.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\8daa9192-f221-4419-b981-3fcb0d52de41.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\8daa9192-f221-4419-b981-3fcb0d52de41.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\93c2521e-e399-44d2-862b-a5301610fb33.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\93c2521e-e399-44d2-862b-a5301610fb33.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\93c2521e-e399-44d2-862b-a5301610fb33.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\94030924-5f99-4750-b8b1-c4e63ddd4a83.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\94030924-5f99-4750-b8b1-c4e63ddd4a83.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\94030924-5f99-4750-b8b1-c4e63ddd4a83.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\9c74c5c7-8a60-4246-89dc-1bb447963d3b.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\9c74c5c7-8a60-4246-89dc-1bb447963d3b.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\9c74c5c7-8a60-4246-89dc-1bb447963d3b.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a12b57e0-5024-4d83-9906-70bbc65b81ac.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a12b57e0-5024-4d83-9906-70bbc65b81ac.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\a12b57e0-5024-4d83-9906-70bbc65b81ac.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a5628da7-25a5-4768-a146-8c672069d1aa.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a5628da7-25a5-4768-a146-8c672069d1aa.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\a5628da7-25a5-4768-a146-8c672069d1aa.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a81b8ee0-c255-477e-892d-69746e4f96a6.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\a81b8ee0-c255-477e-892d-69746e4f96a6.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\a81b8ee0-c255-477e-892d-69746e4f96a6.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\ae0e823a-4554-4d19-bc11-78092901079f.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\ae0e823a-4554-4d19-bc11-78092901079f.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\ae0e823a-4554-4d19-bc11-78092901079f.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\bdbe4b03-95cb-4d87-807e-099b4179334e.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\bdbe4b03-95cb-4d87-807e-099b4179334e.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\bdbe4b03-95cb-4d87-807e-099b4179334e.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\bf479dd0-10db-4137-bb04-229b67429f67.mp4",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\bf479dd0-10db-4137-bb04-229b67429f67.mp4",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\bf479dd0-10db-4137-bb04-229b67429f67.mp4"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\ca77ec5e-e8b8-440b-892b-6d68735b3e9f.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\cb145143-ed6d-4069-a6fc-89f5d2c45299.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\cb145143-ed6d-4069-a6fc-89f5d2c45299.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\cb145143-ed6d-4069-a6fc-89f5d2c45299.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d0f13342-6b60-4d80-9d25-4d47a7ebaf24.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d0f13342-6b60-4d80-9d25-4d47a7ebaf24.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\d0f13342-6b60-4d80-9d25-4d47a7ebaf24.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d755ba59-0d39-4d5a-bdef-37134efda04a.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d755ba59-0d39-4d5a-bdef-37134efda04a.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\d755ba59-0d39-4d5a-bdef-37134efda04a.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d78e29a2-912d-4db6-a16b-0cb0c43b99fa.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\d78e29a2-912d-4db6-a16b-0cb0c43b99fa.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\d78e29a2-912d-4db6-a16b-0cb0c43b99fa.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\db96a267-517d-4176-aa0a-5488faeb1fc6.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\db96a267-517d-4176-aa0a-5488faeb1fc6.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\db96a267-517d-4176-aa0a-5488faeb1fc6.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\dc5fdc71-f669-46d1-9197-986170751916.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\dc5fdc71-f669-46d1-9197-986170751916.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\dc5fdc71-f669-46d1-9197-986170751916.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\f2106eb7-1d17-4ee8-af33-377ece0bbea2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\baigiang\\f2106eb7-1d17-4ee8-af33-377ece0bbea2.jpg",
       "PackagePath": "staticwebassets\\uploads\\baigiang\\f2106eb7-1d17-4ee8-af33-377ece0bbea2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\080cf53d-fb29-4c6f-a560-55100875875c.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\108f20e8-765d-4bf7-a988-43bd17a906e2.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\108f20e8-765d-4bf7-a988-43bd17a906e2.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\108f20e8-765d-4bf7-a988-43bd17a906e2.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\2540924f-0f85-45d5-93f0-7f2fc3e666b0.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\2540924f-0f85-45d5-93f0-7f2fc3e666b0.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\2540924f-0f85-45d5-93f0-7f2fc3e666b0.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\53e0ca61-2637-43a0-aac3-a8e8ce943ad6.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\53e0ca61-2637-43a0-aac3-a8e8ce943ad6.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\53e0ca61-2637-43a0-aac3-a8e8ce943ad6.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\5ce25ffe-25c6-4102-80c2-ba27cbc04997.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\5ce25ffe-25c6-4102-80c2-ba27cbc04997.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\5ce25ffe-25c6-4102-80c2-ba27cbc04997.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\6581ca0c-1192-49cd-902b-89648e16de91.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\6581ca0c-1192-49cd-902b-89648e16de91.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\6581ca0c-1192-49cd-902b-89648e16de91.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\6c45a97c-dc13-4625-b65e-57fc21a24e08.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\6c45a97c-dc13-4625-b65e-57fc21a24e08.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\6c45a97c-dc13-4625-b65e-57fc21a24e08.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\7534539e-cf76-40a2-97ed-7ba67e70b236.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\7534539e-cf76-40a2-97ed-7ba67e70b236.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\7534539e-cf76-40a2-97ed-7ba67e70b236.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\773c98be-161d-4632-8e19-22d314d20cdc.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\773c98be-161d-4632-8e19-22d314d20cdc.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\773c98be-161d-4632-8e19-22d314d20cdc.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\872b8546-eac2-4092-b97b-589d900521e9.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\872b8546-eac2-4092-b97b-589d900521e9.docx",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\872b8546-eac2-4092-b97b-589d900521e9.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\b38b35fb-7df9-415d-99d9-8e43ec9a8b37.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\b38b35fb-7df9-415d-99d9-8e43ec9a8b37.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\b38b35fb-7df9-415d-99d9-8e43ec9a8b37.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\bbdf592b-831d-45c8-9e13-a3bf17b09879.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\bc32a88f-0944-4a3a-b949-75b8da286426.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\bc32a88f-0944-4a3a-b949-75b8da286426.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\bc32a88f-0944-4a3a-b949-75b8da286426.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\c08289f8-a47b-4cdf-a7ab-7273038234ed.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\c08289f8-a47b-4cdf-a7ab-7273038234ed.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\c08289f8-a47b-4cdf-a7ab-7273038234ed.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\e44e205b-686a-4237-a444-bdf36154ec27.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\e44e205b-686a-4237-a444-bdf36154ec27.docx",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\e44e205b-686a-4237-a444-bdf36154ec27.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\ee7d18e5-5441-4ccf-8070-2e2aebcb4580.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\f5f18c91-ec95-42b0-83a0-e56347e4a8bf.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\f5f18c91-ec95-42b0-83a0-e56347e4a8bf.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\f5f18c91-ec95-42b0-83a0-e56347e4a8bf.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\f6b45ccb-9b41-440a-a9d6-00e7055acf06.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bailearn\\f6b45ccb-9b41-440a-a9d6-00e7055acf06.jpg",
       "PackagePath": "staticwebassets\\uploads\\bailearn\\f6b45ccb-9b41-440a-a9d6-00e7055acf06.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bf72364e-f1cb-424c-829b-eb5e7284aeae.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\bf72364e-f1cb-424c-829b-eb5e7284aeae.docx",
       "PackagePath": "staticwebassets\\uploads\\bf72364e-f1cb-424c-829b-eb5e7284aeae.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\c1fbaf37-c209-4be5-888e-7d6f4f770e27_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c3da7fe0-7094-4b98-a5df-d81516f076a8.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c3da7fe0-7094-4b98-a5df-d81516f076a8.jpg",
       "PackagePath": "staticwebassets\\uploads\\c3da7fe0-7094-4b98-a5df-d81516f076a8.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c52efa00-d7eb-4d52-adf0-266e1ec0d05e_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c52efa00-d7eb-4d52-adf0-266e1ec0d05e_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
       "PackagePath": "staticwebassets\\uploads\\c52efa00-d7eb-4d52-adf0-266e1ec0d05e_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c5a22c60-af89-4417-927e-7c44171d7543_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\c5a22c60-af89-4417-927e-7c44171d7543_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\c5a22c60-af89-4417-927e-7c44171d7543_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cc52e9fb-956e-4e62-845f-03eb7b15566d.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cc52e9fb-956e-4e62-845f-03eb7b15566d.jpg",
       "PackagePath": "staticwebassets\\uploads\\cc52e9fb-956e-4e62-845f-03eb7b15566d.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cc83f854-7bcf-4ec2-b0f2-a5d9d73dba2a.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cc83f854-7bcf-4ec2-b0f2-a5d9d73dba2a.jpg",
       "PackagePath": "staticwebassets\\uploads\\cc83f854-7bcf-4ec2-b0f2-a5d9d73dba2a.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cd9fc830-d29f-4634-8e52-9675e78cd932_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cd9fc830-d29f-4634-8e52-9675e78cd932_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\cd9fc830-d29f-4634-8e52-9675e78cd932_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cfd8e4e9-4636-43b3-840f-be2d0320b046_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\cfd8e4e9-4636-43b3-840f-be2d0320b046_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\cfd8e4e9-4636-43b3-840f-be2d0320b046_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\d30b59e9-d0d0-491e-930c-2ca111bc4e03_avt.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\d30b59e9-d0d0-491e-930c-2ca111bc4e03_avt.jpg",
       "PackagePath": "staticwebassets\\uploads\\d30b59e9-d0d0-491e-930c-2ca111bc4e03_avt.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\d6a964c9-f973-493d-a87c-e727810562e8.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\d6a964c9-f973-493d-a87c-e727810562e8.docx",
       "PackagePath": "staticwebassets\\uploads\\d6a964c9-f973-493d-a87c-e727810562e8.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\dcea8cc4-329d-4ca5-a260-e9732493dfd2_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\dcea8cc4-329d-4ca5-a260-e9732493dfd2_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx",
       "PackagePath": "staticwebassets\\uploads\\dcea8cc4-329d-4ca5-a260-e9732493dfd2_e748b6ab-8e8f-47c3-a062-a913a764ca1a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\de9f2c1b-d8a7-42b5-86d3-d0e10a8cbeca.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\de9f2c1b-d8a7-42b5-86d3-d0e10a8cbeca.docx",
       "PackagePath": "staticwebassets\\uploads\\de9f2c1b-d8a7-42b5-86d3-d0e10a8cbeca.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\ded83af4-9b89-46bf-8e99-19125a70eca8.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\ded83af4-9b89-46bf-8e99-19125a70eca8.jpg",
       "PackagePath": "staticwebassets\\uploads\\ded83af4-9b89-46bf-8e99-19125a70eca8.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\dffe1286-7ae8-4f98-9c78-05c07282e88a.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\dffe1286-7ae8-4f98-9c78-05c07282e88a.docx",
       "PackagePath": "staticwebassets\\uploads\\dffe1286-7ae8-4f98-9c78-05c07282e88a.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\e1c0bc0b-0bfe-445a-998a-181f4e097296.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\e1c0bc0b-0bfe-445a-998a-181f4e097296.pdf",
       "PackagePath": "staticwebassets\\uploads\\e1c0bc0b-0bfe-445a-998a-181f4e097296.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\e70e4264-9ef4-4b13-98bf-52f675503942.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\e70e4264-9ef4-4b13-98bf-52f675503942.docx",
       "PackagePath": "staticwebassets\\uploads\\e70e4264-9ef4-4b13-98bf-52f675503942.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\ecde2ac8-6d4c-4dea-aa2c-255f569fe0f8.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\ecde2ac8-6d4c-4dea-aa2c-255f569fe0f8.docx",
       "PackagePath": "staticwebassets\\uploads\\ecde2ac8-6d4c-4dea-aa2c-255f569fe0f8.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f0c1b06f-a460-42f2-a4f4-8a59b6fd4acf_avt.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f0c1b06f-a460-42f2-a4f4-8a59b6fd4acf_avt.jpg",
       "PackagePath": "staticwebassets\\uploads\\f0c1b06f-a460-42f2-a4f4-8a59b6fd4acf_avt.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f2f9ae99-55f0-4d16-b928-f4908adc085a_886ede05-02c4-4523-b2f4-de83e7515de8_f9340fad-da33-41cd-947e-64f6f8fd4893.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f2f9ae99-55f0-4d16-b928-f4908adc085a_886ede05-02c4-4523-b2f4-de83e7515de8_f9340fad-da33-41cd-947e-64f6f8fd4893.docx",
       "PackagePath": "staticwebassets\\uploads\\f2f9ae99-55f0-4d16-b928-f4908adc085a_886ede05-02c4-4523-b2f4-de83e7515de8_f9340fad-da33-41cd-947e-64f6f8fd4893.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f41c0164-f44c-4029-8f06-9c940b71f6f9_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f41c0164-f44c-4029-8f06-9c940b71f6f9_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\f41c0164-f44c-4029-8f06-9c940b71f6f9_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f6cadc51-6290-46dd-bae8-328dd266100b_avt.jpg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f6cadc51-6290-46dd-bae8-328dd266100b_avt.jpg",
       "PackagePath": "staticwebassets\\uploads\\f6cadc51-6290-46dd-bae8-328dd266100b_avt.jpg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f9340fad-da33-41cd-947e-64f6f8fd4893.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f9340fad-da33-41cd-947e-64f6f8fd4893.docx",
       "PackagePath": "staticwebassets\\uploads\\f9340fad-da33-41cd-947e-64f6f8fd4893.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f9420e21-cb60-497e-af43-6516777224c7_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\f9420e21-cb60-497e-af43-6516777224c7_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\f9420e21-cb60-497e-af43-6516777224c7_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\fac45b28-14cb-4032-acaa-6ad322c3bfe7.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\fac45b28-14cb-4032-acaa-6ad322c3bfe7.pdf",
       "PackagePath": "staticwebassets\\uploads\\fac45b28-14cb-4032-acaa-6ad322c3bfe7.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\facd3aef-feef-4903-be05-8d5e52536656.pdf",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\facd3aef-feef-4903-be05-8d5e52536656.pdf",
       "PackagePath": "staticwebassets\\uploads\\facd3aef-feef-4903-be05-8d5e52536656.pdf"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\fdc86258-df42-4da3-852c-48640afa7068.docx",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\fdc86258-df42-4da3-852c-48640afa7068.docx",
       "PackagePath": "staticwebassets\\uploads\\fdc86258-df42-4da3-852c-48640afa7068.docx"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\fed04310-442d-4b8a-aebf-8c11fea4dfe1_1367490.jpeg",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\fed04310-442d-4b8a-aebf-8c11fea4dfe1_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\fed04310-442d-4b8a-aebf-8c11fea4dfe1_1367490.jpeg"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.cjs.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.cjs.js",
       "PackagePath": "staticwebassets\\vendor\\aos\\aos.cjs.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.css",
       "PackagePath": "staticwebassets\\vendor\\aos\\aos.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.esm.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.esm.js",
       "PackagePath": "staticwebassets\\vendor\\aos\\aos.esm.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.js",
       "PackagePath": "staticwebassets\\vendor\\aos\\aos.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\aos\\aos.js.map",
       "PackagePath": "staticwebassets\\vendor\\aos\\aos.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap-icons\\bootstrap-icons.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.json",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.json",
       "PackagePath": "staticwebassets\\vendor\\bootstrap-icons\\bootstrap-icons.json"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap-icons\\bootstrap-icons.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.scss",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\bootstrap-icons.scss",
       "PackagePath": "staticwebassets\\vendor\\bootstrap-icons\\bootstrap-icons.scss"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\fonts\\bootstrap-icons.woff",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\fonts\\bootstrap-icons.woff",
       "PackagePath": "staticwebassets\\vendor\\bootstrap-icons\\fonts\\bootstrap-icons.woff"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\fonts\\bootstrap-icons.woff2",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap-icons\\fonts\\bootstrap-icons.woff2",
       "PackagePath": "staticwebassets\\vendor\\bootstrap-icons\\fonts\\bootstrap-icons.woff2"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\prb.txt",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\css\\prb.txt",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\css\\prb.txt"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\bootstrap\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\vendor\\bootstrap\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\css\\glightbox.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\css\\glightbox.css",
       "PackagePath": "staticwebassets\\vendor\\glightbox\\css\\glightbox.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\css\\glightbox.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\css\\glightbox.min.css",
       "PackagePath": "staticwebassets\\vendor\\glightbox\\css\\glightbox.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\js\\glightbox.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\js\\glightbox.js",
       "PackagePath": "staticwebassets\\vendor\\glightbox\\js\\glightbox.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\js\\glightbox.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\glightbox\\js\\glightbox.min.js",
       "PackagePath": "staticwebassets\\vendor\\glightbox\\js\\glightbox.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\php-email-form\\validate.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\php-email-form\\validate.js",
       "PackagePath": "staticwebassets\\vendor\\php-email-form\\validate.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\purecounter\\purecounter_vanilla.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\purecounter\\purecounter_vanilla.js",
       "PackagePath": "staticwebassets\\vendor\\purecounter\\purecounter_vanilla.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\purecounter\\purecounter_vanilla.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\purecounter\\purecounter_vanilla.js.map",
       "PackagePath": "staticwebassets\\vendor\\purecounter\\purecounter_vanilla.js.map"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\swiper\\swiper-bundle.min.css",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\swiper\\swiper-bundle.min.css",
       "PackagePath": "staticwebassets\\vendor\\swiper\\swiper-bundle.min.css"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\swiper\\swiper-bundle.min.js",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\swiper\\swiper-bundle.min.js",
       "PackagePath": "staticwebassets\\vendor\\swiper\\swiper-bundle.min.js"
     },
     {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\swiper\\swiper-bundle.min.js.map",
+      "Id": "D:\\DoAnTotNghiep\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\vendor\\swiper\\swiper-bundle.min.js.map",
       "PackagePath": "staticwebassets\\vendor\\swiper\\swiper-bundle.min.js.map"
     },
     {
