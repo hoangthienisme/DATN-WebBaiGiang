@@ -1,12 +1,22 @@
 ﻿@model WebBaiGiang.ViewModel.ChiTietBaiGiangViewModel
-
+@using System.Security.Claims
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+
     var taiNguyenAnh = Model.TaiNguyens?.Where(t => t.Loai == "image");
     var taiNguyenYoutube = Model.TaiNguyens?.Where(t => t.Loai == "youtube");
     var taiNguyenDocs = Model.TaiNguyens?.Where(t => t.Loai == "tailieu");
+    var currentUserIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var currentUserRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role || c.Type == "Role")?.Value;
+
+    int currentUserId = 0;
+    if (!string.IsNullOrEmpty(currentUserIdString))
+    {
+        int.TryParse(currentUserIdString, out currentUserId);
+    }
 }
+
 <link href="~/css/chitietbaigiang.css" rel="stylesheet" />
 <div class="container mt-4" style="max-width: 1200px;">
     <!-- Header Section -->
@@ -358,9 +368,41 @@
                             {
                                 foreach (var bl in Model.BinhLuans)
                                 {
-                                    <div class="border rounded p-2 mb-2">
+                                    var isOwner = bl.NguoiDungId == currentUserId;
+                                    var isTeacher = currentUserRole == "Teacher";
+                                    <div class="border rounded p-2 mb-2 position-relative">
                                         <strong>@bl.NguoiDung?.Name</strong> - <span class="text-muted">@bl.NgayTao.ToString("dd/MM/yyyy HH:mm")</span>
-                                        <div>@bl.NoiDung</div>
+                                        <div id="comment-content-@bl.Id">@bl.NoiDung</div>
+
+                                        @if (isOwner || isTeacher)
+                                        {
+                                            <div class="dropdown position-absolute top-0 end-0 me-2 mt-2">
+                                                <button class="btn btn-sm btn-light p-1 rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 32px; height: 32px;">
+                                                    <span style="font-size: 20px; line-height: 1;">&#8942;</span> @* Unicode cho 3 chấm dọc *@
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    @if (isOwner)
+                                                    {
+                                                        <li>
+                                                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); showEditForm(@bl.Id, '@bl.NoiDung.Replace("'", "\\'")')">Sửa</a>
+                                                        </li>
+                                                    }
+                                                    <li>
+                                                        <form method="post" asp-action="XoaBinhLuan" asp-route-id="@bl.Id" onsubmit="return confirm('Bạn chắc chắn xóa bình luận này?')">
+                                                            <button type="submit" class="dropdown-item text-danger">Xóa</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <!-- Form sửa, ẩn mặc định -->
+                                            <form method="post" asp-action="SuaBinhLuan" class="mt-2" id="edit-form-@bl.Id" style="display:none;">
+                                                <input type="hidden" name="Id" value="@bl.Id" />
+                                                <textarea name="NoiDung" class="form-control mb-1">@bl.NoiDung</textarea>
+                                                <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
+                                                <button type="button" class="btn btn-sm btn-secondary" onclick="hideEditForm(@bl.Id)">Hủy</button>
+                                            </form>
+                                        }
                                     </div>
                                 }
                             }
@@ -370,9 +412,21 @@
                             }
                         </div>
 
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function showEditForm(id, noiDung) {
+        document.getElementById("edit-form-" + id).style.display = "block";
+        document.getElementById("comment-content-" + id).style.display = "none";
+    }
+
+    function hideEditForm(id) {
+        document.getElementById("edit-form-" + id).style.display = "none";
+        document.getElementById("comment-content-" + id).style.display = "block";
+    }
+</script>
