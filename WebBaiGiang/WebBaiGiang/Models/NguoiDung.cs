@@ -31,7 +31,7 @@ public partial class NguoiDung
     public string? ResetPasswordToken { get; set; }
 
     public DateTime? ResetTokenExpiry { get; set; }
-
+    public bool IsActive { get; set; } = true;
     public virtual ICollection<GiangVienLopHoc> GiangVienLopHocs { get; set; } = new List<GiangVienLopHoc>();
     public virtual ICollection<BinhLuan> BinhLuans { get; set; } = new List<BinhLuan>();
 

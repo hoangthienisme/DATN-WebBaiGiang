@@ -1,0 +1,44 @@
+﻿@model WebBaiGiang.Models.NguoiDung
+
+@{
+    ViewData["Title"] = "Tạo tài khoản giảng viên";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Tên</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">Mật khẩu</label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Số điện thoại</label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger" />
+    </div>
+
+    <input type="hidden" name="Role" value="GV" />
+
+    <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

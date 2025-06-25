@@ -219,6 +219,13 @@ namespace WebBaiGiang.Controllers
                 ViewData["ReturnUrl"] = returnUrl;
                 return View(nguoiDung);
             }
+            if (!user.IsActive)
+            {
+                ModelState.AddModelError("", " *Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.");
+                ViewData["ReturnUrl"] = returnUrl;
+                return View(nguoiDung);
+            }
+
 
             var claims = new List<Claim>
     {

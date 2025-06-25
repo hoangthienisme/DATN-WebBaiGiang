@@ -1,0 +1,203 @@
+﻿@model IEnumerable<WebBaiGiang.Models.NguoiDung>
+
+@{
+    ViewData["Title"] = "Danh sách sinh viên";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-1">@ViewData["Title"]</h2>
+            <p class="text-muted mb-0">Quản lý thông tin sinh viên</p>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="card mb-4">
+        <div class="card-body py-3">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <input type="text" id="searchInput" class="form-control"
+                           placeholder="Tìm theo tên, email hoặc số điện thoại...">
+                </div>
+                <div class="col-md-6 text-end mt-2 mt-md-0">
+                    <span class="text-muted me-3">Tổng: <strong>@Model.Count()</strong> sinh viên </span>
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="clearSearch">
+                        Xóa bộ lọc
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    @if (!Model.Any())
+    {
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="bi bi-person-plus display-1 text-muted mb-3"></i>
+                <h4 class="text-muted">Chưa có sinh viên nào</h4>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0" id="sinhVienTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th class="text-center">Trạng thái</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int index = 1;
+                        }
+                        @foreach (var sv in Model)
+                        {
+                            <tr>
+                                <td class="text-muted">@index</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-2">
+                                            @sv.Name.Substring(0, 1).ToUpper()
+                                        </div>
+                                        <span class="fw-medium">@sv.Name</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="mailto:@sv.Email" class="text-decoration-none">@sv.Email</a>
+                                </td>
+                                <td>@sv.Phone</td>
+                                <td class="text-center">
+                                    @if (sv.IsActive)
+                                    {
+                                        <span class="badge bg-success-subtle text-success">Hoạt động</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger-subtle text-danger">Đã khóa</span>
+                                    }
+                                </td>
+
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-sm">
+                                        <form action="/Admin/SinhVien/ToggleTrangThai" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@sv.Id" />
+                                            <button type="submit"
+                                                    class="btn @(sv.IsActive ? "btn-outline-warning" : "btn-outline-success") btn-sm"
+                                                    title="@(sv.IsActive ? "Khóa tài khoản" : "Mở khóa tài khoản")"
+                                                    onclick="return confirm('Bạn có chắc muốn @(sv.IsActive ? "khóa" : "mở khóa") tài khoản @sv.Name không?');">
+                                                <i class="bi @(sv.IsActive ? "bi-lock" : "bi-unlock")"></i>
+                                            </button>
+                                        </form>
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                            index++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .bg-danger-subtle {
+        background-color: #f8d7da !important;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+
+    .avatar-sm {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .card {
+        border: 1px solid #e9ecef;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    .table th {
+        font-weight: 600;
+        color: #495057;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table td {
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+
+    .btn-group-sm .btn {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+    }
+
+    .bg-success-subtle {
+        background-color: #d1e7dd !important;
+    }
+
+    .text-success {
+        color: #198754 !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('sinhVienTable');
+        const clearBtn = document.getElementById('clearSearch');
+
+        if (searchInput && table) {
+            searchInput.addEventListener('input', function () {
+                const filter = this.value.toLowerCase();
+                const rows = table.querySelectorAll('tbody tr');
+
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(filter) ? '' : 'none';
+                });
+            });
+
+            clearBtn.addEventListener('click', function () {
+                searchInput.value = '';
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => row.style.display = '');
+            });
+        }
+
+        // Debug form submission
+        document.querySelectorAll('form[asp-action="Delete"]').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                console.log('Form submitted with id:', this.querySelector('input[name="id"]').value);
+            });
+        });
+    });
+</script>

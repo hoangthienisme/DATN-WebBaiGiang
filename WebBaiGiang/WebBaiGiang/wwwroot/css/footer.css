@@ -1,0 +1,241 @@
+﻿/* ========== Footer Tổng Quan ========== */
+.footer {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        opacity: 0.9;
+        z-index: -1;
+    }
+
+/* ========== Branding & Logo ========== */
+.footer-brand h4 {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.footer-logo {
+    height: auto;
+    max-height: 60px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+    .footer-logo:hover {
+        transform: scale(1.05);
+    }
+
+/* ========== Liên kết Footer ========== */
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .footer-links a:hover {
+        color: #fff;
+        transform: translateX(5px);
+    }
+
+/* ========== Thông tin liên hệ ========== */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+    .contact-item:hover {
+        transform: translateX(5px);
+    }
+
+    .contact-item i {
+        min-width: 20px;
+        text-align: center;
+        margin-right: 8px;
+    }
+
+    .contact-item a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+    }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+
+/* ========== Social Buttons ========== */
+.social-links .btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 8px 8px 0;
+    transition: all 0.3s ease;
+}
+
+    .social-links .btn:hover {
+        background-color: #fff;
+        color: #1e3c72;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+/* ========== Newsletter Form ========== */
+.newsletter .input-group .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+    .newsletter .input-group .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .newsletter .input-group .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+.newsletter .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    border-radius: 0 0.375rem 0.375rem 0;
+    transition: all 0.3s ease;
+}
+
+    .newsletter .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+        transform: translateY(-1px);
+    }
+
+/* ========== Copyright Section ========== */
+.bg-black {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .footer-legal a:hover {
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+/* ========== Scroll To Top Button ========== */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    z-index: 1000;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+    .scroll-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .scroll-top i {
+        font-size: 18px;
+    }
+
+/* ========== Responsive Styles ========== */
+@media (max-width: 768px) {
+    .footer .text-md-end {
+        text-align: center !important;
+        margin-top: 1rem;
+    }
+
+    .footer-legal {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .newsletter .input-group {
+        flex-direction: column;
+    }
+
+    .newsletter .form-control,
+    .newsletter .btn {
+        width: 100%;
+        border-radius: 0.375rem !important;
+    }
+
+    .scroll-top {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .footer h4, .footer h5, .footer h6 {
+        font-size: 1.1rem;
+    }
+
+    .social-links .btn {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    .newsletter .form-control {
+        font-size: 14px;
+    }
+}
+
+/* ========== Fade In Animation ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer .col-lg-4,
+.footer .col-md-6,
+.footer .col-md-12 {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+    /* Hover Scale Animation */
+    .footer .col-lg-4:hover,
+    .footer .col-md-6:hover {
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }

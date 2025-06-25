@@ -399,7 +399,6 @@ public partial class WebBaiGiangContext : DbContext
         });
 
 
-        // Entity: ThongTinWeb
         modelBuilder.Entity<ThongTinWeb>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__ThongTin__3214EC073CFA3B97");
@@ -410,10 +409,37 @@ public partial class WebBaiGiangContext : DbContext
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
             entity.Property(e => e.LogoUrl).HasMaxLength(250);
             entity.Property(e => e.Name).HasMaxLength(100);
-            entity.Property(e => e.SocialLink).HasMaxLength(250);
+
+            // Cấu hình cho 3 trường mới
+            entity.Property(e => e.FacebookLink).HasMaxLength(250); modelBuilder.Entity<ThongTinWeb>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK__ThongTin__3214EC073CFA3B97");
+
+                entity.ToTable("ThongTinWeb");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.LogoUrl).HasMaxLength(250);
+                entity.Property(e => e.Name).HasMaxLength(100);
+
+                // Cấu hình cho 3 trường mới
+                entity.Property(e => e.FacebookLink).HasMaxLength(250);
+                entity.Property(e => e.YoutubeLink).HasMaxLength(250);
+                entity.Property(e => e.InstagramLink).HasMaxLength(250);
+
+                // ❌ Bỏ cấu hình trường SocialLink (đã xoá)
+            });
+
+            OnModelCreatingPartial(modelBuilder);
+
+            entity.Property(e => e.YoutubeLink).HasMaxLength(250);
+            entity.Property(e => e.InstagramLink).HasMaxLength(250);
+
+            // ❌ Bỏ cấu hình trường SocialLink (đã xoá)
         });
 
         OnModelCreatingPartial(modelBuilder);
+
     }
 
 

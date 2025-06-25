@@ -8,11 +8,17 @@ public partial class ThongTinWeb
     public int Id { get; set; }
 
     public string Name { get; set; } = null!;
+    public string? Description { get; set; }
 
     public string? LogoUrl { get; set; }
 
-    public string? SocialLink { get; set; }
-
+    public string FacebookLink { get; set; }
+    public string YoutubeLink { get; set; }
+    public string InstagramLink { get; set; }
+    public string? EmailLienHe { get; set; }
+    public string? PhoneLienHe { get; set; }
+    public string? DiaChi { get; set; }
+    public string? TenTruong { get; set; }
     public DateTime CreatedDate { get; set; }
 
     public int? CreatedBy { get; set; }
