@@ -4,6 +4,7 @@ wwwroot\css\baigiang.css
 wwwroot\css\courses.css
 wwwroot\css\createcourse.css
 wwwroot\css\chitietbaigiang.css
+wwwroot\css\footer.css
 wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
@@ -79,6 +80,7 @@ wwwroot\img\trainers\trainer-3.jpg
 wwwroot\img\trainers\trainer-3-2.jpg
 wwwroot\img\video-icon.png
 wwwroot\img\webdesign.jpg
+wwwroot\img\zalo-icon.png
 wwwroot\js\main.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
@@ -143,6 +145,7 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\logo\LearnHub.png
 wwwroot\uploads\025499f4-3fca-4439-8e9b-bd5485421970.docx
 wwwroot\uploads\08434400-0412-43b2-95e1-1ebd75e4e667.jpg
 wwwroot\uploads\0b2f242a-1e46-4f97-beae-2e7ec452cf52.docx

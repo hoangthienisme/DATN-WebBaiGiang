@@ -18,6 +18,8 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index( int id)
     {
+        var thongTin = _context.ThongTinWebs.FirstOrDefault();
+        ViewBag.FooterData = thongTin;
         return View();
     }
 

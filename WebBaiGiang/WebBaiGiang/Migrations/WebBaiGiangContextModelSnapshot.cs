@@ -477,6 +477,9 @@ namespace WebBaiGiang.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -630,6 +633,25 @@ namespace WebBaiGiang.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiaChi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailLienHe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacebookLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("InstagramLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<string>("LogoUrl")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -639,15 +661,22 @@ namespace WebBaiGiang.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("SocialLink")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                    b.Property<string>("PhoneLienHe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenTruong")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UpdateBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("YoutubeLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id")
                         .HasName("PK__ThongTin__3214EC073CFA3B97");

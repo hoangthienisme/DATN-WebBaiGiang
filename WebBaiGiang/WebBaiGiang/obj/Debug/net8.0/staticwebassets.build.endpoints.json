@@ -577,6 +577,88 @@
       ]
     },
     {
+      "Route": "css/footer.css",
+      "AssetFile": "css/footer.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5324"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Itx4jP5JLFSKqnrm1ejWQbiO8zpZWjyFE+zTJYWrrXM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 25 Jun 2025 17:17:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Itx4jP5JLFSKqnrm1ejWQbiO8zpZWjyFE+zTJYWrrXM="
+        }
+      ]
+    },
+    {
+      "Route": "css/footer.m2cft3dly1.css",
+      "AssetFile": "css/footer.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5324"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Itx4jP5JLFSKqnrm1ejWQbiO8zpZWjyFE+zTJYWrrXM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 25 Jun 2025 17:17:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m2cft3dly1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Itx4jP5JLFSKqnrm1ejWQbiO8zpZWjyFE+zTJYWrrXM="
+        },
+        {
+          "Name": "label",
+          "Value": "css/footer.css"
+        }
+      ]
+    },
+    {
       "Route": "css/giangvien.css",
       "AssetFile": "css/giangvien.css",
       "Selectors": [],
@@ -6727,6 +6809,88 @@
       ]
     },
     {
+      "Route": "img/zalo-icon.amkzlkvqgn.png",
+      "AssetFile": "img/zalo-icon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3700"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3jc2h6WPUbOIY7lu9Pki7xYcuN6Voty21WEb5acTjMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 25 Jun 2025 17:51:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "amkzlkvqgn"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3jc2h6WPUbOIY7lu9Pki7xYcuN6Voty21WEb5acTjMA="
+        },
+        {
+          "Name": "label",
+          "Value": "img/zalo-icon.png"
+        }
+      ]
+    },
+    {
+      "Route": "img/zalo-icon.png",
+      "AssetFile": "img/zalo-icon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3700"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3jc2h6WPUbOIY7lu9Pki7xYcuN6Voty21WEb5acTjMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 25 Jun 2025 17:51:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3jc2h6WPUbOIY7lu9Pki7xYcuN6Voty21WEb5acTjMA="
+        }
+      ]
+    },
+    {
       "Route": "js/main.js",
       "AssetFile": "js/main.js",
       "Selectors": [],
@@ -11971,6 +12135,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
+        }
+      ]
+    },
+    {
+      "Route": "logo/LearnHub.png",
+      "AssetFile": "logo/LearnHub.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "24879"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9vaVmTNWCgF5j0FuOzI30vBYfyE75c/9ibSPeYE8QTA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 25 Jun 2025 16:51:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9vaVmTNWCgF5j0FuOzI30vBYfyE75c/9ibSPeYE8QTA="
+        }
+      ]
+    },
+    {
+      "Route": "logo/LearnHub.ypp79ov6mn.png",
+      "AssetFile": "logo/LearnHub.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "24879"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9vaVmTNWCgF5j0FuOzI30vBYfyE75c/9ibSPeYE8QTA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 25 Jun 2025 16:51:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ypp79ov6mn"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9vaVmTNWCgF5j0FuOzI30vBYfyE75c/9ibSPeYE8QTA="
+        },
+        {
+          "Name": "label",
+          "Value": "logo/LearnHub.png"
         }
       ]
     },

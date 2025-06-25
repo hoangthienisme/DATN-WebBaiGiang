@@ -67,16 +67,22 @@
                         <i class="bi bi-journals"></i> Quản lý Học phần
                     </a>
                 </li>
+                <!-- Quản lý Giáo viên -->
                 <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/GiaoVien") ? "active" : "")" href="@Url.Action("Index", "GiaoVien", new { area = "Admin" })">
+                    <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/GiangVien") ? "active" : "")"
+                       href="@Url.Action("Index", "GiangVien", new { area = "Admin" })">
                         <i class="bi bi-person-badge"></i> Quản lý Giáo viên
                     </a>
                 </li>
+
+                <!-- Quản lý Học sinh -->
                 <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/HocSinh") ? "active" : "")" href="@Url.Action("Index", "HocSinh", new { area = "Admin" })">
-                        <i class="bi bi-people-fill"></i> Quản lý Học sinh
+                    <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/SinhVien") ? "active" : "")"
+                       href="@Url.Action("Index", "SinhVien", new { area = "Admin" })">
+                        <i class="bi bi-people-fill"></i> Quản lý Sinh Viên
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/ThongKe") ? "active" : "")" href="@Url.Action("Index", "ThongKe", new { area = "Admin" })">
                         <i class="bi bi-bar-chart-line"></i> Thống kê báo cáo

@@ -64,6 +64,14 @@
     </nav>
     @RenderBody()
     @* Footer *@
-    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    @{
+        var db = Context.RequestServices.GetService(typeof(WebBaiGiangContext)) as WebBaiGiangContext;
+        var footerData = db?.ThongTinWebs.FirstOrDefault();
+    }
+
+    @if (footerData != null)
+    {
+        @await Html.PartialAsync("_Footer", footerData)
+    }
 </body>
 </html>
