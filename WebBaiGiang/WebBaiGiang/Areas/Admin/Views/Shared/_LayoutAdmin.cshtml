@@ -1,8 +1,10 @@
 ﻿@using System.Security.Claims
+@inject WebBaiGiang.Models.WebBaiGiangContext _context
 @{
     var avatar = User.FindFirst("Avatar")?.Value;
     var name = User.FindFirst(ClaimTypes.Name)?.Value ?? "Admin"; 
-    var defaultAvatarPath = "/img/default-avatar.jpg";
+    var defaultAvatarPath = "/img/default-avatar.png";
+    var thongTin = _context.ThongTinWebs.FirstOrDefault();
     Layout = null;
 }
 
@@ -20,13 +22,18 @@
 </head>
 <body>
     <div class="header-top">
-        <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-outline-secondary d-md-none" type="button" id="sidebarToggle">
-                <i class="bi bi-list fs-5"></i>
-            </button>
-            <div class="admin-title">
-                <i class="bi bi-shield-lock-fill"></i> LearnHub
-            </div>
+        <div class="navbar-logo">
+            <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">
+                @if (!string.IsNullOrEmpty(thongTin?.LogoUrl))
+                {
+                    <img src="@thongTin.LogoUrl" alt="Logo" class="img-fluid rounded" style="height: 70px;" />
+
+                }
+                else
+                {
+                    <h1 class="sitename">Logo</h1>
+                }
+            </a>
         </div>
 
         <div class="custom-dropdown">
@@ -89,7 +96,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/WebConfig") ? "active" : "")" href="@Url.Action("Index", "WebConfig", new { area = "Admin" })">
+                    <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/ThongTinWeb") ? "active" : "")" href="@Url.Action("Edit", "ThongTinWeb", new { area = "Admin" })">
                         <i class="bi bi-gear"></i> Quản lý trang web
                     </a>
                 </li>

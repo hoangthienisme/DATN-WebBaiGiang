@@ -9,6 +9,8 @@ wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
 wwwroot\css\pagination.css
+wwwroot\css\profile.css
+wwwroot\css\phantrangsv.css
 wwwroot\css\sinhvien.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
@@ -55,7 +57,10 @@ wwwroot\img\icon-wrench.png
 wwwroot\img\logo.png
 wwwroot\img\loupe.png
 wwwroot\img\mechanical.jpg
+wwwroot\img\merong.jpg
 wwwroot\img\python.jpg
+wwwroot\img\sena.jpg
+wwwroot\img\son.jpg
 wwwroot\img\tabs\tab-1.png
 wwwroot\img\tabs\tab-2.png
 wwwroot\img\tabs\tab-3.png
@@ -78,6 +83,11 @@ wwwroot\img\trainers\trainer-2.jpg
 wwwroot\img\trainers\trainer-2-2.jpg
 wwwroot\img\trainers\trainer-3.jpg
 wwwroot\img\trainers\trainer-3-2.jpg
+wwwroot\img\uploads\18330866-8dee-430c-8e03-4d5dc76443fb.png
+wwwroot\img\uploads\38928d4d-bc4c-429d-8972-c05989453a3f.jpg
+wwwroot\img\uploads\d042ffe8-1eb1-4454-8433-3c7ad7b490cb.jpg
+wwwroot\img\uploads\ea020b90-09e9-4b43-8f58-49b96ada2fb4.jpg
+wwwroot\img\uploads\ebc30fe4-dbd3-4d76-913a-92761f3aadfa.png
 wwwroot\img\video-icon.png
 wwwroot\img\webdesign.jpg
 wwwroot\img\zalo-icon.png
@@ -145,6 +155,7 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\logo\6ce81604-813e-40c5-82d7-b3241bedf634.png
 wwwroot\logo\LearnHub.png
 wwwroot\uploads\025499f4-3fca-4439-8e9b-bd5485421970.docx
 wwwroot\uploads\08434400-0412-43b2-95e1-1ebd75e4e667.jpg
@@ -174,6 +185,7 @@ wwwroot\uploads\45942b51-7651-46b4-b679-c5c90b3b9ebb_avt.jpg
 wwwroot\uploads\45ab6415-618a-450e-9403-b17b2454111d.docx
 wwwroot\uploads\47be0d17-4070-46ea-8190-b167015098c8.docx
 wwwroot\uploads\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg
+wwwroot\uploads\50315396-0d0b-4a3b-a658-5da8fcf3a7bd.jpg
 wwwroot\uploads\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg
 wwwroot\uploads\56176762-a723-4688-ad22-1699b4bb5070.docx
 wwwroot\uploads\561e7ff2-d268-4a04-9548-3600141e7d23.docx

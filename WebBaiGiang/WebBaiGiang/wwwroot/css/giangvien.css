@@ -21,7 +21,6 @@ body {
 
 /* Header */
 .header-top {
-    height: var(--header-height);
     background: #ffffff;
     border-bottom: 1px solid var(--border-color);
     display: flex;

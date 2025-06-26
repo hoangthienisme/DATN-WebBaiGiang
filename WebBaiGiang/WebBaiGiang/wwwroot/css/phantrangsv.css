@@ -1,0 +1,76 @@
+﻿:root {
+    --primary: #5B9BD5; /* Xanh dương nhạt */
+    --background: #F7F9FC; /* Xám nền */
+    --text-muted: #6C757D; /* Màu chữ phụ */
+    --border-light: #E0E7EE; /* Màu viền nhạt */
+}
+
+/* Toàn bộ phân trang trong trang sinh viên */
+.sv-courses-page .pagination {
+    margin-top: 20px;
+    text-align: center;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+/* Danh sách nút phân trang */
+.sv-courses-page .pagination-list {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    gap: 6px;
+    white-space: nowrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+    /* Từng mục phân trang */
+    .sv-courses-page .pagination-list li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        /* Nút chuyển trang */
+        .sv-courses-page .pagination-list li a {
+            text-decoration: none;
+            padding: 6px 10px;
+            background-color: var(--background);
+            color: var(--text-muted);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        /* Trang hiện tại */
+        .sv-courses-page .pagination-list li.active {
+            padding: 6px 10px;
+            background-color: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Hover */
+        .sv-courses-page .pagination-list li a:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sv-courses-page .pagination {
+        padding: 8px 10px;
+    }
+
+    .sv-courses-page .pagination-list li a,
+    .sv-courses-page .pagination-list li.active {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+    }
+}

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
 using WebBaiGiang.Models;
+using WebBaiGiang.ViewModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,11 +25,13 @@ builder.Services.AddAuthentication(options =>
 .AddCookie()
 .AddGoogle(options =>
 {
-    options.ClientId = "59769696667-lfjeh889v5eii0n25ue6viefv38f8a3k.apps.googleusercontent.com";
-    options.ClientSecret = "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";
-    options.CallbackPath = "/signin-google"; 
+    var googleAuth = builder.Configuration.GetSection("Authentication:Google");
+    options.ClientId = googleAuth["ClientId"];
+    options.ClientSecret = googleAuth["ClientSecret"];
+    options.CallbackPath = "/signin-google"; // hoặc bỏ nếu dùng mặc định
 });
 
+builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -41,10 +44,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseSession();
-
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 

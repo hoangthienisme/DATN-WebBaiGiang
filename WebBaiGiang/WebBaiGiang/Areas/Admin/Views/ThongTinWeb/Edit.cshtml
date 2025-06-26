@@ -1,0 +1,170 @@
+﻿@model WebBaiGiang.Models.ThongTinWeb
+@{
+    ViewData["Title"] = "Cập nhật thông tin trang web";
+}
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <!-- Header -->
+            <div class="card mb-4 shadow-sm border-0">
+                <div class="card-header bg-gradient-primary text-white py-4">
+                    <h3 class="mb-1"><i class="fas fa-cog me-2"></i>@ViewData["Title"]</h3>
+                    <small>Quản lý thông tin cơ bản của trang web</small>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form asp-action="Edit" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div class="row gy-4">
+                       @Html.AntiForgeryToken()
+                    <!-- Cột trái -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="text-primary mb-0"><i class="fas fa-info-circle me-2"></i>Thông tin cơ bản</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="Name" class="form-label">Tên trang web</label>
+                                    <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="TenTruong" class="form-label">Tên trường</label>
+                                    <input type="text" class="form-control" id="TenTruong" name="TenTruong" value="@Model.TenTruong" required />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Description" class="form-label">Mô tả</label>
+                                    <textarea class="form-control" id="Description" name="Description">@Model.Description</textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cột phải -->
+                    <div class="col-md-6">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="text-success mb-0"><i class="fas fa-address-book me-2"></i>Thông tin liên hệ</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="DiaChi" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="DiaChi" name="DiaChi" value="@Model.DiaChi" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="EmailLienHe" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="EmailLienHe" name="EmailLienHe" value="@Model.EmailLienHe" />
+                                </div>
+                                <div>
+                                    <label for="PhoneLienHe" class="form-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="PhoneLienHe" name="PhoneLienHe" value="@Model.PhoneLienHe" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mạng xã hội -->
+                    <div class="col-12">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-header bg-light">
+                                <h5 class="text-info mb-0"><i class="fas fa-share-alt me-2"></i>Mạng xã hội</h5>
+                            </div>
+                            <div class="card-body row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="FacebookLink" class="form-label">Facebook</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-primary text-white"><i class="fab fa-facebook-f"></i></span>
+                                        <input type="url" class="form-control" id="FacebookLink" name="FacebookLink" value="@Model.FacebookLink" placeholder="https://facebook.com/..." />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="YoutubeLink" class="form-label">YouTube</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-danger text-white"><i class="fab fa-youtube"></i></span>
+                                        <input type="url" class="form-control" id="YoutubeLink" name="YoutubeLink" value="@Model.YoutubeLink" placeholder="https://youtube.com/..." />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="InstagramLink" class="form-label">Instagram</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-warning text-white"><i class="fab fa-instagram"></i></span>
+                                        <input type="url" class="form-control" id="InstagramLink" name="InstagramLink" value="@Model.InstagramLink" placeholder="https://instagram.com/..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="LogoFile" class="form-label">Tải lên logo (ảnh PNG/JPG)</label>
+                        <input type="file" class="form-control" id="LogoFile" name="LogoFile" accept="image/*" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="LogoFile" class="form-label">Logo trang web</label>
+
+                        @if (!string.IsNullOrEmpty(Model.LogoUrl))
+                        {
+                            <div class="mb-2">
+                                <img src="@Model.LogoUrl" alt="Logo hiện tại" style="height: 150px;" class="img-thumbnail" />
+
+                            </div>
+                        }
+
+                        <input type="file" name="LogoFile" class="form-control" />
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg px-5 me-3">
+                            <i class="fas fa-save me-2"></i> Cập nhật
+                        </button>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary btn-lg px-4">
+                            <i class="fas fa-arrow-left me-2"></i> Quay lại
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Thông báo -->
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> @TempData["Message"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- CSS tùy chỉnh -->
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+    }
+
+        .btn-primary:hover {
+            box-shadow: 0 .375rem .75rem rgba(102, 126, 234, 0.4);
+        }
+</style>

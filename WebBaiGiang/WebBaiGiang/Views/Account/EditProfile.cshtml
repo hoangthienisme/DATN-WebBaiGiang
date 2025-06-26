@@ -1,0 +1,32 @@
+﻿@model WebBaiGiang.Models.NguoiDung
+
+@{
+    ViewData["Title"] = "Chỉnh sửa thông tin";
+}
+
+<link rel="stylesheet" href="~/css/profile.css" />
+
+<form class="profile-edit-form" method="post" asp-action="EditProfile">
+    <div class="profile-avatar">
+        <img src="~/images/@ViewBag.Avatar" alt="Avatar" />
+    </div>
+
+    <div class="profile-form-group">
+        <label>Họ tên:</label>
+        <input type="text" name="Name" value="@ViewBag.Name" required />
+    </div>
+
+    <div class="profile-form-group">
+        <label>SĐT:</label>
+        <input type="text" name="Phone" value="@ViewBag.Phone" />
+    </div>
+
+    <div class="profile-form-group">
+        <label>Email:</label>
+        <input type="email" name="Email" value="@ViewBag.Email" readonly />
+    </div>
+
+    <div class="profile-form-group">
+        <button type="submit" class="btn-save">Lưu Thay Đổi</button>
+    </div>
+</form>

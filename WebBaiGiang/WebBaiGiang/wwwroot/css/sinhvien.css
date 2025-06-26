@@ -1,309 +1,264 @@
 ﻿/* wwwroot/css/sinhvien.css */
 
 :root {
-    /* --- Bảng màu hiện đại và hài hòa cho Sinh viên --- */
-    --primary-color: #007bff; /* Xanh dương của Bootstrap, có thể điều chỉnh */
-    --primary-light: #66b3ff; /* Màu xanh sáng hơn */
-    --primary-dark: #0056b3; /* Màu xanh đậm hơn */
-    --secondary-color: #6c757d; /* Xám tiêu chuẩn */
-    --accent-color: #fd7e14; /* Cam làm điểm nhấn */
-
-    --sidebar-bg: #fdfefe; /* Nền sidebar rất nhẹ, gần trắng */
-    --content-bg: #ffffff; /* Nền khu vực nội dung trắng tinh */
-    --body-bg: #eaf6ff; /* Nền tổng thể của body (xanh da trời nhạt, mát mẻ) */
-
-    --text-color-dark: #343a40; /* Chữ đậm, dễ đọc */
-    --text-color-light: #6c757d; /* Chữ nhạt hơn cho phụ đề */
-    --border-color: #e9ecef; /* Viền mềm mại */
-    --shadow-light: rgba(0, 0, 0, 0.08); /* Bóng nhẹ */
-    /* --- Kích thước và khoảng cách tổng thể --- */
-    --header-height: 65px; /* Cao hơn một chút */
-    --sidebar-width-desktop: 250px; /* Rộng hơn một chút */
-    --sidebar-width-mobile: 200px; /* Rộng hơn một chút cho mobile */
-    --base-padding: 1.25rem; /* Padding cơ bản tăng lên */
-    --small-gap: 8px;
-    --medium-gap: 16px;
-    --large-gap: 24px;
-    /* Transition mặc định cho hiệu ứng mượt mà */
-    --default-transition: all 0.3s ease-in-out;
+    --sv-primary-color: #007bff;
+    --sv-primary-light: #66b3ff;
+    --sv-primary-dark: #0056b3;
+    --sv-secondary-color: #6c757d;
+    --sv-accent-color: #fd7e14;
+    --sv-sidebar-bg: #fdfefe;
+    --sv-content-bg: #ffffff;
+    --sv-body-bg: #eaf6ff;
+    --sv-text-color-dark: #343a40;
+    --sv-text-color-light: #6c757d;
+    --sv-border-color: #e9ecef;
+    --sv-shadow-light: rgba(0, 0, 0, 0.08);
+    --sv-header-height: 65px;
+    --sv-sidebar-width-desktop: 250px;
+    --sv-sidebar-width-mobile: 200px;
+    --sv-base-padding: 1.25rem;
+    --sv-small-gap: 8px;
+    --sv-medium-gap: 16px;
+    --sv-large-gap: 24px;
+    --sv-default-transition: all 0.3s ease-in-out;
 }
 
-body {
+.layout-sinhvien {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: var(--body-bg); /* Áp dụng màu nền mới */
+    background-color: var(--sv-body-bg);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    color: var(--text-color-dark); /* Màu chữ mặc định cho body */
+    color: var(--sv-text-color-dark);
 }
 
-/* Header */
-.header-top {
-    height: var(--header-height);
-    background-color: var(--primary-color); /* Nền màu primary */
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--base-padding);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px var(--shadow-light); /* Bóng nhẹ */
-}
+    .layout-sinhvien .header-top {
+        background-color: var(--sv-primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 var(--sv-base-padding);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px var(--sv-shadow-light);
+    }
 
-    .header-top .fw-bold {
+    .layout-sinhvien .fw-bold {
         font-weight: 700 !important;
     }
 
-    .header-top .fs-5 {
-        font-size: 1.5rem !important; /* Kích thước tiêu đề lớn hơn */
+    .layout-sinhvien .fs-5 {
+        font-size: 1.5rem !important;
     }
 
-    .header-top .btn-outline-light {
+    .layout-sinhvien .btn-outline-light {
         color: white;
         border-color: white;
-        font-size: 1.2rem; /* Icon toggle lớn hơn */
+        font-size: 1.2rem;
     }
 
-        .header-top .btn-outline-light:hover {
+        .layout-sinhvien .btn-outline-light:hover {
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
         }
 
-/* Custom Avatar Dropdown */
-.custom-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.avatar-img {
-    width: 38px; /* Kích thước avatar lớn hơn */
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.7); /* Viền màu trắng nhẹ */
-    transition: var(--default-transition);
-}
-
-.avatar-button {
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: var(--small-gap);
-    padding: 0.75rem 1rem; /* Padding nút lớn hơn */
-    border-radius: 0.5rem; /* Bo tròn hơn */
-    cursor: pointer;
-    font-size: 1rem;
-    color: white; /* Màu chữ trắng cho header */
-    transition: var(--default-transition);
-}
-
-    .avatar-button:hover {
-        background-color: rgba(255, 255, 255, 0.15); /* Hiệu ứng hover cho nút trong header */
+    .layout-sinhvien .custom-dropdown {
+        position: relative;
+        display: inline-block;
     }
 
-.custom-dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: calc(100% + 5px); /* Đặt dưới nút, có khoảng cách nhẹ */
-    background-color: var(--white-bg);
-    min-width: 180px; /* Rộng hơn một chút */
-    box-shadow: 0px 8px 20px var(--shadow-light); /* Bóng sâu hơn và mờ hơn */
-    z-index: 1001;
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem; /* Bo tròn hơn */
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0;
-    opacity: 0; /* Cho hiệu ứng fade */
-    transform: translateY(10px); /* Cho hiệu ứng trượt */
-    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-}
-
-    .custom-dropdown-menu.show {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
+    .layout-sinhvien .avatar-img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        transition: var(--sv-default-transition);
     }
 
-    .custom-dropdown-menu li {
-        list-style: none;
-    }
-
-.custom-dropdown-item {
-    color: var(--text-color-dark);
-    padding: 0.85rem 1.25rem; /* Padding item lớn hơn */
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: var(--medium-gap); /* Khoảng cách icon và text lớn hơn */
-    font-size: 1rem; /* Kích thước chữ chuẩn */
-    transition: var(--default-transition);
-}
-
-    .custom-dropdown-item:hover {
-        background-color: var(--primary-light); /* Màu sáng của primary khi hover */
-        color: var(--white-bg); /* Chữ trắng */
-    }
-
-    .custom-dropdown-item.text-danger {
-        color: #dc3545 !important;
-    }
-
-        .custom-dropdown-item.text-danger:hover {
-            background-color: #dc3545 !important; /* Đảm bảo màu đỏ khi hover */
-            color: white !important;
-        }
-
-
-.custom-dropdown-divider {
-    height: 1px;
-    margin: 0.75rem 0; /* Khoảng cách lớn hơn */
-    overflow: hidden;
-    background-color: var(--border-color);
-    border: 0;
-}
-
-
-/* Main Content Area */
-.main-wrapper { /* div chứa sidebar và main content */
-    display: flex;
-    flex-grow: 1;
-}
-
-.sidebar {
-    min-width: var(--sidebar-width-desktop); /* Default desktop width */
-    background-color: var(--sidebar-bg);
-    border-right: 1px solid var(--border-color);
-    padding: var(--base-padding);
-    position: sticky;
-    top: var(--header-height);
-    height: calc(100vh - var(--header-height));
-    overflow-y: auto;
-    transition: var(--default-transition);
-    box-shadow: 2px 0 5px var(--shadow-light); /* Bóng nhẹ bên phải sidebar */
-}
-
-    .sidebar .nav-link {
-        color: var(--text-color-dark);
-        padding: 0.75rem 1rem;
-        border-radius: 0.5rem; /* Bo tròn hơn */
+    .layout-sinhvien .avatar-button {
+        background: none;
+        border: none;
         display: flex;
         align-items: center;
-        gap: var(--medium-gap);
+        gap: var(--sv-small-gap);
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
         font-size: 1rem;
-        margin-bottom: var(--small-gap);
-        text-decoration: none;
-        transition: var(--default-transition);
+        color: white;
+        transition: var(--sv-default-transition);
     }
 
-        .sidebar .nav-link:hover {
-            background-color: var(--primary-light);
-            color: var(--white-bg);
+        .layout-sinhvien .avatar-button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
-        .sidebar .nav-link.active {
-            background-color: var(--primary-color);
+    .layout-sinhvien .custom-dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: calc(100% + 5px);
+        background-color: #ffffff;
+        min-width: 180px;
+        box-shadow: 0px 8px 20px var(--sv-shadow-light);
+        z-index: 1001;
+        border: 1px solid var(--sv-border-color);
+        border-radius: 0.5rem;
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+        .layout-sinhvien .custom-dropdown-menu.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    .layout-sinhvien .custom-dropdown-item {
+        color: var(--sv-text-color-dark);
+        padding: 0.85rem 1.25rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: var(--sv-medium-gap);
+        font-size: 1rem;
+        transition: var(--sv-default-transition);
+    }
+
+        .layout-sinhvien .custom-dropdown-item:hover {
+            background-color: var(--sv-primary-light);
             color: white;
-            font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Thêm bóng cho item active */
         }
 
-        .sidebar .nav-link i {
-            font-size: 1.2rem; /* Icon lớn hơn */
+        .layout-sinhvien .custom-dropdown-item.text-danger {
+            color: #dc3545 !important;
         }
 
-.main-content-area {
-    flex-grow: 1;
-    padding: var(--large-gap); /* Padding nội dung lớn hơn nhiều */
-    background-color: var(--content-bg);
-    margin: var(--base-padding); /* Margin quanh khu vực nội dung */
-    border-radius: 0.75rem; /* Bo tròn góc mạnh hơn */
-    box-shadow: 0 4px 15px var(--shadow-light); /* Bóng lớn hơn cho khu vực chính */
-}
+            .layout-sinhvien .custom-dropdown-item.text-danger:hover {
+                background-color: #dc3545 !important;
+                color: white !important;
+            }
 
+    .layout-sinhvien .main-wrapper {
+        display: flex;
+        flex-grow: 1;
+    }
 
-/* Responsive */
+    .layout-sinhvien .sidebar {
+        min-width: var(--sv-sidebar-width-desktop);
+        background-color: var(--sv-sidebar-bg);
+        border-right: 1px solid var(--sv-border-color);
+        padding: var(--sv-base-padding);
+        position: sticky;
+        top: var(--sv-header-height);
+        height: calc(100vh - var(--sv-header-height));
+        overflow-y: auto;
+        transition: var(--sv-default-transition);
+        box-shadow: 2px 0 5px var(--sv-shadow-light);
+    }
+
+        .layout-sinhvien .sidebar .nav-link {
+            color: var(--sv-text-color-dark);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: var(--sv-medium-gap);
+            font-size: 1rem;
+            margin-bottom: var(--sv-small-gap);
+            text-decoration: none;
+            transition: var(--sv-default-transition);
+        }
+
+            .layout-sinhvien .sidebar .nav-link:hover {
+                background-color: var(--sv-primary-light);
+                color: white;
+            }
+
+            .layout-sinhvien .sidebar .nav-link.active {
+                background-color: var(--sv-primary-color);
+                color: white;
+                font-weight: 600;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+    .layout-sinhvien .main-content-area {
+        flex-grow: 1;
+        padding: var(--sv-large-gap);
+        background-color: var(--sv-content-bg);
+        margin: var(--sv-base-padding);
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 15px var(--sv-shadow-light);
+    }
+
 @media (max-width: 767.98px) {
-    .sidebar {
+    .layout-sinhvien .sidebar {
         position: fixed;
-        top: var(--header-height);
+        top: var(--sv-header-height);
         left: 0;
         transform: translateX(-100%);
-        width: var(--sidebar-width-mobile);
+        width: var(--sv-sidebar-width-mobile);
         z-index: 1020;
-        box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
     }
 
-        .sidebar.show {
+        .layout-sinhvien .sidebar.show {
             transform: translateX(0);
         }
 
-    .header-top .d-md-none {
-        display: block !important;
-    }
-
-    .avatar-button .d-sm-inline {
-        display: none !important; /* Ẩn tên trên mobile */
-    }
-
-    .main-content-area {
-        margin: var(--small-gap);
-        padding: var(--base-padding);
+    .layout-sinhvien .main-content-area {
+        margin: var(--sv-small-gap);
+        padding: var(--sv-base-padding);
     }
 }
 
 @media (min-width: 768px) {
-    .sidebar {
+    .layout-sinhvien .sidebar {
         transform: translateX(0) !important;
     }
-
-    .header-top .d-md-none {
-        display: none !important;
-    }
 }
 
-/* Custom Logout Confirmation Modal Styles */
-.custom-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2000; /* Sit on top (higher than header and sidebar) */
+.layout-sinhvien .custom-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    display: flex; /* Use flexbox to center content */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    opacity: 0; /* Start with opacity 0 for fade-in effect */
-    visibility: hidden; /* Hide completely when not active */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-    .custom-modal.show {
+    .layout-sinhvien .custom-modal.show {
         opacity: 1;
         visibility: visible;
     }
 
-.custom-modal-content {
+.layout-sinhvien .custom-modal-content {
     background-color: #fefefe;
-    margin: auto; /* Centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more specific, e.g., 300px-500px fixed width */
-    max-width: 400px; /* Maximum width for better appearance */
-    border-radius: 12px; /* Bo tròn góc */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Đổ bóng */
-    animation: zoomIn 0.3s ease-out; /* Animation cho modal */
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 0.3s ease-out;
 }
 
-.custom-modal-header {
+.layout-sinhvien .custom-modal-header {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -312,65 +267,25 @@ body {
     margin-bottom: 15px;
 }
 
-    .custom-modal-header .modal-icon {
-        font-size: 2.2rem; /* Kích thước icon lớn */
-        color: #007bff; /* Màu xanh của primary */
+    .layout-sinhvien .custom-modal-header .modal-icon {
+        font-size: 2.2rem;
+        color: var(--sv-primary-color);
     }
 
-    .custom-modal-header .custom-modal-title {
-        font-size: 1.5rem; /* Tiêu đề lớn hơn */
-        font-weight: bold;
-        margin: 0;
-        color: var(--text-color-dark);
-    }
+.layout-sinhvien .custom-modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--sv-text-color-dark);
+}
 
-.custom-modal-body {
+.layout-sinhvien .custom-modal-body {
     padding-bottom: 20px;
-    font-size: 1.1rem; /* Kích thước chữ lớn hơn */
-    text-align: center; /* Căn giữa chữ */
-    color: var(--text-color-dark);
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--sv-text-color-dark);
 }
 
-.custom-modal-footer {
-    display: flex;
-    justify-content: center; /* Căn giữa các nút */
-    gap: 15px; /* Khoảng cách giữa các nút */
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-}
-
-    .custom-modal-footer .btn {
-        padding: 10px 25px; /* Padding nút lớn hơn */
-        border-radius: 8px; /* Bo tròn nút */
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .custom-modal-footer .btn-primary {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-        color: white;
-    }
-
-        .custom-modal-footer .btn-primary:hover {
-            background-color: lightblue;
-            border-color: var(--primary-dark);
-        }
-
-    .custom-modal-footer .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
-        color: white;
-    }
-
-        .custom-modal-footer .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #5a6268;
-        }
-
-/* Keyframe for modal animation */
 @keyframes zoomIn {
     from {
         transform: scale(0.9);

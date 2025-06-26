@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\css\\pagination.css"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\phantrangsv.css",
+      "PackagePath": "staticwebassets\\css\\phantrangsv.css"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\profile.css",
+      "PackagePath": "staticwebassets\\css\\profile.css"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
       "PackagePath": "staticwebassets\\css\\sinhvien.css"
     },
@@ -233,8 +241,20 @@
       "PackagePath": "staticwebassets\\img\\mechanical.jpg"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\merong.jpg",
+      "PackagePath": "staticwebassets\\img\\merong.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\python.jpg",
       "PackagePath": "staticwebassets\\img\\python.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\sena.jpg",
+      "PackagePath": "staticwebassets\\img\\sena.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\son.jpg",
+      "PackagePath": "staticwebassets\\img\\son.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\tabs\\tab-1.png",
@@ -323,6 +343,26 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\trainers\\trainer-3.jpg",
       "PackagePath": "staticwebassets\\img\\trainers\\trainer-3.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\18330866-8dee-430c-8e03-4d5dc76443fb.png",
+      "PackagePath": "staticwebassets\\img\\uploads\\18330866-8dee-430c-8e03-4d5dc76443fb.png"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\38928d4d-bc4c-429d-8972-c05989453a3f.jpg",
+      "PackagePath": "staticwebassets\\img\\uploads\\38928d4d-bc4c-429d-8972-c05989453a3f.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\d042ffe8-1eb1-4454-8433-3c7ad7b490cb.jpg",
+      "PackagePath": "staticwebassets\\img\\uploads\\d042ffe8-1eb1-4454-8433-3c7ad7b490cb.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\ea020b90-09e9-4b43-8f58-49b96ada2fb4.jpg",
+      "PackagePath": "staticwebassets\\img\\uploads\\ea020b90-09e9-4b43-8f58-49b96ada2fb4.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\ebc30fe4-dbd3-4d76-913a-92761f3aadfa.png",
+      "PackagePath": "staticwebassets\\img\\uploads\\ebc30fe4-dbd3-4d76-913a-92761f3aadfa.png"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\video-icon.png",
@@ -593,6 +633,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\logo\\6ce81604-813e-40c5-82d7-b3241bedf634.png",
+      "PackagePath": "staticwebassets\\logo\\6ce81604-813e-40c5-82d7-b3241bedf634.png"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\logo\\LearnHub.png",
       "PackagePath": "staticwebassets\\logo\\LearnHub.png"
     },
@@ -707,6 +751,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg",
       "PackagePath": "staticwebassets\\uploads\\47dd52f4-6c2a-47c0-bbc0-f8eae491d2c3_1367490.jpeg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\50315396-0d0b-4a3b-a658-5da8fcf3a7bd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\50315396-0d0b-4a3b-a658-5da8fcf3a7bd.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\511d21fd-971b-405b-947e-081ca887e4b2_1367490.jpeg",

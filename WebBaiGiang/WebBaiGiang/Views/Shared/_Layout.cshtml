@@ -1,77 +1,91 @@
-﻿<!DOCTYPE html>
+﻿@inject WebBaiGiang.Models.WebBaiGiangContext _context
+
+@{
+    var thongTin = _context.ThongTinWebs.FirstOrDefault();
+
+    var isLoggedIn = User.Identity?.IsAuthenticated ?? false;
+    var userEmail = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? "";
+    var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "";
+    var userName = User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value ?? "";
+}
+
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>@ViewData["Title"] - Hệ Thống Quản Lý</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <link href="~/img/favicon.png" rel="icon">
-    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicon -->
+    <link rel="icon" href="~/img/favicon.png" />
+    <link rel="apple-touch-icon" href="~/img/apple-touch-icon.png" />
 
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Poppins:wght@100;300;400;500;600;700;900&family=Raleway:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
 
-    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/vendor/aos/aos.css" rel="stylesheet">
-    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Vendor CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
+    <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <link href="~/css/main.css" rel="stylesheet">
-    <link href="~/css/site.css" rel="stylesheet">
-
-
+    <!-- Custom CSS -->
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 
-<body>
-    @using System.Security.Claims
-    @{
-        var isLoggedIn = User.Identity?.IsAuthenticated ?? false;
-        var userEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? "";
-        var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "";
-        var userName = User.FindFirst(ClaimTypes.Name)?.Value ?? "";
-    }
+<body class="main">
 
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-logo">
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">
-                <h1 class="sitename">LearnHub</h1>
+                @if (!string.IsNullOrEmpty(thongTin?.LogoUrl))
+                {
+                    <img src="@thongTin.LogoUrl" alt="Logo" class="img-fluid rounded" style="height: 70px;" />
+                }
+                else
+                {
+                    <h1 class="sitename">Logo</h1>
+                }
             </a>
         </div>
+
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="@Url.Action("Index", "Home")">Home<br></a></li>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                 <li><a href="@Url.Action("About", "Home")">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="@Url.Content("~/contact.html")">Contact</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
         <div class="navbar-utility-group">
             <div class="navbar-auth-buttons">
-                <a href="@Url.Action("SignUp","Account")" class="btn-register">Đăng ký</a>
-                <a href="@Url.Action("Login","Account")" class="btn-login">Đăng nhập</a>
+                <a href="@Url.Action("SignUp", "Account")" class="btn-register">Đăng ký</a>
+                <a href="@Url.Action("Login", "Account")" class="btn-login">Đăng nhập</a>
             </div>
         </div>
     </nav>
+
+    <!-- Main Content -->
     @RenderBody()
-    @* Footer *@
-    @{
-        var db = Context.RequestServices.GetService(typeof(WebBaiGiangContext)) as WebBaiGiangContext;
-        var footerData = db?.ThongTinWebs.FirstOrDefault();
+
+    <!-- Footer -->
+    @if (thongTin != null)
+    {
+        @await Html.PartialAsync("_Footer", thongTin)
     }
 
-    @if (footerData != null)
-    {
-        @await Html.PartialAsync("_Footer", footerData)
-    }
 </body>
 </html>
