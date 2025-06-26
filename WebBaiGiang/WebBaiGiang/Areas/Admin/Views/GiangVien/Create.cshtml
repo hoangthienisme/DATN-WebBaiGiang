@@ -1,4 +1,4 @@
-﻿@model WebBaiGiang.Models.NguoiDung
+﻿@model WebBaiGiang.ViewModel.CreateTeacherViewModel
 
 @{
     ViewData["Title"] = "Tạo tài khoản giảng viên";
@@ -13,25 +13,19 @@
             @Html.AntiForgeryToken()
             <div class="form-group mb-3">
                 <label asp-for="Name" class="form-label">Tên</label>
-                <input name="Name" asp-for="Name" class="form-control" placeholder="Nhập họ tên..." />
+                <input name="Name" class="form-control" placeholder="Nhập họ tên..." />
                 <span asp-validation-for="Name" class="text-danger" />
             </div>
 
             <div class="form-group mb-3">
                 <label asp-for="Email" class="form-label">Email</label>
-                <input name="Email" asp-for="Email" class="form-control" placeholder="Email đăng nhập..." />
+                <input name="Email" class="form-control" placeholder="Email đăng nhập..." />
                 <span asp-validation-for="Email" class="text-danger" />
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="Password" class="form-label">Mật khẩu</label>
-                <input name="Password" asp-for="Password" class="form-control" type="password" placeholder="Mật khẩu..." />
-                <span asp-validation-for="Password" class="text-danger" />
             </div>
 
             <div class="form-group mb-4">
                 <label asp-for="Phone" class="form-label">Số điện thoại</label>
-                <input name="Phone" asp-for="Phone" class="form-control" placeholder="SĐT liên hệ (nếu có)..." />
+                <input name="Phone" class="form-control" placeholder="SĐT liên hệ (nếu có)..." />
                 <span asp-validation-for="Phone" class="text-danger" />
             </div>
 
@@ -51,6 +45,5 @@
 </div>
 
 @section Scripts {
-    @Html.RenderPartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }
-

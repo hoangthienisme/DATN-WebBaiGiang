@@ -17,29 +17,31 @@ namespace WebBaiGiang.Controllers
     public class AccountController : Controller
     {
         private readonly WebBaiGiangContext _context;
-        public AccountController(WebBaiGiangContext context)
+        private readonly ILogger<AccountController> _logger;
+        public AccountController(WebBaiGiangContext context, ILogger<AccountController> logger)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _logger = logger;
         }
-        [HttpGet("login-google")]
-        public IActionResult LoginGoogle(string returnUrl = "/")
+        public IActionResult LoginWithGoogle()
         {
-            var properties = new AuthenticationProperties
-            {
-                RedirectUri = returnUrl
-            };
-
+            _logger.LogInformation("🔵 Vào action LoginWithGoogle");
+            var redirectUrl = Url.Action("GoogleResponse", "Account");
+            var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
             return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
-
-
-        [Route("signin-google")]
         public async Task<IActionResult> GoogleResponse()
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            _logger.LogInformation("🔵 Vào action GoogleResponse");
 
-            if (!result.Succeeded)
-                return RedirectToAction("Login");
+            // Lấy thông tin từ Google (chứ không phải từ Cookie)
+            var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+
+            if (result?.Principal == null)
+            {
+                _logger.LogWarning("🔴 Đăng nhập Google thất bại (không có Principal)");
+                return RedirectToAction("Login", "Account");
+            }
 
             var claims = result.Principal.Identities
                 .FirstOrDefault()?.Claims
@@ -48,46 +50,51 @@ namespace WebBaiGiang.Controllers
             var email = claims[ClaimTypes.Email];
             var name = claims[ClaimTypes.Name];
 
-            // Kiểm tra người dùng đã có trong hệ thống chưa
+            _logger.LogInformation($"🟢 Google login thành công: {email}");
+
+            // Kiểm tra user có tồn tại chưa
             var user = _context.NguoiDungs.FirstOrDefault(u => u.Email == email);
 
             if (user == null)
             {
-                // Tạo user mới
+                // ✅ Tạo user mới với Role = "Student"
                 user = new NguoiDung
                 {
                     Name = name,
                     Email = email,
-                    Password = null, // Không có vì dùng Google
+                    Password = null,
                     Role = "Student",
                     CreatedDate = DateTime.Now,
                     Avatar = "default_avatar.png"
                 };
+
                 _context.NguoiDungs.Add(user);
                 await _context.SaveChangesAsync();
+                _logger.LogInformation("🟢 Tạo mới user Google thành công");
             }
 
-            // Đăng nhập bằng Claims
+            // Tạo Claims để đăng nhập hệ thống
             var identity = new ClaimsIdentity(new[]
             {
         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
         new Claim(ClaimTypes.Name, user.Name),
         new Claim(ClaimTypes.Email, user.Email),
-        new Claim(ClaimTypes.Role, user.Role)
+        new Claim(ClaimTypes.Role, user.Role ?? "Student")
     }, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var principal = new ClaimsPrincipal(identity);
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-            // Chuyển hướng theo role
-            if (user.Role == "Admin")
-                return RedirectToAction("Index", "Home", new { area = "Admin" });
-            else if (user.Role == "Teacher")
-                return RedirectToAction("Courses", "GiangVien");
-            else
-                return RedirectToAction("Courses", "SinhVien");
+            // Điều hướng theo Role
+            return user.Role switch
+            {
+                "Admin" => RedirectToAction("Index", "Home", new { area = "Admin" }),
+                "Teacher" => RedirectToAction("Courses", "GiangVien"),
+                _ => RedirectToAction("Courses", "SinhVien")
+            };
         }
+
 
         public IActionResult SignUp()
         {
@@ -138,7 +145,7 @@ namespace WebBaiGiang.Controllers
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 10000, 
+                    Timeout = 10000,
                 };
 
                 using var message = new MailMessage(fromAddress, toAddress)
@@ -152,7 +159,7 @@ namespace WebBaiGiang.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine("Email gửi lỗi: " + ex.Message);
-                throw; 
+                throw;
             }
         }
 
@@ -203,7 +210,7 @@ namespace WebBaiGiang.Controllers
             return View();
         }
         [HttpPost]
-         [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(NguoiDung nguoiDung, string? returnUrl = null)
         {
             if (string.IsNullOrEmpty(nguoiDung.Email) || string.IsNullOrEmpty(nguoiDung.Password))
@@ -232,7 +239,8 @@ namespace WebBaiGiang.Controllers
         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
         new Claim(ClaimTypes.Name, user.Name),
         new Claim(ClaimTypes.Email, user.Email),
-        new Claim(ClaimTypes.Role, user.Role)
+        new Claim(ClaimTypes.Role, user.Role),
+         new Claim("Avatar", user.Avatar ?? "")
     };
 
             var identity = new ClaimsIdentity(claims, "Cookies");
@@ -407,6 +415,86 @@ namespace WebBaiGiang.Controllers
 
             ViewBag.Message = "Đổi mật khẩu thành công! Bạn có thể đăng nhập lại.";
             return View();
+        }
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdStr))
+                return RedirectToAction("Login", "Account");
+
+            if (!int.TryParse(userIdStr, out int userId))
+                return BadRequest("User ID không hợp lệ.");
+
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                return NotFound("Không tìm thấy người dùng.");
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Profile(NguoiDung model, IFormFile? AvatarFile)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdStr)) return RedirectToAction("Login", "Account");
+
+            if (!int.TryParse(userIdStr, out int userId))
+                return BadRequest("User ID không hợp lệ.");
+
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Id == userId);
+            if (user == null) return NotFound();
+
+            user.Name = model.Name;
+            user.Phone = model.Phone;
+            user.Gender = model.Gender;
+            user.UpdateDate = DateTime.Now;
+
+            // ✅ Xử lý upload avatar mới
+            if (AvatarFile != null && AvatarFile.Length > 0)
+            {
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/uploads");
+                Directory.CreateDirectory(uploadsFolder);
+                var fileName = Guid.NewGuid() + Path.GetExtension(AvatarFile.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    AvatarFile.CopyTo(stream);
+                }
+                user.Avatar = "/img/uploads/" + fileName;
+            }
+
+            _context.SaveChanges();
+
+            // ✅ Cập nhật lại Claims
+            var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Name, user.Name),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(ClaimTypes.Gender , user.Gender),
+        new Claim(ClaimTypes.Role, user.Role ?? "Student"),
+        new Claim("Avatar", user.Avatar ?? "")
+    };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            TempData["Success"] = "Cập nhật thành công!";
+
+            // Điều hướng về trang chủ theo vai trò
+            var role = user.Role;
+            return role switch
+            {
+                "Teacher" => RedirectToAction("Courses", "GiangVien"),
+                "Student" => RedirectToAction("Courses", "SinhVien"),
+                "Admin" => RedirectToAction("Index", "Home", new { area = "Admin" }),
+                _ => RedirectToAction("Index", "Home")
+            };
+
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿/* Custom Properties (Variables) - Nên đặt ở đầu file CSS hoặc trong :root */
+﻿/* =======================================
+   Custom Properties (Variables)
+   ======================================= */
 :root {
-    --primary-color: #667eea; /* Màu xanh tím */
-    --secondary-color: #5a67d8; /* Màu xanh tím đậm hơn khi hover */
-    --accent-color: #ff6b6b; /* Màu đỏ nổi bật (có thể không dùng nếu không có CTA khác) */
+    --primary-color: #667eea;
+    --secondary-color: #5a67d8;
+    --accent-color: #ff6b6b;
     --text-color: #333;
     --light-text-color: #555;
     --border-color: #ddd;
@@ -11,10 +13,12 @@
     --white: #ffffff;
 }
 
-/* Base and Reset */
-html, body {
+/* =======================================
+   Base and Reset
+   ======================================= */
+/*html, body {
     height: 100%;
-}
+}*/
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -25,14 +29,15 @@ body {
     flex-direction: column;
 }
 
-/* Global focus outline */
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem var(--white), 0 0 0 0.25rem var(--primary-color);
-}
+    body.main {
+        background-color: var(--background-light);
+        min-height: 100vh;
+        color: var(--text-color);
+    }
 
-html {
-    position: relative;
-    min-height: 100%;
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem var(--white), 0 0 0 0.25rem var(--primary-color);
 }
 
 .text-center h1 {
@@ -40,12 +45,12 @@ html {
 }
 
 /* =======================================
-   NAVBAR STYLES
+   Navbar Styles
    ======================================= */
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Đẩy các nhóm phần tử ra hai bên */
+    justify-content: space-between;
     padding: 15px 40px;
     background: var(--white);
     border-bottom: 1px solid var(--border-color);
@@ -58,7 +63,6 @@ html {
 .navbar-logo .sitename {
     font-weight: 700;
     font-size: 28px;
-    margin: 0;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: var(--primary-color);
@@ -75,7 +79,6 @@ html {
     align-items: center;
 }
 
-/* Navigation Menu */
 .navmenu ul {
     list-style: none;
     display: flex;
@@ -113,17 +116,14 @@ html {
         width: 100%;
     }
 
-/* Utility Group (Now only contains Auth Buttons) */
 .navbar-utility-group {
-    display: flex; /* Giữ flex để căn chỉnh navbar-auth-buttons */
+    display: flex;
     align-items: center;
-    /* Xóa 'gap' ở đây vì không còn nhiều phần tử bên trong */
 }
 
-/* Auth Buttons */
 .navbar-auth-buttons {
     display: flex;
-    gap: 10px; /* Khoảng cách giữa 2 nút */
+    gap: 10px;
     align-items: center;
 }
 
@@ -162,7 +162,6 @@ html {
         box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
     }
 
-/* Mobile Navigation Toggle */
 .mobile-nav-toggle {
     display: none;
     font-size: 24px;
@@ -170,86 +169,6 @@ html {
     color: var(--text-color);
 }
 
-
-/* =======================================
-   FOOTER STYLES (Giữ nguyên)
-   ======================================= */
-.footer {
-    background: var(--background-dark);
-    color: var(--white);
-    padding: 40px 20px;
-    font-family: Arial, sans-serif;
-    margin-top: auto;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin: auto;
-}
-
-.footer-section {
-    flex: 1 1 100%;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-    .footer-section p {
-        margin: 5px 0;
-    }
-
-.footer-nav {
-    display: flex;
-    flex: 1 1 60%;
-    justify-content: space-around;
-}
-
-.footer-column h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-}
-
-    .footer-column ul li {
-        margin-bottom: 5px;
-    }
-
-        .footer-column ul li a {
-            color: var(--white);
-            text-decoration: none;
-        }
-
-            .footer-column ul li a:hover {
-                text-decoration: underline;
-            }
-
-.footer-social {
-    text-align: center;
-    flex: 1 1 20%;
-}
-
-    .footer-social img {
-        display: inline;
-        width: 30px;
-        margin: 5px;
-    }
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    margin-top: 20px;
-}
-
-/* =======================================
-   RESPONSIVE STYLES
-   ======================================= */
 @media (max-width: 992px) {
     .navmenu {
         display: none;
@@ -260,9 +179,8 @@ html {
     }
 
     .navbar-utility-group {
-        flex-grow: 1; /* Để nhóm nút chiếm không gian còn lại */
-        justify-content: flex-end; /* Đẩy các nút sang phải */
-        /* Xóa gap ở đây */
+        flex-grow: 1;
+        justify-content: flex-end;
     }
 
     .navbar-auth-buttons a {
@@ -281,24 +199,14 @@ html {
     }
 
     .navbar-utility-group {
-        flex-direction: column; /* Xếp chồng các nút dọc nếu cần thêm */
-        align-items: flex-end; /* Căn phải */
-        gap: 10px; /* Khoảng cách giữa các phần tử nếu có nhiều hơn 1 */
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
     }
 
     .navbar-auth-buttons {
-        width: auto; /* Để nút không chiếm 100% chiều rộng */
-        justify-content: flex-end; /* Căn phải các nút bên trong */
-    }
-
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-nav, .footer-social {
-        flex: 1 1 100%;
-        margin-bottom: 20px;
+        width: auto;
+        justify-content: flex-end;
     }
 }
 
@@ -311,8 +219,10 @@ html {
         gap: 8px;
     }
 
-    .btn-register, .btn-login {
+    .btn-register,
+    .btn-login {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
 }
+

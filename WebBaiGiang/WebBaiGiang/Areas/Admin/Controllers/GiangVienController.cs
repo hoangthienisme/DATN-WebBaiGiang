@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebBaiGiang.Areas.Admin.Data;
 using WebBaiGiang.Models;
+using WebBaiGiang.ViewModel;
 
 namespace WebBaiGiang.Areas.Admin.Controllers
 {
@@ -11,10 +12,12 @@ namespace WebBaiGiang.Areas.Admin.Controllers
     {
         private readonly WebBaiGiangContext _context;
         private readonly ILogger<GiangVienController> _logger;
-        public GiangVienController(WebBaiGiangContext context, ILogger<GiangVienController> logger)
+        private readonly IEmailService _emailService;// tiêm dịch vụ gửi email
+        public GiangVienController(WebBaiGiangContext context, ILogger<GiangVienController> logger, IEmailService emailService)
         {
             _context = context;
             _logger = logger;
+            _emailService = emailService;
         }
 
         // 📄 Hiển thị danh sách giảng viên
@@ -35,18 +38,65 @@ namespace WebBaiGiang.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(NguoiDung user)
+        public async Task<IActionResult> Create(CreateTeacherViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(model);
+
+            // Kiểm tra email tồn tại trong bảng NguoiDungs
+            var exists = await _context.NguoiDungs.AnyAsync(u => u.Email == model.Email);
+            if (exists)
             {
-                user.Role = "Teacher";
-                user.CreatedDate = DateTime.Now;
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("Email", "Email này đã được sử dụng.");
+                return View(model);
             }
-            return View(user);
+
+            // Tạo entity mới
+            var user = new NguoiDung
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Phone = model.Phone,
+                Role = "Teacher",
+                CreatedDate = DateTime.Now,
+                IsActive = true
+            };
+
+            // Mật khẩu mặc định là số điện thoại nếu có, nếu không thì dùng "123456"
+            var defaultPassword = !string.IsNullOrEmpty(model.Phone) ? model.Phone : "123456";
+            user.Password = BCrypt.Net.BCrypt.HashPassword(defaultPassword);
+
+            _context.Add(user);
+            await _context.SaveChangesAsync();
+
+            // Gửi email thông báo tài khoản
+            try
+            {
+                            var subject = "Tài khoản giảng viên đã được tạo";
+                            var body = $@"Chào {user.Name},
+            
+            Tài khoản giảng viên của bạn đã được tạo trên hệ thống.
+            Thông tin đăng nhập:
+            Email: {user.Email}
+            Mật khẩu mặc định: {defaultPassword}
+            
+            Vui lòng đăng nhập và đổi mật khẩu ngay sau khi đăng nhập.
+            
+            Trân trọng,
+            Ban quản trị hệ thống.";
+            
+                            await _emailService.SendEmailAsync(user.Email, subject, body);
+                        }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi gửi email tạo tài khoản giảng viên cho {Email}", user.Email);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
+
+
+
 
         // GET: Admin/GiangVien/Edit/5
         public async Task<IActionResult> Edit(int? id)

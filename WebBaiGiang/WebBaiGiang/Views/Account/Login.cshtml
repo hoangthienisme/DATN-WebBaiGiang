@@ -2,6 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Đăng nhập tài khoản";
+
 }
 <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
 
@@ -47,8 +48,8 @@
             <div class="other-options">
                 <span>Các tùy chọn đăng nhập khác</span>
                 <div class="social-icons" style="margin-top: 10px;">
-                    <a href="/signin-google" class="btn btn-danger d-flex align-items-center" style="gap: 8px; padding: 8px 12px; border-radius: 5px; text-decoration: none; color: white;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google" width="20" height="20">
+                    <a href="@Url.Action("LoginWithGoogle", "Account")" class="btn btn-light border d-flex align-items-center" style="gap: 10px;">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" height="20">
                         <span>Đăng nhập bằng Google</span>
                     </a>
                 </div>

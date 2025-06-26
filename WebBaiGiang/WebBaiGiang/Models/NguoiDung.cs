@@ -10,11 +10,12 @@ public partial class NguoiDung
 
     public string Name { get; set; } = null!;
     [Required(ErrorMessage = "*Email là bắt buộc")]
-    public string Email { get; set; } = null!;
+    public string? Email { get; set; } = null!;
     [Required(ErrorMessage = "*Mật khẩu là bắt buộc")]
-    public string Password { get; set; } = null!;
+    public string? Password { get; set; } = null!;
 
     public string? Avatar { get; set; }
+    public string? Gender { get; set; }
 
     public string? Phone { get; set; }
 

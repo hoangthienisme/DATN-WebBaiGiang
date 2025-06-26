@@ -16,12 +16,16 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index( int id)
+    public async Task<IActionResult> Index(int id)
     {
-        var thongTin = _context.ThongTinWebs.FirstOrDefault();
+        var thongTin = _context.ThongTinWebs
+            .OrderByDescending(t => t.UpdateDate ?? t.CreatedDate) 
+            .FirstOrDefault();
+
         ViewBag.FooterData = thongTin;
         return View();
     }
+
 
     public IActionResult About()
     {

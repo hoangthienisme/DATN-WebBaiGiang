@@ -1,0 +1,122 @@
+﻿@model WebBaiGiang.Models.NguoiDung
+@{
+    ViewData["Title"] = "Chỉnh sửa thông tin cá nhân";
+
+    var role = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value;
+    Layout = role switch
+    {
+        "Student" => "~/Views/Shared/_LayoutSinhvien.cshtml",
+        "Teacher" => "~/Views/Shared/_LayoutGiangvien.cshtml",
+        "Admin" => "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml",
+        _ => "~/Views/Shared/_Layout.cshtml"
+    };
+}
+    <link href="~/css/edit-profile.css" rel="stylesheet" />
+
+
+<div class="edit-profile-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="page-header mb-4">
+                    <h3 class="fw-bold text-primary">Chỉnh sửa thông tin tài khoản</h3>
+                </div>
+
+                <div class="edit-profile-card">
+                    @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.Id)
+
+                        <div class="mb-4 text-center">
+                            <img id="avatarPreview" class="rounded-circle border" width="150" height="150"
+                                 src="@(!string.IsNullOrEmpty(Model.Avatar) ? Url.Content(Model.Avatar) : Url.Content("~/img/default-avatar.jpg"))" alt="Avatar" />
+                            <div class="mt-2">
+                                <input type="file" id="avatarInput" name="AvatarFile" accept="image/*" hidden />
+                                <button type="button" class="btn btn-outline-primary me-2" onclick="document.getElementById('avatarInput').click()">Chọn ảnh</button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="removeAvatar()">Cài lại</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tên</label>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Nhập tên" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "example@email.com" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Số điện thoại</label>
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Vai trò</label>
+                            @Html.DropDownListFor(m => m.Role,
+                                     new SelectList(new[] {
+                        new { Value = "Student", Text = "Sinh viên" },
+                        new { Value = "Teacher", Text = "Giảng viên" },
+                        new { Value = "Admin", Text = "Quản trị viên" }
+                        }, "Value", "Text", Model.Role),
+                                     new { @class = "form-select", disabled = "disabled" })
+                            <div class="form-text">Vai trò không được thay đổi</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="Gender" class="form-label">Giới tính<span class="required">*</span></label>
+                            @Html.DropDownListFor(m => m.Gender,
+                                     new SelectList(new[] {
+                        new { Value = "Male", Text = "Nam" },
+                        new { Value = "Female", Text = "Nữ" },
+                        new { Value = "Other", Text = "Khác" }
+                        }, "Value", "Text", Model.Gender),
+                                     new { @class = "form-select" })
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Trạng thái</label>
+                            @Html.DropDownListFor(m => m.IsActive, new SelectList(new[] {
+                        new { Value = true, Text = "Hoạt động" },
+                        new { Value = false, Text = "Tạm ngừng" }
+                        }, "Value", "Text", Model.IsActive), new { @class = "form-select" })
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">Lưu thay đổi</button>
+                            <button type="button" class="btn btn-secondary ms-2" onclick="cancelEdit()">Hủy</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        document.getElementById('avatarInput')?.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (!file.type.startsWith('image/') || file.size > 2 * 1024 * 1024) {
+                    alert('Vui lòng chọn hình PNG/JPEG dưới 2MB');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = e => document.getElementById('avatarPreview').src = e.target.result;
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function removeAvatar() {
+            document.getElementById('avatarPreview').src = '@Url.Content("~/img/default-avatar.jpg")';
+            document.getElementById('avatarInput').value = '';
+        }
+
+        function cancelEdit() {
+            if (confirm('Hủy thay đổi?')) {
+                window.location.href = '@Url.Action("Index", "Profile")';
+            }
+        }
+    </script>

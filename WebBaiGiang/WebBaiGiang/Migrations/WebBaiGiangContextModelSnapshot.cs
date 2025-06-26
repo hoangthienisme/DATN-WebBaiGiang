@@ -477,6 +477,9 @@ namespace WebBaiGiang.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -630,7 +633,7 @@ namespace WebBaiGiang.Migrations
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Description")
@@ -643,12 +646,10 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacebookLink")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("InstagramLink")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -674,7 +675,6 @@ namespace WebBaiGiang.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("YoutubeLink")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
