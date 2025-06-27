@@ -9,6 +9,7 @@ wwwroot\css\giangvien.css
 wwwroot\css\index.css
 wwwroot\css\main.css
 wwwroot\css\pagination.css
+wwwroot\css\popupTB.css
 wwwroot\css\profile.css
 wwwroot\css\phantrangsv.css
 wwwroot\css\sinhvien.css
@@ -85,6 +86,7 @@ wwwroot\img\trainers\trainer-3.jpg
 wwwroot\img\trainers\trainer-3-2.jpg
 wwwroot\img\uploads\18330866-8dee-430c-8e03-4d5dc76443fb.png
 wwwroot\img\uploads\38928d4d-bc4c-429d-8972-c05989453a3f.jpg
+wwwroot\img\uploads\51f4a776-8dde-428b-901d-95a4c597bc7f.png
 wwwroot\img\uploads\d042ffe8-1eb1-4454-8433-3c7ad7b490cb.jpg
 wwwroot\img\uploads\ea020b90-09e9-4b43-8f58-49b96ada2fb4.jpg
 wwwroot\img\uploads\ebc30fe4-dbd3-4d76-913a-92761f3aadfa.png

@@ -22,6 +22,7 @@
     <link href="~/css/giangvien.css" rel="stylesheet" />
 </head>
 <body>
+    @await Html.PartialAsync("_Toast")
     <div class="header-top">
         <div class="navbar-logo">
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">

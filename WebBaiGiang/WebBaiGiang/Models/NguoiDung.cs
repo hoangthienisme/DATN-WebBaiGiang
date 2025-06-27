@@ -8,11 +8,11 @@ public partial class NguoiDung
 {
     public int Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
     [Required(ErrorMessage = "*Email là bắt buộc")]
-    public string? Email { get; set; } = null!;
+    public string? Email { get; set; } 
     [Required(ErrorMessage = "*Mật khẩu là bắt buộc")]
-    public string? Password { get; set; } = null!;
+    public string? Password { get; set; }
 
     public string? Avatar { get; set; }
     public string? Gender { get; set; }
