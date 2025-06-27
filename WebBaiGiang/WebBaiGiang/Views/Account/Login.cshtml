@@ -5,6 +5,7 @@
 
 }
 <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <div class="register-container">
     <div class="login-register-box">
@@ -27,10 +28,11 @@
                     <label>Mật khẩu</label>
                     <input type="password" id="password" name="Password" class="form-control" />
                     <button type="button" class="btn btn-sm btn-light position-absolute end-0 me-2"
-                            style="top: 50%; transform: translateY(-50%);margin-top:15px"
+                            style="top: 70%; transform: translateY(-50%)"
                             onclick="togglePassword(this, 'password')">
-                        👁️
+                        <i class="bi bi-eye-fill"></i>
                     </button>
+
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger text-center" })
                 </div>
 
@@ -66,12 +68,17 @@
 <script>
     function togglePassword(btn, inputId) {
         const input = document.getElementById(inputId);
+        const icon = btn.querySelector('i');
+
         if (input.type === "password") {
             input.type = "text";
-            btn.innerText = "🙈";
+            icon.classList.remove("bi-eye-fill");
+            icon.classList.add("bi-eye-slash-fill");
         } else {
             input.type = "password";
-            btn.innerText = "👁️";
+            icon.classList.remove("bi-eye-slash-fill");
+            icon.classList.add("bi-eye-fill");
         }
     }
 </script>
+

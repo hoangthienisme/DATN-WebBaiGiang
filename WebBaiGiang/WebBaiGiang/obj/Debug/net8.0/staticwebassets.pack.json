@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\css\\phantrangsv.css"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\popupTB.css",
+      "PackagePath": "staticwebassets\\css\\popupTB.css"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\profile.css",
       "PackagePath": "staticwebassets\\css\\profile.css"
     },
@@ -351,6 +355,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\38928d4d-bc4c-429d-8972-c05989453a3f.jpg",
       "PackagePath": "staticwebassets\\img\\uploads\\38928d4d-bc4c-429d-8972-c05989453a3f.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\51f4a776-8dde-428b-901d-95a4c597bc7f.png",
+      "PackagePath": "staticwebassets\\img\\uploads\\51f4a776-8dde-428b-901d-95a4c597bc7f.png"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\img\\uploads\\d042ffe8-1eb1-4454-8433-3c7ad7b490cb.jpg",

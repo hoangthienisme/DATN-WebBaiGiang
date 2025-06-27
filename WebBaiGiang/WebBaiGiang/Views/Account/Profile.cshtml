@@ -21,6 +21,14 @@
                 <div class="page-header mb-4">
                     <h3 class="fw-bold text-primary">Chỉnh sửa thông tin tài khoản</h3>
                 </div>
+                <ul class="nav nav-tabs mb-4" id="profileTabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Thông tin cá nhân</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ChangePassword", "Account")">Bảo mật</a>
+                    </li>
+                </ul>
 
                 <div class="edit-profile-card">
                     @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))

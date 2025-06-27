@@ -1,0 +1,30 @@
+﻿<link href="~/css/popupTB.css" rel="stylesheet" />
+
+<div class="popup-toast-wrapper">
+    @if (TempData["Success"] != null)
+    {
+        <div class="popup-toast success">
+            <i class="bi bi-check-circle"></i> @TempData["Success"]
+            <button type="button" class="btn-close toast-close-btn" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="popup-toast error">
+            <i class="bi bi-x-circle"></i> @TempData["Error"]
+            <button type="button" class="btn-close toast-close-btn" aria-label="Close"></button>
+        </div>
+    }
+</div>
+
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.popup-toast').forEach(e => e.remove());
+    }, 3000);
+
+    document.querySelectorAll('.toast-close-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.parentElement.remove();
+        });
+    });
+</script>
