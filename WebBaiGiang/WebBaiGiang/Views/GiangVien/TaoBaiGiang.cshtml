@@ -4,6 +4,7 @@
     Layout = null;
     ViewData["Title"] = "Tạo bài giảng mới";
 }
+
 <meta charset="utf-8" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -11,306 +12,313 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
 
-
 <div class="container mt-4">
     <h3>Tạo bài giảng mới</h3>
 
+    <div class="progress mb-4">
+        <div class="progress-bar" id="progressBar" role="progressbar" style="width: 33.33%;">Bước 1 / 3</div>
+    </div>
+
     <form asp-action="TaoBaiGiang" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label asp-for="Title" class="form-label fw-bold">Tiêu đề *</label>
-            <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề tài liệu" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
+        <input type="hidden" name="returnUrl" value="@Context.Request.Query["returnUrl"]" />
 
-        <div class="mb-3">
-            <label asp-for="Description" class="form-label fw-bold">Mô tả (không bắt buộc)</label>
-            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-        </div>
+        <!-- BƯỚC 1 -->
+        <div id="step1" class="step">
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label fw-bold">Tiêu đề *</label>
+                <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề tài liệu" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
 
-        <hr />
-        <h5>Danh sách chương</h5>
-        <div id="chapters-container"></div>
-        <button type="button" class="btn btn-outline-primary mb-3" onclick="addChapter()">+ Thêm chương</button>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label fw-bold">Mô tả (không bắt buộc)</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            </div>
 
-        <hr />
-        <h5>Đính kèm</h5>
-        <!-- Tải lên hình ảnh -->
-        <div class="mb-3">
-            <label class="form-label fw-bold">Tải lên hình ảnh</label>
-            <div class="d-flex flex-wrap gap-3 align-items-center">
-                <input asp-for="ImageFiles" type="file" class="form-control w-auto"
-                       multiple accept="image/*"
-                       onchange="previewFiles(this, 'imagePreview')" />
-                <span asp-validation-for="ImageFiles" class="text-danger"></span>
-            </div>
-            <div id="imagePreview" class="d-flex flex-wrap gap-3 mt-2"></div>
-        </div>
-        <hr />
-        <!-- Tải lên tài liệu -->
-        <div class="mb-3">
-            <label class="form-label fw-bold">Tải lên tài liệu</label>
-            <div class="d-flex flex-wrap gap-3 align-items-center">
-                <input asp-for="DocumentFiles" type="file" class="form-control w-auto"
-                       multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
-                       onchange="previewFiles(this, 'fileNamePreview')" />
-                <span asp-validation-for="DocumentFiles" class="text-danger"></span>
-            </div>
-            <div id="fileNamePreview" class="mt-2"></div>
-        </div>
-        <hr />
-        <h5>Liên kết YouTube</h5>
-        <div class="mb-3">
-            <label class="form-label fw-bold">Nhập liên kết video YouTube (có thể nhập nhiều)</label>
-            <div id="youtube-links-container" class="d-flex flex-column gap-2">
-                <input type="url" name="YoutubeLinks" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
-            </div>
-            <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addYoutubeLink()">+ Thêm liên kết</button>
-        </div>
-        <div class="mb-3">
-            <label class="form-label fw-bold">Dành cho lớp</label>
-            <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span id="selectedClassesText">Chưa có lớp nào được chọn...</span>
-                </button>
-                <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style=" max-height: 200px; overflow-y: auto;">
-                    @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
-                    {
-                        @foreach (var item in Model.AvailableClasses)
+            <div class="mb-3">
+                <label class="form-label fw-bold">Dành cho lớp</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="selectedClassesText">Chưa có lớp nào được chọn...</span>
+                    </button>
+                    <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style=" max-height: 200px; overflow-y: auto;">
+                        @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
                         {
-                            <li>
-                                <div class="form-check">
-                                    <input class="form-check-input class-checkbox" type="checkbox"
-                                           value="@item.Value"
-                                           id="classCheckbox_@item.Value"
-                                           name="SelectedClassIds" @(Model.SelectedClassIds != null && Model.SelectedClassIds.Contains(int.Parse(item.Value)) ? "checked" : "")>
-                                    <label class="form-check-label" for="classCheckbox_@item.Value">
-                                        @item.Text
-                                    </label>
-                                </div>
-                            </li>
+                            @foreach (var item in Model.AvailableClasses)
+                            {
+                                <li>
+                                    <div class="form-check">
+                                        <input class="form-check-input class-checkbox" type="checkbox"
+                                               value="@item.Value"
+                                               id="classCheckbox_@item.Value"
+                                               name="SelectedClassIds" @(Model.SelectedClassIds != null && Model.SelectedClassIds.Contains(int.Parse(item.Value)) ? "checked" : "")>
+                                        <label class="form-check-label" for="classCheckbox_@item.Value">
+                                            @item.Text
+                                        </label>
+                                    </div>
+                                </li>
+                            }
                         }
-                    }
-                    else
-                    {
-                        <li><p class="text-muted ms-2">Không có lớp học nào khả dụng cho bạn.</p></li>
-                    }
-                </ul>
+                        else
+                        {
+                            <li><p class="text-muted ms-2">Không có lớp học nào khả dụng cho bạn.</p></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Tải lên hình ảnh</label>
+                <input asp-for="ImageFiles" type="file" class="form-control w-auto" multiple accept="image/*" onchange="previewFiles(this, 'imagePreview')" />
+                <span asp-validation-for="ImageFiles" class="text-danger"></span>
+                <div id="imagePreview" class="d-flex flex-wrap gap-3 mt-2"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Tải lên tài liệu</label>
+                <input asp-for="DocumentFiles" type="file" class="form-control w-auto" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt" onchange="previewFiles(this, 'fileNamePreview')" />
+                <span asp-validation-for="DocumentFiles" class="text-danger"></span>
+                <div id="fileNamePreview" class="mt-2"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Liên kết YouTube</label>
+                <div id="youtube-links-container" class="d-flex flex-column gap-2">
+                    <input type="url" name="YoutubeLinks" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addYoutubeLink()">+ Thêm liên kết</button>
             </div>
         </div>
-        <div class="mt-4">
-            <button type="submit" class="btn btn-success">Đăng</button>
+
+        <!-- BƯỚC 2: Chương -->
+        <div id="step2" class="step" style="display:none;">
+            <h5>Danh sách chương</h5>
+            <div id="chapters-container"></div>
+            <button type="button" class="btn btn-outline-primary mt-3" onclick="addChapter()">+ Thêm chương</button>
+        </div>
+
+        <!-- BƯỚC 3: Bài học -->
+        <div id="step3" class="step" style="display:none;">
+            <h5>Bài học theo từng chương</h5>
+            <div id="lessons-wrapper"></div>
+        </div>
+
+        <div class="step-controls mt-4 d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary" onclick="prevStep()" id="btn-prev" style="display: none;">Quay lại</button>
+            <button type="button" class="btn btn-primary" onclick="nextStep()" id="btn-next">Tiếp</button>
+            <button type="submit" class="btn btn-success" id="btn-submit">Hoàn tất</button>
         </div>
     </form>
 </div>
 
 <script>
-    const CHAPTERS_CONTAINER = $('#chapters-container');
-    const CLASS_CHECKBOX_SELECTOR = '.class-checkbox';
-    const SELECTED_CLASSES_TEXT_SPAN = $('#selectedClassesText');
-    const DROPDOWN_MENU_SELECTOR = '.dropdown-menu';
-    const CHAPTER_ITEM_CLASS = 'chapter-item';
-    const BAI_ITEM_CLASS = 'bai-item';
-    const BAIS_CONTAINER_CLASS = 'lessons-container';
-
+    let currentStep = 1;
+    const totalSteps = 3;
     let chapterCount = 0;
 
-    function updateSelectedClassesDropdownText() {
-        const selectedOptions = $(CLASS_CHECKBOX_SELECTOR + ':checked');
-        if (selectedOptions.length === 0) {
-            SELECTED_CLASSES_TEXT_SPAN.text('Chưa có lớp nào được chọn...');
-        } else if (selectedOptions.length > 3) {
-            SELECTED_CLASSES_TEXT_SPAN.text(`${selectedOptions.length} lớp đã chọn`);
-        } else {
-            const labels = selectedOptions.map(function () {
-                return $(this).next('label').text();
-            }).get();
-            SELECTED_CLASSES_TEXT_SPAN.text(labels.join(', '));
+    function showStep(step) {
+        $('.step').hide();
+        $('#step' + step).show();
+        $('#btn-prev').toggle(step > 1);
+        $('#btn-next').toggle(step < totalSteps);
+        $('#btn-submit').toggle(step === totalSteps);
+        $('#progressBar').css('width', (step / totalSteps * 100) + '%');
+        $('#progressBar').text(`Bước ${step} / ${totalSteps}`);
+    }
+
+    function nextStep() {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            if (currentStep === 3) renderLessonsFromChapters();
+            showStep(currentStep);
         }
     }
 
-    function updateIndices() {
-        const chapters = document.querySelectorAll("#chapters-container .chapter-item");
-        chapters.forEach((chapterDiv, chapterIdx) => {
-            chapterDiv.querySelector('label.fw-bold').innerText = `Chương ${chapterIdx + 1}`;
-
-            chapterDiv.querySelectorAll('[name^="Chuongs["]').forEach(input => {
-                const newName = input.name.replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`);
-                input.name = newName;
-                if (input.dataset.valmsgFor) {
-                    input.dataset.valmsgFor = input.dataset.valmsgFor.replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`);
-                }
-            });
-
-            const lessonContainer = chapterDiv.querySelector(`.${BAIS_CONTAINER_CLASS}`);
-            if (lessonContainer) {
-                lessonContainer.id = `lessons-${chapterIdx}`;
-            }
-
-            const addLessonButton = chapterDiv.querySelector('button[onclick^="addLesson("]');
-            if (addLessonButton) {
-                addLessonButton.setAttribute('onclick', `addLesson(${chapterIdx})`);
-            }
-
-            const lessons = chapterDiv.querySelectorAll(`.${BAIS_CONTAINER_CLASS} .${BAI_ITEM_CLASS}`);
-            lessons.forEach((lessonDiv, lessonIdx) => {
-                lessonDiv.querySelector('label.fw-bold').innerText = `Bài học ${lessonIdx + 1}`;
-                lessonDiv.querySelectorAll('[name^="Chuongs[' + chapterIdx + '].Bais["]').forEach(input => {
-                    input.name = input.name
-                        .replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`)
-                        .replace(/Bais\[\d+\]/, `Bais[${lessonIdx}]`);
-                    if (input.dataset.valmsgFor) {
-                        input.dataset.valmsgFor = input.dataset.valmsgFor
-                            .replace(/Chuongs\[\d+\]/, `Chuongs[${chapterIdx}]`)
-                            .replace(/Bais\[\d+\]/, `Bais[${lessonIdx}]`);
-                    }
-                });
-
-                // Cập nhật ID preview file nếu có
-                const fileInput = lessonDiv.querySelector('input[type="file"]');
-                if (fileInput) {
-                    const newPreviewId = `preview-${chapterIdx}-${lessonIdx}`;
-                    fileInput.setAttribute("onchange", `previewFiles(this, '${newPreviewId}')`);
-                    let previewDiv = lessonDiv.querySelector('div[id^="preview-"]');
-                    if (!previewDiv) {
-                        previewDiv = document.createElement("div");
-                        previewDiv.classList.add("mt-2");
-                        lessonDiv.appendChild(previewDiv);
-                    }
-                    previewDiv.id = newPreviewId;
-                }
-            });
-        });
-
-        chapterCount = chapters.length;
+    function prevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
     }
 
-    function enableValidationForNewElements(containerElement) {
-        $('form').removeData('validator');
-        $('form').removeData('unobtrusiveValidation');
-        $.validator.unobtrusive.parse($('form'));
-    }
-
-    window.addChapter = function () {
-        const container = document.getElementById("chapters-container");
-        const chapterIdx = chapterCount;
+        function addChapter() {
         const chapterDiv = document.createElement("div");
-        chapterDiv.classList.add("border", "p-3", "mb-3", CHAPTER_ITEM_CLASS);
+        chapterDiv.className = "border p-3 mb-3 chapter-item";
+
+        const currentChapters = document.querySelectorAll(".chapter-item").length;
+        const sortOrder = currentChapters + 1;
 
         chapterDiv.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="fw-bold">Chương ${chapterIdx + 1}</label>
-                <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, '${CHAPTER_ITEM_CLASS}')">Xóa chương</button>
+                <label class="fw-bold">Chương ${sortOrder}</label>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, 'chapter-item')">Xóa chương</button>
             </div>
-            <input type="hidden" name="Chuongs[${chapterIdx}].Id" value="0" />
-            <input type="text" name="Chuongs[${chapterIdx}].Title" class="form-control mb-2" placeholder="Tên chương" required />
-            <span data-valmsg-for="Chuongs[${chapterIdx}].Title" class="text-danger"></span>
-            <input type="number" name="Chuongs[${chapterIdx}].SortOrder" value="${chapterIdx + 1}" class="form-control mb-2" placeholder="Thứ tự" />
-            <div id="lessons-${chapterIdx}" class="${BAIS_CONTAINER_CLASS} ms-3 border-start ps-3 mt-3"></div>
-            <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="addLesson(${chapterIdx})">+ Thêm bài học</button>
+            <input type="hidden" name="Chuongs[${chapterCount}].Id" value="0" />
+            <input type="hidden" name="Chuongs[${chapterCount}].SortOrder" value="${sortOrder}" />
+            <input type="text" name="Chuongs[${chapterCount}].Title" class="form-control mb-2" placeholder="Tên chương" required />
+            <div class="form-control-plaintext fst-italic">→ Bài học sẽ được thêm ở bước tiếp theo</div>
         `;
-        container.appendChild(chapterDiv);
+        document.getElementById("chapters-container").appendChild(chapterDiv);
         chapterCount++;
-        enableValidationForNewElements(chapterDiv);
-        updateIndices();
     }
 
-    window.addLesson = function (chapterIndex) {
-        const lessonContainer = document.getElementById(`lessons-${chapterIndex}`);
-        const lessonIdx = lessonContainer.querySelectorAll(`.${BAI_ITEM_CLASS}`).length;
-        const previewId = `preview-${chapterIndex}-${lessonIdx}`;
-
-        const lessonDiv = document.createElement("div");
-        lessonDiv.classList.add("mt-2", "border", "p-2", BAI_ITEM_CLASS);
-
-           lessonDiv.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center mb-2">
-            <label class="fw-bold">Bài học ${lessonIdx + 1}</label>
-            <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, '${BAI_ITEM_CLASS}')">Xóa bài học</button>
-        </div>
-
-        <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Id" value="0" />
-        <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="form-control mb-1" placeholder="Tên bài học" required />
-        <span data-valmsg-for="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Title" class="text-danger"></span>
-
-        <textarea name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].Description" class="form-control mb-1" placeholder="Mô tả bài học"></textarea>
-        <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
-
-        <!-- Tải lên ảnh hoặc video -->
-        <label class="form-label">Tải lên hình ảnh</label>
-        <input type="file"
-               name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].ImageFiles"
-               class="form-control mb-1"
-               multiple accept="image/*"
-               onchange="previewFiles(this, '${previewId}')" />
-
-        <!-- Tải lên tài liệu -->
-        <label class="form-label">Tài liệu</label>
-        <input type="file"
-               name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].DocumentFiles"
-               class="form-control mb-1"
-               multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
-               onchange="previewFiles(this, '${previewId}')" />
-
-        <div id="${previewId}" class="mt-2"></div>
-
-        <input type="number" name="Chuongs[${chapterIndex}].Bais[${lessonIdx}].SortOrder" value="${lessonIdx + 1}" class="form-control mb-1" placeholder="Thứ tự" />
-    `;
 
 
-        lessonContainer.appendChild(lessonDiv);
-        enableValidationForNewElements(lessonDiv);
-        updateIndices();
-    }
+          function renderLessonsFromChapters() {
+        const wrapper = document.getElementById("lessons-wrapper");
+        wrapper.innerHTML = "";
 
-    window.removeElement = function (button, className) {
-        $(button).closest(`.${className}`).remove();
-        updateIndices();
-        enableValidationForNewElements();
-    }
+        const chapters = document.querySelectorAll("#chapters-container .chapter-item");
 
-    $(document).ready(function () {
-        updateSelectedClassesDropdownText();
-        $(CLASS_CHECKBOX_SELECTOR).on('change', updateSelectedClassesDropdownText);
-        $(DROPDOWN_MENU_SELECTOR).on('click', function (e) {
-            e.stopPropagation();
+        chapters.forEach((chapter, index) => {
+            // Cập nhật lại name cho chương đúng chỉ số
+            chapter.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${index}].Id`);
+            chapter.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${index}].Title`);
+
+            const chapterTitle = chapter.querySelector(`input[name='Chuongs[${index}].Title']`)?.value || "(Không tên)";
+            const chapterSection = document.createElement("div");
+            chapterSection.className = "border p-3 mb-3";
+            chapterSection.innerHTML = `
+                <h6>Chương ${index + 1} - <span>${chapterTitle}</span></h6>
+                <div id="lessons-${index}" class="lessons-container ms-3 border-start ps-3 mt-2"></div>
+                <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="addLesson(${index})">+ Thêm bài học</button>
+            `;
+            wrapper.appendChild(chapterSection);
         });
+    }
 
-        chapterCount = $('#chapters-container').find(`.${CHAPTER_ITEM_CLASS}`).length;
-        updateIndices();
-    });
 
-    // 👉 Hàm xử lý preview file
-    function previewFiles(input, previewContainerId) {
-        const previewContainer = document.getElementById(previewContainerId);
-        previewContainer.innerHTML = "";
 
-        const files = input.files;
-        if (!files || files.length === 0) return;
+      function addLesson(chapterIndex) {
+        const container = document.getElementById(`lessons-${chapterIndex}`);
+        const lessonCount = container.querySelectorAll('.lesson-item').length;
+        const sortOrder = lessonCount + 1;
+        const previewId = `preview-${chapterIndex}-${lessonCount}`;
 
-        Array.from(files).forEach(file => {
-            const fileType = file.type;
+        const div = document.createElement("div");
+        div.className = "lesson-item border p-2 mt-2";
+        div.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="fw-bold">Bài học ${sortOrder}</label>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, 'lesson-item')">Xóa bài học</button>
+            </div>
 
-            if (fileType.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const img = document.createElement("img");
-                    img.src = e.target.result;
-                    img.style.maxWidth = "120px";
-                    img.style.maxHeight = "120px";
-                    img.classList.add("me-2", "mb-2", "border", "p-1");
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                const fileNameElement = document.createElement("p");
-                fileNameElement.textContent = "📄 " + file.name;
-                fileNameElement.classList.add("mb-1");
-                previewContainer.appendChild(fileNameElement);
+            <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Id" value="0" />
+            <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].SortOrder" value="${sortOrder}" />
+            <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Title" class="form-control mb-1" placeholder="Tên bài học" required />
+            <textarea name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Description" class="form-control mb-1" placeholder="Mô tả bài học"></textarea>
+            <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
+
+            <div class="mb-2">
+                <label class="form-label">Tải lên hình ảnh</label>
+                <input type="file"
+                       name="Chuongs[${chapterIndex}].Bais[${lessonCount}].ImageFiles"
+                       class="form-control mb-1"
+                       multiple accept="image/*"
+                       onchange="previewFiles(this, '${previewId}')" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Tài liệu</label>
+                <input type="file"
+                       name="Chuongs[${chapterIndex}].Bais[${lessonCount}].DocumentFiles"
+                       class="form-control mb-1"
+                       multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+                       onchange="previewFiles(this, '${previewId}')" />
+            </div>
+
+            <div id="${previewId}" class="mt-2"></div>
+        `;
+
+        container.appendChild(div);
+    }
+
+
+
+         function removeElement(button, className) {
+        const element = button.closest('.' + className);
+        const parent = element.parentElement;
+        element.remove();
+
+        if (className === 'chapter-item') {
+            updateChapterIndexes();
+            renderLessonsFromChapters();
+        }
+
+        if (className === 'lesson-item') {
+            updateLessonIndexes(parent);
+        }
+    }
+
+        function updateChapterIndexes() {
+        const chapterItems = document.querySelectorAll('.chapter-item');
+
+        chapterItems.forEach((chapter, index) => {
+            // Cập nhật lại label "Chương X"
+            const label = chapter.querySelector('label.fw-bold');
+            if (label) {
+                label.textContent = `Chương ${index + 1}`;
             }
+
+            // Cập nhật lại SortOrder
+            const sortOrderInput = chapter.querySelector("input[name$='.SortOrder']");
+            if (sortOrderInput) {
+                sortOrderInput.value = index + 1;
+            }
+
+            // Cập nhật lại index của input name nếu cần (nâng cao)
+            chapter.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${index}].Title`);
+            chapter.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${index}].Id`);
+            sortOrderInput.setAttribute("name", `Chuongs[${index}].SortOrder`);
+        });
+
+        // Cập nhật lại biến đếm tổng chương
+        chapterCount = chapterItems.length;
+    }
+            function updateLessonIndexes(lessonContainer) {
+        const lessonItems = lessonContainer.querySelectorAll('.lesson-item');
+        const chapterIndex = parseInt(lessonContainer.id.replace('lessons-', ''), 10);
+
+        lessonItems.forEach((lesson, index) => {
+            const sortOrder = index + 1;
+
+            // Cập nhật tiêu đề "Bài học X"
+            const label = lesson.querySelector('label.fw-bold');
+            if (label) {
+                label.textContent = `Bài học ${sortOrder}`;
+            }
+
+            // Cập nhật input name
+            lesson.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].Id`);
+            lesson.querySelector("input[name$='.SortOrder']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].SortOrder`);
+            lesson.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].Title`);
+            lesson.querySelector("textarea[name$='.Description']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].Description`);
+            lesson.querySelector("input[type='url']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].VideoUrl`);
+
+            // Preview ID (nếu dùng preview nhiều)
+            const previewId = `preview-${chapterIndex}-${index}`;
+            const previewDiv = lesson.querySelector("div[id^='preview-']");
+            if (previewDiv) previewDiv.id = previewId;
+
+            const imageInput = lesson.querySelector("input[type='file'][name*='ImageFiles']");
+            if (imageInput) {
+                imageInput.setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].ImageFiles`);
+                imageInput.setAttribute("onchange", `previewFiles(this, '${previewId}')`);
+            }
+
+            const docInput = lesson.querySelector("input[type='file'][name*='DocumentFiles']");
+            if (docInput) {
+                docInput.setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].DocumentFiles`);
+                docInput.setAttribute("onchange", `previewFiles(this, '${previewId}')`);
+            }
+
+            // SortOrder hidden value
+            const sortInput = lesson.querySelector("input[name$='.SortOrder']");
+            if (sortInput) sortInput.value = sortOrder;
         });
     }
-</script>
-<script>
+
+
     function previewFiles(input, previewId) {
         const previewContainer = document.getElementById(previewId);
         previewContainer.innerHTML = "";
@@ -321,7 +329,7 @@
                 reader.onload = function (e) {
                     const img = document.createElement("img");
                     img.src = e.target.result;
-                    img.className = "img-thumbnail";
+                    img.className = "img-thumbnail me-2 mb-2";
                     img.style.maxWidth = "120px";
                     img.style.maxHeight = "120px";
                     img.alt = file.name;
@@ -335,8 +343,7 @@
             }
         });
     }
-</script>
-<script>
+
     function addYoutubeLink() {
         const container = document.getElementById("youtube-links-container");
         const input = document.createElement("input");
@@ -346,4 +353,26 @@
         input.placeholder = "https://www.youtube.com/watch?v=...";
         container.appendChild(input);
     }
+
+    function updateSelectedClassesDropdownText() {
+        const selectedOptions = $(".class-checkbox:checked");
+        const textSpan = $('#selectedClassesText');
+
+        if (selectedOptions.length === 0) {
+            textSpan.text('Chưa có lớp nào được chọn...');
+        } else if (selectedOptions.length > 3) {
+            textSpan.text(`${selectedOptions.length} lớp đã chọn`);
+        } else {
+            const labels = selectedOptions.map(function () {
+                return $(this).next('label').text();
+            }).get();
+            textSpan.text(labels.join(', '));
+        }
+    }
+
+    $(document).ready(function () {
+        showStep(currentStep);
+        updateSelectedClassesDropdownText();
+        $('.class-checkbox').on('change', updateSelectedClassesDropdownText);
+    });
 </script>

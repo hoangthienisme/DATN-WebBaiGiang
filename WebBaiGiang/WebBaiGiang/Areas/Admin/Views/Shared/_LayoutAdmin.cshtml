@@ -21,6 +21,7 @@
     <link href="~/css/admin.css" rel="stylesheet" />
 </head>
 <body>
+
     <div class="header-top">
         <div class="navbar-logo">
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">
@@ -105,6 +106,7 @@
 
         <div class="content-area">
             @RenderBody()
+            @await Html.PartialAsync("_Toast")
         </div>
     </div>
 

@@ -324,7 +324,7 @@ namespace WebBaiGiang.Controllers
             _context.SaveChanges();
 
             var resetLink = Url.Action("ResetPassword", "Account", new { token = resetToken }, protocol: Request.Scheme);
-            var body = $"Bạn vui lòng nhấn vào link sau để đặt lại mật khẩu: <a href='{resetLink}'>Đặt lại mật khẩu</a>";
+            var body = $"Bạn vui lòng nhấn vào link sau để đặt lại mật khẩu: {resetLink}";
 
             _emailService.SendEmailAsync(user.Email, "Đặt lại mật khẩu", body);
 

@@ -1,0 +1,178 @@
+﻿@using WebBaiGiang.ViewModel
+@model PhanTrang<WebBaiGiang.Models.LopHoc>
+
+@{
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+    ViewBag.Title = "Lớp học đã lưu trữ";
+}
+
+<link href="~/css/courses.css" rel="stylesheet" />
+<link href="~/css/pagination.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+    .course-dropdown {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 8px;
+        z-index: 1000;
+    }
+
+    .dropdown-toggle {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        min-width: 120px;
+        z-index: 1001;
+    }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+    .dropdown-item {
+        padding: 8px 12px;
+        color: #333;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+        .dropdown-item:hover {
+            background: #f0f0f0;
+        }
+
+    .dropdown-item-unarchive {
+        color: green;
+    }
+</style>
+
+<div class="conTent">
+    <h3>Lớp học đã lưu trữ</h3>
+</div>
+
+<div class="container">
+    <div class="courses-wrapper">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var course in Model)
+            {
+                <div class="course-card position-relative">
+                    <div class="course-dropdown">
+                        <button class="btn btn-link text-white p-0" type="button" onclick="toggleCourseDropdown(this)">
+                            <i class="bi bi-three-dots-vertical fs-5"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Xem chi tiết</a>
+                            <a class="dropdown-item dropdown-item-unarchive" data-id="@course.Id">Khôi phục</a>
+                        </div>
+                    </div>
+
+                    <div class="course-image">
+                        <img src="@course.Picture" alt="Ảnh bìa lớp học" />
+                    </div>
+                    <div class="course-content">
+                        <h4>@course.Name</h4>
+                        @Html.Raw(course.Description)
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Không có lớp học nào đã lưu trữ.</p>
+        }
+    </div>
+
+    <div class="pagination">
+        @if (Model.TotalPages > 1)
+        {
+            <ul class="pagination-list">
+                @if (Model.HasPreviousPage)
+                {
+                    <li><a href="@Url.Action("ArchivedCourses", new { page = Model.PageIndex - 1 })">← Trước</a></li>
+                }
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    if (i == Model.PageIndex)
+                    {
+                        <li class="active">@i</li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("ArchivedCourses", new { page = i })">@i</a></li>
+                    }
+                }
+                @if (Model.HasNextPage)
+                {
+                    <li><a href="@Url.Action("ArchivedCourses", new { page = Model.PageIndex + 1 })">Sau →</a></li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function toggleCourseDropdown(button) {
+        const menu = button.parentElement.querySelector('.dropdown-menu');
+        const isShown = menu.classList.contains("show");
+
+        document.querySelectorAll(".dropdown-menu.show").forEach(m => m.classList.remove("show"));
+
+        if (!isShown) {
+            menu.classList.add("show");
+        }
+    }
+
+    document.addEventListener("click", function (e) {
+        const courseDropdowns = document.querySelectorAll('.course-dropdown');
+        let inside = false;
+        courseDropdowns.forEach(dropdown => {
+            if (dropdown.contains(e.target)) inside = true;
+        });
+        if (!inside) {
+            document.querySelectorAll(".dropdown-menu.show").forEach(m => m.classList.remove("show"));
+        }
+    });
+
+    $(document).ready(function () {
+        $('.dropdown-item-unarchive').click(function (e) {
+            e.preventDefault();
+            if (!confirm('Bạn có muốn khôi phục lớp học này không?')) return;
+
+            var courseId = $(this).data('id');
+            var courseCard = $(this).closest('.course-card');
+
+            $.ajax({
+                url: '@Url.Action("UnarchiveCourse", "GiangVien")',
+                type: 'POST',
+                data: { id: courseId },
+                success: function (response) {
+                    if (response.success) {
+                        courseCard.fadeOut(500, () => courseCard.remove());
+                    } else {
+                        alert('Khôi phục thất bại');
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra khi khôi phục');
+                }
+            });
+        });
+    });
+</script>

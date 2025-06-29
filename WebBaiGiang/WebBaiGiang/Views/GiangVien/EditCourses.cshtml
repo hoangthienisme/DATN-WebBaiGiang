@@ -1,11 +1,53 @@
-﻿@model WebBaiGiang.Models.LopHoc
-@{
-    Layout = null;
-    var subjects = ViewBag.Subjects as List<WebBaiGiang.Models.HocPhan>;
-    var khoas = ViewBag.Khoas as List<WebBaiGiang.Models.Khoa>;
-    var description = ViewBag.Description as string ?? "";
-}
+﻿    @model WebBaiGiang.Models.LopHoc
+    @{
+        Layout = null;
+        var subjects = ViewBag.Subjects as List<WebBaiGiang.Models.HocPhan>;
+        var khoas = ViewBag.Khoas as List<WebBaiGiang.Models.Khoa>;
+        var description = ViewBag.Description as string ?? "";
+    }
 <link href="~/css/createcourse.css" rel="stylesheet" />
+
+<style>
+    select {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease;
+    }
+
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #fff;
+        }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin: 10px 0 6px;
+    }
+
+    button[type="submit"] {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+</style>
+
 <div class="container">
     <div class="preview-card">
         <div class="image-preview">
@@ -21,34 +63,30 @@
 
     <form asp-action="EditCourses" method="post" enctype="multipart/form-data" class="form-section">
         <input type="hidden" name="Id" value="@Model?.Id" />
-
+        <input type="hidden" name="OldPicture" value="@Model?.Picture" />
         <h1>Chỉnh sửa khóa học</h1>
 
         <!-- Tên khóa học -->
         <label for="Name">Tên khóa học:</label>
         <input type="text" name="Name" id="courseName" value="@Model?.Name" required />
 
-        <div class="form-group">
-            <label for="KhoaId">Chọn khoa giảng dạy:</label>
-            <select name="KhoaId" id="KhoaId" required>
-                @foreach (var Khoa in khoas)
-                {
-                    var selected = Khoa.Id == Model?.KhoaId ? "selected" : "";
-                    <option value="@Khoa.Id" selected="@selected">@Khoa.Name</option>
-                }
-            </select>
-        </div>
+        <!-- Chọn Khoa -->
+        <select name="KhoaId" id="KhoaId" required>
+            @foreach (var khoa in khoas)
+            {
+                var selected = khoa.Id == Model.KhoaId ? "selected" : "";
+                @Html.Raw($"<option value='{khoa.Id}' {selected}>{khoa.Name}</option>")
+            }
+        </select>
 
-        <div class="form-group">
-            <label for="SubjectsId">Chọn học phần:</label>
-            <select name="SubjectsId" id="SubjectsId" required>
-                @foreach (var subject in subjects)
-                {
-                    var selected = subject.Id == Model?.SubjectsId ? "selected" : "";
-                    <option value="@subject.Id" selected="@selected">@subject.Name</option>
-                }
-            </select>
-        </div>
+        <!-- Chọn Học phần -->
+        <select name="SubjectsId" id="SubjectsId" required>
+            @foreach (var subject in subjects)
+            {
+                var selected = subject.Id == Model.SubjectsId ? "selected" : "";
+                @Html.Raw($"<option value='{subject.Id}' {selected}>{subject.Name}</option>")
+            }
+        </select>
 
         <label for="DetailedDescription">Mô tả khóa học:</label>
         <div id="detailedDescEditor" style="height: 300px;"></div>

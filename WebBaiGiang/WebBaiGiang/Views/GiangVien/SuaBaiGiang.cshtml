@@ -5,19 +5,9 @@
 }
 
 <h3 class="mb-3">Chỉnh sửa bài giảng</h3>
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-}
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-}
-
 <form asp-action="SuaBaiGiang" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
-
+    <input type="hidden" name="returnUrl" value="@Context.Request.Query["returnUrl"]" />
     <div class="mb-3">
         <label asp-for="Title" class="form-label fw-bold">Tiêu đề *</label>
         <input asp-for="Title" class="form-control" />

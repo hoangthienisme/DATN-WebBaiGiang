@@ -23,7 +23,7 @@ namespace WebBaiGiang.Controllers
 
         // --- Courses (LopHoc) Management ---
 
-        public async Task<IActionResult> Courses(int page = 1)
+        public async Task<IActionResult> Courses(string? search, int page = 1)
         {
             int pageSize = 6;
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -33,10 +33,24 @@ namespace WebBaiGiang.Controllers
                 return Unauthorized();
             }
 
+            // Query gốc
             var myCoursesQuery = _context.LopHocs
-                .Where(l => l.IsActive && l.GiangVienLopHocs.Any(gv => gv.IdGv == userId))
+                .Where(l => l.IsActive && l.GiangVienLopHocs.Any(gv => gv.IdGv == userId));
+
+            // Nếu có từ khoá tìm kiếm thì lọc tiếp
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var keyword = search.Trim().ToLower();
+                myCoursesQuery = myCoursesQuery
+                    .Where(l =>
+                        l.Name.ToLower().Contains(keyword) ||
+                        (!string.IsNullOrEmpty(l.Description) && l.Description.ToLower().Contains(keyword)));
+            }
+
+            // Chọn dữ liệu cần dùng
+            var courseResult = myCoursesQuery
                 .OrderByDescending(l => l.CreatedDate)
-                .Select(l => new LopHoc 
+                .Select(l => new LopHoc
                 {
                     Id = l.Id,
                     Name = l.Name,
@@ -46,7 +60,12 @@ namespace WebBaiGiang.Controllers
                     JoinCode = l.JoinCode
                 });
 
-            var paginatedCourses = await PhanTrang<LopHoc>.CreateAsync(myCoursesQuery, page, pageSize);
+            // Gọi phân trang
+            var paginatedCourses = await PhanTrang<LopHoc>.CreateAsync(courseResult, page, pageSize);
+
+            // Gửi lại keyword ra view để giữ lại trong ô tìm
+            ViewBag.Search = search;
+
             return View(paginatedCourses);
         }
 
@@ -62,65 +81,72 @@ namespace WebBaiGiang.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCourses(LopHoc lophoc, string DetailedDescription, IFormFile? Thumbnail) // Make IFormFile nullable for robustness
+        public async Task<IActionResult> CreateCourses(LopHoc lophoc, string DetailedDescription, IFormFile? Thumbnail)
         {
-
             lophoc.Description = DetailedDescription;
 
             var giangVienIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(giangVienIdStr) || !int.TryParse(giangVienIdStr, out int giangVienId))
             {
-                return Unauthorized();
+                TempData["Error"] = "Không xác định được người dùng.";
+                return RedirectToAction("Courses");
             }
+
             ModelState.Remove(nameof(lophoc.GiangVienLopHocs));
 
             if (ModelState.IsValid)
             {
-                if (Thumbnail != null && Thumbnail.Length > 0)
+                try
                 {
-                    var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
-                    if (!Directory.Exists(uploadsFolder)) // Ensure directory exists
+                    if (Thumbnail != null && Thumbnail.Length > 0)
                     {
-                        Directory.CreateDirectory(uploadsFolder);
+                        var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
+                        if (!Directory.Exists(uploadsFolder))
+                            Directory.CreateDirectory(uploadsFolder);
+
+                        var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(Thumbnail.FileName);
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await Thumbnail.CopyToAsync(stream);
+                        }
+
+                        lophoc.Picture = "/uploads/" + uniqueFileName;
                     }
 
-                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(Thumbnail.FileName);
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    lophoc.CreatedDate = DateTime.Now;
+                    lophoc.CreatedBy = giangVienId;
+                    lophoc.IsActive = true;
 
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    _context.LopHocs.Add(lophoc);
+                    await _context.SaveChangesAsync();
+
+                    var gvlh = new GiangVienLopHoc
                     {
-                        await Thumbnail.CopyToAsync(stream);
-                    }
-                    lophoc.Picture = "/uploads/" + uniqueFileName;
+                        IdClass = lophoc.Id,
+                        IdGv = giangVienId,
+                        AssignedDate = DateTime.Now,
+                        IsActive = true
+                    };
+                    _context.GiangVienLopHocs.Add(gvlh);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Success"] = " Lớp học đã được tạo thành công!";
+                    return RedirectToAction("Courses");
                 }
-
-                // Explicitly set CreatedDate here to prevent default DateTime overflow if it's not set by default in DB
-                lophoc.CreatedDate = DateTime.Now;
-                lophoc.CreatedBy = giangVienId;
-                lophoc.IsActive = true; // Set default for new course if not handled elsewhere
-
-                _context.LopHocs.Add(lophoc);
-                await _context.SaveChangesAsync(); // Save LopHoc to get its Id
-
-                var gvlh = new GiangVienLopHoc
+                catch
                 {
-                    IdClass = lophoc.Id,
-                    IdGv = giangVienId,
-                    AssignedDate = DateTime.Now, // <--- Ensure this DateTime is set
-                    IsActive = true
-                };
-                _context.GiangVienLopHocs.Add(gvlh);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Lớp học đã được tạo thành công!";
-                return RedirectToAction("Courses");
+                    TempData["Error"] = " Đã xảy ra lỗi khi tạo lớp học. Vui lòng thử lại.";
+                    return RedirectToAction("Courses");
+                }
             }
 
-            // If ModelState is not valid, re-populate ViewBags
+            TempData["Error"] = " Vui lòng kiểm tra lại thông tin lớp học.";
             ViewBag.Subjects = _context.HocPhans.ToList();
             ViewBag.Khoas = _context.Khoas.ToList();
             ViewBag.BaiGiangs = _context.BaiGiangs.ToList();
-            return View(lophoc); // Pass the lophoc back to the view to retain entered data
+            return View(lophoc);
         }
 
         [HttpGet]
@@ -141,103 +167,153 @@ namespace WebBaiGiang.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditCourses(LopHoc lophoc, string DetailedDescription, IFormFile? Thumbnail)
+        public async Task<IActionResult> EditCourses(LopHoc lophoc, string DetailedDescription, IFormFile? Thumbnail, string? OldPicture)
         {
-            var existingLop = await _context.LopHocs.FirstOrDefaultAsync(x => x.Id == lophoc.Id); // Use FindAsync for primary key lookup
-            if (existingLop == null) return NotFound();
+            var existingLop = await _context.LopHocs.FirstOrDefaultAsync(x => x.Id == lophoc.Id);
+            if (existingLop == null)
+            {
+                TempData["Error"] = "Không tìm thấy lớp học cần chỉnh sửa.";
+                return RedirectToAction("Courses");
+            }
 
             var giangVienIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(giangVienIdStr) || !int.TryParse(giangVienIdStr, out int giangVienId))
             {
-                return Unauthorized();
-            }
-
-            ModelState.Remove(nameof(lophoc.GiangVienLopHocs)); // Remove validation for navigation properties if they are not bound from form
-
-            if (ModelState.IsValid)
-            {
-                existingLop.Name = lophoc.Name;
-                existingLop.SubjectsId = lophoc.SubjectsId;
-                existingLop.KhoaId = lophoc.KhoaId;
-                //existingLop.BaiGiangId = lophoc.BaiGiangId;
-                existingLop.Description = DetailedDescription;
-                existingLop.UpdateDate = DateTime.Now; // <--- Ensure this DateTime is set for updates
-                existingLop.UpdateBy = giangVienId;
-
-                if (Thumbnail != null && Thumbnail.Length > 0)
-                {
-                    // Delete old thumbnail if exists
-                    if (!string.IsNullOrEmpty(existingLop.Picture))
-                    {
-                        var oldFilePath = Path.Combine(_env.WebRootPath, existingLop.Picture.TrimStart('/'));
-                        if (System.IO.File.Exists(oldFilePath))
-                        {
-                            System.IO.File.Delete(oldFilePath);
-                        }
-                    }
-
-                    var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
-                    if (!Directory.Exists(uploadsFolder))
-                    {
-                        Directory.CreateDirectory(uploadsFolder);
-                    }
-
-                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(Thumbnail.FileName);
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await Thumbnail.CopyToAsync(stream);
-                    }
-                    existingLop.Picture = "/uploads/" + uniqueFileName;
-                }
-                else if (string.IsNullOrEmpty(lophoc.Picture) && !string.IsNullOrEmpty(existingLop.Picture))
-                {
-                    // If no new thumbnail uploaded AND the client clears the old picture path (e.g., if you have a hidden input)
-                    // Then delete the old file and clear the path.
-                    // This is for cases where you want to explicitly remove a picture without replacing it.
-                    var oldFilePath = Path.Combine(_env.WebRootPath, existingLop.Picture.TrimStart('/'));
-                    if (System.IO.File.Exists(oldFilePath))
-                    {
-                        System.IO.File.Delete(oldFilePath);
-                    }
-                    existingLop.Picture = null;
-                }
-
-
-                _context.LopHocs.Update(existingLop);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Lớp học đã được cập nhật thành công!";
+                TempData["Error"] = "Không xác định được người dùng.";
                 return RedirectToAction("Courses");
             }
 
-            // If ModelState is not valid, re-populate ViewBags
+            ModelState.Remove(nameof(lophoc.GiangVienLopHocs));
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    existingLop.Name = lophoc.Name;
+                    existingLop.SubjectsId = lophoc.SubjectsId;
+                    existingLop.KhoaId = lophoc.KhoaId;
+                    existingLop.Description = DetailedDescription;
+                    existingLop.UpdateDate = DateTime.Now;
+                    existingLop.UpdateBy = giangVienId;
+
+                    if (Thumbnail != null && Thumbnail.Length > 0)
+                    {
+                        if (!string.IsNullOrEmpty(existingLop.Picture))
+                        {
+                            var oldFilePath = Path.Combine(_env.WebRootPath, existingLop.Picture.TrimStart('/'));
+                            if (System.IO.File.Exists(oldFilePath))
+                                System.IO.File.Delete(oldFilePath);
+                        }
+
+                        var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
+                        if (!Directory.Exists(uploadsFolder))
+                            Directory.CreateDirectory(uploadsFolder);
+
+                        var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(Thumbnail.FileName);
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await Thumbnail.CopyToAsync(stream);
+                        }
+
+                        existingLop.Picture = "/uploads/" + uniqueFileName;
+                    }
+                    else
+                    {
+                        // Giữ lại ảnh cũ nếu không chọn ảnh mới
+                        existingLop.Picture = OldPicture;
+                    }
+
+                    _context.LopHocs.Update(existingLop);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Success"] = "Lớp học đã được cập nhật thành công!";
+                    return RedirectToAction("Courses");
+                }
+                catch
+                {
+                    TempData["Error"] = "Có lỗi xảy ra khi cập nhật lớp học.";
+                    return RedirectToAction("Courses");
+                }
+            }
+
+            TempData["Error"] = "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.";
             ViewBag.Subjects = _context.HocPhans.ToList();
             ViewBag.Khoas = _context.Khoas.ToList();
-            ViewBag.Description = lophoc.Description; // Pass back description for Sticky form
             ViewBag.BaiGiangs = _context.BaiGiangs.ToList();
+            ViewBag.Description = lophoc.Description;
+
             return View(lophoc);
         }
 
         [HttpPost]
-        public async Task<IActionResult> ArchiveCourse(int id) // ẩn lớp học
+        public async Task<IActionResult> ArchiveCourse(int id)
         {
             var course = await _context.LopHocs.FindAsync(id);
             if (course == null)
             {
-                return NotFound();
+                TempData["Error"] = "Không tìm thấy lớp học.";
+                return RedirectToAction("Courses");
             }
 
-            course.IsActive = false;
-            await _context.SaveChangesAsync();
+            try
+            {
+                course.IsActive = false;
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "Lớp học đã được lưu trữ thành công.";
+                return RedirectToAction("Courses");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message;
+                return RedirectToAction("Courses");
+            }
+        }
+
+        // hiện lớp học đã ẩn
+        public async Task<IActionResult> ArchivedCourses(int page = 1)
+        {
+            int pageSize = 6;
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (!int.TryParse(userIdStr, out int userId))
+                return Unauthorized();
+
+            var archivedQuery = _context.LopHocs
+                .Where(l => !l.IsActive && l.GiangVienLopHocs.Any(gv => gv.IdGv == userId))
+                .OrderByDescending(l => l.CreatedDate)
+                .Select(l => new LopHoc
+                {
+                    Id = l.Id,
+                    Name = l.Name,
+                    Description = l.Description,
+                    Picture = l.Picture,
+                    CreatedDate = l.CreatedDate
+                });
+
+            var paginated = await PhanTrang<LopHoc>.CreateAsync(archivedQuery, page, pageSize);
+            return View("ArchivedCourses", paginated);
+        }
+        // hiện lại lớp học đã ẩn
+        [HttpPost]
+        public JsonResult UnarchiveCourse(int id)
+        {
+            var course = _context.LopHocs.FirstOrDefault(x => x.Id == id);
+            if (course == null)
+                return Json(new { success = false });
+
+            course.IsActive = true;
+            _context.SaveChanges();
 
             return Json(new { success = true });
         }
 
+
         // --- BaiGiang Management ---
         [HttpGet]
-        public async Task<IActionResult> TaoBaiGiang()
+        public async Task<IActionResult> TaoBaiGiang(string? returnUrl)
         {
             var viewModel = new BaiGiangCreateViewModel();
             var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -256,37 +332,39 @@ namespace WebBaiGiang.Controllers
                                                     })
                                                     .Distinct() // Đảm bảo không có lớp trùng lặp nếu có nhiều GiangVienLopHoc cho cùng một lớp
                                                     .ToListAsync();
-
+            ViewBag.ReturnUrl = returnUrl;
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> TaoBaiGiang(BaiGiangCreateViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> TaoBaiGiang(BaiGiangCreateViewModel model, string? returnUrl)
         {
             ModelState.Remove(nameof(model.AvailableClasses));
 
-            var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            int? currentGiangVienId = int.TryParse(currentGiangVienIdString, out var parsedId) ? parsedId : (int?)null;
+            var currentGiangVienIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(currentGiangVienIdStr, out int giangVienId))
+            {
+                TempData["Error"] = "Không xác định được giảng viên.";
+                return RedirectToAction("BaiGiang", "GiangVien");
+            }
 
             if (!ModelState.IsValid)
             {
-                model.AvailableClasses = currentGiangVienId.HasValue
-                    ? await _context.GiangVienLopHocs
-                        .Where(glh => glh.IdGv == currentGiangVienId.Value && glh.IdClassNavigation.IsActive)
-                        .Select(glh => new SelectListItem
-                        {
-                            Value = glh.IdClass.ToString(),
-                            Text = glh.IdClassNavigation.Name
-                        }).Distinct().ToListAsync()
-                    : new List<SelectListItem>();
+                model.AvailableClasses = await _context.GiangVienLopHocs
+                    .Where(glh => glh.IdGv == giangVienId && glh.IdClassNavigation.IsActive)
+                    .Select(glh => new SelectListItem
+                    {
+                        Value = glh.IdClass.ToString(),
+                        Text = glh.IdClassNavigation.Name
+                    }).Distinct().ToListAsync();
 
                 return View(model);
             }
 
-            // Tạo thư mục lưu file nếu chưa có
-            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files");
+            var imagePath = Path.Combine(_env.WebRootPath, "images");
+            var filePath = Path.Combine(_env.WebRootPath, "files");
             Directory.CreateDirectory(imagePath);
             Directory.CreateDirectory(filePath);
 
@@ -295,33 +373,33 @@ namespace WebBaiGiang.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 CreatedDate = DateTime.Now,
-                CreatedBy = currentGiangVienId,
+                CreatedBy = giangVienId,
                 TaiNguyens = new List<TaiNguyen>(),
                 Chuongs = new List<Chuong>()
             };
 
-            // Lưu ảnh vào wwwroot/images/
+            // 🖼️ Ảnh bài giảng
             if (model.ImageFiles?.Any() == true)
             {
                 foreach (var file in model.ImageFiles)
                 {
-                    var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                    var savePath = Path.Combine(imagePath, uniqueFileName);
-
-                    using var stream = new FileStream(savePath, FileMode.Create);
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                    var path = Path.Combine(imagePath, fileName);
+                    using var stream = new FileStream(path, FileMode.Create);
                     await file.CopyToAsync(stream);
 
                     baiGiang.TaiNguyens.Add(new TaiNguyen
                     {
-                        Url = $"/images/{uniqueFileName}",
+                        Url = $"/images/{fileName}",
                         Loai = "image"
                     });
                 }
             }
-            // Lưu liên kết YouTube (nếu có)
+
+            // 🔗 YouTube
             if (model.YoutubeLinks?.Any() == true)
             {
-                foreach (var link in model.YoutubeLinks.Where(l => !string.IsNullOrWhiteSpace(l)))
+                foreach (var link in model.YoutubeLinks.Where(x => !string.IsNullOrWhiteSpace(x)))
                 {
                     baiGiang.TaiNguyens.Add(new TaiNguyen
                     {
@@ -331,26 +409,25 @@ namespace WebBaiGiang.Controllers
                 }
             }
 
-            // Lưu tài liệu vào wwwroot/files/
+            // 📄 Tài liệu bài giảng
             if (model.DocumentFiles?.Any() == true)
             {
                 foreach (var file in model.DocumentFiles)
                 {
-                    var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                    var savePath = Path.Combine(filePath, uniqueFileName);
-
-                    using var stream = new FileStream(savePath, FileMode.Create);
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                    var path = Path.Combine(filePath, fileName);
+                    using var stream = new FileStream(path, FileMode.Create);
                     await file.CopyToAsync(stream);
 
                     baiGiang.TaiNguyens.Add(new TaiNguyen
                     {
-                        Url = $"/files/{uniqueFileName}",
+                        Url = $"/files/{fileName}",
                         Loai = "tailieu"
                     });
                 }
             }
 
-            // Xử lý chương và bài
+            // 📚 Chương & bài
             if (model.Chuongs?.Any() == true)
             {
                 foreach (var chuongVm in model.Chuongs)
@@ -377,20 +454,19 @@ namespace WebBaiGiang.Controllers
                                 TaiNguyens = new List<TaiNguyen>()
                             };
 
-                            // Ảnh bài học
+                            // Ảnh hoặc video bài học
                             if (baiVm.ImageFiles?.Any() == true)
                             {
                                 foreach (var file in baiVm.ImageFiles)
                                 {
-                                    var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                                    var savePath = Path.Combine(imagePath, uniqueFileName);
-
-                                    using var stream = new FileStream(savePath, FileMode.Create);
+                                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                                    var path = Path.Combine(imagePath, fileName);
+                                    using var stream = new FileStream(path, FileMode.Create);
                                     await file.CopyToAsync(stream);
 
                                     bai.TaiNguyens.Add(new TaiNguyen
                                     {
-                                        Url = $"/images/{uniqueFileName}",
+                                        Url = $"/images/{fileName}",
                                         Loai = file.ContentType.StartsWith("video") ? "video" : "image"
                                     });
                                 }
@@ -401,15 +477,14 @@ namespace WebBaiGiang.Controllers
                             {
                                 foreach (var file in baiVm.DocumentFiles)
                                 {
-                                    var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                                    var savePath = Path.Combine(filePath, uniqueFileName);
-
-                                    using var stream = new FileStream(savePath, FileMode.Create);
+                                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                                    var path = Path.Combine(filePath, fileName);
+                                    using var stream = new FileStream(path, FileMode.Create);
                                     await file.CopyToAsync(stream);
 
                                     bai.TaiNguyens.Add(new TaiNguyen
                                     {
-                                        Url = $"/files/{uniqueFileName}",
+                                        Url = $"/files/{fileName}",
                                         Loai = "tailieu"
                                     });
                                 }
@@ -423,49 +498,54 @@ namespace WebBaiGiang.Controllers
                 }
             }
 
+            // ➕ Lưu bài giảng
             _context.BaiGiangs.Add(baiGiang);
             await _context.SaveChangesAsync();
 
-            // Gán lớp học
+            // Gán lớp học cho bài giảng
             if (model.SelectedClassIds?.Any() == true)
             {
                 foreach (var classId in model.SelectedClassIds)
                 {
-                    if (await _context.LopHocs.FindAsync(classId) is { } lopHoc)
+                    _context.LopHocBaiGiangs.Add(new LopHocBaiGiang
                     {
-                        _context.LopHocBaiGiangs.Add(new LopHocBaiGiang
-                        {
-                            LopHocId = classId,
-                            BaiGiangId = baiGiang.Id,
-                            AddedDate = DateTime.Now
-                        });
-                    }
+                        LopHocId = classId,
+                        BaiGiangId = baiGiang.Id,
+                        AddedDate = DateTime.Now
+                    });
                 }
                 await _context.SaveChangesAsync();
             }
 
-            TempData["SuccessMessage"] = "Tạo bài giảng thành công, file đã được lưu vào hệ thống!";
-            return RedirectToAction("BaiGiang", "GiangVien");
+            TempData["Success"] = " Bài giảng đã được tạo và lưu thành công!";
+
+            return returnUrl != null
+           ? Redirect(returnUrl)
+           : RedirectToAction("BaiGiang","GiangVien");
         }
 
 
-
-
-
-
-
-
-        public async Task<IActionResult> BaiGiang(int page = 1)
+        public async Task<IActionResult> BaiGiang(int page = 1, string? search = null)
         {
             int pageSize = 6;
-            var baigiang = _context.BaiGiangs
-                .OrderByDescending(bg => bg.CreatedDate); // Ensure CreatedDate is always valid or nullable
 
-            var paginatedCourses = await PhanTrang<BaiGiang>.CreateAsync(baigiang, page, pageSize);
-            return View(paginatedCourses);
+            var query = _context.BaiGiangs.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(bg =>
+                    bg.Title.Contains(search) || bg.Description.Contains(search));
+            }
+
+            query = query.OrderByDescending(bg => bg.CreatedDate);
+
+            ViewBag.Search = search;
+            var paginatedLectures = await PhanTrang<BaiGiang>.CreateAsync(query, page, pageSize);
+            return View(paginatedLectures);
         }
+
         [HttpGet]
-        public async Task<IActionResult> SuaBaiGiang(int? id)
+        public async Task<IActionResult> SuaBaiGiang(int? id, string? returnUrl)
         {
             if (id == null) return NotFound();
 
@@ -479,7 +559,7 @@ namespace WebBaiGiang.Controllers
             var currentGiangVienId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
             if (baiGiang.CreatedBy != currentGiangVienId)
             {
-                TempData["ErrorMessage"] = "Bạn không có quyền chỉnh sửa bài giảng này.";
+                TempData["Error"] = "Bạn không có quyền chỉnh sửa bài giảng này.";
                 return RedirectToAction("BaiGiang");
             }
 
@@ -533,17 +613,17 @@ namespace WebBaiGiang.Controllers
                     Value = glh.IdClass.ToString(),
                     Text = glh.IdClassNavigation.Name
                 }).Distinct().ToListAsync();
-
+            ViewBag.ReturnUrl = returnUrl;
             return View("SuaBaiGiang", viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SuaBaiGiang(BaiGiangEditViewModel model)
+        public async Task<IActionResult> SuaBaiGiang(BaiGiangEditViewModel model, string? returnUrl)
         {
             if (!ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Thông tin không hợp lệ.";
+                TempData["Error"] = "Thông tin không hợp lệ.";
                 return View(model);
             }
 
@@ -642,8 +722,10 @@ namespace WebBaiGiang.Controllers
             _context.TaiNguyens.AddRange(newTaiNguyens);
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Cập nhật bài giảng thành công.";
-            return RedirectToAction("BaiGiang");
+            TempData["Success"] = "Cập nhật bài giảng thành công.";
+            return returnUrl != null
+         ? Redirect(returnUrl)
+         : RedirectToAction("BaiGiang", "GiangVien");
         }
 
 
@@ -664,7 +746,7 @@ namespace WebBaiGiang.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> XoaBaiGiang(int id)
+        public async Task<IActionResult> XoaBaiGiang(int id, string? returnUrl)
         {
             var baiGiang = await _context.BaiGiangs
                 .Include(bg => bg.Chuongs)
@@ -704,8 +786,10 @@ namespace WebBaiGiang.Controllers
             _context.BaiGiangs.Remove(baiGiang);
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Đã xóa bài giảng thành công!";
-            return RedirectToAction("BaiGiang");
+            TempData["Success"] = "Đã xóa bài giảng thành công!";
+            return returnUrl != null
+          ? Redirect(returnUrl)
+          : RedirectToAction("BaiGiang", "GiangVien");
         }
         [HttpGet]
         [AllowAnonymous]
@@ -800,20 +884,35 @@ namespace WebBaiGiang.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult XoaBinhLuan(int id)
+        public async Task<IActionResult> XoaBinhLuan(int id)
         {
-            var bl = _context.BinhLuans.FirstOrDefault(x => x.Id == id);
-            if (bl == null) return NotFound();
+            var bl = await _context.BinhLuans.FindAsync(id);
+            if (bl == null)
+            {
+                TempData["Error"] = "Không tìm thấy bình luận cần xóa.";
+                return RedirectToAction("ChiTietBaiGiang", "GiangVien");
+            }
 
-            var currentUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-            var currentUserRole = User.FindFirstValue(ClaimTypes.Role);
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
 
-            if (currentUserRole == "SinhVien" && bl.NguoiDungId != currentUserId)
-                return Forbid();
+            if (!int.TryParse(userIdStr, out int currentUserId))
+            {
+                TempData["Error"] = "Không xác định được người dùng.";
+                return RedirectToAction("ChiTietBaiGiang", "GiangVien", new { id = bl.BaiGiangId });
+            }
+
+            // Chỉ sinh viên mới bị giới hạn quyền
+            if (userRole == "SinhVien" && bl.NguoiDungId != currentUserId)
+            {
+                TempData["Error"] = "Bạn không có quyền xóa bình luận này.";
+                return RedirectToAction("ChiTietBaiGiang", "GiangVien", new { id = bl.BaiGiangId });
+            }
 
             _context.BinhLuans.Remove(bl);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
+            TempData["Success"] = "Đã xóa bình luận thành công!";
             return RedirectToAction("ChiTietBaiGiang", "GiangVien", new { id = bl.BaiGiangId });
         }
 

@@ -2,13 +2,17 @@
 @using System.Security.Claims
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
-    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+
+    var currentUserRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role || c.Type == "Role")?.Value;
+
+    Layout = currentUserRole == "Student"
+        ? "~/Views/Shared/_LayoutSinhvien.cshtml"
+        : "~/Views/Shared/_LayoutGiangvien.cshtml";
 
     var taiNguyenAnh = Model.TaiNguyens?.Where(t => t.Loai == "image");
     var taiNguyenYoutube = Model.TaiNguyens?.Where(t => t.Loai == "youtube");
     var taiNguyenDocs = Model.TaiNguyens?.Where(t => t.Loai == "tailieu");
     var currentUserIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    var currentUserRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role || c.Type == "Role")?.Value;
 
     int currentUserId = 0;
     if (!string.IsNullOrEmpty(currentUserIdString))
@@ -16,6 +20,7 @@
         int.TryParse(currentUserIdString, out currentUserId);
     }
 }
+
 
 <link href="~/css/chitietbaigiang.css" rel="stylesheet" />
 <div class="container mt-4" style="max-width: 1200px;">

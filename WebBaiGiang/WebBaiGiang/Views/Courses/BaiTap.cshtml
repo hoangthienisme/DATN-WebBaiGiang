@@ -2,6 +2,7 @@
 @{
     var tenlop = ViewBag.TenLop as string;
     var lopId = ViewBag.LopId;
+
 }
 
 <style>
@@ -162,9 +163,13 @@
                         <div class="three-dots">⋮</div>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="@Url.Action("SuaBaiTap", new { id = item.Id })">Chỉnh sửa</a>
-                            <form asp-action="XoaBaiTap" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài tập này không?');">
-                                <button type="submit" class="text-danger">Xóa</button>
+                            <form asp-action="XoaBaiTap" asp-controller="Courses" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <input type="hidden" name="lopIdGoc" value="@ViewBag.LopId" />
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
                             </form>
+
+
                             @if (!string.IsNullOrEmpty(item.ContentUrl))
                             {
                                 <a href="@item.ContentUrl" target="_blank">Xem file đính kèm</a>

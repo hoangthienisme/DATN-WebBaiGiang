@@ -10,6 +10,9 @@
     {
         Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
     }
+    var returnUrl = Url.Action("DetailCourses", "Courses", new { id = Model.Id });
+
+}
 }
 
 <div class="conTent">
@@ -466,9 +469,12 @@
 
 <!-- Tab: Mọi người -->
 <div id="peopleTab" class="tab-section">
-    @Html.Partial("_ThemNguoiPartial", new InviteStudentViewModel { ClassId = Model.Id })
+    @Html.Partial("_ThemNguoiPartial", new InviteStudentViewModel
+{
+    ClassId = Model.Id,
+    Students = Model.Students // phải chắc chắn Model.Students có dữ liệu
+})
 </div>
-
 <!-- Tab: Điểm -->
 <div id="gradeTab" class="tab-section">
     <div style="padding: 40px; text-align: center; color: #666;">
@@ -524,24 +530,12 @@
             <input type="text" placeholder="Tìm kiếm bài giảng..." class="search-input-courses" />
         </div>
 
-        <div class="dropdown" id="filterDropdown">
-            <button class="dropdown-button" onclick="toggleDropdown()" type="button">
-                <span id="selected-filter">Mới nhất</span>
-                <span class="arrow-down">▼</span>
-            </button>
-            <div class="dropdown-content" id="dropdown-menu">
-                <a href="#" onclick="filterCourses('newest'); return false;">🆕 Mới nhất</a>
-                <a href="#" onclick="filterCourses('oldest'); return false;">📅 Cũ nhất</a>
-                <a href="#" onclick="filterCourses('incomplete'); return false;">⏳ Chưa hoàn thành</a>
-                <a href="#" onclick="filterCourses('completed'); return false;">✅ Đã hoàn thành</a>
-            </div>
-        </div>
-
         @if (User.IsInRole("Teacher"))
         {
-            <button class="btn btn-primary create-baigiang-button" onclick="location.href='@Url.Action("TaoBaiGiang", "GiangVien")'">
+            <button class="btn btn-primary create-baigiang-button" onclick="location.href='@Url.Action("TaoBaiGiang", "GiangVien", new { returnUrl = Url.Action("DetailCourses", "Courses", new { id = Model.Id }) })'">
                 ➕ Tạo bài giảng
             </button>
+
         }
     </div>
 
@@ -564,9 +558,9 @@
                         <div class="dropdown" data-dropdown-id="@item.Id">
                             <div class="icon-three-dots" onclick="togglePostDropdown(@item.Id)"></div>
                             <div class="dropdown-content">
-                                <a asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id">✏️ Chỉnh sửa</a>
+                                <a asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id" asp-route-returnUrl="@returnUrl">Chỉnh sửa</a>
                                 <form asp-controller="GiangVien" asp-action="XoaBaiGiang" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài giảng này không?');" style="margin: 0;">
-                                    <button type="submit" class="text-danger">🗑️ Xóa</button>
+                                    <button type="submit" class="text-danger"> Xóa</button>
                                 </form>
                             </div>
                         </div>

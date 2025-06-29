@@ -3,10 +3,10 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Đăng ký tài khoản";
-
 }
 
 <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <style>
     .text-danger.small {
@@ -55,14 +55,18 @@
                 <div class="form-group">
                     <label asp-for="Password"></label>
                     <input asp-for="Password" id="password" class="form-control" />
-                    <button type="button" class="btn-toggle-eye" onclick="togglePassword('password')">👁️</button>
+                    <button type="button" class="btn-toggle-eye" onclick="togglePassword(this, 'password')">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
                     <span asp-validation-for="Password" class="text-danger small"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="ConfirmPassword"></label>
                     <input asp-for="ConfirmPassword" id="confirmPassword" class="form-control" />
-                    <button type="button" class="btn-toggle-eye" onclick="togglePassword('confirmPassword')">👁️</button>
+                    <button type="button" class="btn-toggle-eye" onclick="togglePassword(this, 'confirmPassword')">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
                     <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
                 </div>
 
@@ -95,8 +99,12 @@
 </div>
 
 <script>
-    function togglePassword(id) {
-        const input = document.getElementById(id);
-        input.type = input.type === "password" ? "text" : "password";
+    function togglePassword(btn, inputId) {
+        const input = document.getElementById(inputId);
+        const icon = btn.querySelector('i');
+        const isHidden = input.type === "password";
+
+        input.type = isHidden ? "text" : "password";
+        icon.className = isHidden ? "bi bi-eye-slash-fill" : "bi bi-eye-fill";
     }
 </script>

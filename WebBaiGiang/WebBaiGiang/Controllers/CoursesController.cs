@@ -41,7 +41,7 @@ namespace WebBaiGiang.Controllers
 
         // GET: Tạo bài tập
         [HttpGet]
-        public IActionResult TaoBaiTap(int lopId)
+        public IActionResult TaoBaiTap(int? lopId)
         {
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!int.TryParse(userIdStr, out int userId))
@@ -54,12 +54,13 @@ namespace WebBaiGiang.Controllers
 
             var model = new BaiTapViewModel
             {
-                LopIdGoc = lopId,
+                LopIdGoc = lopId ?? 0, // hoặc null nếu kiểu là int?
                 AvailableClasses = availableClasses
             };
 
             return View(model);
         }
+
 
         // POST: Lưu bài tập
         [HttpPost]
@@ -72,8 +73,15 @@ namespace WebBaiGiang.Controllers
                     .Select(l => new SelectListItem { Value = l.Id.ToString(), Text = l.Name })
                     .ToList();
 
-                model.ClassIds = new List<int> { model.LopIdGoc };
+                // Giữ lại lớp gốc nếu có
+                model.ClassIds ??= new List<int>();
+                if (model.LopIdGoc > 0 && !model.ClassIds.Contains(model.LopIdGoc))
+                {
+                    model.ClassIds.Add(model.LopIdGoc);
+                }
+
                 ModelState.AddModelError("", "Vui lòng chọn ít nhất một lớp học.");
+                TempData["Error"] = "Vui lòng điền đầy đủ thông tin và chọn lớp học.";
                 return View(model);
             }
 
@@ -93,6 +101,7 @@ namespace WebBaiGiang.Controllers
                 fileUrl = "/uploads/" + uniqueFileName;
             }
 
+            // Đặt lớp gốc để redirect sau khi tạo
             model.LopIdGoc = model.ClassIds.First();
 
             var baiTap = new BaiTap
@@ -114,8 +123,10 @@ namespace WebBaiGiang.Controllers
             _context.BaiTaps.Add(baiTap);
             await _context.SaveChangesAsync();
 
+            TempData["Success"] = "✅ Bài tập đã được tạo thành công.";
             return Redirect($"/Courses/DetailCourses/{model.LopIdGoc}#exerciseTab");
         }
+
 
         // GET: Sửa bài tập
         [HttpGet]
@@ -151,20 +162,30 @@ namespace WebBaiGiang.Controllers
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (baiTap == null)
-                return NotFound();
+                          return NotFound();
+                      var lopGoc = await _context.BaiTapLopHocs
+              .Where(x => x.BaiTapId == id)
+              .Select(x => x.LopHocId)
+              .FirstOrDefaultAsync();
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || model.ClassIds == null || !model.ClassIds.Any())
             {
                 model.AvailableClasses = GetAvailableClasses();
                 ViewBag.Id = id;
+
+                if (model.ClassIds == null || !model.ClassIds.Any())
+                    ModelState.AddModelError("", "Vui lòng chọn ít nhất một lớp học.");
+
+                TempData["Error"] = "❌ Vui lòng kiểm tra lại thông tin trước khi cập nhật.";
                 return View(model);
             }
 
+            // Cập nhật thông tin
             baiTap.Title = model.Title;
             baiTap.Description = model.Description;
             baiTap.DueDate = model.DueDate;
 
-            if (model.Attachment != null)
+            if (model.Attachment != null && model.Attachment.Length > 0)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
                 if (!Directory.Exists(uploadsFolder))
@@ -179,10 +200,10 @@ namespace WebBaiGiang.Controllers
                 baiTap.ContentUrl = "/uploads/" + uniqueFileName;
             }
 
-            // Xóa các liên kết lớp cũ
+            // Xóa liên kết cũ
             _context.BaiTapLopHocs.RemoveRange(baiTap.BaiTapLopHocs);
 
-            // Thêm lại các lớp mới
+            // Thêm liên kết mới
             foreach (var classId in model.ClassIds)
             {
                 _context.BaiTapLopHocs.Add(new BaiTapLopHoc
@@ -195,8 +216,10 @@ namespace WebBaiGiang.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("BaiTap", new { id = model.LopIdGoc });
+            TempData["Success"] = " Bài tập đã được cập nhật thành công!";
+            return Redirect($"/Courses/DetailCourses/{lopGoc}#exerciseTab");
         }
+
 
         // POST: Xóa bài tập
         [HttpPost]
@@ -206,13 +229,34 @@ namespace WebBaiGiang.Controllers
             if (baiTap == null)
                 return NotFound();
 
+            // Tìm lớp gốc mà bài tập này thuộc về
+            var lopGoc = await _context.BaiTapLopHocs
+                .Where(x => x.BaiTapId == id)
+                .Select(x => x.LopHocId)
+                .FirstOrDefaultAsync();
+
+            if (lopGoc == 0)
+                return RedirectToAction("Index", "Courses"); // fallback
+
+            // Xóa các bản ghi nộp bài liên quan
+            var nopBais = _context.NopBais.Where(n => n.TestId == id);
+            _context.NopBais.RemoveRange(nopBais);
+
+            // Xóa liên kết bài tập với lớp học
             var baiTapLops = _context.BaiTapLopHocs.Where(x => x.BaiTapId == id);
             _context.BaiTapLopHocs.RemoveRange(baiTapLops);
-            _context.BaiTaps.Remove(baiTap);
 
+            // Xóa chính bài tập
+            _context.BaiTaps.Remove(baiTap);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+            TempData["Success"] = "Bài tập đã được xóa thành công!";
+
+            return Redirect($"/Courses/DetailCourses/{lopGoc}#exerciseTab");
         }
+
+
+
 
         private List<SelectListItem> GetAvailableClasses()
         {
@@ -229,7 +273,13 @@ namespace WebBaiGiang.Controllers
         {
             var lop = await _context.LopHocs.FirstOrDefaultAsync(l => l.Id == id);
             if (lop == null)
-                return NotFound();
+                          return NotFound();
+            var students = await _context.SinhVienLopHocs
+                .Where(x => x.IdClass == id && x.IdSvNavigation.Role == "Student")
+                .Include(x => x.IdSvNavigation)
+                .Select(x => x.IdSvNavigation)
+                .ToListAsync();
+
 
             int pageSize = 6;
 
@@ -255,7 +305,8 @@ namespace WebBaiGiang.Controllers
                 Name = lop.Name,
                 Picture = lop.Picture,
                 BaiGiangs = paginatedBaiGiangs,
-                BaiTaps = paginatedBaiTaps
+                BaiTaps = paginatedBaiTaps,
+                Students = students
             };
 
             return PartialView(vm);
@@ -366,17 +417,27 @@ namespace WebBaiGiang.Controllers
         [HttpPost]
         public IActionResult ChamDiem(int[] NopBaiIds, double?[] Points, string?[] FeedBacks, int lopId)
         {
-            for (int i = 0; i < NopBaiIds.Length; i++)
+            int length = NopBaiIds.Length;
+
+            for (int i = 0; i < length; i++)
             {
                 var nopBai = _context.NopBais.FirstOrDefault(nb => nb.Id == NopBaiIds[i]);
                 if (nopBai != null)
                 {
-                    nopBai.Point = Points[i];
-                    nopBai.FeedBack = FeedBacks[i];
+                    // Bảo vệ Index (nếu mảng Points hoặc FeedBacks nhỏ hơn)
+                    double? point = (i < Points.Length) ? Points[i] : null;
+                    string? feedback = (i < FeedBacks.Length) ? FeedBacks[i] : null;
+
+                    nopBai.Point = point;
+                    nopBai.FeedBack = feedback;
                 }
             }
+
             _context.SaveChanges();
+
+            TempData["Success"] = " Đã chấm điểm và phản hồi thành công!";
             return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
         }
+
     }
 }
