@@ -22,7 +22,7 @@ namespace WebBaiGiang.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Courses(int page = 1)
+        public async Task<IActionResult> Courses(string? search, int page = 1)
         {
             int pageSize = 6;
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -32,8 +32,21 @@ namespace WebBaiGiang.Controllers
                 return Unauthorized();
             }
 
+            // Truy vấn gốc
             var myCoursesQuery = _context.LopHocs
-                .Where(l => l.IsActive && l.SinhVienLopHocs.Any(gv => gv.IdSv == userId))
+                .Where(l => l.IsActive && l.SinhVienLopHocs.Any(gv => gv.IdSv == userId));
+
+            // Nếu có tìm kiếm, lọc theo tên hoặc mô tả
+            if (!string.IsNullOrEmpty(search))
+            {
+                string lowerSearch = search.ToLower();
+                myCoursesQuery = myCoursesQuery.Where(l =>
+                    l.Name.ToLower().Contains(lowerSearch) ||
+                    (l.Description != null && l.Description.ToLower().Contains(lowerSearch)));
+            }
+
+            // Sắp xếp và chọn các trường cần
+            myCoursesQuery = myCoursesQuery
                 .OrderByDescending(l => l.CreatedDate)
                 .Select(l => new LopHoc
                 {
@@ -46,8 +59,11 @@ namespace WebBaiGiang.Controllers
                 });
 
             var paginatedCourses = await PhanTrang<LopHoc>.CreateAsync(myCoursesQuery, page, pageSize);
+            ViewBag.Search = search;
+
             return View(paginatedCourses);
         }
+
         public async Task<IActionResult> DetailCourses(int id, int page = 1)
         {
             var lop = await _context.LopHocs

@@ -1,19 +1,70 @@
 ﻿@model WebBaiGiang.ViewModel.InviteStudentViewModel
+@using System.Security.Claims
+
 @{
     ViewBag.Title = "Mời sinh viên vào lớp";
+    var currentUserRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role || c.Type == "Role")?.Value;
 }
 
 <div class="container mt-4">
-    <h3>Mời sinh viên tham gia lớp học</h3>
-    <form asp-action="SendInvitation" method="post">
-        <div class="form-group mb-2">
-            <label>Email sinh viên:</label>
-            <input type="email" class="form-control" name="Email" required />
-        </div>
-        <input type="hidden" name="ClassId" value="@Model.ClassId" />
-        <button type="submit" class="btn btn-primary">Gửi lời mời</button>
-    </form>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Danh sách sinh viên trong lớp</h3>
 
+        @if (currentUserRole == "Teacher")
+        {
+            <button class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#inviteForm">
+                <i class="bi bi-person-plus-fill me-1"></i> Thêm sinh viên
+            </button>
+        }
+    </div>
+
+    <!-- Danh sách sinh viên -->
+    @if (Model.Students != null && Model.Students.Any())
+    {
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Students.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model.Students[i].Name</td>
+                        <td>@Model.Students[i].Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">Hiện chưa có sinh viên nào trong lớp.</p>
+    }
+
+    <!-- Form mời sinh viên (ẩn/hiện theo nút +) -->
+    @if (currentUserRole == "Teacher")
+    {
+        <div class="collapse mt-4" id="inviteForm">
+            <div class="card card-body shadow-sm">
+                <h5 class="mb-3">Mời sinh viên tham gia lớp học</h5>
+                <form asp-action="SendInvitation" method="post">
+                    <div class="form-group mb-2">
+                        <label>Email sinh viên:</label>
+                        <input type="email" class="form-control" name="Email" required />
+                    </div>
+                    <input type="hidden" name="ClassId" value="@Model.ClassId" />
+                    <button type="submit" class="btn btn-primary">Gửi lời mời</button>
+                </form>
+            </div>
+        </div>
+    }
+
+    <!-- Hiển thị thông báo -->
     @if (TempData["Message"] != null)
     {
         <div class="alert alert-info mt-3">@TempData["Message"]</div>

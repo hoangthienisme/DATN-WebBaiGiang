@@ -1,9 +1,11 @@
 ﻿@using WebBaiGiang.ViewModel
 @model PhanTrang<WebBaiGiang.Models.LopHoc>
+
 @{
     Layout = "~/Views/Shared/_LayoutSinhvien.cshtml";
-
+    var search = ViewBag.Search as string;
 }
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link href="~/css/courses.css" rel="stylesheet" />
 <link href="~/css/pagination.css" rel="stylesheet" />
@@ -12,44 +14,36 @@
     <h3>Khoá học</h3>
 </div>
 
+<!-- TÌM KIẾM -->
 <div class="search-filter">
-    <div class="search-input-wrapper">
+    <form method="get" class="search-input-wrapper" style="width:100%; max-width: 400px;">
         <img src="~/img/loupe.png" class="search-icon" />
-        <input type="text" placeholder="Tìm khóa học..." class="search-input-courses" />
-    </div>
-    <div class="dropdown">
-        <button class="dropdown-button" onclick="toggleDropdown()">
-            Mới nhất <span class="arrow-down">▼</span>
-        </button>
-        <div class="dropdown-content" id="dropdown-menu">
-            <a href="#" onclick="filterCourses('newest')">Mới nhất</a>
-            <a href="#" onclick="filterCourses('oldest')">Cũ nhất</a>
-            <a href="#" onclick="filterCourses('incomplete')">Chưa hoàn thành</a>
-            <a href="#" onclick="filterCourses('completed')">Đã hoàn thành</a>
-        </div>
-    </div>
+        <input type="text" name="search" value="@search" placeholder="Tìm khóa học..." class="search-input-courses" />
+    </form>
 </div>
 
+<!-- KHÓA HỌC -->
 <div class="container">
     <div class="courses-wrapper">
         @if (Model != null && Model.Any())
         {
             foreach (var course in Model)
             {
+                var joinLink = Url.Action("Join", "Courses", new { code = course.JoinCode }, Context.Request.Scheme);
                 <div class="course-card position-relative">
-                    <!-- Nút ba chấm dropdown -->
+                    <!-- Dropdown ba chấm -->
                     <div class="dropdown position-absolute top-0 end-0 m-2">
                         <button class="btn btn-link text-white p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-three-dots-vertical fs-5"></i>
                         </button>
-                        @{
-                            var joinLink = Url.Action("Join", "Courses", new { code = course.JoinCode }, Context.Request.Scheme);
-                        }
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="copyToClipboard('@joinLink')">Sao chép liên kết</a></li>
+                            <li>
+                                <a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="copyToClipboard('@joinLink')">Sao chép liên kết</a>
+                            </li>
                         </ul>
-
                     </div>
 
                     <!-- Nội dung khóa học -->
@@ -61,7 +55,6 @@
                         @Html.Raw(course.Description)
                     </div>
                 </div>
-
             }
         }
         else
@@ -71,13 +64,13 @@
     </div>
 
     <!-- PHÂN TRANG -->
-    <div class="pagination">
-        @if (Model.TotalPages > 1)
-        {
+    @if (Model.TotalPages > 1)
+    {
+        <div class="pagination mt-4">
             <ul class="pagination-list">
                 @if (Model.HasPreviousPage)
                 {
-                    <li><a href="@Url.Action("Courses", new { page = Model.PageIndex - 1 })">← Trước</a></li>
+                    <li><a href="@Url.Action("Courses", new { page = Model.PageIndex - 1, search = search })">← Trước</a></li>
                 }
 
                 @for (int i = 1; i <= Model.TotalPages; i++)
@@ -88,49 +81,25 @@
                     }
                     else
                     {
-                        <li><a href="@Url.Action("Courses", new { page = i })">@i</a></li>
+                        <li><a href="@Url.Action("Courses", new { page = i, search = search })">@i</a></li>
                     }
                 }
 
                 @if (Model.HasNextPage)
                 {
-                    <li><a href="@Url.Action("Courses", new { page = Model.PageIndex + 1 })">Sau →</a></li>
+                    <li><a href="@Url.Action("Courses", new { page = Model.PageIndex + 1, search = search })">Sau →</a></li>
                 }
             </ul>
-        }
-    </div>
+        </div>
+    }
 </div>
+
+<!-- SCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Script lọc dropdown -->
 <script>
-    function toggleDropdown() {
-        const menu = document.getElementById("dropdown-menu");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    function filterCourses(option) {
-        alert(`Lọc theo: ${option}`);
-        document.getElementById("dropdown-menu").style.display = "none";
-    }
-
-    document.addEventListener("click", function (e) {
-        const dropdown = document.querySelector(".dropdown");
-        if (!dropdown.contains(e.target)) {
-            document.getElementById("dropdown-menu").style.display = "none";
-        }
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-
     function copyToClipboard(link) {
-        navigator.clipboard.writeText(link).then(function () {
-            alert("Đã sao chép liên kết lớp học!");
-        }, function (err) {
-            alert("Không thể sao chép: " + err);
-        });
+        navigator.clipboard.writeText(link)
+            .then(() => alert("Đã sao chép liên kết lớp học!"))
+            .catch(err => alert("Không thể sao chép: " + err));
     }
-
 </script>
-

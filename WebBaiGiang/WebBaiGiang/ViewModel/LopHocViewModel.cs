@@ -10,5 +10,6 @@ namespace WebBaiGiang.ViewModel
 
         public PhanTrang<BaiGiang> BaiGiangs { get; set; } = default!;
         public PhanTrang<BaiTap> BaiTaps { get; set; } = default!;
+        public List<NguoiDung>? Students { get; set; }
     }
 }

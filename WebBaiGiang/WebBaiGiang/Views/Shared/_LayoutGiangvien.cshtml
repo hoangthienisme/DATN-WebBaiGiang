@@ -22,7 +22,6 @@
     <link href="~/css/giangvien.css" rel="stylesheet" />
 </head>
 <body>
-    @await Html.PartialAsync("_Toast")
     <div class="header-top">
         <div class="navbar-logo">
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">
@@ -71,13 +70,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/GiangVien/Performance") ? "active" : "")" href="@Url.Action("Performance", "GiangVien", new { area = "" })">
-                        <i class="bi bi-bar-chart-line"></i> Hiệu suất giảng dạy
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/GiangVien/Tools") ? "active" : "")" href="@Url.Action("Tools", "GiangVien", new { area = "" })">
-                        <i class="bi bi-tools"></i> Công cụ khác
+                    <a class="nav-link @(Context.Request.Path.Value.Contains("/GiangVien/ArchivedCourses") ? "active" : "")" href="@Url.Action("ArchivedCourses", "GiangVien", new { area = "" })">
+                        <i class="bi bi-bar-chart-line"></i> Lưu trữ lớp học 
                     </a>
                 </li>
             </ul>
@@ -85,6 +79,7 @@
 
         <div class="content-area">
             @RenderBody()
+            @await Html.PartialAsync("_Toast")
         </div>
     </div>
 

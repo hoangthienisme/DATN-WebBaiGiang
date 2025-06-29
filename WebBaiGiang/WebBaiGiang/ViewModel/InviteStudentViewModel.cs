@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebBaiGiang.Models;
 
 namespace WebBaiGiang.ViewModel
 {
@@ -10,6 +11,6 @@ namespace WebBaiGiang.ViewModel
         [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string Email { get; set; }
 
-
+        public List<NguoiDung> Students { get; set; } = new();
     }
 }

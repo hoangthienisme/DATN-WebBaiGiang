@@ -24,7 +24,7 @@
     <link href="~/css/sinhvien.css" rel="stylesheet" />
 </head>
 <body class="layout-sinhvien">
-    @await Html.PartialAsync("_Toast")
+
 
     <!-- HEADER -->
     <div class="header-top d-flex justify-content-between align-items-center px-4 py-2 bg-light shadow-sm">
@@ -91,6 +91,7 @@
         <!-- MAIN CONTENT -->
         <main class="flex-fill main-content-area">
             @RenderBody()
+            @await Html.PartialAsync("_Toast")
         </main>
     </div>
 

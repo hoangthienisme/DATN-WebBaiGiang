@@ -56,23 +56,32 @@
                         }
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", "Khoa", new { id = khoa.Id, area = "Admin" })" title="Sửa">
+                        <a class="btn btn-sm btn-primary"
+                           href="@Url.Action("Edit", "Khoa", new { id = khoa.Id, area = "Admin" })"
+                           title="Sửa">
                             <i class="bi bi-pencil"></i>
                         </a>
 
                         @if (khoa.IsActive)
                         {
-                            <a class="btn btn-sm btn-warning" href="@Url.Action("An", "Khoa", new { id = khoa.Id, area = "Admin" })" title="Ẩn">
+                            <a class="btn btn-sm btn-warning"
+                               href="@Url.Action("An", "Khoa", new { id = khoa.Id, area = "Admin" })"
+                               title="Ẩn"
+                               onclick="return confirm('Bạn có chắc chắn muốn ẩn khoa \" @khoa.Name\" không?');">
                                 <i class="bi bi-eye-slash"></i>
                             </a>
+
                         }
                         else
                         {
-                            <a class="btn btn-sm btn-success" href="@Url.Action("KhoiPhuc", "Khoa", new { id = khoa.Id, area = "Admin" })" title="Khôi phục">
+                            <a class="btn btn-sm btn-success"
+                               href="@Url.Action("KhoiPhuc", "Khoa", new { id = khoa.Id, area = "Admin" })"
+                               title="Khôi phục">
                                 <i class="bi bi-arrow-repeat"></i>
                             </a>
                         }
                     </td>
+
                 </tr>
             }
         }
