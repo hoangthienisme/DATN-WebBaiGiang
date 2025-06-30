@@ -1,168 +1,146 @@
-﻿/* Màu sắc tùy chỉnh */
-:root {
-    --primary: #5B9BD5; /* Xanh dương nhạt */
-    --success: #66BB6A; /* Xanh lá nhạt */
-    --info: #4DB6AC; /* Xanh ngọc nhẹ */
-    --danger: #EF9A9A; /* Hồng san hô nhạt */
-    --background: #F7F9FC; /* Xám nhạt */
-    --text-muted: #6C757D; /* Xám chữ */
-    --border-light: #E0E7EE; /* Viền nhạt */
+﻿/* ===============================
+   CSS cho trang Chi Tiết Bài Giảng
+   Phong cách: sáng, hiện đại
+   =============================== */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
 }
 
-/* Card */
-.card {
-    background-color: var(--background);
-    border: 1px solid var(--border-light);
-    transition: transform 0.2s ease-in-out;
+/* Sidebar (Table of Contents) */
+.left-toc {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-    .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    .left-toc h5 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #0d6efd;
     }
 
-/* Header bài giảng */
-.card-header.bg-primary {
-    background-color: var(--primary) !important;
-    color: white;
-    border-bottom: none;
+    .left-toc input[type="text"] {
+        margin-bottom: 1rem;
+    }
+
+    .left-toc ul {
+        padding-left: 0;
+    }
+
+    .left-toc li {
+        list-style: none;
+        margin-bottom: 0.5rem;
+    }
+
+.toc-link {
+    cursor: pointer;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
 }
 
-/* Tiêu đề chương */
-.card-header.bg-success {
-    background-color: var(--success) !important;
-    color: white;
-    border-bottom: none;
+    .toc-link:hover {
+        background-color: #e9ecef;
+        color: #0d6efd;
+    }
+
+.sub-item {
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    color: #555;
 }
 
-/* Tài nguyên tổng hợp */
-.card-header.bg-info {
-    background-color: var(--info) !important;
-    color: white;
-    border-bottom: none;
+/* Main content area */
+.main-content {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Nền thẻ nhạt */
-.card.bg-light {
-    background-color: var(--background) !important;
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
-/* Accordion */
-.accordion-button:not(.collapsed) {
-    background-color: var(--background);
-    color: var(--text-muted);
-    box-shadow: none;
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .accordion-button {
-    color: var(--text-muted);
-    font-weight: 500;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
 }
 
-.accordion-item {
-    border: 1px solid var(--border-light);
-    margin-bottom: 8px;
-    border-radius: 8px;
-}
-
-/* List group */
-.list-group-item {
-    border-left: none;
-    border-right: none;
-    background-color: var(--background);
-    color: var(--text-muted);
-}
-
-    .list-group-item:first-child {
-        border-top: none;
+    .accordion-button:not(.collapsed) {
+        background-color: #e2f0ff;
+        color: #0d6efd;
     }
 
-    .list-group-item:last-child {
-        border-bottom: none;
+.accordion-body {
+    background-color: #fafafa;
+}
+
+.lesson-card {
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s;
+}
+
+    .lesson-card:hover {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        background-color: #fff;
     }
-
-/* Nút */
-.btn-primary, .btn-outline-primary:hover {
-    background-color: var(--primary);
-    border-color: var(--primary);
-    color: white;
-}
-
-.btn-success, .btn-outline-success:hover {
-    background-color: var(--success);
-    border-color: var(--success);
-    color: white;
-}
-
-.btn-danger, .btn-outline-danger:hover {
-    background-color: var(--danger);
-    border-color: var(--danger);
-    color: white;
-}
-
-.btn-outline-primary, .btn-outline-success, .btn-outline-danger {
-    color: var(--text-muted);
-}
-
-.btn-group-sm > .btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-}
-
-/* Badge */
-.badge.bg-primary {
-    background-color: var(--primary);
-}
-
-.badge.bg-success {
-    background-color: var(--success);
-}
-
-.badge.bg-danger {
-    background-color: var(--danger);
-}
-
-/* Chữ mô tả */
-.text-muted {
-    color: var(--text-muted) !important;
-}
-
-/* Viền bài học */
-.border-primary {
-    border-color: var(--primary) !important;
-}
-
-/* Biểu tượng tài liệu */
-i.text-danger {
-    color: var(--danger) !important;
-}
-
-/* Iframe và video */
-iframe, video {
-    border: 1px solid var(--border-light) !important;
-    border-radius: 4px;
-}
-
-.ratio-16x9 {
-    --bs-aspect-ratio: 56.25%;
-}
 
 /* Responsive */
 @media (max-width: 768px) {
-    .btn-group {
-        flex-direction: column;
+    .left-toc {
+        display: none;
     }
 
-        .btn-group .btn {
-            border-radius: 0.25rem !important;
-            margin-bottom: 2px;
+    .main-content {
+        padding: 0.5rem;
+    }
+    .input-as-text {
+        border: none;
+        background: transparent;
+        padding: 0;
+        width: 100%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: inherit;
+    }
+
+        .input-as-text:focus {
+            outline: none;
+            border-bottom: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+    #saveAll {
+        font-size: 1.1rem;
+
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+        #saveAll:hover {
+            background-color: #28a745 !important;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+            transform: translateY(-2px);
         }
 
-    .card {
-        margin-bottom: 12px;
-    }
-
-    .accordion-item {
-        margin-bottom: 6px;
-    }
 }

@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
 <div class="container mt-4">
     <h3>Tạo bài giảng mới</h3>
@@ -32,8 +33,9 @@
 
             <div class="mb-3">
                 <label asp-for="Description" class="form-label fw-bold">Mô tả (không bắt buộc)</label>
-                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <textarea asp-for="Description" class="form-control" id="description-editor" rows="3"></textarea>
             </div>
+
 
             <div class="mb-3">
                 <label class="form-label fw-bold">Dành cho lớp</label>
@@ -199,14 +201,19 @@
         div.className = "lesson-item border p-2 mt-2";
         div.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="fw-bold">Bài học ${sortOrder}</label>
+              <label class="fw-bold">Bài học ${chapterIndex + 1}.${sortOrder}</label>
+
                 <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, 'lesson-item')">Xóa bài học</button>
             </div>
 
             <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Id" value="0" />
             <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].SortOrder" value="${sortOrder}" />
             <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Title" class="form-control mb-1" placeholder="Tên bài học" required />
-            <textarea name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Description" class="form-control mb-1" placeholder="Mô tả bài học"></textarea>
+           <textarea name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Description"
+          class="form-control mb-1 lesson-description"
+          placeholder="Mô tả bài học"
+          id="lesson-desc-${chapterIndex}-${lessonCount}"></textarea>
+
             <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
 
             <div class="mb-2">
@@ -231,6 +238,10 @@
         `;
 
         container.appendChild(div);
+
+    ClassicEditor
+        .create(document.querySelector(`#lesson-desc-${chapterIndex}-${lessonCount}`))
+        .catch(error => console.error(error));
     }
 
 
@@ -285,7 +296,8 @@
             // Cập nhật tiêu đề "Bài học X"
             const label = lesson.querySelector('label.fw-bold');
             if (label) {
-                label.textContent = `Bài học ${sortOrder}`;
+    label.textContent = `Bài học ${chapterIndex + 1}.${sortOrder}`;
+
             }
 
             // Cập nhật input name
@@ -376,3 +388,11 @@
         $('.class-checkbox').on('change', updateSelectedClassesDropdownText);
     });
 </script>
+<script>
+    ClassicEditor
+            .create(document.querySelector('#description-editor'))
+            .catch(error => {
+                console.error(error);
+            });
+</script>
+
