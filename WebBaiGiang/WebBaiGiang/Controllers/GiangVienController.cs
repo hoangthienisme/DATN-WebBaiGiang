@@ -729,20 +729,19 @@ namespace WebBaiGiang.Controllers
         }
 
 
-        private async Task<string> SaveFile(IFormFile file, string folderPath)
+        private async Task<string> SaveFile(IFormFile file, string folder)
         {
-            var uploadsFolder = Path.Combine(_env.WebRootPath, folderPath);
-            Directory.CreateDirectory(uploadsFolder);
-
-            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            var filePath = Path.Combine(uploadsFolder, fileName);
-
+            if (file == null || file.Length == 0)
+            {
+                throw new ArgumentException("File is null or empty.");
+            }
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(_env.WebRootPath, folder, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
-
-            return $"/{folderPath}/{fileName}".Replace("\\", "/");
+            return $"/{folder}/{fileName}";
         }
 
         [HttpPost]
@@ -915,7 +914,439 @@ namespace WebBaiGiang.Controllers
             TempData["Success"] = "Đã xóa bình luận thành công!";
             return RedirectToAction("ChiTietBaiGiang", "GiangVien", new { id = bl.BaiGiangId });
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveAll(ChiTietBaiGiangViewModel model)
+        {
+            try
+            {
+                var baiGiang = await _context.BaiGiangs
+                    .Include(b => b.Chuongs).ThenInclude(c => c.Bais)
+                    .FirstOrDefaultAsync(b => b.Id == model.BaiGiang.Id);
 
+                if (baiGiang == null)
+                {
+                    return Json(new { success = false, message = "Bài giảng không tồn tại" });
+                }
+
+                // Cập nhật bài giảng
+                baiGiang.Title = model.Title;
+                baiGiang.Description = model.Description;
+
+                // Cập nhật chương
+                foreach (var chuong in model.Chuongs)
+                {
+                    var existingChuong = baiGiang.Chuongs.FirstOrDefault(c => c.Id == chuong.Id);
+                    if (existingChuong != null)
+                    {
+                        existingChuong.Title = chuong.Title;
+                    }
+                }
+
+                // Cập nhật bài
+                foreach (var chuong in model.Chuongs)
+                {
+                    foreach (var bai in chuong.Bais)
+                    {
+                        var existingBai = chuong.Bais.FirstOrDefault(b => b.Id == bai.Id);
+                        if (existingBai != null)
+                        {
+                            existingBai.Title = bai.Title;
+                            existingBai.Description = bai.Description;
+                        }
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        // POST: Thêm chương
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ThemChuong(int baiGiangId, string title)
+        {
+            try
+            {
+                var baiGiang = await _context.BaiGiangs.FindAsync(baiGiangId);
+                if (baiGiang == null)
+                {
+                    return Json(new { success = false, message = "Bài giảng không tồn tại" });
+                }
+
+                var maxSortOrder = await _context.Chuongs
+                    .Where(c => c.BaiGiangId == baiGiangId)
+                    .MaxAsync(c => (int?)c.SortOrder) ?? 0;
+
+                var chuong = new Chuong
+                {
+                    Title = title,
+                    SortOrder = maxSortOrder + 1,
+                    BaiGiangId = baiGiangId
+                };
+
+                _context.Chuongs.Add(chuong);
+                await _context.SaveChangesAsync();
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        // POST: Xóa chương
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> XoaChuong(int id)
+        {
+            try
+            {
+                var chuong = await _context.Chuongs
+                    .Include(c => c.Bais)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+
+                if (chuong == null)
+                {
+                    return Json(new { success = false, message = "Chương không tồn tại" });
+                }
+
+                _context.Bais.RemoveRange(chuong.Bais);
+                _context.Chuongs.Remove(chuong);
+                await _context.SaveChangesAsync();
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        // POST: Thêm bài
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
+        public async Task<IActionResult> ThemBai(int baiId, int chuongId, int baiGiangId, string title, string description, IFormFile[] ImageFiles, string[] YoutubeLinks, IFormFile[] DocumentFiles)
+        {
+            try
+            {
+                Console.WriteLine($"==== [DEBUG] Thêm bài ====");
+                Console.WriteLine($"Tiêu đề: {title}");
+                Console.WriteLine($"Mô tả: {description}");
+                Console.WriteLine($"Chương ID: {chuongId}, Bài giảng ID: {baiGiangId}");
+                Console.WriteLine($"Số lượng ảnh: {ImageFiles?.Length ?? 0}");
+                Console.WriteLine($"Số lượng tài liệu: {DocumentFiles?.Length ?? 0}");
+                Console.WriteLine($"Số lượng link YouTube: {YoutubeLinks?.Length ?? 0}");
+
+                // Kiểm tra chương
+                var chuong = await _context.Chuongs.FindAsync(chuongId);
+                if (chuong == null)
+                {
+                    return Json(new { success = false, message = "Chương không tồn tại" });
+                }
+
+                // Kiểm tra bài giảng
+                var baiGiang = await _context.BaiGiangs.FindAsync(baiGiangId);
+                if (baiGiang == null)
+                {
+                    return Json(new { success = false, message = "Bài giảng không tồn tại" });
+                }
+
+                // Kiểm tra quyền sở hữu
+                var currentGiangVienId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+                if (baiGiang.CreatedBy != currentGiangVienId)
+                {
+                    return Json(new { success = false, message = "Bạn không có quyền thêm bài cho bài giảng này." });
+                }
+
+                // Kiểm tra chương thuộc bài giảng
+                if (chuong.BaiGiangId != baiGiangId)
+                {
+                    return Json(new { success = false, message = "Chương không thuộc bài giảng này" });
+                }
+
+                // Tạo bài mới
+                var bai = new Bai
+                {
+                    ChuongId = chuongId,
+                    Title = title,
+                    Description = description,
+                    SortOrder = (_context.Bais.Where(b => b.ChuongId == chuongId).Max(b => (int?)b.SortOrder) ?? 0) + 1
+                };
+                _context.Bais.Add(bai);
+                await _context.SaveChangesAsync();
+
+                // Xử lý tài nguyên
+                var taiNguyens = new List<TaiNguyen>();
+
+                // Upload ảnh
+                if (ImageFiles?.Any(f => f.Length > 0) == true)
+                {
+                    foreach (var file in ImageFiles.Where(f => f.Length > 0))
+                    {
+                        if (file.Length > 5 * 1024 * 1024) // Giới hạn 5MB
+                        {
+                            TempData["Error"] = "Kích thước ảnh không được vượt quá 5MB.";
+                            return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                        }
+                        var filePath = await SaveFile(file, "images");
+                        taiNguyens.Add(new TaiNguyen
+                        {
+                            Url = filePath,
+                            Loai = "image",
+                            BaiGiangId = baiGiangId,
+                            BaiId = bai.Id // Sửa từ baiId thành bai.Id
+                        });
+                    }
+                }
+
+                // Upload tài liệu
+                if (DocumentFiles?.Any(f => f.Length > 0) == true)
+                {
+                    foreach (var file in DocumentFiles.Where(f => f.Length > 0))
+                    {
+                        if (file.Length > 10 * 1024 * 1024) // Giới hạn 10MB
+                        {
+                            TempData["Error"] = "Kích thước tài liệu không được vượt quá 10MB.";
+                            return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                        }
+                        var filePath = await SaveFile(file, "files");
+                        taiNguyens.Add(new TaiNguyen
+                        {
+                            Url = filePath,
+                            Loai = "tailieu",
+                            BaiGiangId = baiGiangId,
+                            BaiId = bai.Id // Sửa từ baiId thành bai.Id
+                        });
+                    }
+                }
+
+                // Thêm link YouTube
+                if (YoutubeLinks?.Any(l => !string.IsNullOrWhiteSpace(l)) == true)
+                {
+                    foreach (var link in YoutubeLinks.Where(l => !string.IsNullOrWhiteSpace(l)))
+                    {
+                        taiNguyens.Add(new TaiNguyen
+                        {
+                            Url = link.Trim(),
+                            Loai = "youtube",
+                            BaiGiangId = baiGiangId,
+                            BaiId = bai.Id // Sửa từ baiId thành bai.Id
+                        });
+                    }
+                }
+
+                if (taiNguyens.Any())
+                {
+                    _context.TaiNguyens.AddRange(taiNguyens);
+                    await _context.SaveChangesAsync();
+                }
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi: {ex.Message}");
+                return Json(new { success = false, message = "Có lỗi xảy ra khi thêm bài." });
+            }
+        }
+
+        // POST: Xóa bài
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> XoaBai(int id)
+        {
+            try
+            {
+                var bai = await _context.Bais.FindAsync(id);
+                if (bai == null)
+                {
+                    return Json(new { success = false, message = "Bài không tồn tại" });
+                }
+
+                _context.Bais.Remove(bai);
+                await _context.SaveChangesAsync();
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+        // Thêm tài nguyên
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
+        public async Task<IActionResult> ThemTaiNguyen(int? baiId, int baiGiangId, IFormFile[] ImageFiles, IFormFile[] DocumentFiles, string[] YoutubeLinks)
+        {
+            try
+            {
+                var baiGiang = await _context.BaiGiangs.FindAsync(baiGiangId);
+                if (baiGiang == null)
+                {
+                    TempData["Error"] = "Bài giảng không tồn tại";
+                    return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                }
+
+                if (baiId.HasValue)
+                {
+                                var bai = await _context.Bais
+                     .Include(b => b.Chuong)
+                     .FirstOrDefaultAsync(b => b.Id == baiId);
+                    if (bai == null)
+                    {
+                        TempData["Error"] = "Bài không tồn tại";
+                        return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                    }
+                    if (bai.Chuong?.BaiGiangId != baiGiangId)
+                    {
+                        TempData["Error"] = "Bài không thuộc bài giảng này";
+                        return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                    }
+                }
+
+                var currentGiangVienId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+                if (baiGiang.CreatedBy != currentGiangVienId)
+                {
+                    TempData["Error"] = "Bạn không có quyền thêm tài nguyên cho bài giảng này.";
+                    return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                }
+
+                var taiNguyens = new List<TaiNguyen>();
+
+                // Upload ảnh
+                if (ImageFiles?.Any(f => f.Length > 0) == true)
+                {
+                    foreach (var file in ImageFiles.Where(f => f.Length > 0))
+                    {
+                        if (file.Length > 5 * 1024 * 1024) // Giới hạn 5MB
+                        {
+                            TempData["Error"] = "Kích thước ảnh không được vượt quá 5MB.";
+                            return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                        }
+                        var filePath = await SaveFile(file, "images");
+                        taiNguyens.Add(new TaiNguyen
+                        {
+                            Url = filePath,
+                            Loai = "image",
+                            BaiGiangId = baiGiangId,
+                            BaiId = baiId
+                        });
+                    }
+                }
+
+                // Upload tài liệu
+                if (DocumentFiles?.Any(f => f.Length > 0) == true)
+                {
+                    foreach (var file in DocumentFiles.Where(f => f.Length > 0))
+                    {
+                        if (file.Length > 10 * 1024 * 1024) // Giới hạn 10MB
+                        {
+                            TempData["Error"] = "Kích thước tài liệu không được vượt quá 10MB.";
+                            return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                        }
+                        var filePath = await SaveFile(file, "files");
+                        taiNguyens.Add(new TaiNguyen
+                        {
+                            Url = filePath,
+                            Loai = "tailieu",
+                            BaiGiangId = baiGiangId,
+                            BaiId = baiId
+                        });
+                    }
+                }
+
+                // Thêm link YouTube
+                if (YoutubeLinks?.Any(l => !string.IsNullOrWhiteSpace(l)) == true)
+                {
+                    foreach (var link in YoutubeLinks.Where(l => !string.IsNullOrWhiteSpace(l)))
+                    {
+                        taiNguyens.Add(new TaiNguyen
+                        {
+                            Url = link.Trim(),
+                            Loai = "youtube",
+                            BaiGiangId = baiGiangId,
+                            BaiId = baiId
+                        });
+                    }
+                }
+
+                if (taiNguyens.Any())
+                {
+                    _context.TaiNguyens.AddRange(taiNguyens);
+                    await _context.SaveChangesAsync();
+                    TempData["Success"] = "Thêm tài nguyên thành công!";
+                }
+                else
+                {
+                    TempData["Error"] = "Không có tài nguyên nào được thêm.";
+                }
+
+                return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+            }
+            catch (Exception ex)
+            {
+             
+                TempData["Error"] = "Có lỗi xảy ra khi thêm tài nguyên.";
+                return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+            }
+        }
+
+        // Xóa tài nguyên
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
+        public async Task<IActionResult> XoaTaiNguyen(int id, int baiGiangId)
+        {
+            try
+            {
+                var taiNguyen = await _context.TaiNguyens.FindAsync(id);
+                if (taiNguyen == null)
+                {
+                    TempData["Error"] = "Tài nguyên không tồn tại";
+                    return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                }
+
+                var baiGiang = await _context.BaiGiangs.FindAsync(baiGiangId);
+                if (baiGiang == null)
+                {
+                    TempData["Error"] = "Bài giảng không tồn tại";
+                    return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                }
+
+                var currentGiangVienId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+                if (baiGiang.CreatedBy != currentGiangVienId)
+                {
+                    TempData["Error"] = "Bạn không có quyền xóa tài nguyên này.";
+                    return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+                }
+
+                if (taiNguyen.Loai != "youtube")
+                {
+                    var filePath = Path.Combine(_env.WebRootPath, taiNguyen.Url.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                }
+
+                _context.TaiNguyens.Remove(taiNguyen);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Xóa tài nguyên thành công!";
+                return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+            }
+            catch (Exception ex)
+            {
+             
+                TempData["Error"] = "Có lỗi xảy ra khi xóa tài nguyên.";
+                return RedirectToAction("ChiTietBaiGiang", new { id = baiGiangId });
+            }
+        }
         public IActionResult Classwork()
         {
             return View();

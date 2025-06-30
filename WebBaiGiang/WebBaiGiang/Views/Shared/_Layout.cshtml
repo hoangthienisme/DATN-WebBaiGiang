@@ -2,11 +2,15 @@
 
 @{
     var thongTin = _context.ThongTinWebs.FirstOrDefault();
-
+    var avatar = User.FindFirst("Avatar")?.Value;
     var isLoggedIn = User.Identity?.IsAuthenticated ?? false;
     var userEmail = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? "";
     var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "";
     var userName = User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value ?? "";
+    var isStudentOrTeacher = isLoggedIn && (userRole == "Student" || userRole == "Teacher");
+    var defaultAvatarPath = "/img/avatar-default.png";
+    var name = string.IsNullOrEmpty(userName) ? userEmail : userName;
+
 }
 
 <!DOCTYPE html>
@@ -72,9 +76,37 @@
 
         <div class="navbar-utility-group">
             <div class="navbar-auth-buttons">
-                <a href="@Url.Action("SignUp", "Account")" class="btn-register">Đăng ký</a>
-                <a href="@Url.Action("Login", "Account")" class="btn-login">Đăng nhập</a>
+                @if (!isStudentOrTeacher)
+                {
+                    <!-- Hiện khi chưa đăng nhập hoặc không phải Student/Teacher -->
+                    <a href="@Url.Action("SignUp", "Account")" class="btn-register">Đăng ký</a>
+                    <a href="@Url.Action("Login", "Account")" class="btn-login">Đăng nhập</a>
+                }
+                else
+                {
+                    <!-- Dropdown người dùng -->
+                    <div class="custom-dropdown position-relative">
+                        <button class="avatar-button d-flex align-items-center" type="button" id="dropdownUserToggle" onclick="toggleDropdown()">
+                            <img src="@Url.Content(!string.IsNullOrEmpty(avatar) ? avatar : defaultAvatarPath)" alt="Avatar" class="avatar-img rounded-circle" style="width: 32px; height: 32px;" />
+                            <span class="ms-2 d-none d-sm-inline text-dark">@name</span>
+                        </button>
+                        <ul class="custom-dropdown-menu position-absolute bg-white shadow rounded" id="dropdownUserMenu" style="display: none; right: 0; top: 40px; min-width: 160px; z-index: 999;">
+                            <li>
+                                <a class="custom-dropdown-item d-block px-3 py-2 text-dark text-decoration-none" href="@Url.Action("Profile", "Account")">
+                                    <i class="bi bi-person-circle me-2"></i> Tài khoản
+                                </a>
+                            </li>
+                            <li><hr class="custom-dropdown-divider m-0" /></li>
+                            <li>
+                                <a class="custom-dropdown-item d-block px-3 py-2 text-danger text-decoration-none" id="logoutLink" href="@Url.Action("Logout", "Account")">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
+
         </div>
     </nav>
 
@@ -89,3 +121,19 @@
 
 </body>
 </html>
+<script>
+    function toggleDropdown() {
+        const menu = document.getElementById("dropdownUserMenu");
+        menu.style.display = (menu.style.display === "none" || !menu.style.display) ? "block" : "none";
+    }
+
+    // Ẩn dropdown nếu click ngoài
+    document.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("dropdownUserMenu");
+        const toggleBtn = document.getElementById("dropdownUserToggle");
+        if (!toggleBtn.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.style.display = "none";
+        }
+    });
+</script>
+
