@@ -1,10 +1,6 @@
-﻿/* ===============================
-   CSS cho trang Chi Tiết Bài Giảng
-   Phong cách: sáng, hiện đại
-   =============================== */
-
+﻿
 body {
-    background-color: #f8f9fa;
+    background-color: #f4f6f3;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
 }
@@ -25,7 +21,7 @@ body {
     .left-toc h5 {
         font-weight: 600;
         margin-bottom: 1rem;
-        color: #0d6efd;
+        color: #6abf4b;
     }
 
     .left-toc input[type="text"] {
@@ -50,8 +46,8 @@ body {
 }
 
     .toc-link:hover {
-        background-color: #e9ecef;
-        color: #0d6efd;
+        background-color: #eaf5e6;
+        color: #6abf4b;
     }
 
 .sub-item {
@@ -80,18 +76,18 @@ body {
 }
 
 .accordion-button {
-    background-color: #f8f9fa;
+    background-color: #f4f6f3;
     font-weight: 600;
     color: #333;
 }
 
     .accordion-button:not(.collapsed) {
-        background-color: #e2f0ff;
-        color: #0d6efd;
+        background-color: #eaf5e6;
+        color: #6abf4b;
     }
 
 .accordion-body {
-    background-color: #fafafa;
+    background-color: #f9fbf8;
 }
 
 .lesson-card {
@@ -113,6 +109,7 @@ body {
     .main-content {
         padding: 0.5rem;
     }
+
     .input-as-text {
         border: none;
         background: transparent;
@@ -128,19 +125,20 @@ body {
         .input-as-text:focus {
             outline: none;
             border-bottom: 1px solid #ccc;
-            background: #f9f9f9;
+            background: #f4f6f3;
         }
+
     #saveAll {
         font-size: 1.1rem;
-
         transition: all 0.3s ease;
         border: none;
+        background-color: #6abf4b;
+        color: #fff;
     }
 
         #saveAll:hover {
-            background-color: #28a745 !important;
-            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+            background-color: #5aa43f !important;
+            box-shadow: 0 4px 12px rgba(106, 191, 75, 0.4);
             transform: translateY(-2px);
         }
-
 }

@@ -78,7 +78,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Xem chi tiết</a>
-                            <a class="dropdown-item dropdown-item-unarchive" data-id="@course.Id">Khôi phục</a>
+                            <a class="dropdown-item dropdown-item-unarchive" onclick="showConfirmArchiveModal(@course.Id)">Khôi phục</a>
                         </div>
                     </div>
 
@@ -97,7 +97,13 @@
             <p>Không có lớp học nào đã lưu trữ.</p>
         }
     </div>
-
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmArchiveModal",
+    Message = "Bạn có chắc khôi phục lớp học này?",
+    ActionUrl = Url.Action("ArchiveCourse", "GiangVien"),
+    DataId = 0 
+})
     <div class="pagination">
         @if (Model.TotalPages > 1)
         {
@@ -150,29 +156,19 @@
         }
     });
 
-    $(document).ready(function () {
-        $('.dropdown-item-unarchive').click(function (e) {
-            e.preventDefault();
-            if (!confirm('Bạn có muốn khôi phục lớp học này không?')) return;
 
-            var courseId = $(this).data('id');
-            var courseCard = $(this).closest('.course-card');
+     function showConfirmArchiveModal(courseId) {
+        const modal = document.getElementById("confirmArchiveModal");
+        const input = modal.querySelector("input[name='id']");
+        input.value = courseId;
+        modal.classList.add("show");
 
-            $.ajax({
-                url: '@Url.Action("UnarchiveCourse", "GiangVien")',
-                type: 'POST',
-                data: { id: courseId },
-                success: function (response) {
-                    if (response.success) {
-                        courseCard.fadeOut(500, () => courseCard.remove());
-                    } else {
-                        alert('Khôi phục thất bại');
-                    }
-                },
-                error: function () {
-                    alert('Có lỗi xảy ra khi khôi phục');
-                }
-            });
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) modal.classList.remove("show");
         });
-    });
+
+        modal.querySelector(".cancel-btn").addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+    }
 </script>

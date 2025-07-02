@@ -16,6 +16,15 @@
     min-width: 250px;
 }
 
+.course-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+    .course-link:hover h4 {
+        text-decoration: underline;
+    }
 
 
 .dropdown {

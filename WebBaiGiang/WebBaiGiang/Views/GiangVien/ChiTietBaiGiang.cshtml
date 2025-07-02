@@ -1,5 +1,6 @@
 ﻿@model WebBaiGiang.ViewModel.ChiTietBaiGiangViewModel
 @using System.Security.Claims
+@using System.Web
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
 
@@ -16,12 +17,18 @@
     }
 }
 
+<!-- Custom style -->
+<link rel="stylesheet" href="~/css/chitietbaigiang.css" />
 
-    <link href="~/css/chitietbaigiang.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- CKEditor 5 -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
 <div class="container-fluid mt-4">
     <!-- Header Section -->
@@ -36,14 +43,14 @@
                 <div class="card-body">
                     <form id="mainForm" asp-action="SaveAll" method="post">
                         @Html.AntiForgeryToken()
-                        <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
+                        <input type="hidden" name="Id" value="@Model.BaiGiang.Id" />
                         <div class="mb-3">
                             <label class="form-label fw-bold">Tiêu đề</label>
                             <input type="text" name="Title" class="form-control" value="@Model.Title" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Mô tả</label>
-                            <textarea name="Description" id="description-editor" class="form-control">@Html.Raw(Model.Description)</textarea>
+                            <textarea name="Description" id="description-editor" class="form-control">@Model.Description</textarea>
                         </div>
                     </form>
                 </div>
@@ -120,6 +127,7 @@
 
                 @if (Model.Chuongs?.Any() == true)
                 {
+                    int chuongIndex = 0;
                     @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
                     {
                         <div id="chapter-@chuong.Id" class="chapter-section mb-4">
@@ -127,9 +135,9 @@
                                 <div class="chapter-title d-flex align-items-center">
                                     <i class="fas fa-folder-open me-2"></i>
                                     <span class="fw-bold fs-4 me-2 text-dark">Chương @chuong.SortOrder:</span>
-                                    <textarea name="Chuong[@chuong.Id].Title" class="input-as-text fw-bold fs-5 text-dark" rows="1"
+                                    <textarea name="Chuongs[@chuongIndex].Title" class="input-as-text fw-bold fs-5 text-dark chuong-title" rows="1"
                                               style="resize: none; overflow: hidden;">@chuong.Title</textarea>
-                                    <input type="hidden" name="Chuong[@chuong.Id].Id" value="@chuong.Id" />
+                                    <input type="hidden" name="Chuongs[@chuongIndex].Id" value="@chuong.Id" />
                                 </div>
                                 <div class="d-flex gap-2">
                                     <button type="button" class="btn btn-sm btn-primary" onclick="hienOThemBai(@chuong.Id)">
@@ -189,23 +197,24 @@
 
                             @if (chuong.Bais?.Any() == true)
                             {
+                                int baiIndex = 0;
                                 @foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
                                 {
                                     var baiImages = bai.TaiNguyens?.Where(t => t.Loai == "image");
                                     var baiVideos = bai.TaiNguyens?.Where(t => t.Loai == "youtube");
                                     var baiDocs = bai.TaiNguyens?.Where(t => t.Loai == "tailieu");
-      
 
-                                    <div id="lesson-@bai.Id" class="lesson-content mb-4 p-3 border rounded bg-light">
+                                    <div id="lesson-@bai.Id" class="lesson-content mb-4 p-3 border rounded bg-light bai-input"
+                                         data-chuong-index="@chuongIndex" data-bai-index="@baiIndex" data-bai-id="@bai.Id" data-chuong-id="@chuong.Id">
                                         <div class="d-flex align-items-center mb-2">
                                             <i class="fas fa-bookmark me-2 text-primary"></i>
                                             <span class="fw-normal fs-6 text-muted me-2">Bài @chuong.SortOrder.@bai.SortOrder:</span>
-                                            <textarea name="Bai[@bai.Id].Title" class="input-as-text fs-6 text-muted" rows="1"
+                                            <textarea name="Chuongs[@chuongIndex].Bais[@baiIndex].Title" class="input-as-text fs-6 text-muted bai-title" rows="1"
                                                       style="min-width: 50%; resize: none; overflow: hidden;">@bai.Title</textarea>
-                                            <input type="hidden" name="Bai[@bai.Id].Id" value="@bai.Id" />
-                                            <input type="hidden" name="Bai[@bai.Id].ChuongId" value="@chuong.Id" />
+                                            <input type="hidden" name="Chuongs[@chuongIndex].Bais[@baiIndex].Id" value="@bai.Id" />
+                                            <input type="hidden" name="Chuongs[@chuongIndex].Bais[@baiIndex].ChuongId" value="@chuong.Id" />
                                         </div>
-                                        <textarea name="Bai[@bai.Id].Description" id="editor-@bai.Id">@Html.Raw(bai.Description)</textarea>
+                                        <textarea name="Chuongs[@chuongIndex].Bais[@baiIndex].Description" id="editor-@bai.Id" class="bai-description">@bai.Description</textarea>
 
                                         <!-- Tài nguyên của bài -->
                                         <div class="resource-section mt-4">
@@ -443,6 +452,7 @@
                                             </form>
                                         </div>
                                     </div>
+                                    baiIndex++;
                                 }
                             }
                             else
@@ -450,6 +460,7 @@
                                 <div class="text-muted text-center py-3">Chưa có bài học trong chương này.</div>
                             }
                         </div>
+                        chuongIndex++;
                     }
                 }
                 else
@@ -464,8 +475,7 @@
                 <!-- Resources Section -->
                 <div class="resource-section">
                     <h4 class="mb-4">
-                        <i class="fas fa-archive me-2"></i>
-                        Tài nguyên tổng hợp
+                        <i class="fas fa-archive me-2"></i> Tài nguyên tổng hợp
                     </h4>
                     <div class="row g-4">
                         <!-- Images Column -->
@@ -473,8 +483,7 @@
                             <div class="card h-100 border-0 bg-white bg-opacity-90">
                                 <div class="card-header bg-primary text-white">
                                     <h6 class="mb-0">
-                                        <i class="fas fa-images me-2"></i>
-                                        Ảnh minh họa
+                                        <i class="fas fa-images me-2"></i> Ảnh minh họa
                                         @if (taiNguyenAnh?.Any(t => t.BaiId == null) == true)
                                         {
                                             <span class="badge bg-light text-primary ms-2">@taiNguyenAnh.Count(t => t.BaiId == null)</span>
@@ -544,8 +553,7 @@
                             <div class="card h-100 border-0 bg-white bg-opacity-90">
                                 <div class="card-header bg-danger text-white">
                                     <h6 class="mb-0">
-                                        <i class="fab fa-youtube me-2"></i>
-                                        Video YouTube
+                                        <i class="fab fa-youtube me-2"></i> Video YouTube
                                         @if (taiNguyenYoutube?.Any(t => t.BaiId == null) == true)
                                         {
                                             <span class="badge bg-light text-danger ms-2">@taiNguyenYoutube.Count(t => t.BaiId == null)</span>
@@ -623,8 +631,7 @@
                             <div class="card h-100 border-0 bg-white bg-opacity-90">
                                 <div class="card-header bg-success text-white">
                                     <h6 class="mb-0">
-                                        <i class="fas fa-file-alt me-2"></i>
-                                        Tài liệu đính kèm
+                                        <i class="fas fa-file-alt me-2"></i> Tài liệu đính kèm
                                         @if (taiNguyenDocs?.Any(t => t.BaiId == null) == true)
                                         {
                                             <span class="badge bg-light text-success ms-2">@taiNguyenDocs.Count(t => t.BaiId == null)</span>
@@ -687,125 +694,137 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Comment Section -->
-            <div class="comment-section mt-5">
-                <h5 class="mb-4">
-                    <i class="fas fa-comments me-2"></i> Bình luận
-                </h5>
-                <form asp-action="ThemBinhLuan" method="post" class="mb-4">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                    <div class="mb-3">
-                        <textarea name="NoiDung" class="form-control" placeholder="Nhập bình luận của bạn..." rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane me-2"></i> Gửi bình luận
-                    </button>
-                </form>
+                <!-- Comment Section -->
+                <div class="comment-section mt-5">
+                    <h5 class="mb-4">
+                        <i class="fas fa-comments me-2"></i> Bình luận
+                    </h5>
+                    <form asp-action="ThemBinhLuan" method="post" class="mb-4">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
+                        <div class="mb-3">
+                            <textarea name="NoiDung" class="form-control" placeholder="Nhập bình luận của bạn..." rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-2"></i> Gửi bình luận
+                        </button>
+                    </form>
 
-                <div>
-                    @if (Model.BinhLuans != null && Model.BinhLuans.Any())
-                    {
-                        foreach (var bl in Model.BinhLuans)
+                    <div>
+                        @if (Model.BinhLuans != null && Model.BinhLuans.Any())
                         {
-                            var isOwner = bl.NguoiDungId == currentUserId;
-                            var isTeacher = currentUserRole == "Teacher";
-                            <div class="card mb-3 border-0 shadow-sm">
-                                <div class="card-body position-relative">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"
-                                             style="width: 40px; height: 40px;">
-                                            <i class="fas fa-user text-white"></i>
+                            foreach (var bl in Model.BinhLuans)
+                            {
+                                var isOwner = bl.NguoiDungId == currentUserId;
+                                var isTeacher = currentUserRole == "Teacher";
+                                <div class="card mb-3 border-0 shadow-sm">
+                                    <div class="card-body position-relative">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                                 style="width: 40px; height: 40px;">
+                                                <i class="fas fa-user text-white"></i>
+                                            </div>
+                                            <div>
+                                                <strong>@bl.NguoiDung?.Name</strong>
+                                                <div class="text-muted small">@bl.NgayTao.ToString("dd/MM/yyyy HH:mm")</div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <strong>@bl.NguoiDung?.Name</strong>
-                                            <div class="text-muted small">@bl.NgayTao.ToString("dd/MM/yyyy HH:mm")</div>
-                                        </div>
-                                    </div>
-                                    <div id="comment-content-@bl.Id" class="ms-5">@Html.Raw(bl.NoiDung)</div>
-                                    @if (isOwner || isTeacher)
-                                    {
-                                        <div class="dropdown position-absolute top-0 end-0 me-3 mt-3">
-                                            <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 32px; height: 32px;">
-                                                <i class="fas fa-ellipsis$v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                @if (isOwner)
-                                                {
+                                        <div id="comment-content-@bl.Id" class="ms-5">@Html.Raw(bl.NoiDung)</div>
+                                        @if (isOwner || isTeacher)
+                                        {
+                                            <div class="dropdown position-absolute top-0 end-0 me-3 mt-3">
+                                                <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 32px; height: 32px;">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    @if (isOwner)
+                                                    {
+                                                        <li>
+                                                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); showEditForm(@bl.Id, '@HttpUtility.JavaScriptStringEncode(bl.NoiDung)')">
+                                                                <i class="fas fa-edit me-2"></i> Sửa
+                                                            </a>
+                                                        </li>
+                                                    }
                                                     <li>
-                                                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); showEditForm(@bl.Id, '@Html.Raw(JavaScriptEncoder.Default.Encode(bl.NoiDung))')">
-                                                            <i class="fas fa-edit me-2"></i> Sửa
-                                                        </a>
+                                                        <form method="post" asp-action="XoaBinhLuan" asp-route-id="@bl.Id" onsubmit="return confirm('Bạn chắc chắn xóa bình luận này?')">
+                                                            @Html.AntiForgeryToken()
+                                                            <button type="submit" class="dropdown-item text-danger">
+                                                                <i class="fas fa-trash me-2"></i> Xóa
+                                                            </button>
+                                                        </form>
                                                     </li>
-                                                }
-                                                <li>
-                                                    <form method="post" asp-action="XoaBinhLuan" asp-route-id="@bl.Id" onsubmit="return confirm('Bạn chắc chắn xóa bình luận này?')">
-                                                        @Html.AntiForgeryToken()
-                                                        <button type="submit" class="dropdown-item text-danger">
-                                                            <i class="fas fa-trash me-2"></i> Xóa
-                                                        </button>
-                                                    </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <form method="post" asp-action="SuaBinhLuan" class="mt-3 ms-5" id="edit-form-@bl.Id" style="display: none;">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="Id" value="@bl.Id" />
-                                            <textarea name="NoiDung" class="form-control mb-2">@bl.NoiDung</textarea>
-                                            <button type="submit" class="btn btn-sm btn-primary me-2">
-                                                <i class="fas fa-save me-1"></i> Lưu
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-secondary" onclick="hideEditForm(@bl.Id)">
-                                                <i class="fas fa-times me-1"></i> Hủy
-                                            </button>
-                                        </form>
-                                    }
+                                                </ul>
+                                            </div>
+                                            <form method="post" asp-action="SuaBinhLuan" class="mt-3 ms-5" id="edit-form-@bl.Id" style="display: none;">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="Id" value="@bl.Id" />
+                                                <textarea name="NoiDung" class="form-control mb-2">@bl.NoiDung</textarea>
+                                                <button type="submit" class="btn btn-sm btn-primary me-2">
+                                                    <i class="fas fa-save me-1"></i> Lưu
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-secondary" onclick="hideEditForm(@bl.Id)">
+                                                    <i class="fas fa-times me-1"></i> Hủy
+                                                </button>
+                                            </form>
+                                        }
+                                    </div>
                                 </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-center text-muted py-4">
+                                <i class="fas fa-comment-slash fa-2x mb-2"></i>
+                                <p class="mb-0">Chưa có bình luận nào.</p>
                             </div>
                         }
-                    }
-                    else
-                    {
-                        <div class="text-center text-muted py-4">
-                            <i class="fas fa-comment-slash fa-2x mb-2"></i>
-                            <p class="mb-0">Chưa có bình luận nào.</p>
-                        </div>
-                    }
-                </div>
-                <button type="button" id="saveAll" class="btn btn-success rounded-pill shadow-sm px-3 py-1"
-                        style="margin-left: 74%; height: 38px;">
-                    <i class="fas fa-save me-2"></i> Lưu thay đổi
-                </button>
+                    </div>
+                    <div id="save-error" class="alert alert-danger d-none mt-2"></div>
 
+                    <button type="button" id="saveAll" class="btn btn-success rounded-pill shadow-sm px-3 py-1"
+                            style="margin-left: 74%; height: 38px;">
+                        <i class="fas fa-save me-2"></i> Lưu thay đổi
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
     <script>
         $(document).ready(function () {
+            // Lưu trữ các instance của CKEditor
+            let editors = {};
+
             // Khởi tạo CKEditor cho mô tả bài giảng
             if ($('#description-editor').length) {
                 ClassicEditor.create(document.querySelector('#description-editor'))
+                    .then(editor => {
+                        editors['description-editor'] = editor;
+                    })
                     .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
             }
 
             // Khởi tạo CKEditor cho mô tả từng bài
             $('[id^="editor-"]').each(function () {
                 ClassicEditor.create(this)
+                    .then(editor => {
+                        editors[this.id] = editor;
+                    })
                     .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
             });
-                         // Khởi tạo CKEditor cho mô tả bài mới
-              $('[id^="newBaiDescription_"]').each(function () {
-                  ClassicEditor.create(this)
-                      .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
-              });
+
+            // Khởi tạo CKEditor cho mô tả bài mới
+            $('[id^="newBaiDescription_"]').each(function () {
+                ClassicEditor.create(this)
+                    .then(editor => {
+                        editors[this.id] = editor;
+                    })
+                    .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
+            });
 
             // Tự động điều chỉnh chiều cao textarea
-            $('textarea[name^="Chuong"], textarea[name^="Bai"]').each(function () {
+            $('textarea[name^="Chuongs"], textarea[name^="Chuongs["][name$=".Title"]').each(function () {
                 const resize = () => {
                     this.style.height = 'auto';
                     this.style.height = this.scrollHeight + 'px';
@@ -848,42 +867,45 @@
             });
 
             // Xử lý form thêm chương và bài
-               $('#form-them-chuong, [id^="form-them-bai-"]').on('submit', function (e) {
-        e.preventDefault();
-        const $form = $(this);
-        const $submitBtn = $form.find('button[type="submit"]');
-        $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
+            $('#form-them-chuong, [id^="form-them-bai-"]').on('submit', function (e) {
+                e.preventDefault();
+                const $form = $(this);
+                const $submitBtn = $form.find('button[type="submit"]');
+                $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
 
-        // Sử dụng FormData để gửi cả file và dữ liệu text
-        const formData = new FormData(this);
-        // Debug dữ liệu gửi đi
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-
-        $.ajax({
-            url: $form.attr('action'),
-            type: 'POST',
-            data: formData,
-            processData: false, // Quan trọng: Không xử lý dữ liệu
-            contentType: false, // Quan trọng: Không đặt content type
-            success: function (response) {
-                if (response.success) {
-                    alert('Thêm thành công!');
-                    location.reload();
-                } else {
-                    alert('Thêm thất bại: ' + response.message);
+                const formData = new FormData(this);
+                if ($form.find('[id^="newBaiDescription_"]').length) {
+                    const editorId = $form.find('[id^="newBaiDescription_"]').attr('id');
+                    formData.set('Description', editors[editorId] ? editors[editorId].getData() : '');
                 }
-            },
-            error: function (xhr, status, error) {
-                console.error('Lỗi AJAX:', status, error);
-                alert('Có lỗi xảy ra khi thêm.');
-            },
-            complete: function () {
-                $submitBtn.prop('disabled', false).find('.spinner-border').remove();
-            }
-        });
-    });
+
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Thêm thành công!');
+                            location.reload();
+                        } else {
+                            alert('Thêm thất bại: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Lỗi AJAX:', status, error);
+                        alert('Có lỗi xảy ra khi thêm.');
+                    },
+                    complete: function () {
+                        $submitBtn.prop('disabled', false).find('.spinner-border').remove();
+                    }
+                });
+            });
 
             // Xử lý lưu tất cả
             $('#saveAll').on('click', function () {
@@ -891,162 +913,187 @@
                 $btn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
 
                 const formData = new FormData();
+
+                // Bổ sung AntiForgeryToken
                 formData.append('__RequestVerificationToken', $('input[name="__RequestVerificationToken"]').val());
-                formData.append('BaiGiangId', $('input[name="BaiGiangId"]').val());
+
+                // Gửi dữ liệu bài giảng
+                formData.append('Id', $('input[name="Id"]').val());
                 formData.append('Title', $('input[name="Title"]').val());
-                formData.append('Description', $('#description-editor').val());
+                formData.append('Description', editors['description-editor'] ? editors['description-editor'].getData() : $('#description-editor').val());
 
-                $('textarea[name^="Chuong"]').each(function () {
-                    const name = $(this).attr('name');
-                    const id = name.match(/\[(\d+)\]/)[1];
-                    formData.append(`Chuongs[${id}].Id`, $(`input[name="Chuong[${id}].Id"]`).val());
-                    formData.append(`Chuongs[${id}].Title`, $(this).val());
+                // Duyệt qua các chương
+                $('textarea[name^="Chuongs["][name$=".Title"]').each(function (index) {
+                    const id = $(`input[name="Chuongs[${index}].Id"]`).val();
+                    const title = $(this).val();
+                    formData.append(`Chuongs[${index}].Id`, id);
+                    formData.append(`Chuongs[${index}].Title`, title);
                 });
 
-                $('textarea[name^="Bai"]').each(function () {
-                    const name = $(this).attr('name');
-                    const id = name.match(/\[(\d+)\]/)[1];
-                    formData.append(`Bais[${id}].Id`, $(`input[name="Bai[${id}].Id"]`).val());
-                    formData.append(`Bais[${id}].ChuongId`, $(`input[name="Bai[${id}].ChuongId"]`).val());
-                    formData.append(`Bais[${id}].Title`, $(this).val());
-                    formData.append(`Bais[${id}].Description`, $(`#editor-${id}`).val());
+                // Duyệt qua các bài
+                $('.bai-input').each(function () {
+                    const chuongIndex = $(this).data('chuong-index');
+                    const baiIndex = $(this).data('bai-index');
+                    const baiId = $(this).data('bai-id');
+                    const chuongId = $(this).data('chuong-id');
+
+                    const title = $(this).find('.bai-title').val();
+                    const description = editors[`editor-${baiId}`] ? editors[`editor-${baiId}`].getData() : $(this).find('.bai-description').val();
+
+                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].Id`, baiId);
+                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].ChuongId`, chuongId);
+                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].Title`, title);
+                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].Description`, description);
                 });
 
+                // Debug dữ liệu gửi đi
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+
+                // AJAX gửi lên server
                 $.ajax({
-                    url: '@Url.Action("SaveAll", "BaiGiang")',
+                    url: '/GiangVien/SaveAll',
                     type: 'POST',
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function (response) {
+                        const $errorBox = $('#save-error');
                         if (response.success) {
+                            $errorBox.addClass('d-none').text('');
                             alert('Lưu thành công!');
                             location.reload();
                         } else {
-                            alert('Lưu thất bại: ' + response.message);
+                            $errorBox.removeClass('d-none').text('❌ ' + response.message);
                         }
                     },
-                    error: function () {
-                        alert('Có lỗi xảy ra khi lưu.');
+                    error: function (xhr) {
+                        const $errorBox = $('#save-error');
+                        let errorMessage = '❌ Có lỗi xảy ra khi lưu.';
+                        if (xhr.responseText) {
+                            try {
+                                const response = JSON.parse(xhr.responseText);
+                                if (response.message) errorMessage += `\nChi tiết: ${response.message}`;
+                            } catch (_) {
+                                // Nếu không phải JSON, giữ nguyên
+                            }
+                        }
+                        $errorBox.removeClass('d-none').text(errorMessage);
                     },
                     complete: function () {
                         $btn.prop('disabled', false).find('.spinner-border').remove();
                     }
                 });
             });
-        });
 
-        // Hàm hiển thị/ẩn form thêm chương
-        function hienOThemChuong() {
-            $('#khoi-them-chuong').show();
-        }
+            // Xử lý form thêm tài nguyên
+            $('form[action="ThemTaiNguyen"]').on('submit', function (e) {
+                e.preventDefault();
+                const $form = $(this);
+                const $submitBtn = $form.find('button[type="submit"]');
+                $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
 
-        function anOThemChuong() {
-            $('#khoi-them-chuong').hide();
-            $('#newChuongTitle').val('');
-        }
-
-        // Hàm hiển thị/ẩn form thêm bài
-        function hienOThemBai(chuongId) {
-            $(`#khoi-them-bai-${chuongId}`).show();
-        }
-
-        function anOThemBai(chuongId) {
-            $(`#khoi-them-bai-${chuongId}`).hide();
-            $(`#newBaiTitle_${chuongId}`).val('');
-        }
-
-        // Hàm hiển thị/ẩn form sửa bình luận
-        window.showEditForm = function (id, content) {
-            $(`#edit-form-${id}`).show();
-            $(`#comment-content-${id}`).hide();
-        };
-
-        window.hideEditForm = function (id) {
-            $(`#edit-form-${id}`).hide();
-            $(`#comment-content-${id}`).show();
-        };
-            $(document).ready(function () {
-        // ... (giữ nguyên các đoạn mã hiện có)
-
-           $(document).ready(function () {
-        // ... (giữ nguyên các đoạn mã hiện có)
-
-        // Xử lý form thêm tài nguyên
-        $('form[action="ThemTaiNguyen"]').on('submit', function (e) {
-            e.preventDefault();
-            const $form = $(this);
-            const $submitBtn = $form.find('button[type="submit"]');
-            $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
-
-            const formData = new FormData(this);
-            // Debug dữ liệu gửi đi
-            for (var pair of formData.entries()) {
-                console.log(pair[0] + ': ' + pair[1]);
-            }
-
-            $.ajax({
-                url: $form.attr('action'),
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data, textStatus, xhr) {
-                    // Kiểm tra nếu server trả về redirect
-                    if (xhr.getResponseHeader('Location')) {
-                        window.location.href = xhr.getResponseHeader('Location');
-                    } else {
-                        // Trong trường hợp server vẫn trả về JSON (phòng trường hợp lỗi cũ)
-                        if (data.success) {
-                            window.location.reload();
-                        } else {
-                            alert('Thêm thất bại: ' + data.message);
-                        }
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Lỗi AJAX:', status, error);
-                    alert('Có lỗi xảy ra khi thêm tài nguyên.');
-                },
-                complete: function () {
-                    $submitBtn.prop('disabled', false).find('.spinner-border').remove();
+                const formData = new FormData(this);
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
                 }
-            });
-        });
 
-        // Xử lý xóa tài nguyên
-        $('form[action="XoaTaiNguyen"]').on('submit', function (e) {
-            e.preventDefault();
-            const $form = $(this);
-            const $submitBtn = $form.find('button[type="submit"]');
-            $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
-
-            $.ajax({
-                url: $form.attr('action'),
-                type: 'POST',
-                data: $form.serialize(),
-                success: function (data, textStatus, xhr) {
-                    // Kiểm tra nếu server trả về redirect
-                    if (xhr.getResponseHeader('Location')) {
-                        window.location.href = xhr.getResponseHeader('Location');
-                    } else {
-                        // Trong trường hợp server vẫn trả về JSON
-                        if (data.success) {
-                            window.location.reload();
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data, textStatus, xhr) {
+                        if (xhr.getResponseHeader('Location')) {
+                            window.location.href = xhr.getResponseHeader('Location');
                         } else {
-                            alert('Xóa thất bại: ' + data.message);
+                            if (data.success) {
+                                window.location.reload();
+                            } else {
+                                alert('Thêm thất bại: ' + data.message);
+                            }
                         }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Lỗi AJAX:', status, error);
+                        alert('Có lỗi xảy ra khi thêm tài nguyên.');
+                    },
+                    complete: function () {
+                        $submitBtn.prop('disabled', false).find('.spinner-border').remove();
                     }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Lỗi AJAX:', status, error);
-                    alert('Có lỗi xảy ra khi xóa tài nguyên.');
-                },
-                complete: function () {
-                    $submitBtn.prop('disabled', false).find('.spinner-border').remove();
-                }
+                });
             });
+
+            // Xử lý xóa tài nguyên
+            $('form[action="XoaTaiNguyen"]').on('submit', function (e) {
+                e.preventDefault();
+                const $form = $(this);
+                const $submitBtn = $form.find('button[type="submit"]');
+                $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    success: function (data, textStatus, xhr) {
+                        if (xhr.getResponseHeader('Location')) {
+                            window.location.href = xhr.getResponseHeader('Location');
+                        } else {
+                            if (data.success) {
+                                window.location.reload();
+                            } else {
+                                alert('Xóa thất bại: ' + data.message);
+                            }
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Lỗi AJAX:', status, error);
+                        alert('Có lỗi xảy ra khi xóa tài nguyên.');
+                    },
+                    complete: function () {
+                        $submitBtn.prop('disabled', false).find('.spinner-border').remove();
+                    }
+                });
+            });
+
+            // Hàm hiển thị/ẩn form thêm chương
+            window.hienOThemChuong = function () {
+                $('#khoi-them-chuong').show();
+            };
+
+            window.anOThemChuong = function () {
+                $('#khoi-them-chuong').hide();
+                $('#newChuongTitle').val('');
+            };
+
+            // Hàm hiển thị/ẩn form thêm bài
+            window.hienOThemBai = function (chuongId) {
+                $(`#khoi-them-bai-${chuongId}`).show();
+            };
+
+            window.anOThemBai = function (chuongId) {
+                $(`#khoi-them-bai-${chuongId}`).hide();
+                $(`#newBaiTitle_${chuongId}`).val('');
+            };
+
+            // Hàm hiển thị/ẩn form sửa bình luận
+            window.showEditForm = function (id, content) {
+                $(`#edit-form-${id}`).show();
+                $(`#comment-content-${id}`).hide();
+            };
+
+            window.hideEditForm = function (id) {
+                $(`#edit-form-${id}`).hide();
+                $(`#comment-content-${id}`).show();
+            };
+
+            // Hàm thêm link YouTube
+            window.addYoutubeLink = function (chuongId) {
+                const container = $(`#youtube-links-${chuongId}`);
+                const newInput = $('<div class="input-group mb-2"><input type="url" name="YoutubeLinks" class="form-control" placeholder="Nhập link YouTube..." /><button type="button" class="btn btn-outline-danger" onclick="this.parentElement.remove()">-</button></div>');
+                container.append(newInput);
+            };
         });
-    });
-    });
     </script>

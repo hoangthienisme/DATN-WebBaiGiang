@@ -1,4 +1,5 @@
 ﻿@using System.Security.Claims
+@using WebBaiGiang.ViewModel
 @inject WebBaiGiang.Models.WebBaiGiangContext _context
 
 @{
@@ -22,6 +23,7 @@
 
     <!-- Custom CSS -->
     <link href="~/css/sinhvien.css" rel="stylesheet" />
+    <link href="~/css/custom-modal.css" rel="stylesheet" />
 </head>
 <body class="layout-sinhvien">
 
@@ -101,61 +103,61 @@
         @await Html.PartialAsync("_Footer", thongTin)
     }
 
-    <!-- LOGOUT MODAL -->
-    <div id="logoutConfirmModal" class="custom-modal">
-        <div class="custom-modal-content">
-            <div class="custom-modal-header">
-                <i class="bi bi-bell-fill modal-icon"></i>
-                <h5 class="custom-modal-title">Thông báo</h5>
-            </div>
-            <div class="custom-modal-body">
-                <p>Bạn có muốn đăng xuất khỏi ứng dụng không?</p>
-            </div>
-            <div class="custom-modal-footer">
-                <button type="button" class="btn btn-primary" id="confirmLogoutBtn">XÁC NHẬN</button>
-                <button type="button" class="btn btn-secondary" id="cancelLogoutBtn">HỦY</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPTS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const dropdownToggle = document.getElementById('dropdownUserToggle');
-            const dropdownMenu = document.getElementById('dropdownUserMenu');
-
-            dropdownToggle?.addEventListener('click', e => {
-                dropdownMenu?.classList.toggle('show');
-                e.stopPropagation();
-            });
-
-            document.addEventListener('click', e => {
-                if (!dropdownToggle?.contains(e.target) && !dropdownMenu?.contains(e.target)) {
-                    dropdownMenu?.classList.remove('show');
-                }
-            });
-
-            document.getElementById('logoutLink')?.addEventListener('click', e => {
-                e.preventDefault();
-                document.getElementById('logoutConfirmModal')?.classList.add('show');
-            });
-
-            document.getElementById('confirmLogoutBtn')?.addEventListener('click', () => {
-                window.location.href = '@Url.Action("Logout", "Account")';
-            });
-
-            document.getElementById('cancelLogoutBtn')?.addEventListener('click', () => {
-                document.getElementById('logoutConfirmModal')?.classList.remove('show');
-            });
-
-            document.getElementById('logoutConfirmModal')?.addEventListener('click', e => {
-                if (e.target === document.getElementById('logoutConfirmModal')) {
-                    document.getElementById('logoutConfirmModal')?.classList.remove('show');
-                }
-            });
-        });
-    </script>
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "logoutModal",
+    Message = "Bạn có muốn đăng xuất không?",
+    ActionUrl = Url.Action("Logout", "Account")
+})
 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownToggle = document.getElementById('dropdownUserToggle');
+        const dropdownMenu = document.getElementById('dropdownUserMenu');
+        const logoutLink = document.getElementById('logoutLink');
+        const logoutModal = document.getElementById('logoutModal');
+        const confirmBtn = document.getElementById('confirmLogoutBtn');
+        const cancelBtn = document.getElementById('cancelLogoutBtn');
+
+        // Toggle dropdown
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', function (e) {
+                dropdownMenu.classList.toggle('show');
+                e.stopPropagation();
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        }
+
+        // Mở modal xác nhận đăng xuất
+        if (logoutLink && logoutModal) {
+            logoutLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                logoutModal.classList.add('show');
+            });
+        }
+
+        // Đóng modal khi bấm nút hủy
+        if (cancelBtn && logoutModal) {
+            cancelBtn.addEventListener('click', function () {
+                logoutModal.classList.remove('show');
+            });
+        }
+
+        // Đóng modal nếu click ra ngoài vùng modal
+        if (logoutModal) {
+            logoutModal.addEventListener('click', function (e) {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('show');
+                }
+            });
+        }
+    });
+</script>

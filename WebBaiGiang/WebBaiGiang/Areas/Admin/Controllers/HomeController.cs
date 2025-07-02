@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebBaiGiang.Areas.Admin.Controllers
 {
@@ -8,6 +9,12 @@ namespace WebBaiGiang.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public async Task<IActionResult> Logout()
+        {
+            // Xóa session
+            await HttpContext.SignOutAsync("Cookies");
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }

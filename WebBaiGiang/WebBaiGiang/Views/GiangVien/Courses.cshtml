@@ -87,24 +87,28 @@
 
                         <div class="dropdown-menu">
                             <a class="dropdown-item" asp-controller="Courses" asp-action="DetailCourses" asp-route-id="@course.Id">Vào lớp</a>
-                            <a class="dropdown-item" href="javascript:void(0)" onclick="copyToClipboard('@joinLink')">Chia sẻ lớp học</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="showCopyLinkModal('@joinLink')">Chia sẻ lớp học</a>
                             <a class="dropdown-item" asp-action="EditCourses" asp-route-id="@course.Id">Chỉnh sửa</a>
 
-                            <form asp-action="ArchiveCourse" asp-controller="GiangVien" method="post"
-                                  onsubmit="return confirm('Bạn có chắc muốn lưu trữ khóa học này?')" style="margin: 0;">
-                                <input type="hidden" name="id" value="@course.Id" />
-                                <button type="submit" class="dropdown-item dropdown-item-hide">Lưu trữ</button>
-                            </form>
+                            <!-- Nút lưu trữ -->
+                            <button type="button" class="dropdown-item dropdown-item-hide" onclick="showConfirmArchiveModal(@course.Id)">
+                                Lưu trữ
+                            </button>
+
+
                         </div>
                     </div>
 
-                    <div class="course-image">
-                        <img src="@course.Picture" alt="Ảnh bìa khóa học" onerror="this.src='/img/default-course.jpg'" />
-                    </div>
-                    <div class="course-content">
-                        <h4>@course.Name</h4>
-                        @Html.Raw(course.Description)
-                    </div>
+                    <a href="@Url.Action("DetailCourses", "Courses", new { id = course.Id })" class="course-link">
+                        <div class="course-image">
+                            <img src="@course.Picture" alt="Ảnh bìa khóa học" onerror="this.src='/img/default-course.jpg'" />
+                        </div>
+                        <div class="course-content">
+                            <h4>@course.Name</h4>
+                            @Html.Raw(course.Description)
+                        </div>
+                    </a>
+
                 </div>
             }
         }
@@ -120,6 +124,21 @@
             }
         }
     </div>
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmArchiveModal",
+    Message = "Bạn có chắc muốn lưu trữ lớp học này?",
+    ActionUrl = Url.Action("ArchiveCourse", "GiangVien"),
+    DataId = 0 // tạm placeholder, gán bằng JS
+})
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmCopyModal",
+    Message = "Bạn có muốn sao chép liên kết lớp học này không?",
+    ActionUrl = "#", // Không submit thật
+    DataId = 0,
+
+})
 
     <div class="pagination">
         @if (Model.TotalPages > 1)
@@ -169,9 +188,83 @@
         });
     });
 
-    function copyToClipboard(link) {
-        navigator.clipboard.writeText(link)
-            .then(() => alert("Đã sao chép liên kết lớp học!"))
-            .catch(err => alert("Không thể sao chép: " + err));
+    function showConfirmArchiveModal(courseId) {
+        const modal = document.getElementById("confirmArchiveModal");
+        const input = modal.querySelector("input[name='id']");
+        input.value = courseId;
+        modal.classList.add("show");
+
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) modal.classList.remove("show");
+        });
+
+        modal.querySelector(".cancel-btn").addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+    }
+
+        function showCopyLinkModal(link) {
+        const modal = document.getElementById("confirmCopyModal");
+
+        // Xóa sự kiện cũ tránh nhân bản submit
+        const oldForm = modal.querySelector("form");
+        const newForm = oldForm.cloneNode(true); // clone toàn bộ form
+        oldForm.parentNode.replaceChild(newForm, oldForm); // thay thế form
+
+        // Hiện modal
+        modal.classList.add("show");
+
+        // Nút xác nhận (SAO CHÉP)
+        newForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            navigator.clipboard.writeText(link)
+                .then(() => {
+                    showToast("Đã sao chép liên kết lớp học!");
+                    modal.classList.remove("show");
+                })
+                .catch((err) => {
+                    showToast("Không thể sao chép: " + err, true);
+                });
+        });
+
+        // Nút HỦY
+        const cancelBtn = modal.querySelector(".cancel-btn");
+        cancelBtn?.addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+
+        // Bấm nền đen tắt modal
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("show");
+            }
+        });
+    }
+
+
+</script>
+
+<div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+<script>
+    function showToast(message, isError = false) {
+        const toast = document.createElement('div');
+        toast.textContent = message;
+        toast.style.background = isError ? '#dc3545' : '#28a745';
+        toast.style.color = '#fff';
+        toast.style.padding = '10px 15px';
+        toast.style.borderRadius = '5px';
+        toast.style.marginBottom = '10px';
+        toast.style.boxShadow = '0 0 5px rgba(0,0,0,0.2)';
+        toast.style.transition = 'opacity 0.5s';
+
+        const container = document.getElementById('toast-container');
+        container.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 500);
+        }, 2500);
     }
 </script>

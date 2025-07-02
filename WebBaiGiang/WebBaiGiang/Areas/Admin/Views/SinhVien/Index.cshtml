@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebBaiGiang.Models.NguoiDung>
+﻿@model List<WebBaiGiang.ViewModel.SinhVienVM>
 
 @{
     ViewData["Title"] = "Danh sách sinh viên";
@@ -68,7 +68,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="avatar-sm me-2">
-                                            @sv.Name.Substring(0, 1).ToUpper()
+                                           @(string.IsNullOrEmpty(sv.Name) ? "?" : sv.Name.Substring(0, 1).ToUpper())
                                         </div>
                                         <span class="fw-medium">@sv.Name</span>
                                     </div>

@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\css\\createcourse.css"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\custom-modal.css",
+      "PackagePath": "staticwebassets\\css\\custom-modal.css"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\footer.css",
       "PackagePath": "staticwebassets\\css\\footer.css"
     },
@@ -213,6 +217,10 @@
       "PackagePath": "staticwebassets\\files\\ea99bc9f-3bdb-4f1e-a20d-f414d6101ec0.docx"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx",
+      "PackagePath": "staticwebassets\\files\\f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\fc6c689c-0cae-4550-be98-d7c769c70dc6.xlsx",
       "PackagePath": "staticwebassets\\files\\fc6c689c-0cae-4550-be98-d7c769c70dc6.xlsx"
     },
@@ -259,6 +267,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\549b1fca-961a-4499-99f8-07a4fe22721e.jpg",
       "PackagePath": "staticwebassets\\images\\549b1fca-961a-4499-99f8-07a4fe22721e.jpg"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg",
+      "PackagePath": "staticwebassets\\images\\55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\6030f1a0-cb0d-4ccd-816b-fa63e4a42dfa.jpg",
@@ -347,10 +359,6 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f2954b20-daaf-48f3-9d75-e4d09ed03a3f.jpg",
       "PackagePath": "staticwebassets\\images\\f2954b20-daaf-48f3-9d75-e4d09ed03a3f.jpg"
-    },
-    {
-      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f2e927a9-c400-4131-8d61-fad28c4ada64.jpg",
-      "PackagePath": "staticwebassets\\images\\f2e927a9-c400-4131-8d61-fad28c4ada64.jpg"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f6f84017-0535-4837-a225-229ea1400b94.jpg",
@@ -865,6 +873,10 @@
       "PackagePath": "staticwebassets\\logo\\LearnHub.png"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx",
       "PackagePath": "staticwebassets\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx"
     },
@@ -965,6 +977,10 @@
       "PackagePath": "staticwebassets\\uploads\\3521ec24-314b-4838-804f-f5ee536c3e5c.pdf"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\382517c5-e65a-455d-806c-5c50df4e23c3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\382517c5-e65a-455d-806c-5c50df4e23c3.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
       "PackagePath": "staticwebassets\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx"
     },
@@ -1033,6 +1049,10 @@
       "PackagePath": "staticwebassets\\uploads\\622c764a-e15b-4715-b850-fa0f05545f26.jpg"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63038927-1153-44c9-ad72-3be3ff8f6bde.jpg",
+      "PackagePath": "staticwebassets\\uploads\\63038927-1153-44c9-ad72-3be3ff8f6bde.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf",
       "PackagePath": "staticwebassets\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf"
     },
@@ -1081,6 +1101,10 @@
       "PackagePath": "staticwebassets\\uploads\\79af4d30-415c-4a13-b94d-d45a822f7a09.png"
     },
     {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg",
+      "PackagePath": "staticwebassets\\uploads\\7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg"
+    },
+    {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\83230502-da3a-487a-84ff-c96feec68fa7.jpg",
       "PackagePath": "staticwebassets\\uploads\\83230502-da3a-487a-84ff-c96feec68fa7.jpg"
     },
@@ -1119,6 +1143,10 @@
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf",
       "PackagePath": "staticwebassets\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf"
+    },
+    {
+      "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\943f475f-c082-4963-a905-66ac880d4787.docx",
+      "PackagePath": "staticwebassets\\uploads\\943f475f-c082-4963-a905-66ac880d4787.docx"
     },
     {
       "Id": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg",

@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-
+<meta charset="utf-8" />
 <div class="container mt-4">
     <h3>Tạo bài giảng mới</h3>
 
@@ -390,9 +390,44 @@
 </script>
 <script>
     ClassicEditor
-            .create(document.querySelector('#description-editor'))
-            .catch(error => {
-                console.error(error);
-            });
+         .create(document.querySelector('#description-editor'))
+         .catch(error => console.error(error));
 </script>
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+<script>
+    document.addEventListener('paste', () => {
+        setTimeout(() => {
+            const editorBody = document.querySelector('.ck-content');
+            if (editorBody) {
+                // Chuyển đổi nhanh một số ký hiệu phổ biến
+                editorBody.innerHTML = editorBody.innerHTML
+                   .replace(/≤/g, '\\leq')
+    .replace(/≥/g, '\\geq')
+    .replace(/–/g, '-') // dấu gạch ngang dài
+    .replace(/×/g, '\\times')
+    .replace(/÷/g, '\\div')
+    .replace(/log2/g, '\\log_2')
+    .replace(/O\(n2\)/g, 'O(n^2)')
+    .replace(/(\b[\w\(\)\+\-\*]+)\s*\/\s*([\w\(\)\+\-\*]+)/g, '\\frac{$1}{$2}');
+
+
+                MathJax.typeset();
+            }
+        }, 100);
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
 
