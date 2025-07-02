@@ -16,7 +16,7 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index(int id)
+    public IActionResult Index(int id)
     {
         var thongTin = _context.ThongTinWebs
             .OrderByDescending(t => t.UpdateDate ?? t.CreatedDate) 

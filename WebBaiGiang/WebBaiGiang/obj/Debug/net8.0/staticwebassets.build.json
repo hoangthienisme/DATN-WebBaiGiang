@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EArv6Ebz/k5LfdOtb6UWCZvt6ZRiuaerszKTlnW5WTo=",
+  "Hash": "3fxQqTjK6v6nsmYmVgDrLnygdJo+whdms3vn83qeqzQ=",
   "Source": "WebBaiGiang",
   "BasePath": "_content/WebBaiGiang",
   "Mode": "Default",
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "gyxieb5ne3",
-      "Integrity": "aGaGN4zYDpRs4Rt8jaOKEvBgyZwViVAXOptENvhH5B8=",
+      "Fingerprint": "tlylyn8gn6",
+      "Integrity": "cUDHj4cl14xyThtpS8POtsEcWRBG449Jm+f02Lg85jA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\courses.css"
@@ -164,6 +164,27 @@
       "OriginalItemSpec": "wwwroot\\css\\createcourse.css"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\custom-modal.css",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "css/custom-modal#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rxhtpyozb1",
+      "Integrity": "D8FKuXqGEo0wmoR1jJvGKaVFIIpz0Qftvy4biVOZw84=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\custom-modal.css"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -178,8 +199,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "05ikvr673q",
-      "Integrity": "1IPBIBCdikx0a4JEfSjp9wnMZOzCyFbJQHfsljgsgPM=",
+      "Fingerprint": "ddqiwks5x1",
+      "Integrity": "/7l3Ha7zIVihXwg2TRbpyE4eIhYUnOO9BfBoKMHVuTM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\chitietbaigiang.css"
@@ -367,8 +388,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "wggg5sq43w",
-      "Integrity": "YGx5RbcEztVDOYdboaaHyQXj5tY+yJKdiLBuTiAv/TI=",
+      "Fingerprint": "dhwssdj6ww",
+      "Integrity": "cTNQz6rVMTFloyliptb569iPNKwf303VqIOea2Lm368=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\sinhvien.css"
@@ -1151,6 +1172,27 @@
       "OriginalItemSpec": "wwwroot\\files\\ea99bc9f-3bdb-4f1e-a20d-f414d6101ec0.docx"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "files/f4d41ef7-910f-4d47-b8a7-99ce3b3446be#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c30hqrhxkh",
+      "Integrity": "SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\fc6c689c-0cae-4550-be98-d7c769c70dc6.xlsx",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -1401,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\549b1fca-961a-4499-99f8-07a4fe22721e.jpg"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "images/55e5ea59-12e9-473e-857b-96bf6dd60c3b#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "wllwgxwwgl",
+      "Integrity": "nJYxArG3ZDeEecjQ9lYcmfs4m08eSWOn9mswZML+/hA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\6030f1a0-cb0d-4ccd-816b-fa63e4a42dfa.jpg",
@@ -1863,27 +1926,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\f2954b20-daaf-48f3-9d75-e4d09ed03a3f.jpg"
-    },
-    {
-      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f2e927a9-c400-4131-8d61-fad28c4ada64.jpg",
-      "SourceId": "WebBaiGiang",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
-      "BasePath": "_content/WebBaiGiang",
-      "RelativePath": "images/f2e927a9-c400-4131-8d61-fad28c4ada64#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "br6e225awx",
-      "Integrity": "t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\f2e927a9-c400-4131-8d61-fad28c4ada64.jpg"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f6f84017-0535-4837-a225-229ea1400b94.jpg",
@@ -4574,6 +4616,27 @@
       "OriginalItemSpec": "wwwroot\\logo\\LearnHub.png"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/0080c4f7-98ec-4a94-8b01-129b76bacedc#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "d8k3lqidf8",
+      "Integrity": "LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -5099,6 +5162,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\3521ec24-314b-4838-804f-f5ee536c3e5c.pdf"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\382517c5-e65a-455d-806c-5c50df4e23c3.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/382517c5-e65a-455d-806c-5c50df4e23c3#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "d8k3lqidf8",
+      "Integrity": "LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\382517c5-e65a-455d-806c-5c50df4e23c3.jpg"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -5456,6 +5540,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\622c764a-e15b-4715-b850-fa0f05545f26.jpg"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63038927-1153-44c9-ad72-3be3ff8f6bde.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/63038927-1153-44c9-ad72-3be3ff8f6bde#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "d8k3lqidf8",
+      "Integrity": "LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\63038927-1153-44c9-ad72-3be3ff8f6bde.jpg"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -5708,6 +5813,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\79af4d30-415c-4a13-b94d-d45a822f7a09.png"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/7c327876-4f5b-4f16-9e28-e04d69ea6152#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "br6e225awx",
+      "Integrity": "t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\83230502-da3a-487a-84ff-c96feec68fa7.jpg",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -5916,6 +6042,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\942561b5-ee3b-4e16-a745-59912f5ffc3f.pdf"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\943f475f-c082-4963-a905-66ac880d4787.docx",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/943f475f-c082-4963-a905-66ac880d4787#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c30hqrhxkh",
+      "Integrity": "SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\943f475f-c082-4963-a905-66ac880d4787.docx"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\95bb0084-7834-432c-98d6-21c390754bcd.jpg",
@@ -9851,7 +9998,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3556"
+          "Value": "3720"
         },
         {
           "Name": "Content-Type",
@@ -9859,11 +10006,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aGaGN4zYDpRs4Rt8jaOKEvBgyZwViVAXOptENvhH5B8=\""
+          "Value": "\"cUDHj4cl14xyThtpS8POtsEcWRBG449Jm+f02Lg85jA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Jun 2025 05:33:56 GMT"
+          "Value": "Tue, 01 Jul 2025 17:17:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9873,12 +10020,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-aGaGN4zYDpRs4Rt8jaOKEvBgyZwViVAXOptENvhH5B8="
+          "Value": "sha256-cUDHj4cl14xyThtpS8POtsEcWRBG449Jm+f02Lg85jA="
         }
       ]
     },
     {
-      "Route": "css/courses.gyxieb5ne3.css",
+      "Route": "css/courses.tlylyn8gn6.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -9888,7 +10035,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3556"
+          "Value": "3720"
         },
         {
           "Name": "Content-Type",
@@ -9896,11 +10043,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aGaGN4zYDpRs4Rt8jaOKEvBgyZwViVAXOptENvhH5B8=\""
+          "Value": "\"cUDHj4cl14xyThtpS8POtsEcWRBG449Jm+f02Lg85jA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Jun 2025 05:33:56 GMT"
+          "Value": "Tue, 01 Jul 2025 17:17:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9910,7 +10057,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "gyxieb5ne3"
+          "Value": "tlylyn8gn6"
         },
         {
           "Name": "label",
@@ -9918,7 +10065,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-aGaGN4zYDpRs4Rt8jaOKEvBgyZwViVAXOptENvhH5B8="
+          "Value": "sha256-cUDHj4cl14xyThtpS8POtsEcWRBG449Jm+f02Lg85jA="
         }
       ]
     },
@@ -10005,8 +10152,8 @@
       ]
     },
     {
-      "Route": "css/chitietbaigiang.05ikvr673q.css",
-      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+      "Route": "css/custom-modal.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\custom-modal.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10015,7 +10162,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2962"
+          "Value": "624"
         },
         {
           "Name": "Content-Type",
@@ -10023,11 +10170,48 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1IPBIBCdikx0a4JEfSjp9wnMZOzCyFbJQHfsljgsgPM=\""
+          "Value": "\"D8FKuXqGEo0wmoR1jJvGKaVFIIpz0Qftvy4biVOZw84=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 10:23:52 GMT"
+          "Value": "Tue, 01 Jul 2025 12:12:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-D8FKuXqGEo0wmoR1jJvGKaVFIIpz0Qftvy4biVOZw84="
+        }
+      ]
+    },
+    {
+      "Route": "css/custom-modal.rxhtpyozb1.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\custom-modal.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "624"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D8FKuXqGEo0wmoR1jJvGKaVFIIpz0Qftvy4biVOZw84=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 12:12:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10037,15 +10221,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "05ikvr673q"
+          "Value": "rxhtpyozb1"
         },
         {
           "Name": "label",
-          "Value": "css/chitietbaigiang.css"
+          "Value": "css/custom-modal.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1IPBIBCdikx0a4JEfSjp9wnMZOzCyFbJQHfsljgsgPM="
+          "Value": "sha256-D8FKuXqGEo0wmoR1jJvGKaVFIIpz0Qftvy4biVOZw84="
         }
       ]
     },
@@ -10060,7 +10244,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2962"
+          "Value": "2866"
         },
         {
           "Name": "Content-Type",
@@ -10068,11 +10252,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1IPBIBCdikx0a4JEfSjp9wnMZOzCyFbJQHfsljgsgPM=\""
+          "Value": "\"/7l3Ha7zIVihXwg2TRbpyE4eIhYUnOO9BfBoKMHVuTM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 10:23:52 GMT"
+          "Value": "Tue, 01 Jul 2025 09:49:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10082,7 +10266,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1IPBIBCdikx0a4JEfSjp9wnMZOzCyFbJQHfsljgsgPM="
+          "Value": "sha256-/7l3Ha7zIVihXwg2TRbpyE4eIhYUnOO9BfBoKMHVuTM="
+        }
+      ]
+    },
+    {
+      "Route": "css/chitietbaigiang.ddqiwks5x1.css",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2866"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/7l3Ha7zIVihXwg2TRbpyE4eIhYUnOO9BfBoKMHVuTM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 09:49:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ddqiwks5x1"
+        },
+        {
+          "Name": "label",
+          "Value": "css/chitietbaigiang.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/7l3Ha7zIVihXwg2TRbpyE4eIhYUnOO9BfBoKMHVuTM="
         }
       ]
     },
@@ -10753,7 +10982,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8181"
+          "Value": "8036"
         },
         {
           "Name": "Content-Type",
@@ -10761,11 +10990,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YGx5RbcEztVDOYdboaaHyQXj5tY+yJKdiLBuTiAv/TI=\""
+          "Value": "\"cTNQz6rVMTFloyliptb569iPNKwf303VqIOea2Lm368=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Jun 2025 08:50:18 GMT"
+          "Value": "Tue, 01 Jul 2025 12:07:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10775,12 +11004,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-YGx5RbcEztVDOYdboaaHyQXj5tY+yJKdiLBuTiAv/TI="
+          "Value": "sha256-cTNQz6rVMTFloyliptb569iPNKwf303VqIOea2Lm368="
         }
       ]
     },
     {
-      "Route": "css/sinhvien.wggg5sq43w.css",
+      "Route": "css/sinhvien.dhwssdj6ww.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -10790,7 +11019,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8181"
+          "Value": "8036"
         },
         {
           "Name": "Content-Type",
@@ -10798,11 +11027,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YGx5RbcEztVDOYdboaaHyQXj5tY+yJKdiLBuTiAv/TI=\""
+          "Value": "\"cTNQz6rVMTFloyliptb569iPNKwf303VqIOea2Lm368=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Jun 2025 08:50:18 GMT"
+          "Value": "Tue, 01 Jul 2025 12:07:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10812,7 +11041,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "wggg5sq43w"
+          "Value": "dhwssdj6ww"
         },
         {
           "Name": "label",
@@ -10820,7 +11049,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-YGx5RbcEztVDOYdboaaHyQXj5tY+yJKdiLBuTiAv/TI="
+          "Value": "sha256-cTNQz6rVMTFloyliptb569iPNKwf303VqIOea2Lm368="
         }
       ]
     },
@@ -13859,6 +14088,88 @@
       ]
     },
     {
+      "Route": "files/f4d41ef7-910f-4d47-b8a7-99ce3b3446be.c30hqrhxkh.docx",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3848486"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 12:37:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c30hqrhxkh"
+        },
+        {
+          "Name": "label",
+          "Value": "files/f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI="
+        }
+      ]
+    },
+    {
+      "Route": "files/f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\f4d41ef7-910f-4d47-b8a7-99ce3b3446be.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3848486"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 12:37:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI="
+        }
+      ]
+    },
+    {
       "Route": "files/fc6c689c-0cae-4550-be98-d7c769c70dc6.xlsx",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\files\\fc6c689c-0cae-4550-be98-d7c769c70dc6.xlsx",
       "Selectors": [],
@@ -14839,6 +15150,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-OGMmn5TJe5W23hl4ry6TDG5JFE+LWDRAyUsf64KSCVg="
+        }
+      ]
+    },
+    {
+      "Route": "images/55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "189716"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nJYxArG3ZDeEecjQ9lYcmfs4m08eSWOn9mswZML+/hA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 12:37:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nJYxArG3ZDeEecjQ9lYcmfs4m08eSWOn9mswZML+/hA="
+        }
+      ]
+    },
+    {
+      "Route": "images/55e5ea59-12e9-473e-857b-96bf6dd60c3b.wllwgxwwgl.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "189716"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nJYxArG3ZDeEecjQ9lYcmfs4m08eSWOn9mswZML+/hA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 12:37:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wllwgxwwgl"
+        },
+        {
+          "Name": "label",
+          "Value": "images/55e5ea59-12e9-473e-857b-96bf6dd60c3b.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nJYxArG3ZDeEecjQ9lYcmfs4m08eSWOn9mswZML+/hA="
         }
       ]
     },
@@ -16633,88 +17026,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Mon, 23 Jun 2025 10:55:00 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o="
-        }
-      ]
-    },
-    {
-      "Route": "images/f2e927a9-c400-4131-8d61-fad28c4ada64.br6e225awx.jpg",
-      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f2e927a9-c400-4131-8d61-fad28c4ada64.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "117712"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 11:28:56 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "br6e225awx"
-        },
-        {
-          "Name": "label",
-          "Value": "images/f2e927a9-c400-4131-8d61-fad28c4ada64.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o="
-        }
-      ]
-    },
-    {
-      "Route": "images/f2e927a9-c400-4131-8d61-fad28c4ada64.jpg",
-      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\images\\f2e927a9-c400-4131-8d61-fad28c4ada64.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "117712"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 30 Jun 2025 11:28:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27225,6 +27536,88 @@
       ]
     },
     {
+      "Route": "uploads/0080c4f7-98ec-4a94-8b01-129b76bacedc.d8k3lqidf8.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1796463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 17:22:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d8k3lqidf8"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\0080c4f7-98ec-4a94-8b01-129b76bacedc.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1796463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 17:22:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/025499f4-3fca-4439-8e9b-bd5485421970.docx",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\025499f4-3fca-4439-8e9b-bd5485421970.docx",
       "Selectors": [],
@@ -29275,6 +29668,88 @@
       ]
     },
     {
+      "Route": "uploads/382517c5-e65a-455d-806c-5c50df4e23c3.d8k3lqidf8.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\382517c5-e65a-455d-806c-5c50df4e23c3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1796463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 17:14:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d8k3lqidf8"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/382517c5-e65a-455d-806c-5c50df4e23c3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/382517c5-e65a-455d-806c-5c50df4e23c3.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\382517c5-e65a-455d-806c-5c50df4e23c3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1796463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 17:14:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
       "Selectors": [],
@@ -30669,6 +31144,88 @@
       ]
     },
     {
+      "Route": "uploads/63038927-1153-44c9-ad72-3be3ff8f6bde.d8k3lqidf8.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63038927-1153-44c9-ad72-3be3ff8f6bde.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1796463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 02 Jul 2025 01:34:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d8k3lqidf8"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/63038927-1153-44c9-ad72-3be3ff8f6bde.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/63038927-1153-44c9-ad72-3be3ff8f6bde.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63038927-1153-44c9-ad72-3be3ff8f6bde.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1796463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 02 Jul 2025 01:34:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LcZ4Pw4PgxNZlUmXVeMOAsmbYn2tScnRTCE3JP+Z7xw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/63d786f4-17b5-4243-a8b1-88b2fa922eb4.1wkaspdukq.pdf",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\63d786f4-17b5-4243-a8b1-88b2fa922eb4.pdf",
       "Selectors": [],
@@ -31653,6 +32210,88 @@
       ]
     },
     {
+      "Route": "uploads/7c327876-4f5b-4f16-9e28-e04d69ea6152.br6e225awx.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "117712"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 17:36:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "br6e225awx"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\7c327876-4f5b-4f16-9e28-e04d69ea6152.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "117712"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 17:36:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o="
+        }
+      ]
+    },
+    {
       "Route": "uploads/83230502-da3a-487a-84ff-c96feec68fa7.6o0uo49zyi.jpg",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\83230502-da3a-487a-84ff-c96feec68fa7.jpg",
       "Selectors": [],
@@ -32469,6 +33108,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-v4c1eTGva8H+oXZGy/nkeRQ9Adp9UyAqrb+mvhhwDFs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/943f475f-c082-4963-a905-66ac880d4787.c30hqrhxkh.docx",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\943f475f-c082-4963-a905-66ac880d4787.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3848486"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 12:30:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c30hqrhxkh"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/943f475f-c082-4963-a905-66ac880d4787.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/943f475f-c082-4963-a905-66ac880d4787.docx",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\943f475f-c082-4963-a905-66ac880d4787.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3848486"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 12:30:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI="
         }
       ]
     },

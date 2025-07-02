@@ -1,0 +1,77 @@
+﻿@model WebBaiGiang.ViewModel.ConfirmModalViewModel
+
+<div id="@Model.ModalId" class="custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <i class="bi bi-bell-fill modal-icon"></i>
+            <h5 class="custom-modal-title">Thông báo</h5>
+        </div>
+        <div class="custom-modal-body">
+            <p>@Model.Message</p>
+        </div>
+
+        <!-- Form POST hoặc xử lý JS -->
+        <form id="modalForm-@Model.ModalId" method="post" action="@Model.ActionUrl">
+            <input type="hidden" name="id" value="@Model.DataId" />
+            <div class="custom-modal-footer">
+                <button type="submit" class="btn btn-primary confirm-btn">@(@Model.ConfirmButtonText ?? "XÁC NHẬN")</button>
+                <button type="button" class="btn btn-secondary cancel-btn">@(@Model.CancelButtonText ?? "HỦY")</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('@Model.ModalId');
+
+        // Hủy
+        modal?.querySelector('.cancel-btn')?.addEventListener('click', function () {
+            modal.classList.remove('show');
+        });
+
+        // Click ngoài modal để đóng
+        modal?.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    });
+
+    // Dùng cho modal xác nhận lưu trữ, khôi phục
+    function showConfirmModal(courseId) {
+        const modal = document.getElementById("@Model.ModalId");
+        const input = modal.querySelector("input[name='id']");
+        input.value = courseId;
+        modal.classList.add("show");
+    }
+
+    // Dùng cho modal sao chép link
+    function showCopyLinkModal(link) {
+        const modal = document.getElementById("confirmCopyModal");
+        modal.classList.add("show");
+
+        const form = modal.querySelector("form");
+
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+
+        newForm.onsubmit = function (e) {
+            e.preventDefault();
+
+            navigator.clipboard.writeText(link)
+                .then(() => {
+                    showToast("Đã sao chép liên kết lớp học!");
+                    modal.classList.remove("show");
+                })
+                .catch(() => {
+                    showToast("Không thể sao chép liên kết!", true);
+                });
+        };
+
+        // Đóng khi nhấn hủy
+        newForm.querySelector('.cancel-btn')?.addEventListener('click', function () {
+            modal.classList.remove("show");
+        });
+    }
+</script>

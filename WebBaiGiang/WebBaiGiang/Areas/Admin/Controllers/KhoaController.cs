@@ -73,7 +73,7 @@ namespace WebBaiGiang.Areas.Admin.Controllers
         }
 
         // GET: Sửa khoa
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {

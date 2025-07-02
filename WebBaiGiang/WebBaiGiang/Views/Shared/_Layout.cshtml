@@ -1,4 +1,5 @@
-﻿@inject WebBaiGiang.Models.WebBaiGiangContext _context
+﻿@using WebBaiGiang.ViewModel
+@inject WebBaiGiang.Models.WebBaiGiangContext _context
 
 @{
     var thongTin = _context.ThongTinWebs.FirstOrDefault();
@@ -119,6 +120,12 @@
         @await Html.PartialAsync("_Footer", thongTin)
     }
 
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "logoutModal",
+    Message = "Bạn có muốn đăng xuất không?",
+    ActionUrl = Url.Action("Logout", "Account")
+})
 </body>
 </html>
 <script>

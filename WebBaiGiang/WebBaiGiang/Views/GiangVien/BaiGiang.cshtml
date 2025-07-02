@@ -115,10 +115,8 @@
                 <div class="dropdown post-item-dropdown" data-dropdown-id="@item.Id">
                     <div class="icon-three-dots" onclick="togglePostDropdown(@item.Id)"></div>
                     <div class="dropdown-content">
-                        <a asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id">Chỉnh sửa</a>
-                        <form asp-controller="GiangVien" asp-action="XoaBaiGiang" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài giảng này không?');" style="margin: 0;">
-                            <button type="submit" class="text-danger border-0 bg-transparent"> Xóa</button>
-                        </form>
+
+                        <button type="button" class="text-danger border-0 bg-transparent" onclick="showConfirmArchiveModal(@item.Id)">Xóa</button>
                     </div>
                 </div>
             </div>
@@ -129,7 +127,13 @@
         <div class="alert alert-warning">Không có bài giảng nào được tìm thấy.</div>
     }
 </div>
-
+@await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmArchiveModal",
+    Message = "Bạn có chắc chắn muốn xóa bài giảng này?",
+    ActionUrl = Url.Action("XoaBaiGiang", "GiangVien"),
+    DataId = 0
+})
 <!-- PHÂN TRANG -->
 <div class="pagination mt-4">
     @if (Model.TotalPages > 1)
@@ -176,12 +180,18 @@
         const current = document.querySelector(`[data-dropdown-id="${itemId}"]`);
         current.classList.toggle('show');
     }
+    function showConfirmArchiveModal(courseId) {
+        const modal = document.getElementById("confirmArchiveModal");
+        const input = modal.querySelector("input[name='id']");
+        input.value = courseId;
+        modal.classList.add("show");
 
-    document.addEventListener('click', function (event) {
-        if (!event.target.closest('.post-item-dropdown')) {
-            document.querySelectorAll('.post-item-dropdown.show').forEach(drop => {
-                drop.classList.remove('show');
-            });
-        }
-    });
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) modal.classList.remove("show");
+        });
+
+        modal.querySelector(".cancel-btn").addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+    }
 </script>

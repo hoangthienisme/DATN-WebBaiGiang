@@ -21,7 +21,7 @@ public partial class NguoiDung
 
     public string? Role { get; set; }
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime? CreatedDate { get; set; }
 
     public int? CreatedBy { get; set; }
 
