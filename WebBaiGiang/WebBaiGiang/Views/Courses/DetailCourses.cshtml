@@ -22,437 +22,466 @@
 <style>
     /* Container chính */
     .conTent h3 {
-        margin-left: 70px;
-        margin-top: 10px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 700;
-        font-size: 28px;
-        color: #333;
+    margin-left: 70px;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #333;
     }
 
+    .dropdown-box {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    }
     /* Search + dropdown + button */
     .search-filter {
-        margin: 30px 0 20px 0;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        padding: 0 20px;
+    margin: 30px 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 20px;
     }
 
     .search-input-wrapper {
-        position: relative;
-        display: inline-block;
+    position: relative;
+    display: inline-block;
     }
 
     .search-icon {
-        position: absolute;
-        top: 50%;
-        left: 12px;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        opacity: 0.5;
-        z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
+    z-index: 2;
     }
 
     .search-input-courses {
-        padding: 12px 15px 12px 40px;
-        border: 2px solid #e1e5e9;
-        border-radius: 25px;
-        font-size: 14px;
-        width: 280px;
-        transition: all 0.3s ease;
-        background-color: #fff;
+    padding: 12px 15px 12px 40px;
+    border: 2px solid #e1e5e9;
+    border-radius: 25px;
+    font-size: 14px;
+    width: 280px;
+    transition: all 0.3s ease;
+    background-color: #fff;
     }
 
-        .search-input-courses:focus {
-            outline: none;
-            border-color: #1a73e8;
-            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
-        }
+    .search-input-courses:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+    }
 
     /* Dropdown cải tiến */
     .dropdown {
-        position: relative;
-        display: inline-block;
+    position: relative;
+    display: inline-block;
     }
 
     .dropdown-button {
-        padding: 12px 20px;
-        border: 2px solid #1a73e8;
-        border-radius: 8px;
-        background-color: white;
-        color: #1a73e8;
-        font-weight: 600;
-        font-size: 14px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
-        min-width: 140px;
-        justify-content: space-between;
+    padding: 12px 20px;
+    border: 2px solid #1a73e8;
+    border-radius: 8px;
+    background-color: white;
+    color: #1a73e8;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    justify-content: space-between;
     }
 
-        .dropdown-button:hover {
-            background-color: #1a73e8;
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
-        }
+    .dropdown-button:hover {
+    background-color: #1a73e8;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+    }
 
     .arrow-down {
-        font-size: 10px;
-        transition: transform 0.3s ease;
+    font-size: 10px;
+    transition: transform 0.3s ease;
     }
 
     .dropdown.show .arrow-down {
-        transform: rotate(180deg);
+    transform: rotate(180deg);
     }
 
     .dropdown-content {
-        display: none;
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        background-color: #fff;
-        border: 1px solid #e1e5e9;
-        border-radius: 12px;
-        min-width: 180px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    min-width: 180px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
     }
 
     .dropdown.show .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
     }
 
     .dropdown-content a {
-        display: block;
-        padding: 12px 16px;
-        color: #333;
-        text-decoration: none;
-        font-size: 14px;
-        transition: all 0.2s ease;
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
     }
 
-        .dropdown-content a:hover {
-            background-color: #f8f9fa;
-            color: #1a73e8;
-            padding-left: 20px;
-        }
+    .dropdown-content a:hover {
+    background-color: #f8f9fa;
+    color: #1a73e8;
+    padding-left: 20px;
+    }
 
     /* Nút tạo bài giảng */
     .create-baigiang-button {
-        background: linear-gradient(135deg, #1a73e8, #1557b0);
-        color: white;
-        padding: 12px 24px;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+    background: linear-gradient(135deg, #1a73e8, #1557b0);
+    color: white;
+    padding: 12px 24px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
     }
 
-        .create-baigiang-button:hover {
-            background: linear-gradient(135deg, #1557b0, #0f4c8c);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
-        }
+    .create-baigiang-button:hover {
+    background: linear-gradient(135deg, #1557b0, #0f4c8c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    }
 
     /* Tabs cải tiến */
     .custom-tabs {
-        display: flex;
-        gap: 0;
-        margin: 40px 0 0 60px;
-        border-bottom: 2px solid #e1e5e9;
-        padding-bottom: 0;
+    display: flex;
+    gap: 0;
+    margin: 40px 0 0 60px;
+    border-bottom: 2px solid #e1e5e9;
+    padding-bottom: 0;
     }
 
     .tab-button {
-        padding: 15px 25px;
-        background-color: transparent;
-        border: none;
-        border-bottom: 3px solid transparent;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: #666;
-        font-size: 15px;
-        position: relative;
+    padding: 15px 25px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    font-size: 15px;
+    position: relative;
     }
 
-        .tab-button:hover {
-            color: #1a73e8;
-            background-color: rgba(26, 115, 232, 0.05);
-        }
+    .tab-button:hover {
+    color: #1a73e8;
+    background-color: rgba(26, 115, 232, 0.05);
+    }
 
-        .tab-button.active {
-            color: #1a73e8;
-            border-bottom-color: #1a73e8;
-            background-color: rgba(26, 115, 232, 0.05);
-        }
+    .tab-button.active {
+    color: #1a73e8;
+    border-bottom-color: #1a73e8;
+    background-color: rgba(26, 115, 232, 0.05);
+    }
 
     .tab-section {
-        display: none;
-        margin-left: 60px;
-        margin-top: 30px;
+    display: none;
+    margin-left: 60px;
+    margin-top: 30px;
     }
 
-        .tab-section.active {
-            display: block;
-        }
+    .tab-section.active {
+    display: block;
+    }
 
     /* Header banner cải tiến */
     .header-banner {
-        background: linear-gradient(135deg, #1a73e8, #1557b0);
-        color: white;
-        padding: 3rem 2rem;
-        border-radius: 16px;
-        background-size: cover;
-        background-position: center;
-        min-height: 220px;
-        display: flex;
-        align-items: flex-end;
-        max-width: 90%;
-        margin: 30px auto;
-        box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
-        position: relative;
-        overflow: hidden;
+    background: linear-gradient(135deg, #1a73e8, #1557b0);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    min-height: 220px;
+    display: flex;
+    align-items: flex-end;
+    max-width: 90%;
+    margin: 30px auto;
+    box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
+    position: relative;
+    overflow: hidden;
     }
 
-        .header-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(26, 115, 232, 0.1), rgba(21, 87, 176, 0.2));
-            z-index: 1;
-        }
+    .header-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.1), rgba(21, 87, 176, 0.2));
+    z-index: 1;
+    }
 
     .class-title {
-        font-size: 32px;
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        z-index: 2;
-        position: relative;
+    font-size: 32px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    z-index: 2;
+    position: relative;
     }
 
     /* Post items cải tiến */
     .post-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #e1e5e9;
-        padding: 20px 0;
-        max-width: 90%;
-        transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e1e5e9;
+    padding: 20px 0;
+    max-width: 90%;
+    transition: all 0.3s ease;
     }
 
-        .post-item:hover {
-            background-color: rgba(26, 115, 232, 0.02);
-            border-radius: 8px;
-            padding-left: 15px;
-            padding-right: 15px;
-            margin: 0 -15px;
-        }
+    .post-item:hover {
+    background-color: rgba(26, 115, 232, 0.02);
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 -15px;
+    }
 
     .post-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
     }
 
     .icon-circle {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #28a745, #20c997);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
     }
 
     .post-left a {
-        font-size: 16px;
-        font-weight: 600;
-        color: #333;
-        text-decoration: none;
-        transition: color 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
     }
 
-        .post-left a:hover {
-            color: #1a73e8;
-        }
+    .post-left a:hover {
+    color: #1a73e8;
+    }
 
     .text-muted {
-        font-size: 13px;
-        color: #666;
-        margin-right: 15px;
+    font-size: 13px;
+    color: #666;
+    margin-right: 15px;
     }
 
     /* Dropdown menu cho actions - SỬA LỖI HOVER */
     .post-item .dropdown {
-        position: relative;
+    position: relative;
     }
 
     .icon-three-dots {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: #666;
-        font-size: 18px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    font-size: 18px;
     }
 
-        .icon-three-dots:hover {
-            background-color: #f8f9fa;
-            color: #333;
-        }
+    .icon-three-dots:hover {
+    background-color: #f8f9fa;
+    color: #333;
+    }
 
-        .icon-three-dots::before {
-            content: "⋮";
-            font-size: 20px;
-            font-weight: bold;
-        }
+    .icon-three-dots::before {
+    content: "⋮";
+    font-size: 20px;
+    font-weight: bold;
+    }
 
     .post-item .dropdown-content {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: calc(100% + 5px);
-        background-color: #fff;
-        min-width: 160px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        z-index: 1001;
-        border-radius: 8px;
-        overflow: hidden;
-        border: 1px solid #e1e5e9;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 5px);
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    z-index: 1001;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e1e5e9;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
     }
 
     /* Sử dụng JavaScript thay vì hover CSS */
     .post-item .dropdown.show .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
     }
 
     .post-item .dropdown-content a,
     .post-item .dropdown-content button {
-        padding: 12px 16px;
-        display: block;
-        text-decoration: none;
-        color: #333;
-        background: none;
-        border: none;
-        text-align: left;
-        width: 100%;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.2s ease;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
     }
 
-        .post-item .dropdown-content a:hover,
-        .post-item .dropdown-content button:hover {
-            background-color: #f8f9fa;
-            color: #1a73e8;
-            padding-left: 20px;
-        }
+    .post-item .dropdown-content a:hover,
+    .post-item .dropdown-content button:hover {
+    background-color: #f8f9fa;
+    color: #1a73e8;
+    padding-left: 20px;
+    }
 
-        .post-item .dropdown-content button.text-danger:hover {
-            color: #dc3545;
-            background-color: rgba(220, 53, 69, 0.1);
-        }
+    .post-item .dropdown-content button.text-danger:hover {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    }
 
     /* Pagination cải tiến */
     .pagination {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        margin: 40px 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 40px 0;
     }
 
-        .pagination li {
-            display: inline;
-        }
+    .pagination li {
+    display: inline;
+    }
 
-        .pagination a,
-        .pagination span {
-            display: inline-block;
-            padding: 10px 15px;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid #e1e5e9;
-        }
+    .pagination a,
+    .pagination span {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #e1e5e9;
+    }
 
-            .pagination a:hover {
-                background-color: #e9ecef;
-                transform: translateY(-1px);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
+    .pagination a:hover {
+    background-color: #e9ecef;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-        .pagination .active span {
-            background-color: #1a73e8;
-            color: white;
-            font-weight: 600;
-            border-color: #1a73e8;
-            box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
-        }
+    .pagination .active span {
+    background-color: #1a73e8;
+    color: white;
+    font-weight: 600;
+    border-color: #1a73e8;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+    }
 
 
     .search-input-courses {
-        width: 100%;
+    width: 100%;
     }
 
     .custom-tabs {
-        margin-left: 20px;
-        overflow-x: auto;
+    margin-left: 20px;
+    overflow-x: auto;
     }
 
     .tab-section {
-        margin-left: 20px;
+    margin-left: 20px;
     }
 
     .conTent h3 {
-        margin-left: 20px;
-        font-size: 24px;
+    margin-left: 20px;
+    font-size: 24px;
     }
 
     .header-banner {
-        margin-left: 20px;
-        margin-right: 20px;
-        max-width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: calc(100% - 40px);
     }
 
+    select.form-select {
+    max-width: 400px;
+    }
+
+    .pagination li.active span {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 6px;
+    padding: 5px 10px;
+    }
+
+    .pagination li {
+    display: inline-block;
+    margin-right: 5px;
+    }
+
+    .pagination a {
+    text-decoration: none;
+    color: #0d6efd;
+    }
+
+    .pagination a:hover {
+    text-decoration: underline;
     }
 </style>
+
+
 
 <!-- Tabs -->
 <div class="custom-tabs">
@@ -537,6 +566,31 @@
             </button>
 
         }
+        @if (Model.BaiGiangsChuaCo?.Any() == true)
+        {
+            <div class="position-relative d-inline-block">
+                <button class="btn btn-primary" type="button" style="padding: 10px 10px;" onclick="toggleAddForm()">➕ Thêm bài giảng vào lớp</button>
+
+                <div id="addFormContainer" class="dropdown-box p-3 shadow-sm border rounded bg-white mt-2" style="display: none; min-width: 280px; position: absolute; z-index: 1000;">
+                    <form asp-action="ThemBaiGiangVaoLop" asp-controller="Courses" method="post">
+                        <input type="hidden" name="lopHocId" value="@Model.Id" />
+                        <select name="selectedBaiGiangId" class="form-select mb-2">
+                            @foreach (var bg in Model.BaiGiangsChuaCo)
+                            {
+                                <option value="@bg.Id">@bg.Title</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-success w-100">Xác nhận thêm</button>
+                    </form>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="alert alert-info mt-4">Tất cả bài giảng đã được gán cho lớp này.</div>
+        }
+
     </div>
 
     <div class="container mt-4" style="max-width: 90%;">
@@ -547,9 +601,18 @@
                     <div class="icon-circle">
                         <i class="bi bi-journal-richtext fs-5"></i>
                     </div>
-                    <a asp-action="ChiTietBaiGiang" asp-controller="GiangVien" asp-route-id="@item.Id">
-                        @item.Title
-                    </a>
+                    @if (User.IsInRole("Student"))
+                    {
+                        <a asp-action="ChiTietBaiGiang" asp-controller="SinhVien" asp-route-id="@item.Id">
+                            @item.Title
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="ChiTietBaiGiang" asp-controller="GiangVien" asp-route-id="@item.Id">
+                            @item.Title
+                        </a>
+                    }
                 </div>
                 <div style="display:flex; align-items:center;">
                     <span class="text-muted">Đã đăng vào @item.CreatedDate.ToString("HH:mm dd/MM/yyyy")</span>
@@ -693,4 +756,9 @@
             }
         });
     });
+
+     function toggleAddForm() {
+         const form = document.getElementById("addFormContainer");
+         form.style.display = (form.style.display === "none") ? "block" : "none";
+     }
 </script>

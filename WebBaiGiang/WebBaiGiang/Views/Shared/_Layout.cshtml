@@ -113,19 +113,13 @@
 
     <!-- Main Content -->
     @RenderBody()
-
     <!-- Footer -->
     @if (thongTin != null)
     {
         @await Html.PartialAsync("_Footer", thongTin)
     }
 
-    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
-{
-    ModalId = "logoutModal",
-    Message = "Bạn có muốn đăng xuất không?",
-    ActionUrl = Url.Action("Logout", "Account")
-})
+
 </body>
 </html>
 <script>

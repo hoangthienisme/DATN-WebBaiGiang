@@ -37,7 +37,18 @@
                 }
             </a>
         </div>
+        <div class="notification-dropdown position-relative me-3">
+            <button id="notificationToggle" class="btn btn-light position-relative">
+                <i class="bi bi-bell fs-5"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                      id="notificationBadge">0</span>
+            </button>
 
+            <div class="dropdown-menu shadow-sm p-2" id="notificationList"
+                 style="width: 320px; max-height: 400px; overflow-y: auto; display: none;">
+                <div class="text-center text-muted small">Đang tải thông báo...</div>
+            </div>
+        </div>
         <div class="custom-dropdown">
             <button class="avatar-button" type="button" id="dropdownUserToggle">
                 @if (!string.IsNullOrEmpty(avatar))
@@ -62,7 +73,7 @@
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link @(Context.Request.Path.Value.Contains("/GiangVien/Courses") ? "active" : "")" href="@Url.Action("Courses", "GiangVien", new { area = "" })">
-                        <i class="bi bi-camera-video"></i> Khóa học của tôi
+                        <i class="bi bi-camera-video"></i> Lớp học của tôi
                     </a>
                 </li>
                 <li class="nav-item">
@@ -144,3 +155,113 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    async function initNotifications() {
+        const bell = document.getElementById('notificationToggle');
+        const list = document.getElementById('notificationList');
+        const badge = document.getElementById('notificationBadge');
+
+        function updateBadge(count) {
+            const safeCount = Math.max(0, count);
+            badge.textContent = safeCount;
+            badge.classList.toggle('d-none', safeCount === 0);
+        }
+
+        async function fetchUnreadCountAndUpdateBadge() {
+            try {
+                const res = await fetch('/ThongBao/GetThongBao');
+                const data = await res.json();
+                const unreadCount = data.filter(tb => !tb.daDoc).length;
+                updateBadge(unreadCount);
+                return data;
+            } catch (err) {
+                console.error('Không thể tải thông báo:', err);
+                return [];
+            }
+        }
+
+        await fetchUnreadCountAndUpdateBadge();
+
+        bell.addEventListener('click', async function () {
+            list.style.display = list.style.display === 'block' ? 'none' : 'block';
+
+            if (list.style.display === 'block') {
+                const data = await fetchUnreadCountAndUpdateBadge();
+                list.innerHTML = '';
+                data.forEach(tb => {
+                    const item = document.createElement('a');
+                    item.href = tb.lienKet || '#';
+                    item.className = `dropdown-item small ${tb.daDoc ? 'read' : 'unread'}`;
+                    item.innerHTML = `
+                        ${tb.noiDung}
+                        <br><small class="text-muted">${new Date(tb.thoiGian).toLocaleString()}</small>
+                    `;
+                    item.addEventListener('click', async function (e) {
+                        e.preventDefault();
+                        if (!tb.daDoc) {
+                            await fetch('/ThongBao/DanhDauDaDoc?id=' + tb.id, { method: 'POST' });
+                            await fetchUnreadCountAndUpdateBadge();
+                            item.classList.remove('unread');
+                            item.classList.add('read');
+                        }
+                        if (tb.lienKet) window.location.href = tb.lienKet;
+                    });
+                    list.appendChild(item);
+                });
+            }
+        });
+
+        const connection = new signalR.HubConnectionBuilder().withUrl("/thongBaoHub").build();
+
+        connection.on("NhanThongBao", (data) => {
+            const item = document.createElement('a');
+            item.href = data.link || '#';
+            item.className = 'dropdown-item small unread';
+            item.innerHTML = `
+                ${data.tieuDe}
+                <br><small class="text-muted">${data.thoiGian}</small>
+            `;
+            item.addEventListener('click', async function (e) {
+                e.preventDefault();
+                await fetch('/ThongBao/DanhDauDaDocTheoLink?link=' + encodeURIComponent(data.link), { method: 'POST' });
+                await fetchUnreadCountAndUpdateBadge();
+                item.classList.remove('unread');
+                item.classList.add('read');
+                window.location.href = data.link;
+            });
+            if (list.style.display === 'block') list.prepend(item);
+            const current = parseInt(badge.textContent || '0');
+            updateBadge(current + 1);
+            if (list.style.display !== 'block') {
+                showRealtimePopup(data.tieuDe, 'success');
+            }
+        });
+
+        connection.start().catch(err => console.error(err));
+        document.addEventListener('click', function (e) {
+            if (!bell.contains(e.target) && !list.contains(e.target)) {
+                list.style.display = 'none';
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', initNotifications);
+</script>
+
+<script>
+    function showRealtimePopup(message, type = "success") {
+        const wrapper = document.querySelector('.popup-toast-wrapper');
+        if (!wrapper) return;
+
+        const toast = document.createElement('div');
+        toast.className = `popup-toast ${type}`;
+        toast.innerHTML = `
+            <i class="bi ${type === 'error' ? 'bi-x-circle' : 'bi-check-circle'}"></i> ${message}
+            <button type="button" class="btn-close toast-close-btn" aria-label="Close"></button>
+        `;
+
+        wrapper.appendChild(toast);
+        setTimeout(() => { toast.remove(); }, 3000);
+        toast.querySelector('.toast-close-btn').addEventListener('click', () => { toast.remove(); });
+    }
+</script>

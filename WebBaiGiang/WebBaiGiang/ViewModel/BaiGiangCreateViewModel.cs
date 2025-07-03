@@ -10,12 +10,17 @@ namespace WebBaiGiang.ViewModel
 
         public string? Description { get; set; }
 
+
         [Required(ErrorMessage = "Vui lòng chọn ít nhất một lớp học!")]
         public List<int> SelectedClassIds { get; set; } = new List<int>();
+        [Required]
+        public int HocPhanId { get; set; }
 
+        public List<SelectListItem> AvailableHocPhans { get; set; } = new();
         public List<IFormFile>? ImageFiles { get; set; }        // ảnh tổng
         public List<IFormFile>? DocumentFiles { get; set; }     // tài liệu tổng
         public List<string>? YoutubeLinks { get; set; } = new(); // ✅ link youtube tổng
+
 
         public List<SelectListItem> AvailableClasses { get; set; } = new List<SelectListItem>();
 

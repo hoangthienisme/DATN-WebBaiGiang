@@ -48,7 +48,9 @@ public partial class WebBaiGiangContext : DbContext
 
     public virtual DbSet<LopHocBaiGiang> LopHocBaiGiangs { get; set; }
     public virtual DbSet<ThongTinWeb> ThongTinWebs { get; set; }
-    public virtual DbSet<TaiNguyen> TaiNguyens { get; set; } 
+    public virtual DbSet<TaiNguyen> TaiNguyens { get; set; }
+    public virtual DbSet<ThongBao> ThongBaos { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=MSI\\SQLEXPRESS;Database=WebBaiGiang;Trusted_Connection=True;");
@@ -92,11 +94,19 @@ public partial class WebBaiGiangContext : DbContext
             entity.Property(e => e.Title).HasMaxLength(200);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
-            entity.HasMany(e => e.TaiNguyens)
-                  .WithOne(t => t.BaiGiang)
-                  .HasForeignKey(t => t.BaiGiangId)
+            // ✅ Liên kết với HocPhan
+            entity.HasOne(e => e.HocPhan)
+                  .WithMany(h => h.BaiGiangs)
+                  .HasForeignKey(e => e.HocPhanId)
                   .OnDelete(DeleteBehavior.Cascade);
+
+            // ✅ Liên kết với Tài nguyên
+            entity.HasOne(e => e.HocPhan)
+         .WithMany(h => h.BaiGiangs)
+         .HasForeignKey(e => e.HocPhanId)
+         .OnDelete(DeleteBehavior.SetNull);
         });
+
 
         // Entity: TaiNguyen
         modelBuilder.Entity<TaiNguyen>(entity =>

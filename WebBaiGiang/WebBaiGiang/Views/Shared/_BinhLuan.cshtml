@@ -1,0 +1,74 @@
+﻿@model WebBaiGiang.ViewModel.BinhLuanViewModel
+
+<h5 class="mt-4">Bình luận</h5>
+<hr />
+<!-- Form gửi bình luận -->
+<form asp-controller="GiangVien" asp-action="ThemBinhLuan" method="post">
+    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiangId" />
+    <div class="mb-2">
+        <textarea name="NoiDung" class="form-control" placeholder="Nhập bình luận của bạn..." rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Gửi bình luận</button>
+</form>
+
+<hr />
+<!-- Danh sách bình luận -->
+<div>
+    @if (Model.BinhLuans != null && Model.BinhLuans.Any())
+    {
+        foreach (var bl in Model.BinhLuans)
+        {
+            var isOwner = bl.NguoiDungId == Model.CurrentUserId;
+            var isTeacher = Model.CurrentUserRole == "Teacher";
+            <div class="border rounded p-2 mb-2 position-relative">
+                <strong>@bl.NguoiDung?.Name</strong> - <span class="text-muted">@bl.NgayTao.ToString("dd/MM/yyyy HH:mm")</span>
+                <div id="comment-content-@bl.Id">@bl.NoiDung</div>
+
+                @if (isOwner || isTeacher)
+                {
+                    <div class="dropdown position-absolute top-0 end-0 me-2 mt-2">
+                        <button class="btn btn-sm btn-light p-1 rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 32px; height: 32px;">
+                            <span style="font-size: 20px; line-height: 1;">&#8942;</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            @if (isOwner)
+                            {
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); showEditForm(@bl.Id, '@bl.NoiDung.Replace("'", "\\'")')">Sửa</a>
+                                </li>
+                            }
+                            <li>
+                                <form method="post" asp-action="XoaBinhLuan" asp-route-id="@bl.Id" onsubmit="return confirm('Bạn chắc chắn xóa bình luận này?')">
+                                    <button type="submit" class="dropdown-item text-danger">Xóa</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Form sửa, ẩn mặc định -->
+                    <form method="post" asp-action="SuaBinhLuan" class="mt-2" id="edit-form-@bl.Id" style="display:none;">
+                        <input type="hidden" name="Id" value="@bl.Id" />
+                        <textarea name="NoiDung" class="form-control mb-1">@bl.NoiDung</textarea>
+                        <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="hideEditForm(@bl.Id)">Hủy</button>
+                    </form>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-muted">Chưa có bình luận nào.</p>
+    }
+</div>
+    <script>
+        function showEditForm(id, noiDung) {
+            document.getElementById("edit-form-" + id).style.display = "block";
+            document.getElementById("comment-content-" + id).style.display = "none";
+        }
+
+        function hideEditForm(id) {
+            document.getElementById("edit-form-" + id).style.display = "none";
+            document.getElementById("comment-content-" + id).style.display = "block";
+        }
+    </script>

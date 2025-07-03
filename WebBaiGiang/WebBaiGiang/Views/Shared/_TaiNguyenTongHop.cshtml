@@ -1,0 +1,163 @@
+﻿@model WebBaiGiang.ViewModel.TaiNguyenTongHopViewModel
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-archive me-2"></i>
+                    Tài nguyên tổng của bài giảng
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row g-4">
+                    <!-- Ảnh -->
+                    <div class="col-lg-4">
+                        <div class="card h-100 border-0 bg-light">
+                            <div class="card-header bg-white border-bottom-0">
+                                <h5 class="mb-0 text-primary">
+                                    <i class="fas fa-images me-2"></i>
+                                    Ảnh minh họa
+                                    @if (Model.Anh?.Any() == true)
+                                    {
+                                        <span class="badge bg-primary ms-2">@Model.Anh.Count()</span>
+                                    }
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                @if (Model.Anh?.Any() == true)
+                                {
+                                    <div class="row g-3">
+                                        @foreach (var img in Model.Anh.Take(4))
+                                        {
+                                            <div class="col-6">
+                                                <div class="card shadow-sm">
+                                                    <img src="@img.Url" alt="Ảnh" class="card-img-top" style="height: 120px; object-fit: cover;" />
+                                                    <div class="card-body p-2">
+                                                        <a href="@img.Url" target="_blank" class="btn btn-sm btn-primary w-100">
+                                                            <i class="fas fa-external-link-alt me-1"></i> Xem
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    @if (Model.Anh.Count() > 4)
+                                    {
+                                        <div class="text-center mt-2">
+                                            <small class="text-muted">Và @(Model.Anh.Count() - 4) ảnh khác...</small>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="text-center text-muted py-4">
+                                        <i class="fas fa-image fa-2x mb-2 opacity-50"></i>
+                                        <p class="mb-0">Không có ảnh</p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- YouTube -->
+                    <div class="col-lg-4">
+                        <div class="card h-100 border-0 bg-light">
+                            <div class="card-header bg-white border-bottom-0">
+                                <h5 class="mb-0 text-danger">
+                                    <i class="fab fa-youtube me-2"></i>
+                                    Video YouTube
+                                    @if (Model.YouTube?.Any() == true)
+                                    {
+                                        <span class="badge bg-danger ms-2">@Model.YouTube.Count()</span>
+                                    }
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                @if (Model.YouTube?.Any() == true)
+                                {
+                                    @foreach (var yt in Model.YouTube.Take(2))
+                                    {
+                                        var embedUrl = yt.Url.Contains("watch?v=") ? yt.Url.Replace("watch?v=", "embed/") :
+                                        yt.Url.Contains("youtu.be") ? $"https://www.youtube.com/embed/{yt.Url.Split('/').Last()}" : yt.Url;
+
+                                        <div class="card shadow-sm mb-3">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="@embedUrl" allowfullscreen class="rounded border"></iframe>
+                                            </div>
+                                            <div class="text-center mt-2">
+                                                <a href="@yt.Url" target="_blank" class="btn btn-outline-danger btn-sm w-100">
+                                                    <i class="fab fa-youtube me-1"></i> Xem trên YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (Model.YouTube.Count() > 2)
+                                    {
+                                        <div class="text-center">
+                                            <small class="text-muted">Và @(Model.YouTube.Count() - 2) video khác...</small>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="text-center text-muted py-4">
+                                        <i class="fab fa-youtube fa-2x mb-2 opacity-50"></i>
+                                        <p class="mb-0">Không có video</p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tài liệu -->
+                    <div class="col-lg-4">
+                        <div class="card h-100 border-0 bg-light">
+                            <div class="card-header bg-white border-bottom-0">
+                                <h5 class="mb-0 text-dark">
+                                    <i class="fas fa-file-alt me-2"></i>
+                                    Tài liệu đính kèm
+                                    @if (Model.Docs?.Any() == true)
+                                    {
+                                        <span class="badge bg-secondary ms-2">@Model.Docs.Count()</span>
+                                    }
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                @if (Model.Docs?.Any() == true)
+                                {
+                                    @foreach (var doc in Model.Docs.Take(3))
+                                    {
+                                        <div class="card shadow-sm mb-3">
+                                            <div class="card-body text-center p-3">
+                                                <i class="fas fa-file-pdf text-danger mb-2" style="font-size: 2.5rem;"></i>
+                                                <p class="mb-2 fw-medium small">Tài liệu</p>
+                                                <a href="@doc.Url" target="_blank" class="btn btn-danger btn-sm w-100">
+                                                    <i class="fas fa-download me-1"></i> Tải về
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (Model.Docs.Count() > 3)
+                                    {
+                                        <div class="text-center">
+                                            <small class="text-muted">Và @(Model.Docs.Count() - 3) tài liệu khác...</small>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="text-center text-muted py-4">
+                                        <i class="fas fa-file-alt fa-2x mb-2 opacity-50"></i>
+                                        <p class="mb-0">Không có tài liệu</p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

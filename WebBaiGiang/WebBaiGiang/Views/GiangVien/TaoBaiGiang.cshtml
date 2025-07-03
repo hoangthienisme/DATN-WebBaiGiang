@@ -90,8 +90,12 @@
                 </div>
                 <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addYoutubeLink()">+ Thêm liên kết</button>
             </div>
+            <div class="form-group">
+                <label for="HocPhanId">Chọn học phần</label>
+                <select asp-for="HocPhanId" asp-items="Model.AvailableHocPhans" class="form-control"></select>
+                <span asp-validation-for="HocPhanId" class="text-danger"></span>
+            </div>
         </div>
-
         <!-- BƯỚC 2: Chương -->
         <div id="step2" class="step" style="display:none;">
             <h5>Danh sách chương</h5>

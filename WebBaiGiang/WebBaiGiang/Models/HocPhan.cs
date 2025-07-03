@@ -23,6 +23,7 @@ public partial class HocPhan
     public int? UpdateBy { get; set; }
     public bool IsActive { get; set; } = true;
 
+    public virtual ICollection<BaiGiang> BaiGiangs { get; set; } = new List<BaiGiang>();
 
     public virtual Khoa? Department { get; set; } = null!;
 

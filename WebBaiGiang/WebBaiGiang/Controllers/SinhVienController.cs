@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using WebBaiGiang.Models;
@@ -12,10 +13,12 @@ namespace WebBaiGiang.Controllers
     {
         private readonly WebBaiGiangContext _context;
         private readonly IWebHostEnvironment _env;
-        public SinhVienController(WebBaiGiangContext context, IWebHostEnvironment env)
+        private readonly IHubContext<ThongBaoHub> _hubContext;
+        public SinhVienController(WebBaiGiangContext context, IWebHostEnvironment env, IHubContext<ThongBaoHub> hubContext)
         {
             _context = context;
             _env = env;
+            _hubContext = hubContext;
         }
         public IActionResult Dashboard()
         {
@@ -139,19 +142,16 @@ namespace WebBaiGiang.Controllers
             var existing = await _context.NopBais
                 .FirstOrDefaultAsync(n => n.TestId == TestId && n.UsersId == userId);
 
-            // ❌ Nếu đã chấm điểm thì không cho nộp lại
             if (existing != null && existing.Point.HasValue)
             {
                 TempData["Error"] = "Bài tập đã được chấm điểm, bạn không thể nộp lại.";
                 return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
             }
 
-            // 🧾 Lưu file mới
+            // 📁 Lưu file
             var fileName = $"{Guid.NewGuid()}_{Attachment.FileName}";
             var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
-            if (!Directory.Exists(uploadsFolder))
-                Directory.CreateDirectory(uploadsFolder);
-
+            if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
             var filePath = Path.Combine(uploadsFolder, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
@@ -159,17 +159,16 @@ namespace WebBaiGiang.Controllers
             }
             var fileUrl = "/uploads/" + fileName;
 
-            // Nộp mới hoặc cập nhật nếu chưa chấm
             if (existing == null)
             {
-                var nopBai = new NopBai
+                existing = new NopBai
                 {
                     TestId = TestId,
                     UsersId = userId,
                     SubmittedDate = DateTime.Now,
                     FileUrl = fileUrl
                 };
-                _context.NopBais.Add(nopBai);
+                _context.NopBais.Add(existing);
             }
             else
             {
@@ -179,10 +178,86 @@ namespace WebBaiGiang.Controllers
                 existing.FeedBack = null;
             }
 
+            // 🚨 Thêm thông báo cho giảng viên
+            var baiTap = await _context.BaiTaps
+                .Include(bt => bt.BaiTapLopHocs)
+                    .ThenInclude(btlh => btlh.LopHoc)
+                .FirstOrDefaultAsync(bt => bt.Id == TestId);
+
+             var lop = baiTap?.BaiTapLopHocs.FirstOrDefault(btlh => btlh.LopHocId == lopId)?.LopHoc;
+                      var giangVienId = await _context.GiangVienLopHocs
+              .Where(gl => gl.IdClass == lopId && gl.IsActive)
+              .Select(gl => gl.IdGv)
+              .FirstOrDefaultAsync();
+
+            if (giangVienId != 0)
+            {
+                var tb = new ThongBao
+                {
+                    NguoiNhanId = giangVienId,
+                    NoiDung = $"Sinh viên đã nộp bài tập mới.",
+                    LienKet = Url.Action("ChiTietBaiTapGV", "Courses", new { baiTapId = TestId }),
+                    ThoiGian = DateTime.Now,
+                    DaDoc = false
+                };
+
+                _context.ThongBaos.Add(tb);
+
+                await _hubContext.Clients.Group($"user_{giangVienId}")
+                    .SendAsync("NhanThongBao", new
+                    {
+                        tieuDe = "Bài tập mới được nộp",
+                        link = tb.LienKet,
+                        thoiGian = tb.ThoiGian.ToString("HH:mm dd/MM")
+                    });
+            }
+
             await _context.SaveChangesAsync();
             TempData["Success"] = "Bài tập đã được nộp thành công.";
 
             return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
+        }
+
+        // Controller (BaiGiangController.cs)
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ChiTietBaiGiang(int id)
+        {
+            var baiGiang = await _context.BaiGiangs
+                .Include(bg => bg.TaiNguyens)
+                .Include(bg => bg.Chuongs)
+                .Include(bg => bg.BinhLuans).ThenInclude(bl => bl.NguoiDung)
+                .FirstOrDefaultAsync(bg => bg.Id == id);
+
+            if (baiGiang == null)
+                return NotFound();
+
+            var viewModel = new ChiTietBaiGiangViewModel
+            {
+                Id = baiGiang.Id,
+                Title = baiGiang.Title,
+                Description = baiGiang.Description,
+                CreatedDate = baiGiang.CreatedDate,
+                TaiNguyens = baiGiang.TaiNguyens.ToList(),
+                Chuongs = baiGiang.Chuongs.OrderBy(c => c.SortOrder).ToList(),
+                BinhLuans = baiGiang.BinhLuans.OrderByDescending(b => b.NgayTao).ToList(),
+                BaiGiang = baiGiang
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> LoadBaiByChuong(int chuongId)
+        {
+            var bais = await _context.Bais
+                .Where(b => b.ChuongId == chuongId)
+                .Include(b => b.TaiNguyens)
+                .OrderBy(b => b.SortOrder)
+                .ToListAsync();
+
+            return PartialView("_BaiTrongChuong", bais); // ✅ Model đúng là IEnumerable<Bai>
         }
 
 
