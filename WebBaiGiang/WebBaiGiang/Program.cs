@@ -33,7 +33,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddAuthorization();
-
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -49,6 +49,7 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<ThongBaoHub>("/thongBaoHub");
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

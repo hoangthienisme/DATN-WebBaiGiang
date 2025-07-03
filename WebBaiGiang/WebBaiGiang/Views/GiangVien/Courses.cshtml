@@ -59,7 +59,7 @@
 </style>
 
 <div class="conTent">
-    <h3>Khoá học</h3>
+    <h3>Lớp học</h3>
 </div>
 
 @await Html.PartialAsync("_Toast")
@@ -67,9 +67,9 @@
 <div class="search-filter">
     <form asp-action="Courses" method="get" class="search-input-wrapper">
         <img src="~/img/loupe.png" class="search-icon" />
-        <input type="text" name="search" value="@ViewBag.Search" placeholder="Tìm khóa học..." class="search-input-courses" />
+        <input type="text" name="search" value="@ViewBag.Search" placeholder="Tìm lớp học..." class="search-input-courses" />
     </form>
-    <button class="create-course-button" onclick="location.href='@Url.Action("CreateCourses", "GiangVien")'">Tạo khóa học</button>
+    <button class="create-course-button" onclick="location.href='@Url.Action("CreateCourses", "GiangVien")'">Tạo lớp học phần</button>
 </div>
 
 <div class="container">
@@ -116,11 +116,11 @@
         {
             if (!string.IsNullOrEmpty(ViewBag.Search))
             {
-                <p>Không tìm thấy khóa học với từ khóa "<strong>@ViewBag.Search</strong>".</p>
+                <p>Không tìm thấy lớp học với từ khóa "<strong>@ViewBag.Search</strong>".</p>
             }
             else
             {
-                <p>Không có khóa học nào.</p>
+                <p>Không có lớp học nào.</p>
             }
         }
     </div>

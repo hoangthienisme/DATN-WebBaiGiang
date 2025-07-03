@@ -294,3 +294,16 @@
         opacity: 1;
     }
 }
+#notificationBadge:empty {
+    display: none;
+}
+#notificationList .dropdown-item.unread {
+    background-color: #f0f9ff;
+    font-weight: 600;
+}
+
+#notificationList .dropdown-item.read {
+    background-color: white;
+    font-weight: 400;
+}
+

@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Claims;
 using WebBaiGiang.Models;
 using WebBaiGiang.ViewModel;
+using Microsoft.AspNetCore.SignalR;
 
 namespace WebBaiGiang.Controllers
 {
@@ -16,12 +17,14 @@ namespace WebBaiGiang.Controllers
         private readonly WebBaiGiangContext _context;
         private readonly IWebHostEnvironment _env;
         private readonly IEmailService _emailService;
+        private readonly IHubContext<ThongBaoHub> _hubContext;
 
-        public CoursesController(WebBaiGiangContext context, IWebHostEnvironment env, IEmailService emailService)
+        public CoursesController(WebBaiGiangContext context, IWebHostEnvironment env, IEmailService emailService, IHubContext<ThongBaoHub> hubContext)
         {
             _context = context;
             _env = env;
             _emailService = emailService;
+            _hubContext = hubContext;
         }
 
         // Hiển thị danh sách bài tập theo lớp
@@ -122,6 +125,51 @@ namespace WebBaiGiang.Controllers
 
             _context.BaiTaps.Add(baiTap);
             await _context.SaveChangesAsync();
+            // Gửi thông báo đến sinh viên các lớp
+            var thongBaos = new List<ThongBao>();
+
+            foreach (var classId in model.ClassIds)
+                {
+                            var sinhVienIds = await _context.SinhVienLopHocs
+                .Where(x => x.IdClass == classId)
+                .Join(_context.NguoiDungs,
+                    sv => sv.IdSv,
+                    nd => nd.Id,
+                    (sv, nd) => new { sv, nd })
+                .Where(x => x.nd.Role == "Student")
+                .Select(x => x.sv.IdSv)
+                .ToListAsync();
+
+
+                foreach (var svId in sinhVienIds)
+                {
+                    var noiDung = $"Bài tập mới \"{model.Title}\" đã được giao.";
+                    var lienKet = Url.Action("ChiTietBaiTap", "SinhVien", new { id = baiTap.Id });
+
+                    var tb = new ThongBao
+                    {
+                        NguoiNhanId = svId,
+                        NoiDung = noiDung,
+                        LienKet = lienKet,
+                        Loai = LoaiThongBao.BaiTapMoi,
+                        ThoiGian = DateTime.Now,
+                        DaDoc = false
+                    };
+
+                    thongBaos.Add(tb);
+
+                    // Gửi realtime qua SignalR
+                    await _hubContext.Clients.Group($"user_{svId}").SendAsync("NhanThongBao", new
+                    {
+                        tieuDe = $"Bài tập mới: {model.Title}",
+                        link = lienKet,
+                        thoiGian = tb.ThoiGian.ToString("HH:mm dd/MM")
+                    });
+                }
+            }
+
+            _context.ThongBaos.AddRange(thongBaos);
+            await _context.SaveChangesAsync();
 
             TempData["Success"] = "✅ Bài tập đã được tạo thành công.";
             return Redirect($"/Courses/DetailCourses/{model.LopIdGoc}#exerciseTab");
@@ -176,7 +224,7 @@ namespace WebBaiGiang.Controllers
                 if (model.ClassIds == null || !model.ClassIds.Any())
                     ModelState.AddModelError("", "Vui lòng chọn ít nhất một lớp học.");
 
-                TempData["Error"] = "❌ Vui lòng kiểm tra lại thông tin trước khi cập nhật.";
+                TempData["Error"] = " Vui lòng kiểm tra lại thông tin trước khi cập nhật.";
                 return View(model);
             }
 
@@ -215,7 +263,48 @@ namespace WebBaiGiang.Controllers
             }
 
             await _context.SaveChangesAsync();
+            // Gửi thông báo đến các sinh viên trong các lớp được chọn
+            var dsThongBao = new List<ThongBao>();
 
+            foreach (var classId in model.ClassIds)
+            {
+                var sinhVienIds = await _context.SinhVienLopHocs
+               .Where(x => x.IdClass == classId)
+               .Join(_context.NguoiDungs,
+                   sv => sv.IdSv,
+                   nd => nd.Id,
+                   (sv, nd) => new { sv, nd })
+               .Where(x => x.nd.Role == "Student")
+               .Select(x => x.sv.IdSv)
+               .ToListAsync();
+
+
+                foreach (var svId in sinhVienIds)
+                {
+                    var tb = new ThongBao
+                    {
+                        NguoiNhanId = svId,
+                        NoiDung = $"Bài tập \"{model.Title}\" đã được cập nhật. Vui lòng xem lại nội dung mới.",
+                        LienKet = Url.Action("ChiTietBaiTap", "SinhVien", new { id = baiTap.Id }),
+                        Loai = LoaiThongBao.CapNhatBaiTap, // Nếu có enum
+                        ThoiGian = DateTime.Now,
+                        DaDoc = false
+                    };
+
+                    dsThongBao.Add(tb);
+
+                    // Gửi realtime
+                    await _hubContext.Clients.Group($"user_{svId}").SendAsync("NhanThongBao", new
+                    {
+                        tieuDe = $"Bài tập cập nhật: {model.Title}",
+                        link = tb.LienKet,
+                        thoiGian = tb.ThoiGian.ToString("HH:mm dd/MM")
+                    });
+                }
+            }
+
+            _context.ThongBaos.AddRange(dsThongBao);
+            await _context.SaveChangesAsync();
             TempData["Success"] = " Bài tập đã được cập nhật thành công!";
             return Redirect($"/Courses/DetailCourses/{lopGoc}#exerciseTab");
         }
@@ -229,31 +318,76 @@ namespace WebBaiGiang.Controllers
             if (baiTap == null)
                 return NotFound();
 
-            // Tìm lớp gốc mà bài tập này thuộc về
+            // Lấy lớp gốc để redirect và thông báo
             var lopGoc = await _context.BaiTapLopHocs
                 .Where(x => x.BaiTapId == id)
                 .Select(x => x.LopHocId)
                 .FirstOrDefaultAsync();
 
             if (lopGoc == 0)
-                return RedirectToAction("Index", "Courses"); // fallback
+                return RedirectToAction("Index", "Courses");
 
             // Xóa các bản ghi nộp bài liên quan
             var nopBais = _context.NopBais.Where(n => n.TestId == id);
             _context.NopBais.RemoveRange(nopBais);
 
-            // Xóa liên kết bài tập với lớp học
+            // Xóa liên kết lớp học
             var baiTapLops = _context.BaiTapLopHocs.Where(x => x.BaiTapId == id);
             _context.BaiTapLopHocs.RemoveRange(baiTapLops);
 
-            // Xóa chính bài tập
+            // Xóa bài tập
             _context.BaiTaps.Remove(baiTap);
+            await _context.SaveChangesAsync(); // Lưu việc xóa trước
+
+
+                   var sinhVienIds = await _context.SinhVienLopHocs
+              .Where(sv => sv.IdClass == lopGoc)
+              .Join(_context.NguoiDungs,
+                  sv => sv.IdSv,
+                  nd => nd.Id,
+                  (sv, nd) => new { sv, nd })
+              .Where(x => x.nd.Role == "Student")
+              .Select(x => x.sv.IdSv)
+              .Distinct()
+              .ToListAsync();
+
+
+            var danhSachThongBao = new List<ThongBao>();
+            var lienKet = Url.Action("DetailCourses", "Courses", new { id = lopGoc }) + "#exerciseTab";
+            var thoiGianNow = DateTime.Now;
+
+            foreach (var svId in sinhVienIds)
+            {
+                danhSachThongBao.Add(new ThongBao
+                {
+                    NguoiNhanId = svId,
+                    NoiDung = $"Bài tập \"{baiTap.Title}\" đã bị xóa.",
+                    LienKet = Url.Action("DetailCourses", "Courses", new { id = lopGoc }) + "#exerciseTab",
+                    Loai = LoaiThongBao.CapNhatBaiTap,
+                    ThoiGian = thoiGianNow,
+                    DaDoc = false
+                });
+            }
+
+            _context.ThongBaos.AddRange(danhSachThongBao);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Bài tập đã được xóa thành công!";
+            // Gửi realtime đến từng sinh viên
+            var hubContext = HttpContext.RequestServices.GetRequiredService<IHubContext<ThongBaoHub>>();
+            foreach (var svId in sinhVienIds)
+            {
+                await hubContext.Clients.Group($"user_{svId}").SendAsync("NhanThongBao", new
+                {
+                    tieuDe = "Bài tập đã bị xóa",
+                    link = lienKet,
+                    thoiGian = thoiGianNow.ToString("HH:mm dd/MM")
+                });
+            }
 
+            TempData["Success"] = "Bài tập đã được xóa thành công!";
             return Redirect($"/Courses/DetailCourses/{lopGoc}#exerciseTab");
         }
+
 
 
 
@@ -296,6 +430,19 @@ namespace WebBaiGiang.Controllers
                 .Include(bt => bt.BaiTap)
                 .Select(bt => bt.BaiTap)
                 .OrderByDescending(bt => bt.CreatedDate);
+            // Lấy danh sách bài giảng chưa được gán vào lớp này
+            var allBaiGiangs = await _context.BaiGiangs.ToListAsync();
+
+            var baiGiangDaCoIds = await _context.LopHocBaiGiangs
+                .Where(lbg => lbg.LopHocId == id)
+                .Select(lbg => lbg.BaiGiangId)
+                .ToListAsync();
+
+            var baiGiangsChuaCo = allBaiGiangs
+                .Where(bg => !baiGiangDaCoIds.Contains(bg.Id))
+                .OrderByDescending(bg => bg.CreatedDate)
+                .ToList();
+
 
             var paginatedBaiTaps = await PhanTrang<BaiTap>.CreateAsync(baiTapsQuery, page, pageSize);
 
@@ -306,10 +453,31 @@ namespace WebBaiGiang.Controllers
                 Picture = lop.Picture,
                 BaiGiangs = paginatedBaiGiangs,
                 BaiTaps = paginatedBaiTaps,
-                Students = students
+                Students = students,
+                BaiGiangsChuaCo = baiGiangsChuaCo
             };
 
+
             return PartialView(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ThemBaiGiangVaoLop(int lopHocId, int selectedBaiGiangId)
+        {
+            var exists = await _context.LopHocBaiGiangs
+                .AnyAsync(x => x.LopHocId == lopHocId && x.BaiGiangId == selectedBaiGiangId);
+
+            if (!exists)
+            {
+                _context.LopHocBaiGiangs.Add(new LopHocBaiGiang
+                {
+                    LopHocId = lopHocId,
+                    BaiGiangId = selectedBaiGiangId,
+                    AddedDate = DateTime.Now
+                });
+                await _context.SaveChangesAsync();
+            }
+             TempData["Success"] = "Bài giảng đã được thêm thành công!";
+            return Redirect($"/Courses/DetailCourses/{lopHocId}#contentTab");
         }
 
         [AllowAnonymous]
@@ -338,9 +506,9 @@ namespace WebBaiGiang.Controllers
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             var exists = await _context.SinhVienLopHocs.AnyAsync(x => x.IdClass == lopId && x.IdSv == userId);
-
             if (!exists)
             {
+                // Thêm sinh viên vào lớp
                 _context.SinhVienLopHocs.Add(new SinhVienLopHoc
                 {
                     IdClass = lopId,
@@ -348,6 +516,41 @@ namespace WebBaiGiang.Controllers
                     JoinDate = DateTime.Now,
                     IsActive = true
                 });
+
+                // Lấy tên người dùng
+                var user = await _context.NguoiDungs.FindAsync(userId);
+                var tenSinhVien = user?.Name ?? "Sinh viên";
+
+                // Lấy giảng viên phụ trách lớp
+                var giangVienId = await _context.GiangVienLopHocs
+                    .Where(gv => gv.IdClass == lopId && gv.IsActive)
+                    .Select(gv => gv.IdGv)
+                    .FirstOrDefaultAsync();
+
+                if (giangVienId != 0)
+                {
+                    // Tạo thông báo
+                    var tb = new ThongBao
+                    {
+                        NguoiNhanId = giangVienId,
+                        NoiDung = $"{tenSinhVien} vừa tham gia lớp học.",
+                        LienKet = Url.Action("DetailCourses", "Courses", new { id = lopId }) + "#peopleTab",
+                        Loai = LoaiThongBao.ThamGiaLop, 
+                        ThoiGian = DateTime.Now,
+                        DaDoc = false
+                    };
+                    _context.ThongBaos.Add(tb);
+
+                    // Gửi realtime
+                    var hubContext = HttpContext.RequestServices.GetRequiredService<IHubContext<ThongBaoHub>>();
+                    await hubContext.Clients.Group($"user_{giangVienId}").SendAsync("NhanThongBao", new
+                    {
+                        tieuDe = $"{tenSinhVien} đã tham gia lớp",
+                        link = tb.LienKet,
+                        thoiGian = tb.ThoiGian.ToString("HH:mm dd/MM")
+                    });
+                }
+
                 await _context.SaveChangesAsync();
                 TempData["JoinSuccess"] = "Bạn đã tham gia lớp học thành công!";
             }
@@ -413,31 +616,57 @@ namespace WebBaiGiang.Controllers
 
             return View(viewModel);
         }
-
         [HttpPost]
-        public IActionResult ChamDiem(int[] NopBaiIds, double?[] Points, string?[] FeedBacks, int lopId)
+        public async Task<IActionResult> ChamDiem(int[] NopBaiIds, double?[] Points, string?[] FeedBacks, int lopId)
         {
             int length = NopBaiIds.Length;
+            var dsThongBao = new List<ThongBao>();
+            var hubContext = HttpContext.RequestServices.GetRequiredService<IHubContext<ThongBaoHub>>();
 
             for (int i = 0; i < length; i++)
             {
-                var nopBai = _context.NopBais.FirstOrDefault(nb => nb.Id == NopBaiIds[i]);
+                var nopBai = _context.NopBais
+                    .Include(nb => nb.Users)
+                    .Include(nb => nb.Test)
+                    .FirstOrDefault(nb => nb.Id == NopBaiIds[i]);
+
                 if (nopBai != null)
                 {
-                    // Bảo vệ Index (nếu mảng Points hoặc FeedBacks nhỏ hơn)
                     double? point = (i < Points.Length) ? Points[i] : null;
                     string? feedback = (i < FeedBacks.Length) ? FeedBacks[i] : null;
 
                     nopBai.Point = point;
                     nopBai.FeedBack = feedback;
+
+                    // Tạo thông báo
+                    var tb = new ThongBao
+                    {
+                        NguoiNhanId = nopBai.UsersId,
+                        NoiDung = $"Bạn đã được chấm điểm bài tập \"{nopBai.Test.Title}\" với số điểm {point?.ToString("0.##") ?? "?"}.",
+                        LienKet = Url.Action("ChiTietBaiTap", "SinhVien", new { id = nopBai.TestId }),
+                        Loai = LoaiThongBao.DaChamDiem,
+                        ThoiGian = DateTime.Now,
+                        DaDoc = false
+                    };
+
+                    dsThongBao.Add(tb);
+
+                    // Gửi thông báo realtime
+                    await hubContext.Clients.Group($"user_{nopBai.UsersId}").SendAsync("NhanThongBao", new
+                    {
+                        tieuDe = $"Bài tập \"{nopBai.Test.Title}\" đã được chấm điểm",
+                        link = tb.LienKet,
+                        thoiGian = tb.ThoiGian.ToString("HH:mm dd/MM")
+                    });
                 }
             }
 
-            _context.SaveChanges();
+            // Lưu thông báo
+            _context.ThongBaos.AddRange(dsThongBao);
+            await _context.SaveChangesAsync();
 
-            TempData["Success"] = " Đã chấm điểm và phản hồi thành công!";
+            TempData["Success"] = "✅ Đã chấm điểm và phản hồi thành công!";
             return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
         }
-
     }
 }

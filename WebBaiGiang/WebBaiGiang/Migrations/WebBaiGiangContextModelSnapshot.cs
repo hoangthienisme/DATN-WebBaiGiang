@@ -88,6 +88,9 @@ namespace WebBaiGiang.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("HocPhanId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -101,6 +104,8 @@ namespace WebBaiGiang.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK__BaiGiang__3214EC07CA07DEEA");
+
+                    b.HasIndex("HocPhanId");
 
                     b.ToTable("BaiGiang", (string)null);
                 });
@@ -621,6 +626,40 @@ namespace WebBaiGiang.Migrations
                     b.ToTable("TaiNguyen", (string)null);
                 });
 
+            modelBuilder.Entity("WebBaiGiang.Models.ThongBao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("DaDoc")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LienKet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Loai")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NguoiNhanId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NoiDung")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ThoiGian")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NguoiNhanId");
+
+                    b.ToTable("ThongBaos");
+                });
+
             modelBuilder.Entity("WebBaiGiang.Models.ThongTinWeb", b =>
                 {
                     b.Property<int>("Id")
@@ -693,6 +732,16 @@ namespace WebBaiGiang.Migrations
                         .HasConstraintName("FK_Bai_Chuong");
 
                     b.Navigation("Chuong");
+                });
+
+            modelBuilder.Entity("WebBaiGiang.Models.BaiGiang", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.HocPhan", "HocPhan")
+                        .WithMany("BaiGiangs")
+                        .HasForeignKey("HocPhanId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("HocPhan");
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.BaiTapLopHoc", b =>
@@ -878,6 +927,17 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("BaiGiang");
                 });
 
+            modelBuilder.Entity("WebBaiGiang.Models.ThongBao", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.NguoiDung", "NguoiNhan")
+                        .WithMany()
+                        .HasForeignKey("NguoiNhanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NguoiNhan");
+                });
+
             modelBuilder.Entity("WebBaiGiang.Models.Bai", b =>
                 {
                     b.Navigation("TaiNguyens");
@@ -908,6 +968,8 @@ namespace WebBaiGiang.Migrations
 
             modelBuilder.Entity("WebBaiGiang.Models.HocPhan", b =>
                 {
+                    b.Navigation("BaiGiangs");
+
                     b.Navigation("LopHocs");
                 });
 

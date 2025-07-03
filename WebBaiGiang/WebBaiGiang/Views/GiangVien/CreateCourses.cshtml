@@ -20,20 +20,20 @@
 <div class="container">
     <div class="preview-card">
         <div class="image-preview">
-            <img id="previewCardImage" src="@tempThumbnailUrl" alt="Preview ảnh bìa khóa học" />
+            <img id="previewCardImage" src="@tempThumbnailUrl" alt="Preview ảnh bìa lớp học" />
         </div>
         <div class="name-Coures">
-            <h2 id="previewTitle">@(!string.IsNullOrWhiteSpace(tempName) ? tempName : "Tên khóa học")</h2>
+            <h2 id="previewTitle">@(!string.IsNullOrWhiteSpace(tempName) ? tempName : "Tên lớp học")</h2>
         </div>
         <div class="conTent">
-            <p id="previewDesc">@Html.Raw(string.IsNullOrWhiteSpace(tempDescription) ? "Mô tả khóa học" : tempDescription)</p>
+            <p id="previewDesc">@Html.Raw(string.IsNullOrWhiteSpace(tempDescription) ? "Mô tả lớp học" : tempDescription)</p>
         </div>
     </div>
 
     <form asp-action="CreateCourses" method="post" enctype="multipart/form-data" class="form-section">
-        <h1>Hãy thiết lập khóa học của bạn</h1>
+        <h1>Hãy thiết lập lớp học của bạn</h1>
 
-        <label for="Name">Tên khóa học:</label>
+        <label for="Name">Tên lớp học:</label>
         <input type="text" name="Name" id="courseName" placeholder="VD: Giới thiệu về thiết kế UX" value="@tempName" required />
 
         <div class="form-group">
@@ -72,12 +72,12 @@
             </select>
         </div>
 
-        <label for="DetailedDescription">Mô tả khóa học:</label>
+        <label for="DetailedDescription">Mô tả lớp học:</label>
         <div id="detailedDescEditor" style="height: 300px;"></div>
         <input type="hidden" value="@tempDescription" name="DetailedDescription" id="hiddenDetailedDesc" />
 
         <div class="form-group">
-            <label for="thumbnail">Tải lên ảnh bìa khóa học</label>
+            <label for="thumbnail">Tải lên ảnh bìa lớp học</label>
             <div id="imagePreviewBox">
                 <img id="previewUploadBoxImage" src="@tempThumbnailUrl" alt="Preview" style="display:@(string.IsNullOrWhiteSpace(tempThumbnailUrl) ? "none" : "block")" />
                 <span id="placeholderText" style="display:@(string.IsNullOrWhiteSpace(tempThumbnailUrl) ? "block" : "none")">Chọn ảnh</span>
