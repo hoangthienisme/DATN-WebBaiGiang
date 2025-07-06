@@ -94,18 +94,7 @@
                         <i class="bi bi-journal-bookmark"></i> Lớp học của tôi
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/SinhVien/LichHoc") ? "active" : "")"
-                       href="@Url.Action("LichHoc", "SinhVien")">
-                        <i class="bi bi-calendar-week"></i> Lịch học
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link @(Context.Request.Path.Value.Contains("/SinhVien/ThongBao") ? "active" : "")"
-                       href="@Url.Action("ThongBao", "SinhVien")">
-                        <i class="bi bi-bell"></i> Thông báo
-                    </a>
-                </li>
+               
             </ul>
         </nav>
 

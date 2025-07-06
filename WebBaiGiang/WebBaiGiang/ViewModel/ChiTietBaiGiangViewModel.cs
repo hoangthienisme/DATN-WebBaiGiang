@@ -1,4 +1,5 @@
-﻿using WebBaiGiang.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using WebBaiGiang.Models;
 
 namespace WebBaiGiang.ViewModel
 {
@@ -20,6 +21,7 @@ namespace WebBaiGiang.ViewModel
         public BaiGiang BaiGiang { get; set; } = new();
 
         // Có thể thêm: Form gửi bình luận
+        [StringLength(1000, ErrorMessage = "Bình luận không được vượt quá 1000 ký tự")]
         public string NoiDungBinhLuanMoi { get; set; } = string.Empty;
     }
 }

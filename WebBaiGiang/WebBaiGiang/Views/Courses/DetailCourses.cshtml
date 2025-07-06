@@ -16,7 +16,7 @@
 
 
 <div class="conTent">
-    <h3>Khoá học > @Model.Name</h3>
+    <h3>lớp học > @Model.Name</h3>
 </div>
 
 <style>
@@ -485,10 +485,9 @@
 
 <!-- Tabs -->
 <div class="custom-tabs">
-    <button class="tab-button active" data-tab="contentTab">📚 Nội dung</button>
-    <button class="tab-button" data-tab="exerciseTab">📝 Bài tập trên lớp</button>
-    <button class="tab-button" data-tab="peopleTab">👥 Mọi người</button>
-    <button class="tab-button" data-tab="gradeTab">📊 Điểm</button>
+    <button class="tab-button active" data-tab="contentTab"> Nội dung</button>
+    <button class="tab-button" data-tab="exerciseTab">Bài tập & Điểm</button>
+    <button class="tab-button" data-tab="peopleTab">Mọi người </button>
 </div>
 
 <!-- Banner -->
@@ -498,23 +497,24 @@
 
 <!-- Tab: Mọi người -->
 <div id="peopleTab" class="tab-section">
-    @Html.Partial("_ThemNguoiPartial", new InviteStudentViewModel
+    @Html.Partial("_ThemNguoiPartial", new InviteUsersViewModel
 {
     ClassId = Model.Id,
-    Students = Model.Students // phải chắc chắn Model.Students có dữ liệu
+    Students = Model.Students,
+    Teachers = Model.Teachers// phải chắc chắn Model.Students có dữ liệu
 })
 </div>
-<!-- Tab: Điểm -->
-<div id="gradeTab" class="tab-section">
-    <div style="padding: 40px; text-align: center; color: #666;">
-        <h4>📊 Bảng điểm</h4>
-        <p>Điểm số của học sinh sẽ hiển thị ở đây</p>
-    </div>
-</div>
-
 <!-- Tab: Bài tập -->
 <div id="exerciseTab" class="tab-section">
     @Html.Partial("BaiTap", Model.BaiTaps)
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmDeleteBaiTapModal",
+    Message = "Bạn có chắc muốn xóa bài tập này?",
+    ActionUrl = Url.Action("XoaBaiTap", "Courses"),
+    DataId = 0,
+    IncludeLopHocId = true
+})
 
     <!-- PHÂN TRANG BÀI TẬP -->
     @if (Model.BaiTaps != null && Model.BaiTaps.TotalPages > 1)
@@ -574,7 +574,7 @@
                 <div id="addFormContainer" class="dropdown-box p-3 shadow-sm border rounded bg-white mt-2" style="display: none; min-width: 280px; position: absolute; z-index: 1000;">
                     <form asp-action="ThemBaiGiangVaoLop" asp-controller="Courses" method="post">
                         <input type="hidden" name="lopHocId" value="@Model.Id" />
-                        <select name="selectedBaiGiangId" class="form-select mb-2">
+                        <select name="selectedBaiGiangIds" class="form-select mb-2" multiple size="5">
                             @foreach (var bg in Model.BaiGiangsChuaCo)
                             {
                                 <option value="@bg.Id">@bg.Title</option>
@@ -621,17 +621,27 @@
                         <div class="dropdown" data-dropdown-id="@item.Id">
                             <div class="icon-three-dots" onclick="togglePostDropdown(@item.Id)"></div>
                             <div class="dropdown-content">
-                                <a asp-controller="GiangVien" asp-action="SuaBaiGiang" asp-route-id="@item.Id" asp-route-returnUrl="@returnUrl">Chỉnh sửa</a>
-                                <form asp-controller="GiangVien" asp-action="XoaBaiGiang" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài giảng này không?');" style="margin: 0;">
-                                    <button type="submit" class="text-danger"> Xóa</button>
-                                </form>
+                                <button type="button" onclick="showConfirmModalById('confirmDeleteBaiGiangModal', @item.Id, @Model.Id, '/Courses/DetailCourses/@Model.Id#contentTab')">Xóa</button>
+
                             </div>
+
                         </div>
                     }
                 </div>
             </div>
         }
     </div>
+    @await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmDeleteBaiGiangModal",
+    Message = "Bạn có chắc muốn xóa bài giảng?",
+    ActionUrl = Url.Action("XoaBaiGiang", "GiangVien"),
+    ConfirmButtonText = "XÓA",
+    CancelButtonText = "HỦY",
+    DataId = 0,
+    IncludeLopHocId = true
+})
+
 
     <!-- PHÂN TRANG -->
     @if (Model.BaiGiangs != null && Model.BaiGiangs.TotalPages > 1)
@@ -670,6 +680,16 @@
 
 <!-- JavaScript cải tiến -->
 <script>
+        function showConfirmModalById(modalId, courseId = null) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+
+        const inputId = modal.querySelector("input[name='id']");
+        if (inputId && courseId !== null) inputId.value = courseId;
+
+        modal.classList.add("show");
+    }
+
     // Tab handling
     document.querySelectorAll(".tab-button").forEach(button => {
         button.addEventListener("click", function () {
@@ -761,4 +781,31 @@
          const form = document.getElementById("addFormContainer");
          form.style.display = (form.style.display === "none") ? "block" : "none";
      }
+     document.addEventListener('click', function (e) {
+        const button = document.querySelector('button[onclick="toggleAddForm()"]');
+        const formContainer = document.getElementById('addFormContainer');
+
+        if (!formContainer.contains(e.target) && !button.contains(e.target)) {
+            formContainer.style.display = 'none';
+        }
+    });
+            function showConfirmDeleteBaiGiang(baiGiangId, lopHocId) {
+        const modal = document.getElementById("confirmDeleteBaiGiangModal");
+        const form = modal.querySelector("form");
+
+        form.querySelector("input[name='id']").value = baiGiangId;
+        form.querySelector("input[name='lopHocId']").value = lopHocId;
+        form.querySelector("input[name='returnUrl']").value = `/Courses/DetailCourses/${lopHocId}#contentTab`;
+
+        modal.classList.add("show");
+
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) modal.classList.remove("show");
+        });
+
+        modal.querySelector(".cancel-btn").addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+    }
+
 </script>

@@ -41,7 +41,7 @@
                 <label class="form-label fw-bold">Dành cho lớp</label>
                 <div class="dropdown">
                     <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span id="selectedClassesText">Chưa có lớp nào được chọn...</span>
+                        <span id="selectedClassesText">Chọn lớp...</span>
                     </button>
                     <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style=" max-height: 200px; overflow-y: auto;">
                         @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
@@ -86,8 +86,19 @@
             <div class="mb-3">
                 <label class="form-label fw-bold">Liên kết YouTube</label>
                 <div id="youtube-links-container" class="d-flex flex-column gap-2">
-                    <input type="url" name="YoutubeLinks" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+                    @if (Model.YoutubeLinks != null && Model.YoutubeLinks.Any())
+                    {
+                        for (int i = 0; i < Model.YoutubeLinks.Count; i++)
+                        {
+                            <input type="url" name="YoutubeLinks" value="@Model.YoutubeLinks[i]" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+                        }
+                    }
+                    else
+                    {
+                        <input type="url" name="YoutubeLinks" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+                    }
                 </div>
+
                 <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addYoutubeLink()">+ Thêm liên kết</button>
             </div>
             <div class="form-group">
@@ -147,12 +158,11 @@
         }
     }
 
-        function addChapter() {
+    function addChapter() {
         const chapterDiv = document.createElement("div");
         chapterDiv.className = "border p-3 mb-3 chapter-item";
 
-        const currentChapters = document.querySelectorAll(".chapter-item").length;
-        const sortOrder = currentChapters + 1;
+        const sortOrder = chapterCount + 1;
 
         chapterDiv.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -164,38 +174,12 @@
             <input type="text" name="Chuongs[${chapterCount}].Title" class="form-control mb-2" placeholder="Tên chương" required />
             <div class="form-control-plaintext fst-italic">→ Bài học sẽ được thêm ở bước tiếp theo</div>
         `;
+
         document.getElementById("chapters-container").appendChild(chapterDiv);
         chapterCount++;
     }
 
-
-
-          function renderLessonsFromChapters() {
-        const wrapper = document.getElementById("lessons-wrapper");
-        wrapper.innerHTML = "";
-
-        const chapters = document.querySelectorAll("#chapters-container .chapter-item");
-
-        chapters.forEach((chapter, index) => {
-            // Cập nhật lại name cho chương đúng chỉ số
-            chapter.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${index}].Id`);
-            chapter.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${index}].Title`);
-
-            const chapterTitle = chapter.querySelector(`input[name='Chuongs[${index}].Title']`)?.value || "(Không tên)";
-            const chapterSection = document.createElement("div");
-            chapterSection.className = "border p-3 mb-3";
-            chapterSection.innerHTML = `
-                <h6>Chương ${index + 1} - <span>${chapterTitle}</span></h6>
-                <div id="lessons-${index}" class="lessons-container ms-3 border-start ps-3 mt-2"></div>
-                <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="addLesson(${index})">+ Thêm bài học</button>
-            `;
-            wrapper.appendChild(chapterSection);
-        });
-    }
-
-
-
-      function addLesson(chapterIndex) {
+    function addLesson(chapterIndex) {
         const container = document.getElementById(`lessons-${chapterIndex}`);
         const lessonCount = container.querySelectorAll('.lesson-item').length;
         const sortOrder = lessonCount + 1;
@@ -203,39 +187,44 @@
 
         const div = document.createElement("div");
         div.className = "lesson-item border p-2 mt-2";
+
         div.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <label class="fw-bold">Bài học ${chapterIndex + 1}.${sortOrder}</label>
-
+                <label class="fw-bold">Bài học ${chapterIndex + 1}.${sortOrder}</label>
                 <button type="button" class="btn btn-danger btn-sm" onclick="removeElement(this, 'lesson-item')">Xóa bài học</button>
             </div>
 
             <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Id" value="0" />
             <input type="hidden" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].SortOrder" value="${sortOrder}" />
             <input type="text" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Title" class="form-control mb-1" placeholder="Tên bài học" required />
-           <textarea name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Description"
-          class="form-control mb-1 lesson-description"
-          placeholder="Mô tả bài học"
-          id="lesson-desc-${chapterIndex}-${lessonCount}"></textarea>
 
-            <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonCount}].VideoUrl" class="form-control mb-1" placeholder="URL video (nếu có)" />
+            <textarea name="Chuongs[${chapterIndex}].Bais[${lessonCount}].Description"
+                class="form-control mb-1 lesson-description"
+                placeholder="Mô tả bài học"
+                id="lesson-desc-${chapterIndex}-${lessonCount}"></textarea>
+
+            <div class="mb-2">
+                <label class="form-label">Liên kết YouTube</label>
+                <div id="youtube-links-${chapterIndex}-${lessonCount}" class="d-flex flex-column gap-2"></div>
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addYoutubeLinkToLesson(${chapterIndex}, ${lessonCount})">+ Thêm liên kết</button>
+            </div>
 
             <div class="mb-2">
                 <label class="form-label">Tải lên hình ảnh</label>
                 <input type="file"
-                       name="Chuongs[${chapterIndex}].Bais[${lessonCount}].ImageFiles"
-                       class="form-control mb-1"
-                       multiple accept="image/*"
-                       onchange="previewFiles(this, '${previewId}')" />
+                    name="Chuongs[${chapterIndex}].Bais[${lessonCount}].ImageFiles"
+                    class="form-control mb-1"
+                    multiple accept="image/*"
+                    onchange="previewFiles(this, '${previewId}')" />
             </div>
 
             <div class="mb-2">
                 <label class="form-label">Tài liệu</label>
                 <input type="file"
-                       name="Chuongs[${chapterIndex}].Bais[${lessonCount}].DocumentFiles"
-                       class="form-control mb-1"
-                       multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
-                       onchange="previewFiles(this, '${previewId}')" />
+                    name="Chuongs[${chapterIndex}].Bais[${lessonCount}].DocumentFiles"
+                    class="form-control mb-1"
+                    multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+                    onchange="previewFiles(this, '${previewId}')" />
             </div>
 
             <div id="${previewId}" class="mt-2"></div>
@@ -243,14 +232,38 @@
 
         container.appendChild(div);
 
-    ClassicEditor
-        .create(document.querySelector(`#lesson-desc-${chapterIndex}-${lessonCount}`))
-        .catch(error => console.error(error));
+        ClassicEditor
+            .create(document.querySelector(`#lesson-desc-${chapterIndex}-${lessonCount}`))
+            .catch(error => console.error(error));
     }
 
+    function renderLessonsFromChapters() {
+        const wrapper = document.getElementById("lessons-wrapper");
+        wrapper.innerHTML = "";
 
+        const chapters = document.querySelectorAll("#chapters-container .chapter-item");
 
-         function removeElement(button, className) {
+        chapters.forEach((chapter, index) => {
+            chapter.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${index}].Id`);
+            chapter.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${index}].Title`);
+            chapter.querySelector("input[name$='.SortOrder']").setAttribute("name", `Chuongs[${index}].SortOrder`);
+
+            const titleInput = chapter.querySelector(`input[name='Chuongs[${index}].Title']`);
+            const chapterTitle = titleInput?.value || "(Không tên)";
+
+            const chapterSection = document.createElement("div");
+            chapterSection.className = "border p-3 mb-3";
+            chapterSection.innerHTML = `
+                <h6>Chương ${index + 1} - <span>${chapterTitle}</span></h6>
+                <div id="lessons-${index}" class="lessons-container ms-3 border-start ps-3 mt-2"></div>
+                <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="addLesson(${index})">+ Thêm bài học</button>
+            `;
+
+            wrapper.appendChild(chapterSection);
+        });
+    }
+
+    function removeElement(button, className) {
         const element = button.closest('.' + className);
         const parent = element.parentElement;
         element.remove();
@@ -265,56 +278,34 @@
         }
     }
 
-        function updateChapterIndexes() {
+    function updateChapterIndexes() {
         const chapterItems = document.querySelectorAll('.chapter-item');
 
         chapterItems.forEach((chapter, index) => {
-            // Cập nhật lại label "Chương X"
-            const label = chapter.querySelector('label.fw-bold');
-            if (label) {
-                label.textContent = `Chương ${index + 1}`;
-            }
-
-            // Cập nhật lại SortOrder
-            const sortOrderInput = chapter.querySelector("input[name$='.SortOrder']");
-            if (sortOrderInput) {
-                sortOrderInput.value = index + 1;
-            }
-
-            // Cập nhật lại index của input name nếu cần (nâng cao)
+            chapter.querySelector("label.fw-bold").textContent = `Chương ${index + 1}`;
             chapter.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${index}].Title`);
             chapter.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${index}].Id`);
-            sortOrderInput.setAttribute("name", `Chuongs[${index}].SortOrder`);
+            chapter.querySelector("input[name$='.SortOrder']").value = index + 1;
+            chapter.querySelector("input[name$='.SortOrder']").setAttribute("name", `Chuongs[${index}].SortOrder`);
         });
 
-        // Cập nhật lại biến đếm tổng chương
         chapterCount = chapterItems.length;
     }
-            function updateLessonIndexes(lessonContainer) {
+
+    function updateLessonIndexes(lessonContainer) {
         const lessonItems = lessonContainer.querySelectorAll('.lesson-item');
         const chapterIndex = parseInt(lessonContainer.id.replace('lessons-', ''), 10);
 
         lessonItems.forEach((lesson, index) => {
             const sortOrder = index + 1;
+            const previewId = `preview-${chapterIndex}-${index}`;
 
-            // Cập nhật tiêu đề "Bài học X"
-            const label = lesson.querySelector('label.fw-bold');
-            if (label) {
-    label.textContent = `Bài học ${chapterIndex + 1}.${sortOrder}`;
-
-            }
-
-            // Cập nhật input name
+            lesson.querySelector('label.fw-bold').textContent = `Bài học ${chapterIndex + 1}.${sortOrder}`;
             lesson.querySelector("input[name$='.Id']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].Id`);
             lesson.querySelector("input[name$='.SortOrder']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].SortOrder`);
             lesson.querySelector("input[name$='.Title']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].Title`);
             lesson.querySelector("textarea[name$='.Description']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].Description`);
             lesson.querySelector("input[type='url']").setAttribute("name", `Chuongs[${chapterIndex}].Bais[${index}].VideoUrl`);
-
-            // Preview ID (nếu dùng preview nhiều)
-            const previewId = `preview-${chapterIndex}-${index}`;
-            const previewDiv = lesson.querySelector("div[id^='preview-']");
-            if (previewDiv) previewDiv.id = previewId;
 
             const imageInput = lesson.querySelector("input[type='file'][name*='ImageFiles']");
             if (imageInput) {
@@ -328,62 +319,24 @@
                 docInput.setAttribute("onchange", `previewFiles(this, '${previewId}')`);
             }
 
-            // SortOrder hidden value
-            const sortInput = lesson.querySelector("input[name$='.SortOrder']");
-            if (sortInput) sortInput.value = sortOrder;
+            const previewDiv = lesson.querySelector("div[id^='preview-']");
+            if (previewDiv) previewDiv.id = previewId;
         });
     }
 
+    function addYoutubeLinkToLesson(chapterIndex, lessonIndex) {
+        const containerId = `youtube-links-${chapterIndex}-${lessonIndex}`;
+        const container = document.getElementById(containerId);
 
-    function previewFiles(input, previewId) {
-        const previewContainer = document.getElementById(previewId);
-        previewContainer.innerHTML = "";
+        const input = document.createElement('div');
+        input.className = "input-group mb-1";
 
-        Array.from(input.files).forEach(file => {
-            if (previewId === "imagePreview" && file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const img = document.createElement("img");
-                    img.src = e.target.result;
-                    img.className = "img-thumbnail me-2 mb-2";
-                    img.style.maxWidth = "120px";
-                    img.style.maxHeight = "120px";
-                    img.alt = file.name;
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                const span = document.createElement("div");
-                span.textContent = "📄 " + file.name;
-                previewContainer.appendChild(span);
-            }
-        });
-    }
+        input.innerHTML = `
+            <input type="url" name="Chuongs[${chapterIndex}].Bais[${lessonIndex}].YoutubeLinks" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+            <button class="btn btn-outline-danger" type="button" onclick="this.parentElement.remove()">X</button>
+        `;
 
-    function addYoutubeLink() {
-        const container = document.getElementById("youtube-links-container");
-        const input = document.createElement("input");
-        input.type = "url";
-        input.name = "YoutubeLinks";
-        input.className = "form-control";
-        input.placeholder = "https://www.youtube.com/watch?v=...";
         container.appendChild(input);
-    }
-
-    function updateSelectedClassesDropdownText() {
-        const selectedOptions = $(".class-checkbox:checked");
-        const textSpan = $('#selectedClassesText');
-
-        if (selectedOptions.length === 0) {
-            textSpan.text('Chưa có lớp nào được chọn...');
-        } else if (selectedOptions.length > 3) {
-            textSpan.text(`${selectedOptions.length} lớp đã chọn`);
-        } else {
-            const labels = selectedOptions.map(function () {
-                return $(this).next('label').text();
-            }).get();
-            textSpan.text(labels.join(', '));
-        }
     }
 
     $(document).ready(function () {
@@ -392,11 +345,7 @@
         $('.class-checkbox').on('change', updateSelectedClassesDropdownText);
     });
 </script>
-<script>
-    ClassicEditor
-         .create(document.querySelector('#description-editor'))
-         .catch(error => console.error(error));
-</script>
+
 <script>
     window.MathJax = {
         tex: {

@@ -9,6 +9,7 @@ public partial class Khoa
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Tên khoa không được để trống")]
+    [RegularExpression(@"^(?=.*[\p{L}])[\p{L}\p{M} \.'\-]+$", ErrorMessage = "Tên khoa không được chứa ký tự đặc biệt hoặc để trống")]
     public string Name { get; set; } = null!;
 
     public string? Description { get; set; }

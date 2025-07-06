@@ -18,7 +18,9 @@ namespace WebBaiGiang.ViewModel
         public string? ContentUrl { get; set; }
 
         [Display(Name = "Điểm tối đa")]
-        public double? MaxPoint { get; set; }
+        [Range(0, 100, ErrorMessage = "Điểm tối đa không được vượt quá 100.")]
+        public double? MaxPoint { get; set; } = 100;
+
 
         [Display(Name = "Tệp đính kèm")]
         public IFormFile? Attachment { get; set; }

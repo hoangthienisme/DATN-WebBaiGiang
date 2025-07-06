@@ -1,0 +1,75 @@
+﻿@model WebBaiGiang.Models.LopHoc
+@{
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
+    ViewBag.Title = "Tham gia lớp học";
+}
+
+<style>
+    .join-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+        .join-container h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .join-container p {
+            font-size: 18px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+    .btn-join {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-join:hover {
+            background-color: #218838;
+        }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid #c3e6cb;
+    }
+
+</style>
+
+<div class="join-container">
+    <h2>Tham gia lớp học: <strong>@Model.Name</strong></h2>
+
+    @if (TempData["JoinSuccess"] != null)
+    {
+        <div class="alert-success">@TempData["JoinSuccess"]</div>
+    }
+
+    @if ((bool)ViewBag.IsJoined)
+    {
+        <p>Bạn đã tham gia lớp học này 🎉</p>
+    }
+    else
+    {
+        <form method="post" asp-action="ConfirmJoinAsTeacher">
+            <input type="hidden" name="lopId" value="@Model.Id" />
+            <button type="submit" class="btn-join">Xác nhận tham gia</button>
+        </form>
+    }
+</div>

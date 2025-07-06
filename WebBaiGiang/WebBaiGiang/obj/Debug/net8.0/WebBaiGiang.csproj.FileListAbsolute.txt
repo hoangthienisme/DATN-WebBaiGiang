@@ -304,3 +304,7 @@ D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\Microsoft.Exte
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\EPPlus.dll
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\EPPlus.Interfaces.dll
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\DATN\DATN-WebBaiGiang\WebBaiGiang\WebBaiGiang\bin\Debug\net8.0\EPPlus.System.Drawing.dll

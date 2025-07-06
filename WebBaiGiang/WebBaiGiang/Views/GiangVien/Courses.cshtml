@@ -65,10 +65,21 @@
 @await Html.PartialAsync("_Toast")
 
 <div class="search-filter">
-    <form asp-action="Courses" method="get" class="search-input-wrapper">
+    <form asp-action="Courses" method="get" class="search-form">
         <img src="~/img/loupe.png" class="search-icon" />
         <input type="text" name="search" value="@ViewBag.Search" placeholder="Tìm lớp học..." class="search-input-courses" />
+        <select name="SubjectsId" class="form-select" style="min-width: 100px;" onchange="this.form.submit()">
+            <option value="">-- Tất cả học phần --</option>
+            @foreach (var hp in (List<WebBaiGiang.Models.HocPhan>)ViewBag.HocPhans)
+            {
+                <option value="@hp.Id" selected="@(hp.Id == (ViewBag.SubjectsId ?? 0) ? "selected" : null)">
+                    @hp.Name
+                </option>
+            }
+        </select>
     </form>
+    
+
     <button class="create-course-button" onclick="location.href='@Url.Action("CreateCourses", "GiangVien")'">Tạo lớp học phần</button>
 </div>
 

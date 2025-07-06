@@ -9,7 +9,6 @@
     max-width: 36em;
 }
 .search-input-courses {
-    margin-top: 20px;
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 999px;
@@ -82,16 +81,14 @@
 
 .search-icon {
     position: absolute;
-    top: 50%;
-    left: 240px;
+    left: 490px;
     width: 18px;
     height: 18px;
     opacity: 0.6;
 }
-
 .search-input-courses {
-    margin-left : 13px;
-    padding: 10px 10px 10px 36px; 
+    margin-left: 13px;
+    padding: 10px 10px 10px 36px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 15px;
@@ -192,4 +189,32 @@
 
 .dropdown-menu {
     z-index: 1050;
+}
+.search-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-input-courses {
+    width: 250px;
+    padding: 6px 10px;
+}
+
+.form-select {
+    width: 200px;
+    padding: 6px 10px;
+}
+
+.create-course-button {
+    margin-left: auto;
 }

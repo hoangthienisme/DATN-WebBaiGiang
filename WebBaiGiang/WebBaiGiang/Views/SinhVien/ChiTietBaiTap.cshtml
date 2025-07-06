@@ -11,7 +11,15 @@
 
             <div class="mb-2">
                 <strong>🕒 Hạn nộp:</strong>
-                <span class="text-danger">@Model.BaiTap.DueDate?.ToString("dd/MM/yyyy HH:mm")</span>
+                @if (Model.BaiTap.DueDate.HasValue)
+                {
+                    <span class="text-danger">@Model.BaiTap.DueDate.Value.ToString("dd/MM/yyyy HH:mm")</span>
+                }
+                else
+                {
+                    <span class="text-muted">Không giới hạn thời gian nộp</span>
+                }
+
             </div>
 
             <div class="mb-2">
@@ -65,7 +73,7 @@
                     <p><strong>📝 Phản hồi:</strong> <span class="text-muted">Không có</span></p>
                 }
 
-                @if (DateTime.Now <= Model.BaiTap.DueDate && Model.NopBai.Point == null)
+                @if ((!Model.BaiTap.DueDate.HasValue || DateTime.Now <= Model.BaiTap.DueDate.Value) && Model.NopBai.Point == null)
                 {
                     <hr />
                     <form asp-action="NopBai" asp-controller="SinhVien" enctype="multipart/form-data">
@@ -93,8 +101,9 @@
             }
             else
             {
- 
-                if (DateTime.Now <= Model.BaiTap.DueDate)
+
+                if (!Model.BaiTap.DueDate.HasValue || DateTime.Now <= Model.BaiTap.DueDate.Value)
+
                 {
                     <form asp-action="NopBai" asp-controller="SinhVien" enctype="multipart/form-data">
                         <input type="hidden" name="TestId" value="@Model.BaiTap.Id" />
