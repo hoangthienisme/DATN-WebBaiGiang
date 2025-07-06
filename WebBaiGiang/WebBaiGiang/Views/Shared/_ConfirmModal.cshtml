@@ -11,48 +11,86 @@
         </div>
 
         <!-- Form POST hoặc xử lý JS -->
-        <form id="modalForm-@Model.ModalId" method="post" action="@Model.ActionUrl">
+        <form id="modalForm-@Model.ModalId" method="@(Model.Method ?? "post")" action="@Model.ActionUrl">
+            @if ((Model.Method ?? "post").ToLower() == "post")
+            {
+                @Html.AntiForgeryToken()
+            }
+
             <input type="hidden" name="id" value="@Model.DataId" />
+            @if (Model.IncludeLopHocId || Model.IncludeReturnUrl)
+            {
+                <input type="hidden" name="lopHocId" value="@Model.LopHocId" />
+            }
+            @if (Model.IncludeReturnUrl)
+            {
+                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+            }
+
+
             <div class="custom-modal-footer">
-                <button type="submit" class="btn btn-primary confirm-btn">@(@Model.ConfirmButtonText ?? "XÁC NHẬN")</button>
+                @if ((Model.Method ?? "post").ToLower() == "get" && Model.ActionUrl?.Contains("TaiBangDiemExcel") == true)
+                {
+                    <button type="button" class="btn btn-primary confirm-btn"
+                            onclick="downloadExcelFromModal('@Model.DataId', '@Model.ModalId')">
+                        @(@Model.ConfirmButtonText ?? "XÁC NHẬN")
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary confirm-btn">
+                        @(@Model.ConfirmButtonText ?? "XÁC NHẬN")
+                    </button>
+                }
+
                 <button type="button" class="btn btn-secondary cancel-btn">@(@Model.CancelButtonText ?? "HỦY")</button>
             </div>
         </form>
+
     </div>
 </div>
 
 <script>
+    // Tự động gắn sự kiện hủy và đóng ngoài modal
     document.addEventListener('DOMContentLoaded', function () {
-        const modal = document.getElementById('@Model.ModalId');
+        document.querySelectorAll(".custom-modal").forEach(function (modal) {
+            // Sự kiện nút Hủy
+            modal.querySelector(".cancel-btn")?.addEventListener("click", function () {
+                modal.classList.remove("show");
+            });
 
-        // Hủy
-        modal?.querySelector('.cancel-btn')?.addEventListener('click', function () {
-            modal.classList.remove('show');
-        });
-
-        // Click ngoài modal để đóng
-        modal?.addEventListener('click', function (event) {
-            if (event.target === modal) {
-                modal.classList.remove('show');
-            }
+            // Click ngoài nội dung modal thì đóng
+            modal.addEventListener("click", function (e) {
+                if (e.target === modal) {
+                    modal.classList.remove("show");
+                }
+            });
         });
     });
+    function showConfirmModalById(modalId, courseId = null, lopHocId = null, returnUrl = null) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
 
-    // Dùng cho modal xác nhận lưu trữ, khôi phục
-    function showConfirmModal(courseId) {
-        const modal = document.getElementById("@Model.ModalId");
-        const input = modal.querySelector("input[name='id']");
-        input.value = courseId;
+        const inputId = modal.querySelector("input[name='id']");
+        if (inputId && courseId !== null) inputId.value = courseId;
+
+        const lopInput = modal.querySelector("input[name='lopHocId']");
+        if (lopInput && lopHocId !== null) lopInput.value = lopHocId;
+
+        const returnInput = modal.querySelector("input[name='returnUrl']");
+        if (returnInput && returnUrl !== null) returnInput.value = returnUrl;
+
         modal.classList.add("show");
     }
-
-    // Dùng cho modal sao chép link
     function showCopyLinkModal(link) {
         const modal = document.getElementById("confirmCopyModal");
+        if (!modal) return;
+
         modal.classList.add("show");
 
         const form = modal.querySelector("form");
 
+        // Clone lại để reset mọi event submit cũ
         const newForm = form.cloneNode(true);
         form.parentNode.replaceChild(newForm, form);
 
@@ -69,9 +107,16 @@
                 });
         };
 
-        // Đóng khi nhấn hủy
-        newForm.querySelector('.cancel-btn')?.addEventListener('click', function () {
+        newForm.querySelector(".cancel-btn")?.addEventListener("click", function () {
             modal.classList.remove("show");
         });
     }
+        function downloadExcelFromModal(baiTapId, modalId) {
+        const url = `/Courses/TaiBangDiemExcel?baiTapId=${baiTapId}`;
+        window.open(url, '_blank');
+
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.remove("show");
+    }
+
 </script>

@@ -31,6 +31,10 @@
     </div>
 
     <form asp-action="CreateCourses" method="post" enctype="multipart/form-data" class="form-section">
+        <div class="text-danger" style="color:red">
+            @Html.ValidationSummary(false, "", new { @class = "" })
+        </div>
+
         <h1>Hãy thiết lập lớp học của bạn</h1>
 
         <label for="Name">Tên lớp học:</label>

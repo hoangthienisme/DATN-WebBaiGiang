@@ -260,6 +260,26 @@ namespace WebBaiGiang.Controllers
             return PartialView("_BaiTrongChuong", bais); // ✅ Model đúng là IEnumerable<Bai>
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult LoadBinhLuan(int baiGiangId)
+        {
+            var binhLuans = _context.BinhLuans
+                .Include(bl => bl.NguoiDung)
+                .Where(bl => bl.BaiGiangId == baiGiangId)
+                .OrderByDescending(bl => bl.NgayTao)
+                .ToList();
+
+            var viewModel = new BinhLuanViewModel
+            {
+                BinhLuans = binhLuans,
+                BaiGiangId = baiGiangId,
+                CurrentUserId = 0,
+                CurrentUserRole = "" // nếu không cần phân quyền
+            };
+
+            return PartialView("_BinhLuan", viewModel);
+        }
 
 
 

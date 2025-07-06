@@ -28,7 +28,7 @@
             <label class="form-label fw-bold">Dành cho lớp</label>
             <div class="dropdown">
                 <button class="btn btn-outline-secondary dropdown-toggle text-start" type="button" id="classDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span id="selectedClassesText">Chưa có lớp nào được chọn...</span>
+                    <span id="selectedClassesText">Chọn lớp...</span>
                 </button>
                 <ul class="dropdown-menu p-2" aria-labelledby="classDropdownBtn" style="max-height: 200px; overflow-y: auto;">
                     @if (Model.AvailableClasses != null && Model.AvailableClasses.Any())
@@ -63,12 +63,22 @@
             <input asp-for="DueDate" class="form-control" type="datetime-local" />
             <span asp-validation-for="DueDate" class="text-danger"></span>
         </div>
-
+        <!-- File đính kèm cũ -->
+        @if (!string.IsNullOrEmpty(Model.ContentUrl))
+        {
+            <div class="mb-3">
+                <label class="form-label fw-bold">📎 Tài liệu hiện tại:</label>
+                <a href="@Model.ContentUrl" target="_blank" class="btn btn-outline-info btn-sm">
+                    <i class="bi bi-file-earmark-arrow-down"></i> Tải xuống tài liệu cũ
+                </a>
+            </div>  
+        }
+        <!-- Upload file mới -->
         <div class="mb-3">
-            <label asp-for="Attachment" class="form-label fw-bold">Đính kèm (nếu có)</label>
-            <input asp-for="Attachment" type="file" class="form-control" />
-            <span asp-validation-for="Attachment" class="text-danger"></span>
+            <label class="form-label fw-bold">📤 Tệp đính kèm mới (nếu muốn thay)</label>
+            <input name="Attachment" type="file" class="form-control" />
         </div>
+
 
         <div class="mt-4">
             <button type="submit" class="btn btn-primary">Lưu thay đổi</button>

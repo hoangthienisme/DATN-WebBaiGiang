@@ -140,6 +140,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xKb2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Courses/JoinAsTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xKb2luQXNUZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Courses/SuaBaiTap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xTdWFCYWlUYXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -218,6 +222,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Shared/_CourseLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db3Vyc2VMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Shared/_DanhSachBinhLuan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EYW5oU2FjaEJpbmhMdWFuLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DATN/DATN-WebBaiGiang/WebBaiGiang/WebBaiGiang/Views/Shared/_Footer.cshtml]

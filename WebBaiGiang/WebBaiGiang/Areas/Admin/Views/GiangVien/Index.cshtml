@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebBaiGiang.Models.NguoiDung>
+﻿@using WebBaiGiang.ViewModel
+@using System.Text.Encodings.Web
+@model IEnumerable<WebBaiGiang.Models.NguoiDung>
 
 @{
     ViewData["Title"] = "Danh sách giảng viên";
@@ -101,18 +103,13 @@
                                            href="@Url.Action("Edit", "GiangVien", new { area = "Admin", id = gv.Id })">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="/Admin/GiangVien/ToggleTrangThai" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="id" value="@gv.Id" />
-                                            <button type="submit"
-                                                    class="btn @(gv.IsActive ? "btn-outline-warning" : "btn-outline-success") btn-sm"
-                                                    title="@(gv.IsActive ? "Khóa tài khoản" : "Mở khóa tài khoản")"
-                                                    onclick="return confirm('Bạn có chắc muốn @(gv.IsActive ? "khóa" : "mở khóa") tài khoản @gv.Name không?');">
-                                                <i class="bi @(gv.IsActive ? "bi-lock" : "bi-unlock")"></i>
-                                            </button>
-                                        </form>
 
-
+                                        <button type="button"
+                                                class="btn @(gv.IsActive ? "btn-outline-warning" : "btn-outline-success") btn-sm"
+                                                title="@(gv.IsActive ? "Khóa tài khoản" : "Mở khóa tài khoản")"
+                                                onclick="@Html.Raw($"showConfirmGVModal('confirmToggleGVModal', '{Url.Action("ToggleTrangThai", "GiangVien", new { area = "Admin" })}', {gv.Id}, '{JavaScriptEncoder.Default.Encode(gv.Name)}', {gv.IsActive.ToString().ToLower()})")">
+                                            <i class="bi @(gv.IsActive ? "bi-lock" : "bi-unlock")"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -124,6 +121,13 @@
         </div>
     }
 </div>
+@await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmToggleGVModal",
+    Message = "", // sẽ cập nhật bằng JS
+    ActionUrl = Url.Action("ToggleTrangThai", "GiangVien", new { area = "Admin" }),
+     DataId = 0
+})
 
 <style>
     .bg-danger-subtle {
@@ -181,34 +185,40 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.getElementById('searchInput');
-        const table = document.getElementById('giangVienTable');
-        const clearBtn = document.getElementById('clearSearch');
+       document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('confirmToggleGVModal');
 
-        if (searchInput && table) {
-            searchInput.addEventListener('input', function () {
-                const filter = this.value.toLowerCase();
-                const rows = table.querySelectorAll('tbody tr');
+        modal?.querySelector('.cancel-btn')?.addEventListener('click', function () {
+            modal.classList.remove('show');
+        });
 
-                rows.forEach(row => {
-                    const text = row.textContent.toLowerCase();
-                    row.style.display = text.includes(filter) ? '' : 'none';
-                });
-            });
-
-            clearBtn.addEventListener('click', function () {
-                searchInput.value = '';
-                const rows = table.querySelectorAll('tbody tr');
-                rows.forEach(row => row.style.display = '');
-            });
-        }
-
-        // Debug form submission
-        document.querySelectorAll('form[asp-action="Delete"]').forEach(form => {
-            form.addEventListener('submit', function (e) {
-                console.log('Form submitted with id:', this.querySelector('input[name="id"]').value);
-            });
+        modal?.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
         });
     });
+
+</script>
+<script>
+            function showConfirmGVModal(modalId, actionUrl, id, name, isActive) {
+        console.log("Modal function called", modalId, id, name, isActive); // 👉 debug ở đây
+
+        const modal = document.getElementById(modalId);
+        if (!modal) {
+            console.error("Không tìm thấy modal với ID:", modalId);
+            return;
+        }
+
+        const form = modal.querySelector("form");
+        form.action = actionUrl;
+        form.querySelector("input[name='id']").value = id;
+
+        const messageContainer = modal.querySelector(".custom-modal-body p");
+        messageContainer.innerText = `Bạn có chắc muốn ${isActive ? "khóa" : "mở khóa"} tài khoản "${name}" không?`;
+
+        modal.classList.add("show");
+    }
+
+
 </script>

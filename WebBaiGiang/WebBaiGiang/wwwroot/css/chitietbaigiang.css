@@ -4,6 +4,50 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
 }
+.sidebar {
+    display: none !important;
+}
+
+.main-content-area {
+    width: 100% !important;
+}
+.mo-ta-noi-dung {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+    /* Ảnh không tràn layout */
+    .mo-ta-noi-dung img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1rem auto;
+        border-radius: 8px;
+    }
+#tocContent .toc-chuong {
+    margin-top: 1rem;
+}
+
+.toc-item {
+    cursor: pointer;
+}
+
+    /* Code block hoặc bảng rộng thì có scroll ngang */
+    .mo-ta-noi-dung pre,
+    .mo-ta-noi-dung table {
+        max-width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+
+    /* Iframe như video YouTube cũng thu gọn theo màn */
+    .mo-ta-noi-dung iframe {
+        max-width: 100%;
+        height: auto;
+    }
+
 
 /* Sidebar (Table of Contents) */
 .left-toc {
@@ -141,4 +185,21 @@ body {
             box-shadow: 0 4px 12px rgba(106, 191, 75, 0.4);
             transform: translateY(-2px);
         }
+
+    .accordion-header {
+        padding-right: 0.75rem;
+    }
+
+    .btn-xoa-chuong {
+        white-space: nowrap;
+    }
 }
+.accordion-body .bai-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 8px;
+}
+
+    .accordion-body .bai-item:last-child {
+        border-bottom: none;
+    }

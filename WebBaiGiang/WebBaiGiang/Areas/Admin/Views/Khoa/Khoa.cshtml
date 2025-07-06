@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebBaiGiang.Models.Khoa>
+﻿@using WebBaiGiang.ViewModel
+@model IEnumerable<WebBaiGiang.Models.Khoa>
 
 @{
     ViewData["Title"] = "Quản lý Khoa";
@@ -64,21 +65,24 @@
 
                         @if (khoa.IsActive)
                         {
-                            <a class="btn btn-sm btn-warning"
-                               href="@Url.Action("An", "Khoa", new { id = khoa.Id, area = "Admin" })"
-                               title="Ẩn"
-                               onclick="return confirm('Bạn có chắc chắn muốn ẩn khoa \" @khoa.Name\" không?');">
+                            <button type="button"
+                                    class="btn btn-sm btn-warning"
+                                    title="Ẩn"
+                                    onclick="showConfirmKhoaModal('confirmHideKhoaModal', '@Url.Action("An", "Khoa", new { area = "Admin" })', @khoa.Id)">
                                 <i class="bi bi-eye-slash"></i>
-                            </a>
+                            </button>
+
 
                         }
                         else
                         {
-                            <a class="btn btn-sm btn-success"
-                               href="@Url.Action("KhoiPhuc", "Khoa", new { id = khoa.Id, area = "Admin" })"
-                               title="Khôi phục">
+                            <button type="button"
+                                    class="btn btn-sm btn-success"
+                                    title="Khôi phục"
+                                    onclick="showConfirmKhoaModal('confirmRestoreKhoaModal', '@Url.Action("KhoiPhuc", "Khoa", new { area = "Admin" })', @khoa.Id)">
                                 <i class="bi bi-arrow-repeat"></i>
-                            </a>
+                            </button>
+
                         }
                     </td>
 
@@ -91,6 +95,19 @@
         }
     </tbody>
 </table>
+@await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmHideKhoaModal",
+    Message = "Bạn có chắc muốn ẩn khoa này?",
+    ActionUrl = Url.Action("An", "Khoa", new { area = "Admin" })
+})
+
+@await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmRestoreKhoaModal",
+    Message = "Bạn có chắc muốn khôi phục khoa này?",
+    ActionUrl = Url.Action("KhoiPhuc", "Khoa", new { area = "Admin" })
+})
 
 @{
     var currentPage = ViewBag.CurrentPage;
@@ -123,3 +140,13 @@
         </ul>
     </nav>
 }
+<script>
+     function showConfirmKhoaModal(modalId, actionUrl, id) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add("show");
+
+        const form = modal.querySelector("form");
+        form.action = actionUrl;
+        form.querySelector("input[name='id']").value = id;
+    }
+</script>

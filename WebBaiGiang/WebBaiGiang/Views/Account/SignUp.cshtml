@@ -82,11 +82,12 @@
             </form>
 
             <div class="other-options">
-                <span>Các tùy chọn đăng ký khác</span>
-                <div class="social-icons">
-                    <button><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google"></button>
-                    <button><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></button>
-                    <button><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Apple"></button>
+                <span>Các tùy chọn đăng nhập khác</span>
+                <div class="social-icons" style="margin-top: 10px;">
+                    <a href="@Url.Action("LoginWithGoogle", "Account")" class="btn btn-light border d-flex align-items-center" style="gap: 10px;">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" height="20">
+                        <span>Đăng nhập bằng Google</span>
+                    </a>
                 </div>
             </div>
 

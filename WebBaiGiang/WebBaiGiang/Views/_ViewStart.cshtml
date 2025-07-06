@@ -1,3 +1,16 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using System.Security.Claims
+@{
+    var role = Context.User.FindFirst(ClaimTypes.Role)?.Value;
+    if (role == "Teacher")
+    {
+        Layout = "~/Views/Shared/_LayoutGiangVien.cshtml";
+    }
+    else if (role == "Student")
+    {
+        Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // mặc định
+    }
 }

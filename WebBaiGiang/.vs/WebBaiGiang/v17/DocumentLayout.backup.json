@@ -3,112 +3,64 @@
   "WorkspaceRootPath": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\sinhvien\\chitietbaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\sinhvien\\chitietbaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\sinhviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\sinhviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_baitrongchuong.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_baitrongchuong.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\tainguyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\tainguyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_tainguyentonghop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_tainguyentonghop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\giangvienlophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\giangvienlophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_binhluan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_binhluan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\binhluanviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\binhluanviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\tainguyentonghopviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\tainguyentonghopviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\courses\\detailcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\courses\\detailcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\loaithongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\loaithongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\lophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\lophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\baitaplophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\baitaplophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\baitap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\baitap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\thongbaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\thongbaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layoutsinhvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layoutsinhvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\hubs\\thongbaohub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\hubs\\thongbaohub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\giangvien\\chitietbaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\giangvien\\chitietbaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\nopbai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\nopbai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_danhsachbinhluan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_danhsachbinhluan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\baigiang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\baigiang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layoutsinhvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layoutsinhvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_toast.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_toast.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\sinhvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\sinhvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_baitrongchuong.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_baitrongchuong.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\webbaigiang.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\webbaigiang.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\suachuongrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\suachuongrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_tainguyentonghop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_tainguyentonghop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\bai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\bai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\chuong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\chuong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\shared\\_layoutgiangvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\views\\giangvien\\taobaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\views\\giangvien\\taobaigiang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\viewmodel\\baigiangcreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\viewmodel\\baigiangcreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\models\\tainguyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\models\\tainguyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|d:\\datn\\datn-webbaigiang\\webbaigiang\\webbaigiang\\wwwroot\\css\\chitietbaigiang.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2F6F8FF4-3D39-46CD-9243-14D44A8BBB43}|WebBaiGiang\\WebBaiGiang.csproj|solutionrelative:webbaigiang\\wwwroot\\css\\chitietbaigiang.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -118,356 +70,202 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SinhVienController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\SinhVienController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\SinhVienController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\SinhVienController.cs",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\SinhVienController.cs",
-              "ViewState": "AgIAAN0AAAAAAAAAAAAowN8AAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T07:41:24.179Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GiangVienController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\GiangVienController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs*",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\GiangVienController.cs*",
-              "ViewState": "AgIAAJgDAAAAAAAAAAAswKEDAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T03:28:31.745Z",
+              "Title": "ChiTietBaiGiang.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml*",
+              "RelativeToolTip": "WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml*",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAswGMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-06T11:32:29.31Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TaiNguyen.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\TaiNguyen.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\TaiNguyen.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\TaiNguyen.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\TaiNguyen.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T11:29:33.8Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "_BaiTrongChuong.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAABGAAAAAAAAAA==",
+              "Title": "_LayoutSinhvien.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
+              "ViewState": "AgIAAIcAAAAAAAAAAAApwI0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T11:15:58.199Z",
+              "WhenOpened": "2025-07-06T12:07:59.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_DanhSachBinhLuan.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_DanhSachBinhLuan.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_DanhSachBinhLuan.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_DanhSachBinhLuan.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_DanhSachBinhLuan.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwBUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-06T11:53:22.46Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "_BinhLuan.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_BinhLuan.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_BinhLuan.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_BinhLuan.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_BinhLuan.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T10:49:01.164Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_TaiNguyenTongHop.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T10:48:03.924Z",
+              "Title": "Bai.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\Bai.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\Bai.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\Bai.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\Bai.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T09:51:28.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "BinhLuanViewModel.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\BinhLuanViewModel.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\BinhLuanViewModel.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\BinhLuanViewModel.cs",
-              "RelativeToolTip": "WebBaiGiang\\ViewModel\\BinhLuanViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Title": "Chuong.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\Chuong.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\Chuong.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\Chuong.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\Chuong.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T10:45:21.324Z",
+              "WhenOpened": "2025-07-06T09:33:56.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SuaChuongRequest.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\SuaChuongRequest.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\SuaChuongRequest.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\SuaChuongRequest.cs",
+              "RelativeToolTip": "WebBaiGiang\\ViewModel\\SuaChuongRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T09:33:25.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "TaiNguyenTongHopViewModel.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\TaiNguyenTongHopViewModel.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\TaiNguyenTongHopViewModel.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\TaiNguyenTongHopViewModel.cs",
-              "RelativeToolTip": "WebBaiGiang\\ViewModel\\TaiNguyenTongHopViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T10:43:41.342Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GiangVienLopHoc.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\GiangVienLopHoc.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\GiangVienLopHoc.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\GiangVienLopHoc.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\GiangVienLopHoc.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAmwBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T09:52:17.943Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LopHoc.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\LopHoc.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\LopHoc.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\LopHoc.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\LopHoc.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T09:51:28.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "BaiTapLopHoc.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiTapLopHoc.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\BaiTapLopHoc.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiTapLopHoc.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\BaiTapLopHoc.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T09:50:43.566Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "BaiTap.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiTap.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\BaiTap.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiTap.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\BaiTap.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBQAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T09:49:56.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "_LayoutGiangvien.cshtml",
               "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
               "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
               "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
               "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_LayoutGiangvien.cshtml",
-              "ViewState": "AgIAALEAAAAAAAAAAAAwwJwAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T09:05:39.77Z",
+              "WhenOpened": "2025-07-06T09:21:16.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "NopBai.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\NopBai.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\NopBai.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\NopBai.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\NopBai.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T08:19:03.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "BaiGiang.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiGiang.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\BaiGiang.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\BaiGiang.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\BaiGiang.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T08:15:23.108Z",
+              "DocumentIndex": 11,
+              "Title": "TaoBaiGiang.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\TaoBaiGiang.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\TaoBaiGiang.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\TaoBaiGiang.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\TaoBaiGiang.cshtml",
+              "ViewState": "AgIAAEEBAAAAAAAAAAAgwEUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-06T09:06:18.703Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "DetailCourses.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Courses\\DetailCourses.cshtml",
-              "ViewState": "AgIAAOwBAAAAAAAAAAAAAPMBAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T07:54:51.321Z",
+              "Title": "BaiGiangCreateViewModel.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\BaiGiangCreateViewModel.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\ViewModel\\BaiGiangCreateViewModel.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\ViewModel\\BaiGiangCreateViewModel.cs",
+              "RelativeToolTip": "WebBaiGiang\\ViewModel\\BaiGiangCreateViewModel.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAQwEAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T08:55:30.806Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ChiTietBaiGiang.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "TaiNguyen.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\TaiNguyen.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\TaiNguyen.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\TaiNguyen.cs",
+              "RelativeToolTip": "WebBaiGiang\\Models\\TaiNguyen.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T08:21:27.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_TaiNguyenTongHop.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_TaiNguyenTongHop.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T07:47:31.565Z",
+              "WhenOpened": "2025-07-06T08:19:48.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_BaiTrongChuong.cshtml",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_BaiTrongChuong.cshtml",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAAAK0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-06T08:15:20.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GiangVienController.cs",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "RelativeToolTip": "WebBaiGiang\\Controllers\\GiangVienController.cs",
+              "ViewState": "AgIAAOkFAAAAAAAAAAAlwPEFAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T05:50:13.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "chitietbaigiang.css",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\chitietbaigiang.css",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-06T05:49:59.477Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ChiTietBaiGiang.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\SinhVien\\ChiTietBaiGiang.cshtml",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAswH4AAABTAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "RelativeToolTip": "WebBaiGiang\\Views\\GiangVien\\ChiTietBaiGiang.cshtml",
+              "ViewState": "AgIAADQBAAAAAAAAAAApwEoBAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T07:43:27.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CoursesController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\CoursesController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\CoursesController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\CoursesController.cs",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\CoursesController.cs",
-              "ViewState": "AgIAAIsBAAAAAAAAAAAwwM8BAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T07:08:46.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "LoaiThongBao.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\LoaiThongBao.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Models\\LoaiThongBao.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Models\\LoaiThongBao.cs",
-              "RelativeToolTip": "WebBaiGiang\\Models\\LoaiThongBao.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T07:05:07.276Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "_Toast.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_Toast.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_Toast.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_Toast.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_Toast.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T04:42:50.727Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "sinhvien.css",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
-              "RelativeDocumentMoniker": "WebBaiGiang\\wwwroot\\css\\sinhvien.css",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\sinhvien.css",
-              "RelativeToolTip": "WebBaiGiang\\wwwroot\\css\\sinhvien.css",
-              "ViewState": "AgIAACUBAAAAAAAAAAAcwC8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-03T03:49:31.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ThongBaoHub.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Hubs\\ThongBaoHub.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Hubs\\ThongBaoHub.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Hubs\\ThongBaoHub.cs",
-              "RelativeToolTip": "WebBaiGiang\\Hubs\\ThongBaoHub.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T03:39:35.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "WebBaiGiang.csproj",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
-              "RelativeDocumentMoniker": "WebBaiGiang\\WebBaiGiang.csproj",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\WebBaiGiang.csproj",
-              "RelativeToolTip": "WebBaiGiang\\WebBaiGiang.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-03T03:39:07.047Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Program.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Program.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Program.cs",
-              "RelativeToolTip": "WebBaiGiang\\Program.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAArwDQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T03:33:24.597Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ThongBaoController.cs",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\ThongBaoController.cs",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Controllers\\ThongBaoController.cs",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Controllers\\ThongBaoController.cs",
-              "RelativeToolTip": "WebBaiGiang\\Controllers\\ThongBaoController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAswEIAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T03:32:16.716Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "_LayoutSinhvien.cshtml",
-              "DocumentMoniker": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
-              "RelativeDocumentMoniker": "WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
-              "ToolTip": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
-              "RelativeToolTip": "WebBaiGiang\\Views\\Shared\\_LayoutSinhvien.cshtml",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-03T03:31:05.33Z",
+              "WhenOpened": "2025-07-06T05:47:47.164Z",
               "EditorCaption": ""
             }
           ]

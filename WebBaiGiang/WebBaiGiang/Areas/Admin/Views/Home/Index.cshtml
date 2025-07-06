@@ -1,44 +1,59 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Tổng quan Admin";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <h2 class="mb-4">👋 Xin chào, Admin!</h2>
 
 <div class="row g-4">
+    <!-- Khoa -->
     <div class="col-md-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body text-center">
                 <i class="bi bi-diagram-3 fs-1 text-primary"></i>
                 <h5 class="card-title mt-2">Khoa</h5>
-                <p class="card-text">Quản lý các khoa</p>
+                <p class="card-text">
+                    <span class="badge bg-primary rounded-pill fs-6">@ViewBag.TongKhoa</span> khoa
+                </p>
             </div>
         </div>
     </div>
+
+    <!-- Học phần -->
     <div class="col-md-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body text-center">
                 <i class="bi bi-journals fs-1 text-success"></i>
                 <h5 class="card-title mt-2">Học phần</h5>
-                <p class="card-text">Quản lý học phần</p>
+                <p class="card-text">
+                    <span class="badge bg-success rounded-pill fs-6">@ViewBag.TongHocPhan</span> học phần
+                </p>
             </div>
         </div>
     </div>
+
+    <!-- Giảng viên -->
     <div class="col-md-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body text-center">
                 <i class="bi bi-person-badge fs-1 text-warning"></i>
-                <h5 class="card-title mt-2">Giáo viên</h5>
-                <p class="card-text">Xem danh sách & phân quyền</p>
+                <h5 class="card-title mt-2">Giảng viên</h5>
+                <p class="card-text">
+                    <span class="badge bg-warning text-dark rounded-pill fs-6">@ViewBag.TongGiangVien</span> giảng viên
+                </p>
             </div>
         </div>
     </div>
+
+    <!-- Sinh viên -->
     <div class="col-md-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body text-center">
                 <i class="bi bi-people-fill fs-1 text-danger"></i>
-                <h5 class="card-title mt-2">Học sinh</h5>
-                <p class="card-text">Thông tin & theo dõi học sinh</p>
+                <h5 class="card-title mt-2">Sinh viên</h5>
+                <p class="card-text">
+                    <span class="badge bg-danger rounded-pill fs-6">@ViewBag.TongSinhVien</span> sinh viên
+                </p>
             </div>
         </div>
     </div>

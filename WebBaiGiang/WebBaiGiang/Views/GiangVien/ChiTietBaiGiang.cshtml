@@ -3,1096 +3,594 @@
 @using System.Web
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
-
-    var currentUserRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role || c.Type == "Role")?.Value;
+    Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
     var taiNguyenAnh = Model.TaiNguyens?.Where(t => t.Loai == "image");
     var taiNguyenYoutube = Model.TaiNguyens?.Where(t => t.Loai == "youtube");
     var taiNguyenDocs = Model.TaiNguyens?.Where(t => t.Loai == "tailieu");
-    var currentUserIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-    int currentUserId = 0;
-    if (!string.IsNullOrEmpty(currentUserIdString))
-    {
-        int.TryParse(currentUserIdString, out currentUserId);
-    }
 }
+<!-- Font Awesome 6.x -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Custom style -->
-<link rel="stylesheet" href="~/css/chitietbaigiang.css" />
-
-<!-- Bootstrap 5 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- CKEditor 5 -->
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-
+<link href="~/css/chitietbaigiang.css" rel="stylesheet" />
 <div class="container-fluid mt-4">
-    <!-- Header Section -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                    <h2 class="card-title mb-0">
-                        <i class="fas fa-book-open me-2"></i> Chỉnh sửa bài giảng
-                    </h2>
-                </div>
-                <div class="card-body">
-                    <form id="mainForm" asp-action="SaveAll" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="Id" value="@Model.BaiGiang.Id" />
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Tiêu đề</label>
-                            <input type="text" name="Title" class="form-control" value="@Model.Title" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Mô tả</label>
-                            <textarea name="Description" id="description-editor" class="form-control">@Model.Description</textarea>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <!-- Sidebar - Mục lục -->
-        <div class="col-lg-3 col-md-4">
-            <div class="sidebar-toc sticky-top">
-                <div class="toc-search">
-                    <h5 class="mb-3">
-                        <i class="fas fa-list-ul me-2"></i> Mục lục
-                    </h5>
-                    <div class="input-group">
-                        <input type="text" id="tocSearch" class="form-control form-control-sm"
-                               placeholder="Tìm kiếm chương, bài..." aria-label="Tìm kiếm mục lục">
-                        <span class="input-group-text">
-                            <i class="fas fa-search"></i>
-                        </span>
+        <div class="row">
+            <!-- Sidebar mục lục -->
+            <div class="col-lg-3 col-md-4 mb-4">
+                <div class="sidebar-toc position-sticky" style="top: 100px;">
+                    <h5 class="mb-3"><i class="fas fa-list-ul me-2"></i> Mục lục</h5>
+                    <div class="input-group mb-2">
+                        <input type="text" id="tocSearch" class="form-control form-control-sm" placeholder="Tìm chương, bài..." />
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                </div>
                 <div id="tocContent">
                     @if (Model.Chuongs?.Any() == true)
                     {
                         @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
                         {
-                            <div class="toc-item toc-chapter" data-target="chapter-@chuong.Id"
-                                 data-search="@chuong.Title.ToLower()">
-                                <i class="fas fa-folder me-2"></i> Chương @chuong.SortOrder: @chuong.Title
-                            </div>
-                            @if (chuong.Bais?.Any() == true)
-                            {
-                                @foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
+                            <div class="toc-chuong-wrapper mb-2">
+                                <div class="toc-chuong fw-bold mb-1" data-search="@chuong.Title.ToLower()" data-chuong-id="@chuong.Id">
+                                    <i class="fas fa-folder-open me-1"></i> Chương @chuong.SortOrder: @chuong.Title
+                                </div>
+
+                                @if (chuong.Bais?.Any() == true)
                                 {
-                                    <div class="toc-item toc-lesson" data-target="lesson-@bai.Id"
-                                         data-search="@bai.Title.ToLower()">
-                                        <i class="fas fa-bookmark me-2"></i> @chuong.SortOrder.@bai.SortOrder @bai.Title
-                                    </div>
+                                    foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
+                                    {
+                                        <div class="toc-item toc-lesson ms-3"
+                                             data-target="lesson-@bai.Id"
+                                             data-search="@bai.Title.ToLower()"
+                                             data-chuong-id="@chuong.Id">
+                                            <i class="fas fa-bookmark me-2"></i> @chuong.SortOrder.@bai.SortOrder @bai.Title
+                                        </div>
+                                    }
                                 }
-                            }
+                                else
+                                {
+                                    <div class="text-muted small ms-3">Chưa có bài học</div>
+                                }
+                            </div>
                         }
+
                     }
                 </div>
-            </div>
-        </div>
 
-        <!-- Main Content -->
-        <div class="col-lg-9 col-md-8">
-            <div class="content-area">
-                <div class="d-flex justify-content-start mb-3 gap-2">
-                    <button type="button" class="btn btn-sm btn-primary" onclick="hienOThemChuong()">
+                </div>
+            </div>
+        <!-- Nội dung bài giảng -->
+        <div class="col-lg-9 col-md-9">
+            <div class="card shadow-sm mb-4" id="info">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0"><i class="fas fa-book-open me-2"></i> @Model.Title</h2>
+                </div>
+                <div class="lead text-muted mo-ta-noi-dung p-3">
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4><i class="fas fa-list-ol me-2"></i> Nội dung bài giảng</h4>
+                <div class="d-inline-flex gap-2">
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalThemChuong">
                         <i class="fas fa-plus me-1"></i> Thêm chương
                     </button>
-                </div>
-
-                <div id="khoi-them-chuong" class="mb-4" style="display: none;">
-                    <form id="form-them-chuong" asp-action="ThemChuong" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                        <div class="d-flex align-items-start gap-2">
-                            <input type="text" id="newChuongTitle" name="Title" class="form-control"
-                                   placeholder="Nhập tên chương..." required />
-                            <button type="submit" class="btn btn-success btn-sm">
-                                <i class="fas fa-check"></i> Lưu
-                            </button>
-                            <button type="button" class="btn btn-secondary btn-sm" onclick="anOThemChuong()">
-                                <i class="fas fa-times"></i> Hủy
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                @if (Model.Chuongs?.Any() == true)
-                {
-                    int chuongIndex = 0;
-                    @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
-                    {
-                        <div id="chapter-@chuong.Id" class="chapter-section mb-4">
-                            <div class="chapter-divider d-flex justify-content-between align-items-center">
-                                <div class="chapter-title d-flex align-items-center">
-                                    <i class="fas fa-folder-open me-2"></i>
-                                    <span class="fw-bold fs-4 me-2 text-dark">Chương @chuong.SortOrder:</span>
-                                    <textarea name="Chuongs[@chuongIndex].Title" class="input-as-text fw-bold fs-5 text-dark chuong-title" rows="1"
-                                              style="resize: none; overflow: hidden;">@chuong.Title</textarea>
-                                    <input type="hidden" name="Chuongs[@chuongIndex].Id" value="@chuong.Id" />
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-sm btn-primary" onclick="hienOThemBai(@chuong.Id)">
-                                        <i class="fas fa-plus me-1"></i> Thêm bài
-                                    </button>
-                                    <form asp-action="XoaChuong" method="post" onsubmit="return confirm('Xóa chương này?')">
-                                        @Html.AntiForgeryToken()
-                                        <input type="hidden" name="Id" value="@chuong.Id" />
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i> Xóa
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div id="khoi-them-bai-@chuong.Id" class="mb-3" style="display: none;">
-                                <form id="form-them-bai-@chuong.Id" asp-action="ThemBai" method="post" enctype="multipart/form-data">
-                                    @Html.AntiForgeryToken()
-                                    <input type="hidden" name="ChuongId" value="@chuong.Id" />
-                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                    <div class="card p-3">
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Tiêu đề bài</label>
-                                            <input type="text" id="newBaiTitle_@chuong.Id" name="Title" class="form-control" placeholder="Nhập tên bài..." required />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Mô tả</label>
-                                            <textarea name="Description" id="newBaiDescription_@chuong.Id" class="form-control" placeholder="Nhập mô tả bài..."></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Ảnh minh họa</label>
-                                            <input type="file" name="ImageFiles" class="form-control" multiple accept="image/*" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Link YouTube</label>
-                                            <div id="youtube-links-@chuong.Id">
-                                                <div class="input-group mb-2">
-                                                    <input type="url" name="YoutubeLinks" class="form-control" placeholder="Nhập link YouTube..." />
-                                                    <button type="button" class="btn btn-outline-secondary" onclick="addYoutubeLink(@chuong.Id)">+</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Tài liệu</label>
-                                            <input type="file" name="DocumentFiles" class="form-control" multiple accept=".pdf,.doc,.docx" />
-                                        </div>
-                                        <div class="d-flex gap-2">
-                                            <button type="submit" class="btn btn-success btn-sm">
-                                                <i class="fas fa-check"></i> Lưu
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-sm" onclick="anOThemBai(@chuong.Id)">
-                                                <i class="fas fa-times"></i> Hủy
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            @if (chuong.Bais?.Any() == true)
-                            {
-                                int baiIndex = 0;
-                                @foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
-                                {
-                                    var baiImages = bai.TaiNguyens?.Where(t => t.Loai == "image");
-                                    var baiVideos = bai.TaiNguyens?.Where(t => t.Loai == "youtube");
-                                    var baiDocs = bai.TaiNguyens?.Where(t => t.Loai == "tailieu");
-
-                                    <div id="lesson-@bai.Id" class="lesson-content mb-4 p-3 border rounded bg-light bai-input"
-                                         data-chuong-index="@chuongIndex" data-bai-index="@baiIndex" data-bai-id="@bai.Id" data-chuong-id="@chuong.Id">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <i class="fas fa-bookmark me-2 text-primary"></i>
-                                            <span class="fw-normal fs-6 text-muted me-2">Bài @chuong.SortOrder.@bai.SortOrder:</span>
-                                            <textarea name="Chuongs[@chuongIndex].Bais[@baiIndex].Title" class="input-as-text fs-6 text-muted bai-title" rows="1"
-                                                      style="min-width: 50%; resize: none; overflow: hidden;">@bai.Title</textarea>
-                                            <input type="hidden" name="Chuongs[@chuongIndex].Bais[@baiIndex].Id" value="@bai.Id" />
-                                            <input type="hidden" name="Chuongs[@chuongIndex].Bais[@baiIndex].ChuongId" value="@chuong.Id" />
-                                        </div>
-                                        <textarea name="Chuongs[@chuongIndex].Bais[@baiIndex].Description" id="editor-@bai.Id" class="bai-description">@bai.Description</textarea>
-
-                                        <!-- Tài nguyên của bài -->
-                                        <div class="resource-section mt-4">
-                                            <h6 class="mb-3">
-                                                <i class="fas fa-archive me-2"></i> Tài nguyên của bài
-                                            </h6>
-                                            <div class="row g-4">
-                                                <!-- Ảnh minh họa -->
-                                                <div class="col-md-4">
-                                                    <div class="card h-100 border-0 bg-white bg-opacity-90">
-                                                        <div class="card-header bg-primary text-white">
-                                                            <h6 class="mb-0">
-                                                                <i class="fas fa-images me-2"></i> Ảnh minh họa
-                                                                @if (baiImages?.Any() == true)
-                                                                {
-                                                                    <span class="badge bg-light text-primary ms-2">@baiImages.Count()</span>
-                                                                }
-                                                            </h6>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            @if (baiImages?.Any() == true)
-                                                            {
-                                                                <div class="row g-2">
-                                                                    @foreach (var img in baiImages.Take(4))
-                                                                    {
-                                                                        <div class="col-6">
-                                                                            <div class="card shadow-sm position-relative">
-                                                                                <img src="@img.Url" alt="Ảnh minh họa" class="card-img-top" style="height: 100px; object-fit: cover;" />
-                                                                                <div class="card-body p-2">
-                                                                                    <a href="@img.Url" target="_blank" class="btn btn-sm btn-primary w-100">
-                                                                                        <i class="fas fa-external-link-alt me-1"></i> Xem
-                                                                                    </a>
-                                                                                    @if (currentUserRole == "Teacher")
-                                                                                    {
-                                                                                        <form asp-action="XoaTaiNguyen" method="post" class="mt-2" onsubmit="return confirm('Xóa ảnh này?')">
-                                                                                            @Html.AntiForgeryToken()
-                                                                                            <input type="hidden" name="Id" value="@img.Id" />
-                                                                                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                                            <button type="submit" class="btn btn-sm btn-danger w-100">
-                                                                                                <i class="fas fa-trash"></i> Xóa
-                                                                                            </button>
-                                                                                        </form>
-                                                                                    }
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    }
-                                                                </div>
-                                                                @if (baiImages.Count() > 4)
-                                                                {
-                                                                    <div class="text-center mt-3">
-                                                                        <small class="text-muted">Và @(baiImages.Count() - 4) ảnh khác...</small>
-                                                                    </div>
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                <div class="text-center text-muted py-4">
-                                                                    <i class="fas fa-image fa-2x mb-2 opacity-50"></i>
-                                                                    <p class="mb-0">Chưa có ảnh minh họa</p>
-                                                                </div>
-                                                            }
-                                                            @if (currentUserRole == "Teacher")
-                                                            {
-                                                                <form asp-action="ThemTaiNguyen" method="post" enctype="multipart/form-data" class="mt-3">
-                                                                    @Html.AntiForgeryToken()
-                                                                    <input type="hidden" name="BaiId" value="@bai.Id" />
-                                                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                    <input type="file" name="ImageFiles" class="form-control mb-2" multiple accept="image/*" />
-                                                                    <button type="submit" class="btn btn-sm btn-success">
-                                                                        <i class="fas fa-upload"></i> Thêm ảnh
-                                                                    </button>
-                                                                </form>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Video YouTube -->
-                                                <div class="col-md-4">
-                                                    <div class="card h-100 border-0 bg-white bg-opacity-90">
-                                                        <div class="card-header bg-danger text-white">
-                                                            <h6 class="mb-0">
-                                                                <i class="fab fa-youtube me-2"></i> Video YouTube
-                                                                @if (baiVideos?.Any() == true)
-                                                                {
-                                                                    <span class="badge bg-light text-danger ms-2">@baiVideos.Count()</span>
-                                                                }
-                                                            </h6>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            @if (baiVideos?.Any() == true)
-                                                            {
-                                                                @foreach (var yt in baiVideos.Take(2))
-                                                                {
-                                                                    var embedUrl = yt.Url;
-                                                                    if (yt.Url.Contains("watch?v="))
-                                                                    {
-                                                                        embedUrl = yt.Url.Replace("watch?v=", "embed/");
-                                                                    }
-                                                                    else if (yt.Url.Contains("youtu.be"))
-                                                                    {
-                                                                        var id = yt.Url.Split("/").Last();
-                                                                        embedUrl = $"https://www.youtube.com/embed/{id}";
-                                                                    }
-                                                                    <div class="card shadow-sm mb-3 position-relative">
-                                                                        <div class="ratio ratio-16x9">
-                                                                            <iframe src="@embedUrl" allowfullscreen class="rounded border"></iframe>
-                                                                        </div>
-                                                                        <div class="text-center mt-2">
-                                                                            <a href="@yt.Url" target="_blank" class="btn btn-outline-danger btn-sm w-100">
-                                                                                <i class="fab fa-youtube me-1"></i> Xem trên YouTube
-                                                                            </a>
-                                                                            @if (currentUserRole == "Teacher")
-                                                                            {
-                                                                                <form asp-action="XoaTaiNguyen" method="post" class="mt-2" onsubmit="return confirm('Xóa video này?')">
-                                                                                    @Html.AntiForgeryToken()
-                                                                                    <input type="hidden" name="Id" value="@yt.Id" />
-                                                                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                                    <button type="submit" class="btn btn-sm btn-danger w-100">
-                                                                                        <i class="fas fa-trash"></i> Xóa
-                                                                                    </button>
-                                                                                </form>
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                }
-                                                                @if (baiVideos.Count() > 2)
-                                                                {
-                                                                    <div class="text-center">
-                                                                        <small class="text-muted">Và @(baiVideos.Count() - 2) video khác...</small>
-                                                                    </div>
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                <div class="text-center text-muted py-4">
-                                                                    <i class="fab fa-youtube fa-2x mb-2 opacity-50"></i>
-                                                                    <p class="mb-0">Chưa có video YouTube</p>
-                                                                </div>
-                                                            }
-                                                            @if (currentUserRole == "Teacher")
-                                                            {
-                                                                <form asp-action="ThemTaiNguyen" method="post" class="mt-3">
-                                                                    @Html.AntiForgeryToken()
-                                                                    <input type="hidden" name="BaiId" value="@bai.Id" />
-                                                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                    <input type="url" name="YoutubeLinks" class="form-control mb-2" placeholder="Nhập link YouTube..." />
-                                                                    <button type="submit" class="btn btn-sm btn-success">
-                                                                        <i class="fas fa-upload"></i> Thêm video
-                                                                    </button>
-                                                                </form>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Tài liệu -->
-                                                <div class="col-md-4">
-                                                    <div class="card h-100 border-0 bg-white bg-opacity-90">
-                                                        <div class="card-header bg-success text-white">
-                                                            <h6 class="mb-0">
-                                                                <i class="fas fa-file-alt me-2"></i> Tài liệu đính kèm
-                                                                @if (baiDocs?.Any() == true)
-                                                                {
-                                                                    <span class="badge bg-light text-success ms-2">@baiDocs.Count()</span>
-                                                                }
-                                                            </h6>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            @if (baiDocs?.Any() == true)
-                                                            {
-                                                                @foreach (var doc in baiDocs.Take(3))
-                                                                {
-                                                                    <div class="card shadow-sm mb-3 position-relative">
-                                                                        <div class="card-body text-center p-3">
-                                                                            <i class="fas fa-file-pdf text-danger mb-2" style="font-size: 2rem;"></i>
-                                                                            <p class="mb-2 fw-medium small">Tài liệu</p>
-                                                                            <a href="@doc.Url" target="_blank" class="btn btn-success btn-sm w-100">
-                                                                                <i class="fas fa-download me-1"></i> Tải về
-                                                                            </a>
-                                                                            @if (currentUserRole == "Teacher")
-                                                                            {
-                                                                                <form asp-action="XoaTaiNguyen" method="post" class="mt-2" onsubmit="return confirm('Xóa tài liệu này?')">
-                                                                                    @Html.AntiForgeryToken()
-                                                                                    <input type="hidden" name="Id" value="@doc.Id" />
-                                                                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                                    <button type="submit" class="btn btn-sm btn-danger w-100">
-                                                                                        <i class="fas fa-trash"></i> Xóa
-                                                                                    </button>
-                                                                                </form>
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                }
-                                                                @if (baiDocs.Count() > 3)
-                                                                {
-                                                                    <div class="text-center">
-                                                                        <small class="text-muted">Và @(baiDocs.Count() - 3) tài liệu khác...</small>
-                                                                    </div>
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                <div class="text-center text-muted py-4">
-                                                                    <i class="fas fa-file-alt fa-2x mb-2 opacity-50"></i>
-                                                                    <p class="mb-0">Chưa có tài liệu đính kèm</p>
-                                                                </div>
-                                                            }
-                                                            @if (currentUserRole == "Teacher")
-                                                            {
-                                                                <form asp-action="ThemTaiNguyen" method="post" enctype="multipart/form-data" class="mt-3">
-                                                                    @Html.AntiForgeryToken()
-                                                                    <input type="hidden" name="BaiId" value="@bai.Id" />
-                                                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                    <input type="file" name="DocumentFiles" class="form-control mb-2" multiple accept=".pdf,.doc,.docx" />
-                                                                    <button type="submit" class="btn btn-sm btn-success">
-                                                                        <i class="fas fa-upload"></i> Thêm tài liệu
-                                                                    </button>
-                                                                </form>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-2">
-                                            <form asp-action="XoaBai" method="post" class="d-inline" onsubmit="return confirm('Xóa bài học này?')">
-                                                @Html.AntiForgeryToken()
-                                                <input type="hidden" name="Id" value="@bai.Id" />
-                                                <button type="submit" class="btn btn-sm btn-danger">
-                                                    <i class="fas fa-trash"></i> Xóa
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    baiIndex++;
-                                }
-                            }
-                            else
-                            {
-                                <div class="text-muted text-center py-3">Chưa có bài học trong chương này.</div>
-                            }
-                        </div>
-                        chuongIndex++;
-                    }
-                }
-                else
-                {
-                    <div class="text-center text-muted py-5">
-                        <i class="fas fa-book fa-3x mb-3"></i>
-                        <h5>Chưa có nội dung</h5>
-                        <p>Bài giảng này chưa có chương nào được thêm vào.</p>
-                    </div>
-                }
-
-                <!-- Resources Section -->
-                <div class="resource-section">
-                    <h4 class="mb-4">
-                        <i class="fas fa-archive me-2"></i> Tài nguyên tổng hợp
-                    </h4>
-                    <div class="row g-4">
-                        <!-- Images Column -->
-                        <div class="col-lg-4">
-                            <div class="card h-100 border-0 bg-white bg-opacity-90">
-                                <div class="card-header bg-primary text-white">
-                                    <h6 class="mb-0">
-                                        <i class="fas fa-images me-2"></i> Ảnh minh họa
-                                        @if (taiNguyenAnh?.Any(t => t.BaiId == null) == true)
-                                        {
-                                            <span class="badge bg-light text-primary ms-2">@taiNguyenAnh.Count(t => t.BaiId == null)</span>
-                                        }
-                                    </h6>
-                                </div>
-                                <div class="card-body">
-                                    @if (taiNguyenAnh?.Any(t => t.BaiId == null) == true)
-                                    {
-                                        <div class="row g-2">
-                                            @foreach (var img in taiNguyenAnh.Where(t => t.BaiId == null).Take(4))
-                                            {
-                                                <div class="col-6">
-                                                    <div class="card shadow-sm position-relative">
-                                                        <img src="@img.Url" alt="Ảnh minh họa" class="card-img-top" style="height: 100px; object-fit: cover;" />
-                                                        <div class="card-body p-2">
-                                                            <a href="@img.Url" target="_blank" class="btn btn-sm btn-primary w-100">
-                                                                <i class="fas fa-external-link-alt me-1"></i> Xem
-                                                            </a>
-                                                            @if (currentUserRole == "Teacher")
-                                                            {
-                                                                <form asp-action="XoaTaiNguyen" method="post" class="mt-2" onsubmit="return confirm('Xóa ảnh này?')">
-                                                                    @Html.AntiForgeryToken()
-                                                                    <input type="hidden" name="Id" value="@img.Id" />
-                                                                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                                    <button type="submit" class="btn btn-sm btn-danger w-100">
-                                                                        <i class="fas fa-trash"></i> Xóa
-                                                                    </button>
-                                                                </form>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-                                        </div>
-                                        @if (taiNguyenAnh.Count(t => t.BaiId == null) > 4)
-                                        {
-                                            <div class="text-center mt-3">
-                                                <small class="text-muted">Và @(taiNguyenAnh.Count(t => t.BaiId == null) - 4) ảnh khác...</small>
-                                            </div>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <div class="text-center text-muted py-4">
-                                            <i class="fas fa-image fa-2x mb-2 opacity-50"></i>
-                                            <p class="mb-0">Chưa có ảnh minh họa</p>
-                                        </div>
-                                    }
-                                    @if (currentUserRole == "Teacher")
-                                    {
-                                        <form asp-action="ThemTaiNguyen" method="post" enctype="multipart/form-data" class="mt-3">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                            <input type="file" name="ImageFiles" class="form-control mb-2" multiple accept="image/*" />
-                                            <button type="submit" class="btn btn-sm btn-success">
-                                                <i class="fas fa-upload"></i> Thêm ảnh
-                                            </button>
-                                        </form>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- YouTube Videos Column -->
-                        <div class="col-lg-4">
-                            <div class="card h-100 border-0 bg-white bg-opacity-90">
-                                <div class="card-header bg-danger text-white">
-                                    <h6 class="mb-0">
-                                        <i class="fab fa-youtube me-2"></i> Video YouTube
-                                        @if (taiNguyenYoutube?.Any(t => t.BaiId == null) == true)
-                                        {
-                                            <span class="badge bg-light text-danger ms-2">@taiNguyenYoutube.Count(t => t.BaiId == null)</span>
-                                        }
-                                    </h6>
-                                </div>
-                                <div class="card-body">
-                                    @if (taiNguyenYoutube?.Any(t => t.BaiId == null) == true)
-                                    {
-                                        @foreach (var yt in taiNguyenYoutube.Where(t => t.BaiId == null).Take(2))
-                                        {
-                                            var embedUrl = yt.Url;
-                                            if (yt.Url.Contains("watch?v="))
-                                            {
-                                                embedUrl = yt.Url.Replace("watch?v=", "embed/");
-                                            }
-                                            else if (yt.Url.Contains("youtu.be"))
-                                            {
-                                                var id = yt.Url.Split("/").Last();
-                                                embedUrl = $"https://www.youtube.com/embed/{id}";
-                                            }
-                                            <div class="card shadow-sm mb-3 position-relative">
-                                                <div class="ratio ratio-16x9">
-                                                    <iframe src="@embedUrl" allowfullscreen class="rounded border"></iframe>
-                                                </div>
-                                                <div class="text-center mt-2">
-                                                    <a href="@yt.Url" target="_blank" class="btn btn-outline-danger btn-sm w-100">
-                                                        <i class="fab fa-youtube me-1"></i> Xem trên YouTube
-                                                    </a>
-                                                    @if (currentUserRole == "Teacher")
-                                                    {
-                                                        <form asp-action="XoaTaiNguyen" method="post" class="mt-2" onsubmit="return confirm('Xóa video này?')">
-                                                            @Html.AntiForgeryToken()
-                                                            <input type="hidden" name="Id" value="@yt.Id" />
-                                                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                            <button type="submit" class="btn btn-sm btn-danger w-100">
-                                                                <i class="fas fa-trash"></i> Xóa
-                                                            </button>
-                                                        </form>
-                                                    }
-                                                </div>
-                                            </div>
-                                        }
-                                        @if (taiNguyenYoutube.Count(t => t.BaiId == null) > 2)
-                                        {
-                                            <div class="text-center">
-                                                <small class="text-muted">Và @(taiNguyenYoutube.Count(t => t.BaiId == null) - 2) video khác...</small>
-                                            </div>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <div class="text-center text-muted py-4">
-                                            <i class="fab fa-youtube fa-2x mb-2 opacity-50"></i>
-                                            <p class="mb-0">Chưa có video YouTube</p>
-                                        </div>
-                                    }
-                                    @if (currentUserRole == "Teacher")
-                                    {
-                                        <form asp-action="ThemTaiNguyen" method="post" class="mt-3">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                            <input type="url" name="YoutubeLinks" class="form-control mb-2" placeholder="Nhập link YouTube..." />
-                                            <button type="submit" class="btn btn-sm btn-success">
-                                                <i class="fas fa-upload"></i> Thêm video
-                                            </button>
-                                        </form>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Documents Column -->
-                        <div class="col-lg-4">
-                            <div class="card h-100 border-0 bg-white bg-opacity-90">
-                                <div class="card-header bg-success text-white">
-                                    <h6 class="mb-0">
-                                        <i class="fas fa-file-alt me-2"></i> Tài liệu đính kèm
-                                        @if (taiNguyenDocs?.Any(t => t.BaiId == null) == true)
-                                        {
-                                            <span class="badge bg-light text-success ms-2">@taiNguyenDocs.Count(t => t.BaiId == null)</span>
-                                        }
-                                    </h6>
-                                </div>
-                                <div class="card-body">
-                                    @if (taiNguyenDocs?.Any(t => t.BaiId == null) == true)
-                                    {
-                                        @foreach (var doc in taiNguyenDocs.Where(t => t.BaiId == null).Take(3))
-                                        {
-                                            <div class="card shadow-sm mb-3 position-relative">
-                                                <div class="card-body text-center p-3">
-                                                    <i class="fas fa-file-pdf text-danger mb-2" style="font-size: 2rem;"></i>
-                                                    <p class="mb-2 fw-medium small">Tài liệu đính kèm</p>
-                                                    <a href="@doc.Url" target="_blank" class="btn btn-success btn-sm w-100">
-                                                        <i class="fas fa-download me-1"></i> Tải về
-                                                    </a>
-                                                    @if (currentUserRole == "Teacher")
-                                                    {
-                                                        <form asp-action="XoaTaiNguyen" method="post" class="mt-2" onsubmit="return confirm('Xóa tài liệu này?')">
-                                                            @Html.AntiForgeryToken()
-                                                            <input type="hidden" name="Id" value="@doc.Id" />
-                                                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                                            <button type="submit" class="btn btn-sm btn-danger w-100">
-                                                                <i class="fas fa-trash"></i> Xóa
-                                                            </button>
-                                                        </form>
-                                                    }
-                                                </div>
-                                            </div>
-                                        }
-                                        @if (taiNguyenDocs.Count(t => t.BaiId == null) > 3)
-                                        {
-                                            <div class="text-center">
-                                                <small class="text-muted">Và @(taiNguyenDocs.Count(t => t.BaiId == null) - 3) tài liệu khác...</small>
-                                            </div>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <div class="text-center text-muted py-4">
-                                            <i class="fas fa-file-alt fa-2x mb-2 opacity-50"></i>
-                                            <p class="mb-0">Chưa có tài liệu đính kèm</p>
-                                        </div>
-                                    }
-                                    @if (currentUserRole == "Teacher")
-                                    {
-                                        <form asp-action="ThemTaiNguyen" method="post" enctype="multipart/form-data" class="mt-3">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                                            <input type="file" name="DocumentFiles" class="form-control mb-2" multiple accept=".pdf,.doc,.docx" />
-                                            <button type="submit" class="btn btn-sm btn-success">
-                                                <i class="fas fa-upload"></i> Thêm tài liệu
-                                            </button>
-                                        </form>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comment Section -->
-                <div class="comment-section mt-5">
-                    <h5 class="mb-4">
-                        <i class="fas fa-comments me-2"></i> Bình luận
-                    </h5>
-                    <form asp-action="ThemBinhLuan" method="post" class="mb-4">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
-                        <div class="mb-3">
-                            <textarea name="NoiDung" class="form-control" placeholder="Nhập bình luận của bạn..." rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane me-2"></i> Gửi bình luận
-                        </button>
-                    </form>
-
-                    <div>
-                        @if (Model.BinhLuans != null && Model.BinhLuans.Any())
-                        {
-                            foreach (var bl in Model.BinhLuans)
-                            {
-                                var isOwner = bl.NguoiDungId == currentUserId;
-                                var isTeacher = currentUserRole == "Teacher";
-                                <div class="card mb-3 border-0 shadow-sm">
-                                    <div class="card-body position-relative">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"
-                                                 style="width: 40px; height: 40px;">
-                                                <i class="fas fa-user text-white"></i>
-                                            </div>
-                                            <div>
-                                                <strong>@bl.NguoiDung?.Name</strong>
-                                                <div class="text-muted small">@bl.NgayTao.ToString("dd/MM/yyyy HH:mm")</div>
-                                            </div>
-                                        </div>
-                                        <div id="comment-content-@bl.Id" class="ms-5">@Html.Raw(bl.NoiDung)</div>
-                                        @if (isOwner || isTeacher)
-                                        {
-                                            <div class="dropdown position-absolute top-0 end-0 me-3 mt-3">
-                                                <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 32px; height: 32px;">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    @if (isOwner)
-                                                    {
-                                                        <li>
-                                                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); showEditForm(@bl.Id, '@HttpUtility.JavaScriptStringEncode(bl.NoiDung)')">
-                                                                <i class="fas fa-edit me-2"></i> Sửa
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    <li>
-                                                        <form method="post" asp-action="XoaBinhLuan" asp-route-id="@bl.Id" onsubmit="return confirm('Bạn chắc chắn xóa bình luận này?')">
-                                                            @Html.AntiForgeryToken()
-                                                            <button type="submit" class="dropdown-item text-danger">
-                                                                <i class="fas fa-trash me-2"></i> Xóa
-                                                            </button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <form method="post" asp-action="SuaBinhLuan" class="mt-3 ms-5" id="edit-form-@bl.Id" style="display: none;">
-                                                @Html.AntiForgeryToken()
-                                                <input type="hidden" name="Id" value="@bl.Id" />
-                                                <textarea name="NoiDung" class="form-control mb-2">@bl.NoiDung</textarea>
-                                                <button type="submit" class="btn btn-sm btn-primary me-2">
-                                                    <i class="fas fa-save me-1"></i> Lưu
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-secondary" onclick="hideEditForm(@bl.Id)">
-                                                    <i class="fas fa-times me-1"></i> Hủy
-                                                </button>
-                                            </form>
-                                        }
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="text-center text-muted py-4">
-                                <i class="fas fa-comment-slash fa-2x mb-2"></i>
-                                <p class="mb-0">Chưa có bình luận nào.</p>
-                            </div>
-                        }
-                    </div>
-                    <div id="save-error" class="alert alert-danger d-none mt-2"></div>
-
-                    <button type="button" id="saveAll" class="btn btn-success rounded-pill shadow-sm px-3 py-1"
-                            style="margin-left: 74%; height: 38px;">
-                        <i class="fas fa-save me-2"></i> Lưu thay đổi
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalThemBai">
+                        <i class="fas fa-plus me-1"></i> Thêm bài
                     </button>
                 </div>
             </div>
+
+            <!-- Modal thêm chương -->
+            <div class="modal fade" id="modalThemChuong" tabindex="-1" aria-labelledby="modalThemChuongLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form id="formThemChuong">
+                        @Html.AntiForgeryToken()
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Thêm chương mới</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" name="title" id="chuongTitle" class="form-control" placeholder="Nhập tên chương" required />
+                                <input type="hidden" name="baiGiangId" value="@Model.BaiGiang.Id" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal sửa chương -->
+            <div class="modal fade" id="modalSuaChuong" tabindex="-1" aria-labelledby="modalSuaChuongLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form id="formSuaChuong">
+                        @Html.AntiForgeryToken()
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Sửa chương</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" name="id" id="suaChuongId" />
+                                <input type="text" name="title" id="suaChuongTitle" class="form-control" placeholder="Nhập tên chương" required />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal thêm bài -->
+            <div class="modal fade" id="modalThemBai" tabindex="-1" aria-labelledby="modalThemBaiLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form id="formThemBai">
+                        @Html.AntiForgeryToken()
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Thêm bài học mới</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-2">
+                                    <label>Tên bài học</label>
+                                    <input type="text" class="form-control" name="title" required />
+                                </div>
+                                <div class="mb-2">
+                                    <label>Chọn chương</label>
+                                    <select class="form-select" name="chuongId" required>
+                                        @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
+                                        {
+                                            <option value="@chuong.Id">Chương @chuong.SortOrder - @chuong.Title</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="mb-2">
+                                    <label>Mô tả</label>
+                                    <textarea class="form-control" name="description" rows="3"></textarea>
+                                </div>
+                                <hr />
+                                <h6>Thêm tài nguyên:</h6>
+                                <div class="mb-2">
+                                    <label>Ảnh</label>
+                                    <input type="file" class="form-control" name="images" accept="image/*" multiple />
+                                </div>
+                                <div class="mb-2">
+                                    <label>Tài liệu (PDF, Word...)</label>
+                                    <input type="file" class="form-control" name="docs" accept=".pdf,.doc,.docx,.ppt,.pptx" multiple />
+                                </div>
+                                <div class="mb-2">
+                                    <label>Link video YouTube</label>
+                                    <input type="text" class="form-control" name="youtubeLinks" placeholder="Nhập link YouTube, cách nhau dấu phẩy" />
+                                </div>
+
+                                <input type="hidden" name="baiGiangId" value="@Model.BaiGiang.Id" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Thêm bài</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal sửa bài -->
+            <div class="modal fade" id="modalSuaBai" tabindex="-1" aria-labelledby="modalSuaBaiLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form id="formSuaBai" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Sửa bài học</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" name="id" id="suaBaiId" />
+
+                                <div class="mb-2">
+                                    <label>Tên bài học</label>
+                                    <input type="text" class="form-control" name="title" id="suaBaiTitle" required />
+                                </div>
+
+                                <div class="mb-2">
+                                    <label>Mô tả</label>
+                                    <textarea class="form-control" name="description" id="suaBaiDescription" rows="3"></textarea>
+                                </div>
+
+                                <hr />
+                                <h6>Cập nhật tài nguyên mới (tuỳ chọn):</h6>
+                                <div class="mb-2">
+                                    <label>Ảnh (thay thế)</label>
+                                    <input type="file" class="form-control" name="images" accept="image/*" multiple />
+                                </div>
+                                <div class="mb-2">
+                                    <label>Tài liệu (thay thế)</label>
+                                    <input type="file" class="form-control" name="docs" accept=".pdf,.doc,.docx,.ppt,.pptx" multiple />
+                                </div>
+                                <div class="mb-2">
+                                    <label>Link video YouTube (cách nhau dấu phẩy)</label>
+                                    <input type="text" class="form-control" name="youtubeLinks" id="suaBaiYoutubeLinks" />
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="accordion mb-5" id="chaptersAccordion">
+                @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
+                {
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header d-flex justify-content-between align-items-center" id="heading-@chuong.Id">
+                            <div class="d-flex flex-grow-1 align-items-center">
+                                <button class="accordion-button collapsed flex-grow-1" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse-@chuong.Id">
+                                    <strong>Chương @chuong.SortOrder: @chuong.Title</strong>
+                                </button>
+                            </div>
+                            <div class="btn-group ms-2 me-3">
+                                <button type="button" class="btn btn-sm btn-outline-secondary btn-sua-chuong"
+                                        data-id="@chuong.Id" data-title="@chuong.Title" title="Sửa chương">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger btn-xoa-chuong"
+                                        data-id="@chuong.Id" title="Xoá chương">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </h2>
+
+
+                        <div id="collapse-@chuong.Id" class="accordion-collapse collapse" data-bs-parent="#chaptersAccordion">
+                            <div class="accordion-body px-4 pt-3 pb-0" id="chapter-@chuong.Id">
+                                <div class="text-center text-muted py-3">Đang tải dữ liệu...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+            @await Html.PartialAsync("_TaiNguyenTongHop", new WebBaiGiang.ViewModel.TaiNguyenTongHopViewModel
+       {
+           Anh = taiNguyenAnh?.ToList(),
+           Docs = taiNguyenDocs?.ToList(),
+           YouTube = taiNguyenYoutube?.ToList()
+       })
+            <!-- Bình luận bài giảng -->
+            <div class="comment-section mt-5" id="binhluan-section">
+                <h5 class="mb-4">
+                    <i class="fas fa-comments me-2"></i> Bình luận
+                </h5>
+
+                <!-- Form thêm bình luận -->
+                <form asp-action="ThemBinhLuan" method="post" class="mb-4" onsubmit="setTimeout(loadBinhLuan, 500)">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="BaiGiangId" value="@Model.BaiGiang.Id" />
+                    <div class="mb-3">
+                        <textarea name="NoiDung" class="form-control" placeholder="Nhập bình luận của bạn..." rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-2"></i> Gửi bình luận
+                    </button>
+                </form>
+
+                <!-- Danh sách bình luận sẽ load vào đây -->
+                <div id="binhluan-content" class="text-center text-muted py-4">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <p>Đang tải bình luận...</p>
+                </div>
+            </div>
+
+                <script>
+                    function loadBinhLuan() {
+                        const baiGiangId = @Model.BaiGiang.Id;
+                        $("#binhluan-content").load(`/GiangVien/LoadBinhLuan?baiGiangId=${baiGiangId}`);
+                    }
+
+                    $(document).ready(function () {
+                        loadBinhLuan();
+                    });
+                </script>
+
+
+
         </div>
     </div>
- <script>
-        $(document).ready(function () {
-            // Lưu trữ các instance của CKEditor
-            let editors = {};
+</div>
 
-            // Khởi tạo CKEditor cho mô tả bài giảng
-            if ($('#description-editor').length) {
-                ClassicEditor.create(document.querySelector('#description-editor'))
-                    .then(editor => {
-                        editors['description-editor'] = editor;
-                    })
-                    .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+        let loaded = false;
+
+        const observer = new IntersectionObserver(async (entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting && !loaded) {
+                loaded = true;
+
+                try {
+                    const res = await fetch(`/GiangVien/LoadBinhLuan?baiGiangId=${@Model.BaiGiang.Id}`);
+                    const html = await res.text();
+                    document.getElementById("binhluan-content").innerHTML = html;
+                } catch (err) {
+                    document.getElementById("binhluan-content").innerHTML = "<div class='text-danger'>Lỗi tải bình luận</div>";
+                }
             }
+        }, { threshold: 0.5 });
 
-            // Khởi tạo CKEditor cho mô tả từng bài
-            $('[id^="editor-"]').each(function () {
-                ClassicEditor.create(this)
-                    .then(editor => {
-                        editors[this.id] = editor;
-                    })
-                    .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
-            });
+        const target = document.getElementById("binhluan-section");
+        if (target) {
+            observer.observe(target);
+        }
+    });
 
-            // Khởi tạo CKEditor cho mô tả bài mới
-            $('[id^="newBaiDescription_"]').each(function () {
-                ClassicEditor.create(this)
-                    .then(editor => {
-                        editors[this.id] = editor;
-                    })
-                    .catch(error => console.error('Lỗi khởi tạo CKEditor:', error));
-            });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý click vào mục lục bài học
+        const tocItems = document.querySelectorAll('.toc-item');
 
-            // Tự động điều chỉnh chiều cao textarea
-            $('textarea[name^="Chuongs"], textarea[name^="Chuongs["][name$=".Title"]').each(function () {
-                const resize = () => {
-                    this.style.height = 'auto';
-                    this.style.height = this.scrollHeight + 'px';
-                };
-                $(this).on('input', resize).trigger('input');
-            });
+        tocItems.forEach(item => {
+            item.addEventListener('click', async function () {
+                const targetId = this.dataset.target;
+                const baiId = targetId.replace("lesson-", "");
+                const chuongId = this.dataset.chuongId;
 
-            // Xử lý mục lục
-            const tocItems = $('.toc-item');
-            const tocSearchInput = $('#tocSearch');
+                const collapse = document.getElementById("collapse-" + chuongId);
+                const container = document.getElementById("chapter-" + chuongId);
 
-            tocItems.on('click', function () {
-                tocItems.removeClass('active');
-                $(this).addClass('active');
-                const targetId = $(this).data('target');
-                $(`#${targetId}`)[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-
-            tocSearchInput.on('input', function () {
-                const keyword = $(this).val().toLowerCase();
-                tocItems.each(function () {
-                    const text = $(this).data('search') || '';
-                    $(this).css('display', text.includes(keyword) ? 'block' : 'none');
-                });
-            });
-
-            // Highlight mục lục khi cuộn
-            $(window).on('scroll', function () {
-                const sections = $('[id^="chapter-"], [id^="lesson-"]');
-                let activeId = null;
-                sections.each(function () {
-                    const rect = this.getBoundingClientRect();
-                    if (rect.top <= 100 && rect.bottom >= 100) {
-                        activeId = this.id;
-                    }
-                });
-                if (activeId) {
-                    tocItems.removeClass('active').filter(`[data-target="${activeId}"]`).addClass('active');
-                }
-            });
-
-            // Xử lý form thêm chương và bài
-            $('#form-them-chuong, [id^="form-them-bai-"]').on('submit', function (e) {
-                e.preventDefault();
-                const $form = $(this);
-                const $submitBtn = $form.find('button[type="submit"]');
-                $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
-
-                const formData = new FormData(this);
-                if ($form.find('[id^="newBaiDescription_"]').length) {
-                    const editorId = $form.find('[id^="newBaiDescription_"]').attr('id');
-                    formData.set('Description', editors[editorId] ? editors[editorId].getData() : '');
+                let needWait = false;
+                if (!collapse.classList.contains("show")) {
+                    new bootstrap.Collapse(collapse, { toggle: true });
+                    needWait = true;
                 }
 
-                for (var pair of formData.entries()) {
-                    console.log(pair[0] + ': ' + pair[1]);
+                // Đợi nội dung bài được load
+                if (needWait) {
+                    for (let i = 0; i < 20; i++) {
+                        if (container.dataset.loaded === "true") break;
+                        await new Promise(r => setTimeout(r, 100));
+                    }
                 }
 
-                $.ajax({
-                    url: $form.attr('action'),
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        if (response.success) {
-                            alert('Thêm thành công!');
-                            location.reload();
-                        } else {
-                            alert('Thêm thất bại: ' + response.message);
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Lỗi AJAX:', status, error);
-                        alert('Có lỗi xảy ra khi thêm.');
-                    },
-                    complete: function () {
-                        $submitBtn.prop('disabled', false).find('.spinner-border').remove();
-                    }
-                });
-            });
-
-            // Xử lý lưu tất cả
-            $('#saveAll').on('click', function () {
-                const $btn = $(this);
-                $btn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
-
-                const formData = new FormData();
-
-                // Bổ sung AntiForgeryToken
-                formData.append('__RequestVerificationToken', $('input[name="__RequestVerificationToken"]').val());
-
-                // Gửi dữ liệu bài giảng
-                formData.append('Id', $('input[name="Id"]').val());
-                formData.append('Title', $('input[name="Title"]').val());
-                formData.append('Description', editors['description-editor'] ? editors['description-editor'].getData() : $('#description-editor').val());
-
-                // Duyệt qua các chương
-                $('textarea[name^="Chuongs["][name$=".Title"]').each(function (index) {
-                    const id = $(`input[name="Chuongs[${index}].Id"]`).val();
-                    const title = $(this).val();
-                    formData.append(`Chuongs[${index}].Id`, id);
-                    formData.append(`Chuongs[${index}].Title`, title);
-                });
-
-                // Duyệt qua các bài
-                $('.bai-input').each(function () {
-                    const chuongIndex = $(this).data('chuong-index');
-                    const baiIndex = $(this).data('bai-index');
-                    const baiId = $(this).data('bai-id');
-                    const chuongId = $(this).data('chuong-id');
-
-                    const title = $(this).find('.bai-title').val();
-                    const description = editors[`editor-${baiId}`] ? editors[`editor-${baiId}`].getData() : $(this).find('.bai-description').val();
-
-                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].Id`, baiId);
-                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].ChuongId`, chuongId);
-                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].Title`, title);
-                    formData.append(`Chuongs[${chuongIndex}].Bais[${baiIndex}].Description`, description);
-                });
-
-                // Debug dữ liệu gửi đi
-                for (var pair of formData.entries()) {
-                    console.log(pair[0] + ': ' + pair[1]);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    target.classList.add("bg-warning", "bg-opacity-25");
+                    setTimeout(() => target.classList.remove("bg-warning", "bg-opacity-25"), 2000);
                 }
-
-                // AJAX gửi lên server
-                $.ajax({
-                    url: '/GiangVien/SaveAll',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        const $errorBox = $('#save-error');
-                        if (response.success) {
-                            $errorBox.addClass('d-none').text('');
-                            alert('Lưu thành công!');
-                            location.reload();
-                        } else {
-                            $errorBox.removeClass('d-none').text('❌ ' + response.message);
-                        }
-                    },
-                    error: function (xhr) {
-                        const $errorBox = $('#save-error');
-                        let errorMessage = '❌ Có lỗi xảy ra khi lưu.';
-                        if (xhr.responseText) {
-                            try {
-                                const response = JSON.parse(xhr.responseText);
-                                if (response.message) errorMessage += `\nChi tiết: ${response.message}`;
-                            } catch (_) {
-                                // Nếu không phải JSON, giữ nguyên
-                            }
-                        }
-                        $errorBox.removeClass('d-none').text(errorMessage);
-                    },
-                    complete: function () {
-                        $btn.prop('disabled', false).find('.spinner-border').remove();
-                    }
-                });
             });
-
-            // Xử lý form thêm tài nguyên
-            $('form[action="ThemTaiNguyen"]').on('submit', function (e) {
-                e.preventDefault();
-                const $form = $(this);
-                const $submitBtn = $form.find('button[type="submit"]');
-                $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
-
-                const formData = new FormData(this);
-                for (var pair of formData.entries()) {
-                    console.log(pair[0] + ': ' + pair[1]);
-                }
-
-                $.ajax({
-                    url: $form.attr('action'),
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data, textStatus, xhr) {
-                        if (xhr.getResponseHeader('Location')) {
-                            window.location.href = xhr.getResponseHeader('Location');
-                        } else {
-                            if (data.success) {
-                                window.location.reload();
-                            } else {
-                                alert('Thêm thất bại: ' + data.message);
-                            }
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Lỗi AJAX:', status, error);
-                        alert('Có lỗi xảy ra khi thêm tài nguyên.');
-                    },
-                    complete: function () {
-                        $submitBtn.prop('disabled', false).find('.spinner-border').remove();
-                    }
-                });
-            });
-
-            // Xử lý xóa tài nguyên
-            $('form[action="XoaTaiNguyen"]').on('submit', function (e) {
-                e.preventDefault();
-                const $form = $(this);
-                const $submitBtn = $form.find('button[type="submit"]');
-                $submitBtn.prop('disabled', true).prepend('<span class="spinner-border spinner-border-sm me-1"></span>');
-
-                $.ajax({
-                    url: $form.attr('action'),
-                    type: 'POST',
-                    data: $form.serialize(),
-                    success: function (data, textStatus, xhr) {
-                        if (xhr.getResponseHeader('Location')) {
-                            window.location.href = xhr.getResponseHeader('Location');
-                        } else {
-                            if (data.success) {
-                                window.location.reload();
-                            } else {
-                                alert('Xóa thất bại: ' + data.message);
-                            }
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Lỗi AJAX:', status, error);
-                        alert('Có lỗi xảy ra khi xóa tài nguyên.');
-                    },
-                    complete: function () {
-                        $submitBtn.prop('disabled', false).find('.spinner-border').remove();
-                    }
-                });
-            });
-
-            // Hàm hiển thị/ẩn form thêm chương
-            window.hienOThemChuong = function () {
-                $('#khoi-them-chuong').show();
-            };
-
-            window.anOThemChuong = function () {
-                $('#khoi-them-chuong').hide();
-                $('#newChuongTitle').val('');
-            };
-
-            // Hàm hiển thị/ẩn form thêm bài
-            window.hienOThemBai = function (chuongId) {
-                $(`#khoi-them-bai-${chuongId}`).show();
-            };
-
-            window.anOThemBai = function (chuongId) {
-                $(`#khoi-them-bai-${chuongId}`).hide();
-                $(`#newBaiTitle_${chuongId}`).val('');
-            };
-
-            // Hàm hiển thị/ẩn form sửa bình luận
-            window.showEditForm = function (id, content) {
-                $(`#edit-form-${id}`).show();
-                $(`#comment-content-${id}`).hide();
-            };
-
-            window.hideEditForm = function (id) {
-                $(`#edit-form-${id}`).hide();
-                $(`#comment-content-${id}`).show();
-            };
-
-            // Hàm thêm link YouTube
-            window.addYoutubeLink = function (chuongId) {
-                const container = $(`#youtube-links-${chuongId}`);
-                const newInput = $('<div class="input-group mb-2"><input type="url" name="YoutubeLinks" class="form-control" placeholder="Nhập link YouTube..." /><button type="button" class="btn btn-outline-danger" onclick="this.parentElement.remove()">-</button></div>');
-                container.append(newInput);
-            };
         });
-    </script>
+
+        // Tìm kiếm trong mục lục
+        document.getElementById("tocSearch").addEventListener("input", function () {
+            const keyword = this.value.toLowerCase().trim();
+
+            document.querySelectorAll(".toc-chuong").forEach(chuong => {
+                const chuongMatch = chuong.dataset.search.includes(keyword);
+                let hasMatchInBai = false;
+
+                const baiItems = chuong.nextElementSibling
+                    ? chuong.nextElementSibling.querySelectorAll('.toc-item')
+                    : [];
+
+                baiItems.forEach(bai => {
+                    const match = bai.dataset.search.includes(keyword);
+                    bai.style.display = match ? '' : 'none';
+                    if (match) hasMatchInBai = true;
+                });
+
+                chuong.style.display = (chuongMatch || hasMatchInBai) ? '' : 'none';
+            });
+        });
+    });
+
+    // Lazy-load bài khi mở chương
+    document.addEventListener("shown.bs.collapse", async function (e) {
+        const panel = e.target;
+        const chuongId = panel.id.replace("collapse-", "");
+        const container = document.getElementById("chapter-" + chuongId);
+
+        if (!container.dataset.loaded) {
+            try {
+                const response = await fetch(`/GiangVien/LoadBaiByChuong?chuongId=${chuongId}`);
+                const html = await response.text();
+                container.innerHTML = html;
+                container.setAttribute("data-loaded", "true");
+            } catch (err) {
+                container.innerHTML = "<div class='text-danger'>Lỗi tải bài học</div>";
+            }
+        }
+    });
+
+    // Xử lý xoá chương
+    document.addEventListener("click", async function (e) {
+        const btn = e.target.closest(".btn-xoa-chuong");
+        if (btn) {
+            const id = btn.dataset.id;
+            if (confirm("Bạn có chắc muốn xoá chương này?")) {
+                try {
+                    const res = await fetch(`/GiangVien/XoaChuong?id=${id}`, {
+                        method: "POST",
+                        headers: {
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+                        }
+                    });
+
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Đã xoá chương.");
+                        location.reload();
+                    } else {
+                        alert("Lỗi: " + data.message);
+                    }
+                } catch (err) {
+                    alert("Lỗi khi gửi yêu cầu.");
+                    console.error(err);
+                }
+            }
+        }
+    });
+
+    // Xử lý xoá bài
+    document.addEventListener("click", async function (e) {
+        const btn = e.target.closest(".btn-xoa-bai");
+        if (btn) {
+            const id = btn.dataset.id;
+            if (confirm("Bạn có chắc muốn xoá bài này?")) {
+                try {
+                    const res = await fetch(`/GiangVien/XoaBai?id=${id}`, {
+                        method: "POST",
+                        headers: {
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+                        }
+                    });
+
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Đã xoá bài.");
+                        document.getElementById("bai-" + id)?.remove();
+                    } else {
+                        alert("Lỗi: " + data.message);
+                    }
+                } catch (err) {
+                    alert("Lỗi khi gửi yêu cầu.");
+                    console.error(err);
+                }
+            }
+        }
+    });
+
+    // Thêm bài học
+    document.getElementById("formThemBai").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch('/GiangVien/ThemBai', {
+                method: 'POST',
+                headers: {
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                alert("Thêm bài học thành công!");
+                location.reload();
+            } else {
+                alert("Lỗi: " + result.message);
+            }
+        } catch (err) {
+            console.error("Lỗi khi gửi request:", err);
+            alert("Đã xảy ra lỗi.");
+        }
+    });
+
+    // Hiện modal sửa chương
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".btn-sua-chuong");
+        if (btn) {
+            document.getElementById("suaChuongId").value = btn.dataset.id;
+            document.getElementById("suaChuongTitle").value = btn.dataset.title;
+
+            const modal = new bootstrap.Modal(document.getElementById("modalSuaChuong"));
+            modal.show();
+        }
+    });
+
+    // Gửi request sửa chương
+    document.getElementById("formSuaChuong").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const id = document.getElementById("suaChuongId").value;
+        const title = document.getElementById("suaChuongTitle").value.trim();
+
+        if (!title) {
+            alert("Tên chương không được để trống.");
+            return;
+        }
+
+        try {
+            const response = await fetch('/GiangVien/SuaChuong', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ id, title })
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                alert("Đã cập nhật chương.");
+                location.reload();
+            } else {
+                alert("Lỗi: " + result.message);
+            }
+        } catch (err) {
+            console.error("Lỗi khi gửi request:", err);
+            alert("Đã xảy ra lỗi.");
+        }
+    });
+
+    // Hiện modal sửa bài
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".btn-sua-bai");
+        if (btn) {
+            document.getElementById("suaBaiId").value = btn.dataset.id;
+            document.getElementById("suaBaiTitle").value = btn.dataset.title;
+            document.getElementById("suaBaiDescription").value = btn.dataset.description;
+            document.getElementById("suaBaiYoutubeLinks").value = "";
+
+            const modal = new bootstrap.Modal(document.getElementById("modalSuaBai"));
+            modal.show();
+        }
+    });
+
+    // Gửi request sửa bài
+    document.getElementById("formSuaBai").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch('/GiangVien/SuaBai', {
+                method: 'POST',
+                headers: {
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                alert("Đã cập nhật bài học.");
+                location.reload();
+            } else {
+                alert("Lỗi: " + result.message);
+            }
+        } catch (err) {
+            console.error("Lỗi khi gửi request:", err);
+            alert("Đã xảy ra lỗi.");
+        }
+    });
+
+     function showEditForm(id, content) {
+        document.querySelectorAll('.edit-form').forEach(f => f.style.display = 'none');
+        document.getElementById(`edit-form-${id}`).style.display = 'block';
+        document.getElementById(`comment-content-${id}`).style.display = 'none';
+    }
+
+    function hideEditForm(id) {
+        document.getElementById(`edit-form-${id}`).style.display = 'none';
+        document.getElementById(`comment-content-${id}`).style.display = 'block';
+    }
+</script>
+
+
+

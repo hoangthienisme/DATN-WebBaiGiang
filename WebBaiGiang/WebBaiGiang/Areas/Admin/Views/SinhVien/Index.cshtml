@@ -1,4 +1,6 @@
-﻿@model List<WebBaiGiang.ViewModel.SinhVienVM>
+﻿@using WebBaiGiang.ViewModel
+@using System.Text.Encodings.Web
+@model List<WebBaiGiang.ViewModel.SinhVienVM>
 
 @{
     ViewData["Title"] = "Danh sách sinh viên";
@@ -90,17 +92,12 @@
 
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
-                                        <form action="/Admin/SinhVien/ToggleTrangThai" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="id" value="@sv.Id" />
-                                            <button type="submit"
-                                                    class="btn @(sv.IsActive ? "btn-outline-warning" : "btn-outline-success") btn-sm"
-                                                    title="@(sv.IsActive ? "Khóa tài khoản" : "Mở khóa tài khoản")"
-                                                    onclick="return confirm('Bạn có chắc muốn @(sv.IsActive ? "khóa" : "mở khóa") tài khoản @sv.Name không?');">
-                                                <i class="bi @(sv.IsActive ? "bi-lock" : "bi-unlock")"></i>
-                                            </button>
-                                        </form>
-
+                                        <button type="button"
+                                                class="btn @(sv.IsActive ? "btn-outline-warning" : "btn-outline-success") btn-sm"
+                                                title="@(sv.IsActive ? "Khóa tài khoản" : "Mở khóa tài khoản")"
+                                                onclick="@Html.Raw($"showConfirmGVModal('confirmToggleGVModal', '{Url.Action("ToggleTrangThai", "SinhVien", new { area = "Admin" })}', {sv.Id}, '{JavaScriptEncoder.Default.Encode(sv.Name)}', {sv.IsActive.ToString().ToLower()})")">
+                                            <i class="bi @(sv.IsActive ? "bi-lock" : "bi-unlock")"></i>
+                                        </button>
 
                                     </div>
                                 </td>
@@ -113,6 +110,13 @@
         </div>
     }
 </div>
+@await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmToggleGVModal",
+    Message = "", // sẽ cập nhật bằng JS
+    ActionUrl = Url.Action("ToggleTrangThai", "SinhVien", new { area = "Admin" }),
+    DataId = 0
+})
 
 <style>
     .bg-danger-subtle {
@@ -200,4 +204,23 @@
             });
         });
     });
+</script>
+<script>
+      function showConfirmGVModal(modalId, actionUrl, id, name, isActive) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+
+        // Cập nhật form
+        const form = modal.querySelector("form");
+        form.action = actionUrl;
+        form.querySelector("input[name='id']").value = id;
+
+        // Cập nhật nội dung câu hỏi
+        const messageContainer = modal.querySelector(".custom-modal-body p");
+        messageContainer.innerText = `Bạn có chắc muốn ${isActive ? "khóa" : "mở khóa"} tài khoản "${name}" không?`;
+
+        // Hiển thị modal bằng class custom
+        modal.classList.add("show");
+    }
+
 </script>

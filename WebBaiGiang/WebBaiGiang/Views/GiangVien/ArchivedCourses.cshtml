@@ -66,6 +66,26 @@
 </div>
 
 <div class="container">
+    <!-- Bộ lọc tìm kiếm -->
+    <div class="search-filter d-flex align-items-center justify-content-between mb-3">
+        <form asp-action="ArchivedCourses" method="get" class="d-flex align-items-center gap-2 w-100">
+            <img src="~/img/loupe.png" class="search-icon" style="width:18px; height:18px; opacity:0.6;" />
+            <input type="text" name="search" value="@ViewBag.Search" placeholder="Tìm lớp học..." class="form-control w-50" />
+
+            <select name="SubjectsId" class="form-select w-auto" onchange="this.form.submit()">
+                <option value="">-- Tất cả học phần --</option>
+                @foreach (var hp in (List<WebBaiGiang.Models.HocPhan>)ViewBag.HocPhans)
+                {
+                    <option value="@hp.Id" selected="@(hp.Id == (ViewBag.SubjectsId ?? 0) ? "selected" : null)">
+                        @hp.Name
+                    </option>
+                }
+            </select>
+
+            <button type="submit" class="btn btn-secondary">Lọc</button>
+        </form>
+    </div>
+
     <div class="courses-wrapper">
         @if (Model != null && Model.Any())
         {
@@ -101,7 +121,7 @@
 {
     ModalId = "confirmArchiveModal",
     Message = "Bạn có chắc khôi phục lớp học này?",
-    ActionUrl = Url.Action("ArchiveCourse", "GiangVien"),
+    ActionUrl = Url.Action("UnarchiveCourse", "GiangVien"),
     DataId = 0 
 })
     <div class="pagination">

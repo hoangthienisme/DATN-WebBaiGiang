@@ -4,6 +4,9 @@
     var lopId = ViewBag.LopId;
 
 }
+<form style="display:none">
+    @Html.AntiForgeryToken()
+</form>
 
 <style>
     .dropdown {
@@ -108,8 +111,9 @@
             <div class="dropdown">
                 <button class="dropdown-toggle">+ Thêm mới</button>
                 <div class="dropdown-menu">
-                    <a href="@Url.Action("TaoBaiTap", new { lopId = lopId })">Bài tập</a>
-                    <a href="@Url.Action("TaoBaiKiemTra", new { lopId = lopId })">Bài kiểm tra</a>
+                    <a href="@Url.Action("TaoBaiTap", new { lopId = ViewBag.LopId })">Bài tập</a>
+
+                    @* <a href="@Url.Action("TaoBaiKiemTra", new { lopId = lopId })">Bài kiểm tra</a> *@
                 </div>
             </div>
         }
@@ -152,7 +156,10 @@
                             <div style="color:gray; font-size:14px;">@item.Description</div>
                         }
                         <div style="color:gray; font-size:13px; margin-top:4px;">
-                            🕒 Hạn nộp: @item.DueDate?.ToString("dd/MM/yyyy HH:mm")<br />
+                            🕒 Hạn nộp:
+                            <span>
+                                @(item.DueDate?.ToString("dd/MM/yyyy HH:mm") ?? "Không có thời hạn")
+                            </span><br />
                             📅 Đăng vào: @item.CreatedDate.ToString("dd/MM/yyyy HH:mm")
                         </div>
                     </div>
@@ -163,11 +170,11 @@
                         <div class="three-dots">⋮</div>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="@Url.Action("SuaBaiTap", new { id = item.Id })">Chỉnh sửa</a>
-                            <form asp-action="XoaBaiTap" asp-controller="Courses" method="post">
-                                <input type="hidden" name="id" value="@item.Id" />
-                                <input type="hidden" name="lopIdGoc" value="@ViewBag.LopId" />
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
-                            </form>
+                            <button type="button"
+                                    class="text-danger"
+                                    onclick="showConfirmDeleteBaiTap(@item.Id, @ViewBag.LopId)">
+                                Xóa
+                            </button>
 
 
                             @if (!string.IsNullOrEmpty(item.ContentUrl))
@@ -182,3 +189,25 @@
         </div>
     }
 </div>
+
+<script>
+    function showConfirmDeleteBaiTap(baiTapId, lopHocId) {
+        const modal = document.getElementById("confirmDeleteBaiTapModal");
+        const form = modal.querySelector("form");
+
+        form.querySelector("input[name='id']").value = baiTapId;
+        form.querySelector("input[name='lopHocId']").value = lopHocId;
+
+        modal.classList.add("show");
+
+        // Đóng khi click ngoài
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) modal.classList.remove("show");
+        });
+
+        // Đóng khi bấm "Huỷ"
+        modal.querySelector(".cancel-btn").addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+    }
+</script>

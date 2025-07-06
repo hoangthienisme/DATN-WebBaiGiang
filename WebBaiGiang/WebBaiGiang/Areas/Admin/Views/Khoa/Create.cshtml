@@ -13,22 +13,23 @@
     </div>
     <div class="card-body p-4">
         @* Hiển thị thông báo thành công/thất bại từ TempData *@
-        @if (TempData["SuccessMessage"] != null)
+        @if (TempData["Success"] != null)
         {
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                @TempData["SuccessMessage"]
+                @TempData["Success"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         }
-        @if (TempData["ErrorMessage"] != null)
+        @if (TempData["Error"] != null)
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                @TempData["ErrorMessage"]
+                @TempData["Error"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         }
 
         <form asp-action="Create" asp-controller="Khoa" asp-area="Admin" method="post">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.AntiForgeryToken() 
             <div class="mb-3">
                 <label asp-for="Name" class="form-label fw-bold">Tên Khoa <span class="text-danger">*</span></label>

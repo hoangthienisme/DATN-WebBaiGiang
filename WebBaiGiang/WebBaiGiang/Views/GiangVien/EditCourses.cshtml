@@ -62,6 +62,10 @@
     </div>
 
     <form asp-action="EditCourses" method="post" enctype="multipart/form-data" class="form-section">
+        <div class="text-danger" style="color:red">
+            @Html.ValidationSummary(false, "", new { @class = "" })
+        </div>
+
         <input type="hidden" name="Id" value="@Model?.Id" />
         <input type="hidden" name="OldPicture" value="@Model?.Picture" />
         <h1>Chỉnh sửa khóa học</h1>
@@ -91,9 +95,12 @@
         <label for="DetailedDescription">Mô tả khóa học:</label>
         <div id="detailedDescEditor" style="height: 300px;"></div>
         <input type="hidden" name="DetailedDescription" id="hiddenDetailedDesc" />
-
+        <div class="form-group mb-3">
+            <label class="form-label fw-bold">Ảnh hiện tại:</label>
+            <img src="@ViewBag.Picture" alt="Ảnh hiện tại" style="max-height: 200px;" id="currentImage" />
+        </div>
         <div class="form-group">
-            <label for="thumbnail">Tải lên ảnh bìa khóa học</label>
+            <label for="thumbnail">Ảnh mới (chưa lưu):</label>
             <div id="imagePreviewBox">
                 <img id="previewUploadBoxImage" src="#" alt="Preview" />
                 <span id="placeholderText">Chọn ảnh</span>
@@ -160,3 +167,15 @@
         });
     </script>
 </div>
+<style>
+    .text-danger ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .text-danger li {
+        padding-left: 0;
+        margin-left: 0;
+    }
+</style>

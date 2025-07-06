@@ -47,13 +47,17 @@
                     </div>
 
                     <!-- Nội dung khóa học -->
-                    <div class="course-image">
-                        <img src="@course.Picture" alt="Ảnh bìa khóa học" />
-                    </div>
-                    <div class="course-content">
-                        <h4>@course.Name</h4>
-                        @Html.Raw(course.Description)
-                    </div>
+                    <a href="@Url.Action("DetailCourses", "Courses", new { id = course.Id })" class="course-link">
+                        <div class="course-image">
+                            <img src="@course.Picture" alt="Ảnh bìa khóa học" onerror="this.src='/img/default-course.jpg'" />
+                        </div>
+                        <div class="course-content">
+                            <h4>@course.Name</h4>
+                            @Html.Raw(course.Description)
+                        </div>
+                    </a>
+
+
                 </div>
             }
         }

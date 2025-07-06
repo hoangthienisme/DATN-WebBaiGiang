@@ -27,7 +27,7 @@ public class EmailService : IEmailService
         message.To.Add(new MailAddress(toEmail));
         message.Subject = subject;
         message.Body = body;
-        message.IsBodyHtml = false;
+        message.IsBodyHtml = true;
 
         using var smtpClient = new SmtpClient(smtpHost, smtpPort)
         {
