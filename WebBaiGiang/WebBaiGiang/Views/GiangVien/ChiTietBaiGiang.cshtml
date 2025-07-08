@@ -1,12 +1,13 @@
 ﻿@model WebBaiGiang.ViewModel.ChiTietBaiGiangViewModel
 @using System.Security.Claims
 @using System.Web
+@using WebBaiGiang.ViewModel
 @{
     ViewData["Title"] = "Chi tiết bài giảng";
     Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
     var taiNguyenAnh = Model.TaiNguyens?.Where(t => t.Loai == "image");
     var taiNguyenYoutube = Model.TaiNguyens?.Where(t => t.Loai == "youtube");
-    var taiNguyenDocs = Model.TaiNguyens?.Where(t => t.Loai == "tailieu");
+    var taiNguyenDocs = Model.TaiNguyens?.Where(t => t.Loai == "doc");
 }
 <!-- Font Awesome 6.x -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,22 +24,22 @@
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
                 <div id="tocContent">
-                    @if (Model.Chuongs?.Any() == true)
+                    @if (Model.Chuongs != null && Model.Chuongs.Any())
                     {
-                        @foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
+                        foreach (var chuong in Model.Chuongs.Where(c => c != null).OrderBy(c => c.SortOrder))
                         {
                             <div class="toc-chuong-wrapper mb-2">
-                                <div class="toc-chuong fw-bold mb-1" data-search="@chuong.Title.ToLower()" data-chuong-id="@chuong.Id">
+                                <div class="toc-chuong fw-bold mb-1" data-search="@chuong.Title?.ToLower()" data-chuong-id="@chuong.Id">
                                     Chương @chuong.SortOrder: @chuong.Title
                                 </div>
 
-                                @if (chuong.Bais?.Any() == true)
+                                @if (chuong.Bais != null && chuong.Bais.Any())
                                 {
-                                    foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
+                                    foreach (var bai in chuong.Bais.Where(b => b != null).OrderBy(b => b.SortOrder))
                                     {
                                         <div class="toc-item toc-lesson ms-3"
                                              data-target="lesson-@bai.Id"
-                                             data-search="@bai.Title.ToLower()"
+                                             data-search="@bai.Title?.ToLower()"
                                              data-chuong-id="@chuong.Id">
                                             @chuong.SortOrder.@bai.SortOrder @bai.Title
                                         </div>
@@ -50,8 +51,8 @@
                                 }
                             </div>
                         }
-
                     }
+
                 </div>
 
                 </div>
@@ -61,6 +62,9 @@
             <div class="card shadow-sm mb-4" id="info">
                 <div class="card-header bg-primary text-white">
                     <h2 class="card-title mb-0">@Model.Title</h2>
+                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalSuaBaiGiang">
+                        <i class="fas fa-edit me-1"></i> Sửa
+                    </button>
                 </div>
                 <div class="lead text-muted mo-ta-noi-dung p-3">
                     @Html.Raw(Model.Description)
@@ -75,6 +79,70 @@
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalThemBai">
                         <i class="fas fa-plus me-1"></i> Thêm bài
                     </button>
+                </div>
+            </div>
+            @*  Modal sửa bài giảng *@
+            <div class="modal fade" id="modalSuaBaiGiang" tabindex="-1" aria-labelledby="modalSuaBaiGiangLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <form id="formSuaBaiGiang">
+                        @Html.AntiForgeryToken()
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Sửa thông tin bài giảng</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="suaTenBaiGiang">Tên bài giảng</label>
+                                    <input type="text" name="Title" id="suaTenBaiGiang" class="form-control" required value="@Model.Title" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="suaMoTaBaiGiang">Mô tả bài giảng</label>
+                                    <textarea name="Description" id="suaMoTaBaiGiang" class="form-control" rows="6">@Html.Raw(Model.Description)</textarea>
+                                </div>
+                                <input type="hidden" name="Id" value="@Model.BaiGiang.Id" />
+                                <!-- Trong <form id="formSuaBaiGiang"> -->
+                                <h6 class="mt-3">Cập nhật tài nguyên (tuỳ chọn)</h6>
+
+                                <div class="mb-2">
+                                    <label>Thay ảnh (Image)</label>
+                                    <input type="file" class="form-control" name="ImageFiles" accept="image/*" multiple />
+                                </div>
+
+                                <div class="mb-2">
+                                    <label>Thay tài liệu (PDF, Word...)</label>
+                                    <input type="file" class="form-control" name="DocumentFiles" accept=".pdf,.doc,.docx,.ppt,.pptx" multiple />
+                                </div>
+
+                                <div class="mb-2">
+                                    <label>Link video YouTube (ngăn cách bằng dấu phẩy)</label>
+                                    <input type="text" class="form-control" name="YoutubeLinks" value="@string.Join(", ", Model.TaiNguyens.Where(t => t.Loai == "youtube").Select(t => t.Url))" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="suaHocPhan">Học phần</label>
+                                    @if (Model.HocPhans != null && Model.HocPhans.Any())
+                                    {
+                                        <select name="HocPhanId" class="form-select"
+                                                asp-for="HocPhanId"
+                                                asp-items="@(new SelectList(Model.HocPhans, "Id", "Name", Model.HocPhanId))">
+                                            <option value="">-- Chọn học phần --</option>
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-warning">Không có học phần nào để chọn.</div>
+                                    }
+
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -240,7 +308,8 @@
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-outline-danger btn-xoa-chuong"
-                                        data-id="@chuong.Id" title="Xoá chương">
+                                        title="Xóa chương"
+                                        onclick="showConfirmModalById('confirmDeleteChuongModal', '@chuong.Id')">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
@@ -304,7 +373,81 @@
         </div>
     </div>
 </div>
+<script>
+        function showConfirmModal(modalId, actionUrl, id) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add("show");
+        modal.style.display = "block";
 
+        const form = modal.querySelector("form");
+        form.action = actionUrl;
+        form.querySelector("input[name='id']").value = id;
+
+        // Đảm bảo modal hoạt động với Bootstrap
+        const bsModal = new bootstrap.Modal(modal);
+        bsModal.show();
+    }
+</script>
+<script>
+        let editorSuaBaiGiang;
+    ClassicEditor
+        .create(document.querySelector('#suaMoTaBaiGiang'), {
+            ckfinder: {
+                uploadUrl: '/GiangVien/UploadAnhCKEditor'
+            }
+        })
+        .then(editor => {
+            editorSuaBaiGiang = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    document.getElementById("formSuaBaiGiang").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = this;
+        const formData = new FormData(form);
+        formData.set("Description", editorSuaBaiGiang.getData());
+
+        try {
+            const response = await fetch('/GiangVien/SaveAll', {
+                method: 'POST',
+                headers: {
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                alert("Đã cập nhật bài giảng!");
+                location.reload();
+            } else {
+                alert("Lỗi: " + result.message);
+            }
+        } catch (err) {
+            console.error("Lỗi khi gửi request:", err);
+            alert("Đã xảy ra lỗi.");
+        }
+    });
+</script>
+@await Html.PartialAsync("_ConfirmModal", new WebBaiGiang.ViewModel.ConfirmModalViewModel
+{
+    ModalId = "confirmDeleteChuongModal",
+    Message = "Bạn có chắc muốn xóa chương này?",
+    ActionUrl = Url.Action("XoaChuong", "GiangVien"),
+    Method = "post",
+    ConfirmButtonText = "XÓA",
+    CancelButtonText = "HỦY"
+})
+
+@await Html.PartialAsync("_ConfirmModal", new ConfirmModalViewModel
+{
+    ModalId = "confirmDeleteBaiModal",
+    Message = "Bạn có chắc muốn xóa bài này?",
+    ActionUrl = Url.Action("XoaBai", "GiangVien")
+})
 <script>
         document.addEventListener("DOMContentLoaded", () => {
         let loaded = false;
@@ -407,62 +550,48 @@
         }
     });
 
-    // Xử lý xoá chương
-    document.addEventListener("click", async function (e) {
+        // Xử lý xóa chương
+    document.addEventListener("click", function (e) {
         const btn = e.target.closest(".btn-xoa-chuong");
         if (btn) {
-            const id = btn.dataset.id;
-            if (confirm("Bạn có chắc muốn xoá chương này?")) {
-                try {
-                    const res = await fetch(`/GiangVien/XoaChuong?id=${id}`, {
-                        method: "POST",
-                        headers: {
-                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
-                        }
-                    });
-
-                    const data = await res.json();
-                    if (data.success) {
-                        alert("Đã xoá chương.");
-                        location.reload();
-                    } else {
-                        alert("Lỗi: " + data.message);
-                    }
-                } catch (err) {
-                    alert("Lỗi khi gửi yêu cầu.");
-                    console.error(err);
-                }
-            }
+            showConfirmModalById('confirmDeleteChuongModal', btn.dataset.id);
         }
     });
 
     // Xử lý xoá bài
-    document.addEventListener("click", async function (e) {
+        document.addEventListener("click", function (e) {
         const btn = e.target.closest(".btn-xoa-bai");
         if (btn) {
-            const id = btn.dataset.id;
-            if (confirm("Bạn có chắc muốn xoá bài này?")) {
-                try {
-                    const res = await fetch(`/GiangVien/XoaBai?id=${id}`, {
-                        method: "POST",
-                        headers: {
-                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
-                        }
-                    });
-
-                    const data = await res.json();
-                    if (data.success) {
-                        alert("Đã xoá bài.");
-                        location.reload(); // Reload toàn bộ trang
-                    } else {
-                        alert("Lỗi: " + data.message);
-                    }
-                } catch (err) {
-                    alert("Lỗi khi gửi yêu cầu.");
-                    console.error(err);
-                }
-            }
+            showConfirmModalById('confirmDeleteBaiModal', btn.dataset.id);
         }
+    });
+        document.querySelectorAll(".custom-modal form").forEach(form => {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const actionUrl = form.action;
+
+            try {
+                const res = await fetch(actionUrl, {
+                    method: "POST",
+                    headers: {
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: formData
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    alert("Đã xóa thành công.");
+                    location.reload();
+                } else {
+                    alert("Lỗi: " + data.message);
+                }
+            } catch (err) {
+                alert("Lỗi khi gửi yêu cầu.");
+                console.error(err);
+            }
+        });
     });
     // Xu ly them chuong
              document.getElementById("formThemChuong").addEventListener("submit", async function (e) {

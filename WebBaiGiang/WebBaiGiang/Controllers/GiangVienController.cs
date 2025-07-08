@@ -1008,6 +1008,7 @@ namespace WebBaiGiang.Controllers
 
             if (baiGiang == null)
                 return NotFound();
+            var hocPhans = _context.HocPhans.ToList();
 
             var viewModel = new ChiTietBaiGiangViewModel
             {
@@ -1017,7 +1018,9 @@ namespace WebBaiGiang.Controllers
                 CreatedDate = baiGiang.CreatedDate,
                 TaiNguyens = baiGiang.TaiNguyens.ToList(),
                 Chuongs = baiGiang.Chuongs.OrderBy(c => c.SortOrder).ToList(),
-                BaiGiang = baiGiang
+                BaiGiang = baiGiang,
+                HocPhans = hocPhans,
+                HocPhanId = baiGiang.HocPhanId
             };
 
             return View(viewModel);
@@ -1238,8 +1241,12 @@ namespace WebBaiGiang.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveAll(ChiTietBaiGiangViewModel model)
-            {
+        public async Task<IActionResult> SaveAll(
+      ChiTietBaiGiangViewModel model,
+      List<IFormFile> ImageFiles,
+      List<IFormFile> DocumentFiles,
+      string YoutubeLinks)
+        {
             try
             {
                 if (model == null)
@@ -1252,9 +1259,107 @@ namespace WebBaiGiang.Controllers
                 if (baiGiang == null)
                     return Json(new { success = false, message = "Bài giảng không tồn tại" });
 
+                // Cập nhật thông tin cơ bản
                 baiGiang.Title = model.Title ?? "";
                 baiGiang.Description = model.Description ?? "";
+                baiGiang.HocPhanId = model.HocPhanId;
 
+                // Chỉ xóa ảnh cũ nếu đang upload ảnh mới
+                if (ImageFiles != null && ImageFiles.Any())
+                {
+                    var oldImages = await _context.TaiNguyens
+                        .Where(t => t.BaiGiangId == baiGiang.Id && t.Loai == "image")
+                        .ToListAsync();
+                    _context.TaiNguyens.RemoveRange(oldImages);
+                }
+
+                // Chỉ xóa tài liệu cũ nếu đang upload file tài liệu mới
+                if (DocumentFiles != null && DocumentFiles.Any())
+                {
+                    var oldDocs = await _context.TaiNguyens
+                        .Where(t => t.BaiGiangId == baiGiang.Id && t.Loai == "doc")
+                        .ToListAsync();
+                    _context.TaiNguyens.RemoveRange(oldDocs);
+                }
+
+                // Chỉ xóa YouTube cũ nếu có YouTube mới
+                if (!string.IsNullOrWhiteSpace(YoutubeLinks))
+                {
+                    var oldYoutube = await _context.TaiNguyens
+                        .Where(t => t.BaiGiangId == baiGiang.Id && t.Loai == "youtube")
+                        .ToListAsync();
+                    _context.TaiNguyens.RemoveRange(oldYoutube);
+                }
+
+
+                // Upload ảnh mới
+                if (ImageFiles != null && ImageFiles.Any())
+                {
+                    var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "images");
+                    if (!Directory.Exists(uploadPath))
+                        Directory.CreateDirectory(uploadPath);
+
+                    foreach (var file in ImageFiles)
+                    {
+                        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                        var filePath = Path.Combine(uploadPath, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        _context.TaiNguyens.Add(new TaiNguyen
+                        {
+                            BaiGiangId = baiGiang.Id,
+                            Url = $"/uploads/images/{fileName}",
+                            Loai = "image"
+                        });
+                    }
+                }
+
+                // Upload tài liệu mới
+                if (DocumentFiles != null && DocumentFiles.Any())
+                {
+                    var docPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "docs");
+                    if (!Directory.Exists(docPath))
+                        Directory.CreateDirectory(docPath);
+
+                    foreach (var file in DocumentFiles)
+                    {
+                        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                        var filePath = Path.Combine(docPath, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        _context.TaiNguyens.Add(new TaiNguyen
+                        {
+                            BaiGiangId = baiGiang.Id,
+                            Url = $"/uploads/docs/{fileName}",
+                            Loai = "doc"
+                        });
+                    }
+                }
+
+                // Lưu link YouTube
+                if (!string.IsNullOrWhiteSpace(YoutubeLinks))
+                {
+                    var youtubeUrls = YoutubeLinks.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                    foreach (var url in youtubeUrls)
+                    {
+                        _context.TaiNguyens.Add(new TaiNguyen
+                        {
+                            BaiGiangId = baiGiang.Id,
+                            Url = url,
+                            Loai = "youtube"
+                        });
+                    }
+                }
+
+                // Cập nhật chương-bài
                 foreach (var chuong in model.Chuongs)
                 {
                     var existingChuong = baiGiang.Chuongs.FirstOrDefault(c => c.Id == chuong.Id);
@@ -1275,11 +1380,13 @@ namespace WebBaiGiang.Controllers
                 }
 
                 await _context.SaveChangesAsync();
-                // Gửi thông báo đến sinh viên của các lớp có bài giảng này
+
+                // Gửi thông báo cho sinh viên
                 var lopIds = await _context.LopHocBaiGiangs
                     .Where(lb => lb.BaiGiangId == baiGiang.Id)
                     .Select(lb => lb.LopHocId)
                     .ToListAsync();
+
                 var sinhVienIds = await _context.SinhVienLopHocs
                     .Where(sv => lopIds.Contains(sv.IdClass))
                     .Join(_context.NguoiDungs,
@@ -1290,7 +1397,6 @@ namespace WebBaiGiang.Controllers
                     .Select(x => x.sv.IdSv)
                     .Distinct()
                     .ToListAsync();
-
 
                 var dsThongBao = new List<ThongBao>();
                 var lienKet = Url.Action("ChiTietBaiGiang", "SinhVien", new { id = baiGiang.Id });
@@ -1308,7 +1414,6 @@ namespace WebBaiGiang.Controllers
                     };
                     dsThongBao.Add(tb);
 
-                    // Gửi SignalR realtime
                     await _hubContext.Clients.Group($"user_{svId}").SendAsync("NhanThongBao", new
                     {
                         tieuDe = $"Bài giảng cập nhật: {baiGiang.Title}",
@@ -1327,6 +1432,8 @@ namespace WebBaiGiang.Controllers
                 return Json(new { success = false, message = ex.Message });
             }
         }
+
+
 
 
         [HttpPost]
