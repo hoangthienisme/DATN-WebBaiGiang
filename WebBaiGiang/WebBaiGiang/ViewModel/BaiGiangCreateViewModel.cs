@@ -8,7 +8,6 @@ namespace WebBaiGiang.ViewModel
     {
         [Required(ErrorMessage = "Vui lòng nhập tên bài giảng!")]
         [StringLength(200, ErrorMessage = "Tên bài giảng không vượt quá 200 ký tự")]
-        [RegularExpression(@"^(?=.*[\p{L}])[\p{L}\p{M} \.'\-]+$", ErrorMessage = "Tên bài giảng không được chứa ký tự đặc biệt hoặc để trống")]
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
 

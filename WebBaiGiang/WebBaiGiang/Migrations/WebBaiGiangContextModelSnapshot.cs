@@ -165,7 +165,7 @@ namespace WebBaiGiang.Migrations
 
                     b.HasIndex("LopHocId");
 
-                    b.ToTable("BaiTapLopHocs");
+                    b.ToTable("BaiTapLopHocs", (string)null);
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.BinhLuan", b =>
@@ -196,7 +196,7 @@ namespace WebBaiGiang.Migrations
 
                     b.HasIndex("NguoiDungId");
 
-                    b.ToTable("BinhLuans");
+                    b.ToTable("BinhLuans", (string)null);
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.Chuong", b =>
@@ -408,9 +408,8 @@ namespace WebBaiGiang.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("KhoaId")
-                        .HasColumnType("int")
-                        .HasColumnName("Khoa_id");
+                    b.Property<int?>("KhoaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -456,7 +455,7 @@ namespace WebBaiGiang.Migrations
 
                     b.HasIndex("BaiGiangId");
 
-                    b.ToTable("LopHocBaiGiangs");
+                    b.ToTable("LopHocBaiGiangs", (string)null);
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.NguoiDung", b =>
@@ -657,7 +656,7 @@ namespace WebBaiGiang.Migrations
 
                     b.HasIndex("NguoiNhanId");
 
-                    b.ToTable("ThongBaos");
+                    b.ToTable("ThongBaos", (string)null);
                 });
 
             modelBuilder.Entity("WebBaiGiang.Models.ThongTinWeb", b =>
@@ -838,9 +837,7 @@ namespace WebBaiGiang.Migrations
                 {
                     b.HasOne("WebBaiGiang.Models.Khoa", "Khoa")
                         .WithMany("LopHocs")
-                        .HasForeignKey("KhoaId")
-                        .IsRequired()
-                        .HasConstraintName("FK_LopHoc_Khoa");
+                        .HasForeignKey("KhoaId");
 
                     b.HasOne("WebBaiGiang.Models.HocPhan", "Subjects")
                         .WithMany("LopHocs")

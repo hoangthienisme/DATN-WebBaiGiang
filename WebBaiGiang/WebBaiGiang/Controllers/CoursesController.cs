@@ -444,11 +444,14 @@ namespace WebBaiGiang.Controllers
 
             int pageSize = 6;
 
-            var baiGiangsQuery = _context.LopHocBaiGiangs
-                .Where(lbg => lbg.LopHocId == id)
-                .Include(lbg => lbg.BaiGiang)
-                .Select(lbg => lbg.BaiGiang)
-                .OrderByDescending(b => b.CreatedDate);
+                 var baiGiangsQuery = _context.LopHocBaiGiangs
+          .Where(lbg => lbg.LopHocId == id)
+          .Include(lbg => lbg.BaiGiang)
+              .ThenInclude(bg => bg.HocPhan) // join học phần
+          .Where(lbg => lbg.BaiGiang.HocPhan.IsActive) // lọc học phần còn hoạt động
+          .Select(lbg => lbg.BaiGiang)
+          .OrderByDescending(b => b.CreatedDate);
+
 
             var paginatedBaiGiangs = await PhanTrang<BaiGiang>.CreateAsync(baiGiangsQuery, page, pageSize);
 
@@ -458,7 +461,11 @@ namespace WebBaiGiang.Controllers
                 .Select(bt => bt.BaiTap)
                 .OrderByDescending(bt => bt.CreatedDate);
             // Lấy danh sách bài giảng chưa được gán vào lớp này
-            var allBaiGiangs = await _context.BaiGiangs.ToListAsync();
+                     var allBaiGiangs = await _context.BaiGiangs
+             .Include(bg => bg.HocPhan)
+             .Where(bg => bg.HocPhan.IsActive)
+             .ToListAsync();
+
 
             var baiGiangDaCoIds = await _context.LopHocBaiGiangs
                 .Where(lbg => lbg.LopHocId == id)

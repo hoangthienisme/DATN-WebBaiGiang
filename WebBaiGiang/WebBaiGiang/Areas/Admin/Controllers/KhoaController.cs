@@ -134,41 +134,69 @@ namespace WebBaiGiang.Areas.Admin.Controllers
 
         public async Task<IActionResult> An(int id)
         {
-            var khoa = await _context.Khoas.FindAsync(id);
+            var khoa = await _context.Khoas
+                .Include(k => k.HocPhans) // 👈 lấy luôn danh sách học phần trong khoa
+                .FirstOrDefaultAsync(k => k.Id == id);
+
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+
             if (khoa != null)
             {
                 if (int.TryParse(userIdStr, out int userId))
                 {
                     khoa.UpdateBy = userId;
                 }
+
                 khoa.IsActive = false;
                 khoa.UpdateDate = DateTime.Now;
+
+                // Ẩn toàn bộ học phần thuộc khoa
+                foreach (var hocPhan in khoa.HocPhans)
+                {
+                    hocPhan.IsActive = false;
+                    hocPhan.UpdateDate = DateTime.Now;
+                    hocPhan.UpdateBy = khoa.UpdateBy;
+                }
+
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
 
+            return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
         }
+
 
         public async Task<IActionResult> KhoiPhuc(int id)
         {
-            var khoa = await _context.Khoas.FindAsync(id);
+            var khoa = await _context.Khoas
+                .Include(k => k.HocPhans)
+                .FirstOrDefaultAsync(k => k.Id == id);
+
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
-           
+
             if (khoa != null)
             {
                 if (int.TryParse(userIdStr, out int userId))
                 {
                     khoa.UpdateBy = userId;
                 }
+
                 khoa.IsActive = true;
                 khoa.UpdateDate = DateTime.Now;
+
+                // Khôi phục học phần thuộc khoa
+                foreach (var hocPhan in khoa.HocPhans)
+                {
+                    hocPhan.IsActive = true;
+                    hocPhan.UpdateDate = DateTime.Now;
+                    hocPhan.UpdateBy = khoa.UpdateBy;
+                }
+
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
 
+            return RedirectToAction("Khoa", "Khoa", new { area = "Admin" });
         }
+
 
     }
 }

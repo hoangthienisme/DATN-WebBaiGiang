@@ -4,7 +4,16 @@
     Layout = null;
     ViewData["Title"] = "Tạo bài giảng mới";
 }
-
+<style>
+    .ck-content img {
+        max-width: 80% !important;
+        height: auto;
+        display: block;
+        margin: 12px auto;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>
 <meta charset="utf-8" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -347,15 +356,57 @@
 </script>
 
 <script>
-    window.MathJax = {
-        tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
-            displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: {
-            fontCache: 'global'
-        }
-    };
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description-editor'), {
+                ckfinder: {
+                    uploadUrl: '/GiangVien/UploadAnhCKEditor' // endpoint upload ảnh
+                },
+                image: {
+                    resizeUnit: '%',
+                    resizeOptions: [
+                        {
+                            name: 'resizeImage:original',
+                            label: 'Gốc',
+                            value: null
+                        },
+                        {
+                            name: 'resizeImage:75',
+                            label: '75%',
+                            value: '75'
+                        },
+                        {
+                            name: 'resizeImage:50',
+                            label: '50%',
+                            value: '50'
+                        },
+                        {
+                            name: 'resizeImage:25',
+                            label: '25%',
+                            value: '25'
+                        }
+                    ],
+                    toolbar: [
+                        'resizeImage',
+                        'imageTextAlternative',
+                        'imageStyle:alignLeft',
+                        'imageStyle:alignCenter',
+                        'imageStyle:alignRight'
+                    ]
+                },
+                toolbar: {
+                    items: [
+                        'heading', '|',
+                        'bold', 'italic', 'underline', 'link', '|',
+                        'bulletedList', 'numberedList', '|',
+                        'insertTable', 'imageUpload', 'blockQuote', '|',
+                        'undo', 'redo'
+                    ]
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
 </script>
 <script>
     document.addEventListener('paste', () => {
