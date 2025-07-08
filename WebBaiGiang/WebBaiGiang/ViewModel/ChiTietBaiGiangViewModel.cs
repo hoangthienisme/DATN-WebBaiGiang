@@ -16,8 +16,13 @@ namespace WebBaiGiang.ViewModel
         public List<TaiNguyen> TaiNguyens { get; set; } = new();  
 
         public List<Chuong> Chuongs { get; set; } = new();
+        public int? HocPhanId { get; set; }
+        public IFormFile[]? ImageFiles { get; set; }
+        public IFormFile[]? DocumentFiles { get; set; }
+        public string? YoutubeLinks { get; set; } // ngăn cách dấu phẩy
 
         public List<BinhLuan> BinhLuans { get; set; } = new();
+        public List<HocPhan> HocPhans { get; set; } = new();
         public BaiGiang BaiGiang { get; set; } = new();
 
         // Có thể thêm: Form gửi bình luận
