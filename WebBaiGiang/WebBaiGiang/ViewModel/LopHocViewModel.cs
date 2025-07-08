@@ -8,7 +8,6 @@ namespace WebBaiGiang.ViewModel
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập tên lớp học")]
-        [RegularExpression(@"^[\w\s\-\(\)\[\]À-ỹà-ỹÁ-Ýá-ý]+$", ErrorMessage = "Tên lớp học chứa ký tự không hợp lệ")]
         [Display(Name = "Tên lớp học")]
         public string Name { get; set; } = null!;
 

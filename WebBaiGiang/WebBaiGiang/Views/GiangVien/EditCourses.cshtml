@@ -74,15 +74,6 @@
         <label for="Name">Tên khóa học:</label>
         <input type="text" name="Name" id="courseName" value="@Model?.Name" required />
 
-        <!-- Chọn Khoa -->
-        <select name="KhoaId" id="KhoaId" required>
-            @foreach (var khoa in khoas)
-            {
-                var selected = khoa.Id == Model.KhoaId ? "selected" : "";
-                @Html.Raw($"<option value='{khoa.Id}' {selected}>{khoa.Name}</option>")
-            }
-        </select>
-
         <!-- Chọn Học phần -->
         <select name="SubjectsId" id="SubjectsId" required>
             @foreach (var subject in subjects)
