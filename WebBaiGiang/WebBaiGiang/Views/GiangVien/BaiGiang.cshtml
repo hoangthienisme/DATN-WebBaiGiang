@@ -81,11 +81,11 @@
 </div>
 
 <!-- Thanh tìm kiếm -->
-<div class="search-filter mb-3 d-flex align-items-center gap-3">
+<div class="search-filter">
     <form asp-action="BaiGiang" method="get" class="d-flex align-items-center gap-2 search-input-wrapper">
         <input type="hidden" name="returnUrl" value="@Context.Request.Query["returnUrl"]" />
         <img src="~/img/loupe.png" class="search-icon" />
-        <input type="text" name="search" value="@ViewBag.Search" placeholder="Tìm bài giảng..." class="form-control search-input-courses" />
+        <input type="text" name="search" value="@ViewBag.Search" placeholder="Tìm bài giảng..." class="search-input-courses" />
 
         <select name="HocPhanId" class="form-select" onchange="this.form.submit()" style="min-width: 200px;">
             <option value="">-- Tất cả học phần --</option>
@@ -97,7 +97,7 @@
             }
         </select>
     </form>
-
+   
 
     @if (User.IsInRole("Teacher"))
     {

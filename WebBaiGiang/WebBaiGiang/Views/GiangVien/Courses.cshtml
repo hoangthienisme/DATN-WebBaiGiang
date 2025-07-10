@@ -89,6 +89,16 @@
         {
             foreach (var course in Model)
             {
+                var shortCode = !string.IsNullOrWhiteSpace(course.Name)
+                ? (course.Name.Contains(" ")
+                ? string.Concat(course.Name.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(w => w[0])).ToUpper()
+                : course.Name.Substring(0, Math.Min(4, course.Name.Length)).ToUpper())
+                : "LH";
+
+                var rand = new Random(course.Id); // Giữ màu ổn định
+                var bgColors = new[] { "#1abc9c", "#3498db", "#e67e22", "#9b59b6", "#f39c12", "#2ecc71", "#e74c3c" };
+                var randomColor = bgColors[rand.Next(bgColors.Length)];
+
                 var joinLink = Url.Action("Join", "Courses", new { code = course.JoinCode }, Context.Request.Scheme);
                 <div class="course-card position-relative">
                     <div class="course-dropdown">
@@ -112,7 +122,17 @@
 
                     <a href="@Url.Action("DetailCourses", "Courses", new { id = course.Id })" class="course-link">
                         <div class="course-image">
-                            <img src="@course.Picture" alt="Ảnh bìa khóa học" onerror="this.src='/img/default-course.jpg'" />
+                            @if (!string.IsNullOrWhiteSpace(course.Picture))
+                            {
+                                <img src="@course.Picture" alt="Ảnh bìa lớp học" onerror="this.src='/img/default-course.jpg'" />
+                            }
+                            else
+                            {
+                                <div style="background-color: @randomColor; color: white; font-size: 24px; font-weight: bold;
+                                display: flex; align-items: center; justify-content: center; height: 160px; border-radius: 10px;">
+                                    @shortCode
+                                </div>
+                            }
                         </div>
                         <div class="course-content">
                             <h4>@course.Name</h4>

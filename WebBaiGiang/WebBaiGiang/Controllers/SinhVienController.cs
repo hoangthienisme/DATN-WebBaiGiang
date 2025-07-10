@@ -226,6 +226,7 @@ namespace WebBaiGiang.Controllers
             var baiGiang = await _context.BaiGiangs
                 .Include(bg => bg.TaiNguyens)
                 .Include(bg => bg.Chuongs)
+                .ThenInclude(c => c.Bais)
                 .Include(bg => bg.BinhLuans).ThenInclude(bl => bl.NguoiDung)
                 .FirstOrDefaultAsync(bg => bg.Id == id);
 
@@ -251,13 +252,15 @@ namespace WebBaiGiang.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> LoadBaiByChuong(int chuongId)
         {
-            var bais = await _context.Bais
-                .Where(b => b.ChuongId == chuongId)
-                .Include(b => b.TaiNguyens)
-                .OrderBy(b => b.SortOrder)
-                .ToListAsync();
+            var chuong = _context.Chuongs
+                .Include(c => c.Bais)
+                    .ThenInclude(b => b.TaiNguyens)
+                .FirstOrDefault(c => c.Id == chuongId);
 
-            return PartialView("_BaiTrongChuong", bais); // ✅ Model đúng là IEnumerable<Bai>
+            if (chuong == null)
+                return NotFound();
+
+            return PartialView("_BaiTrongChuong", chuong.Bais.OrderBy(b => b.SortOrder).ToList());
         }
 
         [HttpGet]
@@ -270,15 +273,24 @@ namespace WebBaiGiang.Controllers
                 .OrderByDescending(bl => bl.NgayTao)
                 .ToList();
 
+            int currentUserId = 0;
+            string currentUserRole = "";
+
+            if (User.Identity.IsAuthenticated)
+            {
+                currentUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                currentUserRole = User.IsInRole("Teacher") ? "Teacher" : "Student";
+            }
+
             var viewModel = new BinhLuanViewModel
             {
                 BinhLuans = binhLuans,
                 BaiGiangId = baiGiangId,
-                CurrentUserId = 0,
-                CurrentUserRole = "" // nếu không cần phân quyền
+                CurrentUserId = currentUserId,
+                CurrentUserRole = currentUserRole
             };
 
-            return PartialView("_BinhLuan", viewModel);
+            return PartialView("_DanhSachBinhLuan", viewModel);
         }
 
 

@@ -25,9 +25,7 @@
 
 .search-icon {
     position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
+    left: 190px;
     width: 18px;
     height: 18px;
     opacity: 0.6;
@@ -36,7 +34,7 @@
 .search-input-courses {
     padding: 10px 10px 10px 36px;
     border: 1px solid #ccc;
-    border-radius: 999px;
+    border-radius: 6px;
     font-size: 15px;
     width: 250px;
 }

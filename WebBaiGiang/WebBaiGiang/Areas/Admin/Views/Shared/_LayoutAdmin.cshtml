@@ -25,7 +25,7 @@
 
     <div class="header-top">
         <div class="navbar-logo">
-            <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto">
+            <a href="@Url.Action("Index", "Home", new { area = "Admin" })" class="logo d-flex align-items-center me-auto">
                 @if (!string.IsNullOrEmpty(thongTin?.LogoUrl))
                 {
                     <img src="@thongTin.LogoUrl" alt="Logo" class="img-fluid rounded" style="height: 70px;" />
@@ -85,7 +85,7 @@
                 <li class="nav-item">
                     <a class="nav-link @(Context.Request.Path.Value.Contains("/Admin/GiangVien") ? "active" : "")"
                        href="@Url.Action("Index", "GiangVien", new { area = "Admin" })">
-                        <i class="bi bi-person-badge"></i> Quản lý Giáo viên
+                        <i class="bi bi-person-badge"></i> Quản lý Giảng Viên
                     </a>
                 </li>
 

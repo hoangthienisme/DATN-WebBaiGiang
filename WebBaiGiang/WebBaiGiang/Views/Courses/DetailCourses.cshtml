@@ -561,11 +561,15 @@
 
         @if (User.IsInRole("Teacher"))
         {
-            <button class="btn btn-primary create-baigiang-button" onclick="location.href='@Url.Action("TaoBaiGiang", "GiangVien", new { returnUrl = Url.Action("DetailCourses", "Courses", new { id = Model.Id }) })'">
+            <button class="btn btn-primary create-baigiang-button"
+                    onclick="location.href='@Url.Action("TaoBaiGiang", "GiangVien", new {
+                classId = Model.Id,
+                returnUrl = Url.Action("DetailCourses", "Courses", new { id = Model.Id })
+            })'">
                 ➕ Tạo bài giảng
             </button>
-
         }
+
         @if (Model.BaiGiangsChuaCo?.Any() == true)
         {
             <div class="position-relative d-inline-block">

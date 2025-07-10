@@ -149,6 +149,31 @@ namespace WebBaiGiang.Controllers
                 TempData["Error"] = "Không xác định được người dùng.";
                 return RedirectToAction("Courses");
             }
+            var isDuplicate = await _context.LopHocs
+                .AnyAsync(l => l.Name == lophoc.Name &&
+                               l.GiangVienLopHocs.Any(gv => gv.IdGv == giangVienId) &&
+                               l.IsActive);
+
+            if (isDuplicate)
+            {
+                ModelState.AddModelError("Name", "Bạn đã có một lớp học với tên này.");
+
+                ViewBag.Subjects = await _context.HocPhans.ToListAsync();
+                ViewBag.Khoas = await _context.Khoas.ToListAsync();
+                ViewBag.BaiGiangs = await _context.BaiGiangs.ToListAsync();
+
+                ViewBag.TempName = lophoc.Name;
+                ViewBag.TempDescription = DetailedDescription;
+                ViewBag.TempThumbnailUrl = lophoc.Picture ?? "";
+                ViewBag.TempSubjectsId = lophoc.SubjectsId;
+                ViewBag.TempKhoaId = lophoc.KhoaId;
+                ViewBag.TempSelectedBaiGiangIds = SelectedBaiGiangIds;
+
+                return View("CreateCourses", lophoc);
+            }
+
+
+
 
 
             ModelState.Remove(nameof(lophoc.GiangVienLopHocs));
@@ -443,7 +468,9 @@ namespace WebBaiGiang.Controllers
                     Name = l.Name,
                     Description = l.Description,
                     Picture = l.Picture,
-                    CreatedDate = l.CreatedDate
+                    CreatedDate = l.CreatedDate,
+                    JoinCode = l.JoinCode
+
                 });
 
             var paginated = await PhanTrang<LopHoc>.CreateAsync(archivedQuery, page, pageSize);
@@ -478,7 +505,7 @@ namespace WebBaiGiang.Controllers
 
         // --- BaiGiang Management ---
         [HttpGet]
-        public async Task<IActionResult> TaoBaiGiang(string? returnUrl)
+        public async Task<IActionResult> TaoBaiGiang(string? returnUrl, int? classId)
         {
             var viewModel = new BaiGiangCreateViewModel();
             var currentGiangVienIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -489,27 +516,31 @@ namespace WebBaiGiang.Controllers
             }
 
             viewModel.AvailableClasses = await _context.GiangVienLopHocs
-                                                    .Where(glh => glh.IdGv == currentGiangVienId && glh.IdClassNavigation.IsActive == true)
-                                                    .Select(glh => new SelectListItem
-                                                    {
-                                                        Value = glh.IdClass.ToString(),
-                                                        Text = glh.IdClassNavigation.Name // Lấy tên lớp từ navigation property
-                                                    })
-                                                    .Distinct() // Đảm bảo không có lớp trùng lặp nếu có nhiều GiangVienLopHoc cho cùng một lớp
-                                                          .ToListAsync();
-            viewModel.AvailableHocPhans = await _context.HocPhans
-      .Where(hp => hp.IsActive)
-      .Select(hp => new SelectListItem
-      {
-          Value = hp.Id.ToString(),
-          Text = hp.Name
-      })
-      .ToListAsync();
+                .Where(glh => glh.IdGv == currentGiangVienId && glh.IdClassNavigation.IsActive)
+                .Select(glh => new SelectListItem
+                {
+                    Value = glh.IdClass.ToString(),
+                    Text = glh.IdClassNavigation.Name
+                })
+                .Distinct()
+                .ToListAsync();
 
+            viewModel.SelectedClassIds = classId.HasValue ? new List<int> { classId.Value } : new List<int>();
+
+            viewModel.AvailableHocPhans = await _context.HocPhans
+                .Where(hp => hp.IsActive)
+                .Select(hp => new SelectListItem
+                {
+                    Value = hp.Id.ToString(),
+                    Text = hp.Name
+                })
+                .ToListAsync();
 
             ViewBag.ReturnUrl = returnUrl;
             return View(viewModel);
         }
+
+
 
 
         [ValidateAntiForgeryToken]
@@ -938,10 +969,10 @@ namespace WebBaiGiang.Controllers
 
             int lopGocId = lopHocId ?? lopIds.FirstOrDefault();
 
-            if (lopGocId == 0)
-            {
-                return BadRequest("Không thể xác định lớp học liên quan.");
-            }
+            //if (lopGocId == 0)
+            //{
+            //    return BadRequest("Không thể xác định lớp học liên quan.");
+            //}
             // Ưu tiên ID truyền từ client
 
             // Lấy sinh viên trong lớp

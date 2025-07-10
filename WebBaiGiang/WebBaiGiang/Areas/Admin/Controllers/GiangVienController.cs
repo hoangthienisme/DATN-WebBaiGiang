@@ -141,22 +141,58 @@ namespace WebBaiGiang.Areas.Admin.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ToggleTrangThai(int id)
+        public async Task<IActionResult> ToggleTrangThai(int id)
         {
-            var user = _context.NguoiDungs.FirstOrDefault(x => x.Id == id && x.Role == "Teacher");
+            var user = await _context.NguoiDungs
+                .FirstOrDefaultAsync(x => x.Id == id && x.Role == "Teacher");
+
             if (user == null)
-                return NotFound();
+            {
+                TempData["Error"] = "Giảng viên không tồn tại.";
+                return RedirectToAction("Index");
+            }
 
             user.IsActive = !user.IsActive;
             user.UpdateDate = DateTime.Now;
-            // Bạn có thể thêm user.UpdateBy = ... nếu cần
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
+            // Gửi email thông báo
+            try
+            {
+                string subject = user.IsActive
+                    ? "Tài khoản giảng viên đã được mở khóa"
+                    : "Tài khoản giảng viên đã bị khóa";
+
+                string body = user.IsActive
+                    ? $@"Chào {user.Name},
+                
+                Tài khoản giảng viên của bạn đã được mở khóa và có thể sử dụng lại hệ thống bình thường.
+                
+                Trân trọng,
+                Ban quản trị hệ thống."
+                                    : $@"Chào {user.Name},
+                
+                Tài khoản giảng viên của bạn đã bị tạm khóa và hiện không thể truy cập hệ thống.
+                
+                Nếu bạn có thắc mắc, vui lòng liên hệ ban quản trị.
+                
+                Trân trọng,
+                Ban quản trị hệ thống.";
+
+                await _emailService.SendEmailAsync(user.Email, subject, body);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi gửi email khi cập nhật trạng thái giảng viên: {Email}", user.Email);
+            }
+
+            TempData["Success"] = "Cập nhật trạng thái giảng viên thành công.";
             return RedirectToAction("Index");
         }
+
+
 
 
 

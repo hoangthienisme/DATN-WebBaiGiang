@@ -11,7 +11,8 @@
     var isStudentOrTeacher = isLoggedIn && (userRole == "Student" || userRole == "Teacher");
     var defaultAvatarPath = "/img/avatar-default.png";
     var name = string.IsNullOrEmpty(userName) ? userEmail : userName;
-
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 }
 
 <!DOCTYPE html>
@@ -77,33 +78,14 @@
 
         <div class="navbar-utility-group">
             <div class="navbar-auth-buttons">
-                @if (!isStudentOrTeacher)
+                @if (!(currentController == "Account" && (currentAction == "Login" || currentAction == "SignUp")))
                 {
-                    <!-- Hiện khi chưa đăng nhập hoặc không phải Student/Teacher -->
-                    <a href="@Url.Action("SignUp", "Account")" class="btn-register">Đăng ký</a>
-                    <a href="@Url.Action("Login", "Account")" class="btn-login">Đăng nhập</a>
-                }
-                else
-                {
-                    <!-- Dropdown người dùng -->
-                    <div class="custom-dropdown position-relative">
-                        <button class="avatar-button d-flex align-items-center" type="button" id="dropdownUserToggle" onclick="toggleDropdown()">
-                            <img src="@Url.Content(!string.IsNullOrEmpty(avatar) ? avatar : defaultAvatarPath)" alt="Avatar" class="avatar-img rounded-circle" style="width: 32px; height: 32px;" />
-                            <span class="ms-2 d-none d-sm-inline text-dark">@name</span>
-                        </button>
-                        <ul class="custom-dropdown-menu position-absolute bg-white shadow rounded" id="dropdownUserMenu" style="display: none; right: 0; top: 40px; min-width: 160px; z-index: 999;">
-                            <li>
-                                <a class="custom-dropdown-item d-block px-3 py-2 text-dark text-decoration-none" href="@Url.Action("Profile", "Account")">
-                                    <i class="bi bi-person-circle me-2"></i> Tài khoản
-                                </a>
-                            </li>
-                            <li><hr class="custom-dropdown-divider m-0" /></li>
-                            <li>
-                                <a class="custom-dropdown-item d-block px-3 py-2 text-danger text-decoration-none" id="logoutLink" href="@Url.Action("Logout", "Account")">
-                                    <i class="bi bi-box-arrow-right me-2"></i> Đăng xuất
-                                </a>
-                            </li>
-                        </ul>
+                    <!-- Chỉ hiển thị khi không phải đang ở trang Đăng nhập hoặc Đăng ký -->
+                    <div class="navbar-utility-group">
+                        <div class="navbar-auth-buttons">
+                            <a href="@Url.Action("SignUp", "Account")" class="btn-register">Đăng ký</a>
+                            <a href="@Url.Action("Login", "Account")" class="btn-login">Đăng nhập</a>
+                        </div>
                     </div>
                 }
             </div>

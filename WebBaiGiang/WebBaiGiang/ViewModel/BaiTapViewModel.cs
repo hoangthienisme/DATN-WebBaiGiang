@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using WebBaiGiang.Models;
 
 namespace WebBaiGiang.ViewModel
 {
@@ -35,4 +36,5 @@ namespace WebBaiGiang.ViewModel
         // ID lớp gốc dùng để quay lại sau khi submit (ẩn)
         public int LopIdGoc { get; set; }
     }
+
 }

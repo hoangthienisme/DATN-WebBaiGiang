@@ -66,7 +66,7 @@ namespace WebBaiGiang.ViewModel
         public List<string>? YouTubeLinks { get; set; }
     }
 
-    // ✅ Custom validation attribute cho danh sách link YouTube
+    // Custom validation attribute cho danh sách link YouTube
     public class YoutubeLinksValidationAttribute : ValidationAttribute
     {
         public override bool IsValid(object? value)
