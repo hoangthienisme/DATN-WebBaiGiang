@@ -186,14 +186,27 @@ namespace WebBaiGiang.Areas.Admin.Controllers
 
         public async Task<IActionResult> KhoiPhuc(int id)
         {
-            var hocPhan = await _context.HocPhans.FindAsync(id);
-            if (hocPhan != null)
-            {
-                hocPhan.IsActive = true;
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToAction("HocPhan", "HocPhan", new { area = "Admin" });
+            var hocPhan = await _context.HocPhans
+                .Include(hp => hp.Department) // đảm bảo có thông tin Khoa
+                .FirstOrDefaultAsync(hp => hp.Id == id);
 
+            if (hocPhan == null)
+            {
+                TempData["Error"] = "Không tìm thấy học phần.";
+                return RedirectToAction("HocPhan", "HocPhan", new { area = "Admin" });
+            }
+
+            if (hocPhan.DepartmentId != null && !hocPhan.Department.IsActive)
+            {
+                TempData["Error"] = $"Không thể mở học phần \"{hocPhan.Name}\" vì khoa \"{hocPhan.Department.Name}\" đang bị ẩn.";
+                return RedirectToAction("HocPhan", "HocPhan", new { area = "Admin" });
+            }
+
+            hocPhan.IsActive = true;
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = $"Đã mở học phần \"{hocPhan.Name}\".";
+            return RedirectToAction("HocPhan", "HocPhan", new { area = "Admin" });
         }
 
 

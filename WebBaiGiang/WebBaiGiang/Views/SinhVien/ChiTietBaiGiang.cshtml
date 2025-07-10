@@ -14,7 +14,11 @@
         int.TryParse(currentUserIdString, out currentUserId);
     }
 }
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome 6.x -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- jQuery và Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <link href="~/css/chitietbaigiang.css" rel="stylesheet" />
 
 <div class="container-fluid mt-4">
@@ -27,27 +31,38 @@
                     <input type="text" id="tocSearch" class="form-control form-control-sm" placeholder="Tìm chương, bài..." />
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                 </div>
-
                 <div id="tocContent">
-                    @if (Model.Chuongs?.Any() == true)
+                    @if (Model.Chuongs != null && Model.Chuongs.Any())
                     {
-                        foreach (var chuong in Model.Chuongs.OrderBy(c => c.SortOrder))
+                        foreach (var chuong in Model.Chuongs.Where(c => c != null).OrderBy(c => c.SortOrder))
                         {
-                            <div class="toc-item toc-chapter" data-target="chapter-@chuong.Id" data-search="@chuong.Title.ToLower()">
-                                <i class="fas fa-folder me-2"></i> Chương @chuong.SortOrder: @chuong.Title
-                            </div>
-                            if (chuong.Bais?.Any() == true)
-                            {
-                                foreach (var bai in chuong.Bais.OrderBy(b => b.SortOrder))
+                            <div class="toc-chuong-wrapper mb-2">
+                                <div class="toc-chuong fw-bold mb-1" data-search="@chuong.Title?.ToLower()" data-chuong-id="@chuong.Id">
+                                    Chương @chuong.SortOrder: @chuong.Title
+                                </div>
+
+                                @if (chuong.Bais != null && chuong.Bais.Any())
                                 {
-                                    <div class="toc-item toc-lesson ms-3" data-target="lesson-@bai.Id" data-search="@bai.Title.ToLower()">
-                                        <i class="fas fa-bookmark me-2"></i> @chuong.SortOrder.@bai.SortOrder @bai.Title
-                                    </div>
+                                    foreach (var bai in chuong.Bais.Where(b => b != null).OrderBy(b => b.SortOrder))
+                                    {
+                                        <div class="toc-item toc-lesson ms-3"
+                                             data-target="lesson-@bai.Id"
+                                             data-search="@bai.Title?.ToLower()"
+                                             data-chuong-id="@chuong.Id">
+                                            @chuong.SortOrder.@bai.SortOrder @bai.Title
+                                        </div>
+                                    }
                                 }
-                            }
+                                else
+                                {
+                                    <div class="text-muted small ms-3">Chưa có bài học</div>
+                                }
+                            </div>
                         }
                     }
+
                 </div>
+
             </div>
         </div>
 
@@ -82,7 +97,7 @@
                 }
             </div>
 
-            <!-- Tài nguyên, bình luận -->
+            <!-- Tài nguyên -->
             @await Html.PartialAsync("_TaiNguyenTongHop", new WebBaiGiang.ViewModel.TaiNguyenTongHopViewModel
        {
            Anh = taiNguyenAnh?.ToList(),
@@ -129,83 +144,80 @@
     </div>
 </div>
 
-
 <script>
-     document.addEventListener("DOMContentLoaded", () => {
-        let loaded = false;
-
-        const observer = new IntersectionObserver(async (entries) => {
-            const entry = entries[0];
-            if (entry.isIntersecting && !loaded) {
-                loaded = true;
-
-                try {
-                    const res = await fetch(`/GiangVien/LoadBinhLuan?baiGiangId=${@Model.BaiGiang.Id}`);
-                    const html = await res.text();
-                    document.getElementById("binhluan-content").innerHTML = html;
-                } catch (err) {
-                    document.getElementById("binhluan-content").innerHTML = "<div class='text-danger'>Lỗi tải bình luận</div>";
-                }
-            }
-        }, { threshold: 0.5 });
-
-        const target = document.getElementById("binhluan-section");
-        if (target) {
-            observer.observe(target);
-        }
-    });
     document.addEventListener("DOMContentLoaded", function () {
+        // Xử lý click vào mục lục bài học
         const tocItems = document.querySelectorAll('.toc-item');
-
         tocItems.forEach(item => {
-            item.addEventListener('click', function () {
+            item.addEventListener('click', async function () {
                 const targetId = this.dataset.target;
-                const target = document.getElementById(targetId);
+                const chuongId = this.dataset.chuongId;
+                const collapse = document.getElementById("collapse-" + chuongId);
+                const container = document.getElementById("chapter-" + chuongId);
+                let needWait = false;
 
-                if (target) {
-                    // Nếu là chapter, mở accordion trước
-                    if (targetId.startsWith("chapter-")) {
-                        const chuongId = targetId.split("-")[1];
-                        const collapse = document.getElementById("collapse-" + chuongId);
-                        const bsCollapse = new bootstrap.Collapse(collapse, { toggle: true });
+                if (!collapse.classList.contains("show")) {
+                    new bootstrap.Collapse(collapse, { toggle: true });
+                    needWait = true;
+                }
 
-                        setTimeout(() => {
-                            target.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }, 400);
-                    } else {
-                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (needWait) {
+                    for (let i = 0; i < 20; i++) {
+                        if (container.dataset.loaded === "true") break;
+                        await new Promise(resolve => setTimeout(resolve, 100));
                     }
                 }
+
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    target.classList.add("bg-warning", "bg-opacity-25");
+                    setTimeout(() => target.classList.remove("bg-warning", "bg-opacity-25"), 2000);
+                }
             });
         });
 
-        // Tìm kiếm mục lục
+        // Tìm kiếm trong mục lục
         const searchInput = document.getElementById("tocSearch");
-        searchInput?.addEventListener("input", function () {
-            const keyword = this.value.toLowerCase().trim();
-            document.querySelectorAll(".toc-item").forEach(item => {
-                const value = item.dataset.search || "";
-                item.style.display = value.includes(keyword) ? "block" : "none";
+        if (searchInput) {
+            searchInput.addEventListener("input", function () {
+                const keyword = this.value.toLowerCase().trim();
+                document.querySelectorAll(".toc-chuong").forEach(chuong => {
+                    const chuongMatch = chuong.dataset.search.includes(keyword);
+                    let hasMatchInBai = false;
+                    const baiItems = chuong.nextElementSibling
+                        ? chuong.nextElementSibling.querySelectorAll('.toc-item')
+                        : [];
+                    baiItems.forEach(bai => {
+                        const match = bai.dataset.search.includes(keyword);
+                        bai.style.display = match ? '' : 'none';
+                        if (match) hasMatchInBai = true;
+                    });
+                    chuong.style.display = (chuongMatch || hasMatchInBai) ? '' : 'none';
+                });
             });
-        });
-    });
-        const accordion = document.getElementById("chaptersAccordion");
-    accordion?.addEventListener("show.bs.collapse", async function (e) {
-        const collapseId = e.target.id; // e.g., collapse-12
-        const chuongId = collapseId.split("-")[1]; // "12"
-        const body = document.querySelector(`#chapter-${chuongId}`);
-
-        if (body && !body.dataset.loaded) {
-            body.innerHTML = '<div class="text-center text-muted py-3">Đang tải dữ liệu...</div>';
-            try {
-                const response = await fetch(`/SinhVien/LoadBaiByChuong?chuongId=${chuongId}`);
-                const html = await response.text();
-                body.innerHTML = html;
-                body.dataset.loaded = "true";
-            } catch (error) {
-                body.innerHTML = '<div class="text-danger">Lỗi khi tải nội dung.</div>';
-            }
         }
     });
 
+    // Lazy-load bài khi mở chương
+    const accordion = document.getElementById("chaptersAccordion");
+    if (accordion) {
+        accordion.addEventListener("show.bs.collapse", async function (e) {
+            const collapseId = e.target.id; // e.g., collapse-12
+            const chuongId = collapseId.split("-")[1]; // "12"
+            const body = document.querySelector(`#chapter-${chuongId}`);
+
+            if (body && !body.dataset.loaded) {
+                body.innerHTML = '<div class="text-center text-muted py-3">Đang tải dữ liệu...</div>';
+                try {
+                    const response = await fetch(`/SinhVien/LoadBaiByChuong?chuongId=${encodeURIComponent(chuongId)}`);
+                    const html = await response.text();
+                    body.innerHTML = html;
+                    body.dataset.loaded = "true";
+                } catch (error) {
+                    body.innerHTML = '<div class="text-danger">Lỗi khi tải nội dung.</div>';
+                }
+            }
+        });
+    }
 </script>

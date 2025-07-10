@@ -3,14 +3,18 @@
     var role = Context.User.FindFirst(ClaimTypes.Role)?.Value;
     if (role == "Teacher")
     {
-        Layout = "~/Views/Shared/_LayoutGiangVien.cshtml";
+        Layout = "~/Views/Shared/_LayoutGiangvien.cshtml";
     }
     else if (role == "Student")
     {
-        Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+        Layout = "~/Views/Shared/_LayoutSinhvien.cshtml";
+    }
+    else if (role == "Admin")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     }
     else
     {
-        Layout = "~/Views/Shared/_Layout.cshtml"; // mặc định
+        Layout = "~/Views/Shared/_Layout.cshtml"; 
     }
 }

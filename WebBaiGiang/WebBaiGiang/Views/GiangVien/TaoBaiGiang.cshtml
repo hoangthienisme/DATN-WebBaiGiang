@@ -15,13 +15,33 @@
     }
 </style>
 <meta charset="utf-8" />
+<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<!-- jQuery (khuyên dùng 3.5.1 nếu xài unobtrusive) -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
+
+<!-- jQuery Validate -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+<!-- CKEditor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
 <meta charset="utf-8" />
+<a class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center"
+   href="@Url.Action("Courses", "GiangVien")"
+   style="margin-left: 10px;">
+    <i class="bi bi-arrow-left-circle me-1" style="font-size: 1.2rem;"></i>
+    <span class="d-none d-md-inline"></span>
+</a>
+
 <div class="container mt-4">
     <h3>Tạo bài giảng mới</h3>
 
@@ -348,15 +368,15 @@
         container.appendChild(input);
     }
 
-    $(document).ready(function () {
-        showStep(currentStep);
-        updateSelectedClassesDropdownText();
-        $('.class-checkbox').on('change', updateSelectedClassesDropdownText);
-    });
+    // $(document).ready(function () {
+    //     showStep(currentStep);
+    //     updateSelectedClassesDropdownText();
+    //     $('.class-checkbox').on('change', updateSelectedClassesDropdownText);
+    // });
 </script>
 
 <script>
-    <script>
+
         ClassicEditor
             .create(document.querySelector('#description-editor'), {
                 ckfinder: {
