@@ -129,7 +129,7 @@ namespace WebBaiGiang.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 DueDate = model.DueDate,
-                MaxPoint = model.MaxPoint ?? 100, // ✅ Gán mặc định nếu null
+                MaxPoint = model.MaxPoint ?? 100, //  Gán mặc định nếu null
                 CreatedDate = DateTime.Now,
                 IsActive = true,
                 ContentUrl = fileUrl,
@@ -183,7 +183,7 @@ namespace WebBaiGiang.Controllers
             _context.ThongBaos.AddRange(thongBaos);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "✅ Bài tập đã được tạo thành công.";
+            TempData["Success"] = " Bài tập đã được tạo thành công.";
             return Redirect($"/Courses/DetailCourses/{model.LopIdGoc}#exerciseTab");
         }
 
@@ -744,7 +744,7 @@ namespace WebBaiGiang.Controllers
 
             await _emailService.SendEmailAsync(model.Email, subject, body);
 
-            TempData["Message"] = $"✅ Đã gửi lời mời {roleText} đến {model.Email}";
+            TempData["Message"] = $" Đã gửi lời mời {roleText} đến {model.Email}";
             return Redirect($"/Courses/DetailCourses/{model.ClassId}#peopleTab");
         }
 
@@ -828,7 +828,7 @@ namespace WebBaiGiang.Controllers
             _context.ThongBaos.AddRange(dsThongBao);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "✅ Đã chấm điểm và phản hồi thành công!";
+            TempData["Success"] = " Đã chấm điểm và phản hồi thành công!";
             return Redirect($"/Courses/DetailCourses/{lopId}#exerciseTab");
         }
         [HttpGet]

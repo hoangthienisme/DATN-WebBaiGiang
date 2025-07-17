@@ -9,8 +9,6 @@
         <div class="custom-modal-body">
             <p>@Model.Message</p>
         </div>
-
-        <!-- Form POST hoặc xử lý JS -->
         <form id="modalForm-@Model.ModalId" method="@(Model.Method ?? "post")" action="@Model.ActionUrl">
             @if ((Model.Method ?? "post").ToLower() == "post")
             {

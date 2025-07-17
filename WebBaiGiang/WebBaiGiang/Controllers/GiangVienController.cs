@@ -182,8 +182,21 @@ namespace WebBaiGiang.Controllers
             {
                 try
                 {
+                    const long maxFileSize = 2 * 1024 * 1024;
                     if (Thumbnail != null && Thumbnail.Length > 0)
                     {
+                        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                        var fileExtension = Path.GetExtension(Thumbnail.FileName).ToLower();
+                        if (!allowedExtensions.Contains(fileExtension))
+                        {
+                            TempData["Error"]="Thumbnail,Chỉ cho phép các định dạng ảnh: .jpg, .jpeg, .png, .gif.";
+                            return View(lophoc);
+                        }
+                        if (Thumbnail.Length > maxFileSize)
+                        {
+                            TempData["Error"]="Thumbnail,Ảnh bìa không được vượt quá 2MB.";
+                            return View(lophoc); // hoặc return lại view tạo lớp học
+                        }
                         var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
                         if (!Directory.Exists(uploadsFolder))
                             Directory.CreateDirectory(uploadsFolder);
@@ -417,27 +430,90 @@ namespace WebBaiGiang.Controllers
         [HttpPost]
         public async Task<IActionResult> ArchiveCourse(int id)
         {
-            var course = await _context.LopHocs.FindAsync(id);
+            var course = await _context.LopHocs
+                .Include(l => l.LopHocBaiGiangs)
+                    .ThenInclude(lb => lb.BaiGiang)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
             if (course == null)
             {
                 TempData["Error"] = "Không tìm thấy lớp học.";
                 return RedirectToAction("Courses");
             }
 
+            if (!course.IsActive)
+            {
+                TempData["Info"] = "Lớp học đã được lưu trữ trước đó.";
+                return RedirectToAction("Courses");
+            }
+
             try
             {
+                // Bước 1: Lưu trữ lớp học
                 course.IsActive = false;
+
+                // Bước 2: Clone bài giảng
+                var baiGiangClones = new List<BaiGiang>();
+
+                // ✅ Tìm lớp học khác (nếu cần gán bản clone vào lớp khác)
+                var otherClass = await _context.LopHocs
+                    .Where(l => l.Id != id && l.IsActive)
+                    .OrderByDescending(l => l.CreatedDate)
+                    .FirstOrDefaultAsync();
+
+                foreach (var lopHocBaiGiang in course.LopHocBaiGiangs.ToList())
+                {
+                    var original = lopHocBaiGiang.BaiGiang;
+
+                    // Clone bài giảng
+                    var clone = new BaiGiang
+                    {
+                        Title = original.Title,
+                        ContentUrl = original.ContentUrl,
+                        Description = original.Description,
+                        CreatedDate = DateTime.Now,
+                        UpdateDate = DateTime.Now,
+                        HocPhanId = original.HocPhanId,
+                        OriginalId = original.Id
+                    };
+
+                    _context.BaiGiangs.Add(clone);
+                    await _context.SaveChangesAsync(); // để lấy clone.Id
+
+                    // ✅ Tạo bản ghi LopHocBaiGiang mới với clone cho chính lớp này
+                    _context.LopHocBaiGiangs.Add(new LopHocBaiGiang
+                    {
+                        LopHocId = course.Id,
+                        BaiGiangId = clone.Id
+                    });
+
+                    // ✅ Nếu muốn: thêm vào lớp học khác
+                    if (otherClass != null)
+                    {
+                        _context.LopHocBaiGiangs.Add(new LopHocBaiGiang
+                        {
+                            LopHocId = otherClass.Id,
+                            BaiGiangId = clone.Id
+                        });
+                    }
+
+                    baiGiangClones.Add(clone);
+                }
+
+                // Lưu tất cả thay đổi sau cùng
                 await _context.SaveChangesAsync();
 
-                TempData["Success"] = "Lớp học đã được lưu trữ thành công.";
-                return RedirectToAction("Courses");
+                TempData["Success"] = "Lớp học đã được lưu trữ và bài giảng đã được clone.";
             }
             catch (Exception ex)
             {
-                TempData["Error"] = "Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message;
-                return RedirectToAction("Courses");
+                TempData["Error"] = "Lỗi khi lưu trữ lớp học: " + ex.Message;
             }
+
+            return RedirectToAction("Courses");
         }
+
+
 
         // hiện lớp học đã ẩn
         public async Task<IActionResult> ArchivedCourses(int page = 1, string? search = null, int? subjectsId = null)
@@ -1024,6 +1100,125 @@ namespace WebBaiGiang.Controllers
            ? RedirectToAction("BaiGiang", "GiangVien")
            : RedirectToAction("DetailCourses", "Courses", new { id = lopGocId }));
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteLectureFromClass(int id, string? returnUrl, int lopHocId)
+        {
+            // Xoá liên kết bài giảng khỏi lớp học
+            var record = await _context.LopHocBaiGiangs
+                .FirstOrDefaultAsync(x => x.BaiGiangId == id && x.LopHocId == lopHocId);
+
+            if (record == null)
+                return NotFound("Không tìm thấy liên kết bài giảng với lớp.");
+
+            _context.LopHocBaiGiangs.Remove(record);
+            await _context.SaveChangesAsync();
+
+            // Kiểm tra xem bài giảng còn lớp nào khác không
+            var stillInUse = await _context.LopHocBaiGiangs.AnyAsync(x => x.BaiGiangId == id);
+
+            if (!stillInUse)
+            {
+                // Lấy lại bài giảng và thông tin chương/bài
+                var baiGiang = await _context.BaiGiangs
+                    .Include(bg => bg.Chuongs).ThenInclude(ch => ch.Bais)
+                    .FirstOrDefaultAsync(bg => bg.Id == id);
+
+                if (baiGiang == null)
+                    return NotFound("Không tìm thấy bài giảng.");
+
+                // Lấy danh sách bài trong chương
+                var baiIds = baiGiang.Chuongs.SelectMany(c => c.Bais).Select(b => b.Id).ToList();
+
+                // Xoá tài nguyên theo bài học
+                var taiNguyensTheoBai = _context.TaiNguyens.Where(t => baiIds.Contains(t.BaiId ?? 0));
+                _context.TaiNguyens.RemoveRange(taiNguyensTheoBai);
+
+                // Xoá tài nguyên bài giảng cấp cao
+                var taiNguyensTheoBaiGiang = _context.TaiNguyens.Where(t => t.BaiGiangId == id);
+                _context.TaiNguyens.RemoveRange(taiNguyensTheoBaiGiang);
+
+                // Xoá file bài học
+                foreach (var chuong in baiGiang.Chuongs)
+                {
+                    foreach (var bai in chuong.Bais)
+                    {
+                        if (!string.IsNullOrEmpty(bai.Document))
+                        {
+                            var filePath = Path.Combine(_env.WebRootPath, bai.Document.TrimStart('/'));
+                            if (System.IO.File.Exists(filePath)) System.IO.File.Delete(filePath);
+                        }
+                    }
+                }
+
+                // Xoá file bài giảng chính
+                if (!string.IsNullOrEmpty(baiGiang.ContentUrl))
+                {
+                    var filePath = Path.Combine(_env.WebRootPath, baiGiang.ContentUrl.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath)) System.IO.File.Delete(filePath);
+                }
+
+                // Lấy lớp cũ (vì lớp hiện tại vừa xoá liên kết)
+                var lopIds = await _context.LopHocBaiGiangs
+                    .Where(lb => lb.BaiGiangId == id)
+                    .Select(lb => lb.LopHocId)
+                    .ToListAsync();
+
+                lopIds.Add(lopHocId); // Thêm lớp vừa xoá liên kết để gửi thông báo
+
+                // Lấy sinh viên trong lớp
+                var sinhVienIds = await (from svlh in _context.SinhVienLopHocs
+                                         join nd in _context.NguoiDungs
+                                             on svlh.IdSv equals nd.Id
+                                         where lopIds.Contains(svlh.IdClass) && nd.Role == "Student"
+                                         select svlh.IdSv)
+                                .Distinct()
+                                .ToListAsync();
+
+                // Xoá bài giảng
+                _context.BaiGiangs.Remove(baiGiang);
+
+                // Tạo và thêm thông báo
+                var dsThongBao = new List<ThongBao>();
+                var thoiGian = DateTime.Now;
+                foreach (var svId in sinhVienIds)
+                {
+                    dsThongBao.Add(new ThongBao
+                    {
+                        NguoiNhanId = svId,
+                        NoiDung = $"Bài giảng \"{baiGiang.Title}\" đã bị xóa bởi giảng viên.",
+                        LienKet = Url.Action("DetailCourses", "Courses", new { id = lopHocId }) + "#lectureTab",
+                        Loai = LoaiThongBao.XoaBaiGiang,
+                        ThoiGian = thoiGian,
+                        DaDoc = false
+                    });
+                }
+
+                _context.ThongBaos.AddRange(dsThongBao);
+                await _context.SaveChangesAsync();
+
+                // Gửi thông báo realtime
+                foreach (var svId in sinhVienIds)
+                {
+                    await _hubContext.Clients.Group($"user_{svId}").SendAsync("NhanThongBao", new
+                    {
+                        tieuDe = $"Bài giảng \"{baiGiang.Title}\" đã bị xóa",
+                        link = Url.Action("DetailCourses", "Courses", new { id = lopHocId }) + "#lectureTab",
+                        thoiGian = thoiGian.ToString("HH:mm dd/MM")
+                    });
+                }
+
+                TempData["Success"] = "Bài giảng không còn lớp nào dùng nên đã bị xoá khỏi hệ thống.";
+            }
+            else
+            {
+                TempData["Success"] = "Đã xoá bài giảng khỏi lớp học.";
+            }
+
+            return !string.IsNullOrEmpty(returnUrl)
+                ? Redirect(returnUrl)
+                : RedirectToAction("DetailCourses", "Courses", new { id = lopHocId });
         }
 
 

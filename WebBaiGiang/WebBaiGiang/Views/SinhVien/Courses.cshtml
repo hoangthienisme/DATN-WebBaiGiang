@@ -17,8 +17,17 @@
 <!-- TÌM KIẾM -->
 <div class="search-filter">
     <form method="get" class="search-input-wrapper" style="width:100%; max-width: 400px;">
-        <img src="~/img/loupe.png" class="search-icon" />
+        <img src="~/img/loupe.png" class="search-icon-sv" />
         <input type="text" name="search" value="@search" placeholder="Tìm khóa học..." class="search-input-courses" />
+        <select name="SubjectsId" class="form-select-sv" style="min-width: 100px;" onchange="this.form.submit()">
+            <option value="">-- Tất cả học phần --</option>
+            @foreach (var hp in (List<WebBaiGiang.Models.HocPhan>)ViewBag.HocPhans)
+            {
+                <option value="@hp.Id" selected="@(hp.Id == (ViewBag.SubjectsId ?? 0) ? "selected" : null)">
+                    @hp.Name
+                </option>
+            }
+        </select>
     </form>
 </div>
 

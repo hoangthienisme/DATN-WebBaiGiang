@@ -86,6 +86,15 @@
     height: 18px;
     opacity: 0.6;
 }
+.search-icon-sv {
+    margin-top: 8px;
+    position: absolute;
+    left: 230px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.6;
+}
+
 .search-input-courses {
     margin-left: 13px;
     padding: 10px 10px 10px 36px;
@@ -214,7 +223,10 @@
     width: 200px;
     padding: 6px 10px;
 }
-
+.form-select-sv {
+    margin-left: 13px;
+    padding: 6px 10px;
+}
 .create-course-button {
     margin-left: auto;
 }

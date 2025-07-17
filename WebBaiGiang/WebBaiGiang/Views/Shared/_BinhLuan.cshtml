@@ -2,7 +2,6 @@
 
 <h5 class="mt-4">Bình luận</h5>
 <hr />
-<!-- Form gửi bình luận -->
 <form asp-controller="GiangVien" asp-action="ThemBinhLuan" method="post">
     <input type="hidden" name="BaiGiangId" value="@Model.BaiGiangId" />
     <div class="mb-2">
@@ -12,7 +11,6 @@
 </form>
 
 <hr />
-<!-- Danh sách bình luận -->
 <div>
     @if (Model.BinhLuans != null && Model.BinhLuans.Any())
     {
@@ -44,8 +42,6 @@
                             </li>
                         </ul>
                     </div>
-
-                    <!-- Form sửa, ẩn mặc định -->
                     <form method="post" asp-action="SuaBinhLuan" class="mt-2" id="edit-form-@bl.Id" style="display:none;">
                         <input type="hidden" name="Id" value="@bl.Id" />
                         <textarea name="NoiDung" class="form-control mb-1">@bl.NoiDung</textarea>
