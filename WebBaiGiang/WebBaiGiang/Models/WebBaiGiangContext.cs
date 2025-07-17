@@ -81,7 +81,6 @@ public partial class WebBaiGiangContext : DbContext
                   .HasConstraintName("FK_Bai_Chuong");
         });
 
-        // Entity: BaiGiang
         modelBuilder.Entity<BaiGiang>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__BaiGiang__3214EC07CA07DEEA");
@@ -105,7 +104,13 @@ public partial class WebBaiGiangContext : DbContext
          .WithMany(h => h.BaiGiangs)
          .HasForeignKey(e => e.HocPhanId)
          .OnDelete(DeleteBehavior.SetNull);
+            entity.HasOne(e => e.Original)
+         .WithMany()
+         .HasForeignKey(e => e.OriginalId)
+         .OnDelete(DeleteBehavior.Restrict);
         });
+
+
 
 
         // Entity: TaiNguyen
@@ -142,18 +147,21 @@ public partial class WebBaiGiangContext : DbContext
 
 
 
-        // Entity: BaiTap
-        modelBuilder.Entity<BaiTap>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__BaiTap__3214EC07210C887D");
+       // Entity: BaiTap
+  modelBuilder.Entity<BaiTap>(entity =>
+  {
+      entity.HasKey(e => e.Id).HasName("PK__BaiTap__3214EC07210C887D");
 
-            entity.ToTable("BaiTap");
+      entity.ToTable("BaiTap");
 
-            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Description).HasColumnType("nvarchar(max)");
-            entity.Property(e => e.DueDate).HasColumnType("datetime");
-            entity.Property(e => e.Title).HasMaxLength(200);
-        });
+      entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+      entity.Property(e => e.Description).HasColumnType("nvarchar(max)");
+      entity.Property(e => e.DueDate).HasColumnType("datetime");
+      entity.Property(e => e.Title).HasMaxLength(200);
+  });
+
+
+
 
         // Entity: BaiTapLopHoc (many-to-many)
         modelBuilder.Entity<BaiTapLopHoc>()

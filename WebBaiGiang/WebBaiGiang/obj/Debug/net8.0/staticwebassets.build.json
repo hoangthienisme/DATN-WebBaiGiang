@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YKb/ImVhUwtgd9u//2XAC8kY43aLKxrjbI6aqRO3zvo=",
+  "Hash": "hdtj+BlDdwFNPt0p56VI5JFhBQYy3MHO59l4Ww3zx7M=",
   "Source": "WebBaiGiang",
   "BasePath": "_content/WebBaiGiang",
   "Mode": "Default",
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "if1tv6r41r",
-      "Integrity": "frPbvd5kgK0LkRzu/oWtVhDxqb+4mRgkvednM9dK9kw=",
+      "Fingerprint": "oig47xv9nt",
+      "Integrity": "oOfj/7zKrIEIZmSu1GPBpTsZpOzQyitoTJz98LEWz6c=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\courses.css"
@@ -6842,6 +6842,27 @@
       "OriginalItemSpec": "wwwroot\\upload\\images\\hntelzub.ohp.jpg"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\upload\\images\\pkqeirgw.cle.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "upload/images/pkqeirgw.cle#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rpmd00xbwx",
+      "Integrity": "wXs0NV+sueaMs3W/jpJ0i3jTGW2xDkKGA+ZH5mfvWjs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\images\\pkqeirgw.cle.jpg"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\upload\\images\\zgwvfjvg.31z.jpg",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -8058,6 +8079,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\3a7c7f06-995c-422c-9886-6f12221be6e7_943f475f-c082-4963-a905-66ac880d4787.docx"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qi6za40024",
+      "Integrity": "wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.jpg"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\407dca8a-d257-40ee-a926-b9f6e98f1396.docx",
@@ -12596,6 +12638,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\docs\\76de6b17-4fac-4b86-9d75-ce29d6f11f71.docx"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\docs\\8198d86e-a319-498b-b9fd-a7a559f94dfc.pptx",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/docs/8198d86e-a319-498b-b9fd-a7a559f94dfc#[.{fingerprint}]?.pptx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hsd6769wdf",
+      "Integrity": "UVrQ2V2sJyRubZPiiqvysFfY/Vx6jsstfOb+vj+9C0U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\docs\\8198d86e-a319-498b-b9fd-a7a559f94dfc.pptx"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\docs\\85305c09-b35b-4624-831d-b6e3c773f702.docx",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -13184,6 +13247,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\image.png"
     },
     {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\0472bade-c6b3-4121-b4c3-70b987d97546.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/images/0472bade-c6b3-4121-b4c3-70b987d97546#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qi6za40024",
+      "Integrity": "wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\images\\0472bade-c6b3-4121-b4c3-70b987d97546.jpg"
+    },
+    {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\12f7e8d5-3ce0-437c-944a-56ce991856d9.jpg",
       "SourceId": "WebBaiGiang",
       "SourceType": "Discovered",
@@ -13287,6 +13371,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\images\\ac082b80-d500-4247-8174-b9f9276c4dbd.jpg"
+    },
+    {
+      "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\d2ca70e5-a2bf-45cf-967b-53c2c20d5859.jpg",
+      "SourceId": "WebBaiGiang",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\",
+      "BasePath": "_content/WebBaiGiang",
+      "RelativePath": "uploads/images/d2ca70e5-a2bf-45cf-967b-53c2c20d5859#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qi6za40024",
+      "Integrity": "wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\images\\d2ca70e5-a2bf-45cf-967b-53c2c20d5859.jpg"
     },
     {
       "Identity": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\NguyenHoangThien_NguyenQuocViet_Tuan02.docx",
@@ -14975,7 +15080,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4120"
+          "Value": "4309"
         },
         {
           "Name": "Content-Type",
@@ -14983,11 +15088,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"frPbvd5kgK0LkRzu/oWtVhDxqb+4mRgkvednM9dK9kw=\""
+          "Value": "\"oOfj/7zKrIEIZmSu1GPBpTsZpOzQyitoTJz98LEWz6c=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 06 Jul 2025 05:16:41 GMT"
+          "Value": "Thu, 17 Jul 2025 20:23:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14997,12 +15102,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-frPbvd5kgK0LkRzu/oWtVhDxqb+4mRgkvednM9dK9kw="
+          "Value": "sha256-oOfj/7zKrIEIZmSu1GPBpTsZpOzQyitoTJz98LEWz6c="
         }
       ]
     },
     {
-      "Route": "css/courses.if1tv6r41r.css",
+      "Route": "css/courses.oig47xv9nt.css",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\css\\courses.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -15012,7 +15117,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4120"
+          "Value": "4309"
         },
         {
           "Name": "Content-Type",
@@ -15020,11 +15125,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"frPbvd5kgK0LkRzu/oWtVhDxqb+4mRgkvednM9dK9kw=\""
+          "Value": "\"oOfj/7zKrIEIZmSu1GPBpTsZpOzQyitoTJz98LEWz6c=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 06 Jul 2025 05:16:41 GMT"
+          "Value": "Thu, 17 Jul 2025 20:23:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15034,7 +15139,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "if1tv6r41r"
+          "Value": "oig47xv9nt"
         },
         {
           "Name": "label",
@@ -15042,7 +15147,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-frPbvd5kgK0LkRzu/oWtVhDxqb+4mRgkvednM9dK9kw="
+          "Value": "sha256-oOfj/7zKrIEIZmSu1GPBpTsZpOzQyitoTJz98LEWz6c="
         }
       ]
     },
@@ -41205,6 +41310,88 @@
       ]
     },
     {
+      "Route": "upload/images/pkqeirgw.cle.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\upload\\images\\pkqeirgw.cle.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62090"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wXs0NV+sueaMs3W/jpJ0i3jTGW2xDkKGA+ZH5mfvWjs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Jul 2025 01:28:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wXs0NV+sueaMs3W/jpJ0i3jTGW2xDkKGA+ZH5mfvWjs="
+        }
+      ]
+    },
+    {
+      "Route": "upload/images/pkqeirgw.cle.rpmd00xbwx.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\upload\\images\\pkqeirgw.cle.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62090"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wXs0NV+sueaMs3W/jpJ0i3jTGW2xDkKGA+ZH5mfvWjs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Jul 2025 01:28:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rpmd00xbwx"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/images/pkqeirgw.cle.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wXs0NV+sueaMs3W/jpJ0i3jTGW2xDkKGA+ZH5mfvWjs="
+        }
+      ]
+    },
+    {
       "Route": "upload/images/zgwvfjvg.31z.jpg",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\upload\\images\\zgwvfjvg.31z.jpg",
       "Selectors": [],
@@ -45957,6 +46144,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-SO+Lh2E8RvD7eDxQ+/sWrO40ukthJxFz0vlI9dZiXGI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 19:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.qi6za40024.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 19:54:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qi6za40024"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/3bc3aaf0-91f8-4581-a62c-8ccef9a5b0f5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI="
         }
       ]
     },
@@ -63673,6 +63942,88 @@
       ]
     },
     {
+      "Route": "uploads/docs/8198d86e-a319-498b-b9fd-a7a559f94dfc.hsd6769wdf.pptx",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\docs\\8198d86e-a319-498b-b9fd-a7a559f94dfc.pptx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1694867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UVrQ2V2sJyRubZPiiqvysFfY/Vx6jsstfOb+vj+9C0U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 19:30:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hsd6769wdf"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/docs/8198d86e-a319-498b-b9fd-a7a559f94dfc.pptx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UVrQ2V2sJyRubZPiiqvysFfY/Vx6jsstfOb+vj+9C0U="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/docs/8198d86e-a319-498b-b9fd-a7a559f94dfc.pptx",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\docs\\8198d86e-a319-498b-b9fd-a7a559f94dfc.pptx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1694867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UVrQ2V2sJyRubZPiiqvysFfY/Vx6jsstfOb+vj+9C0U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 19:30:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UVrQ2V2sJyRubZPiiqvysFfY/Vx6jsstfOb+vj+9C0U="
+        }
+      ]
+    },
+    {
       "Route": "uploads/docs/85305c09-b35b-4624-831d-b6e3c773f702.c30hqrhxkh.docx",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\docs\\85305c09-b35b-4624-831d-b6e3c773f702.docx",
       "Selectors": [],
@@ -65969,6 +66320,88 @@
       ]
     },
     {
+      "Route": "uploads/images/0472bade-c6b3-4121-b4c3-70b987d97546.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\0472bade-c6b3-4121-b4c3-70b987d97546.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 19:30:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/images/0472bade-c6b3-4121-b4c3-70b987d97546.qi6za40024.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\0472bade-c6b3-4121-b4c3-70b987d97546.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 19:30:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qi6za40024"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/images/0472bade-c6b3-4121-b4c3-70b987d97546.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI="
+        }
+      ]
+    },
+    {
       "Route": "uploads/images/12f7e8d5-3ce0-437c-944a-56ce991856d9.d8k3lqidf8.jpg",
       "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\12f7e8d5-3ce0-437c-944a-56ce991856d9.jpg",
       "Selectors": [],
@@ -66375,6 +66808,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-t3Pg5EMsQU8FhNuKXNbemSEDproeuSl/VzgOZMujf1o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/images/d2ca70e5-a2bf-45cf-967b-53c2c20d5859.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\d2ca70e5-a2bf-45cf-967b-53c2c20d5859.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 17:11:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/images/d2ca70e5-a2bf-45cf-967b-53c2c20d5859.qi6za40024.jpg",
+      "AssetFile": "D:\\DATN\\DATN-WebBaiGiang\\WebBaiGiang\\WebBaiGiang\\wwwroot\\uploads\\images\\d2ca70e5-a2bf-45cf-967b-53c2c20d5859.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 17 Jul 2025 17:11:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qi6za40024"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/images/d2ca70e5-a2bf-45cf-967b-53c2c20d5859.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wuVV34v3CCgfLxmlj6n7sTK9CNuNKOzulxnisLDoesI="
         }
       ]
     },

@@ -12,8 +12,8 @@ using WebBaiGiang.Models;
 namespace WebBaiGiang.Migrations
 {
     [DbContext(typeof(WebBaiGiangContext))]
-    [Migration("20250707134427_updateLop")]
-    partial class updateLop
+    [Migration("20250717173909_updatetbBGBT")]
+    partial class updatetbBGBT
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,6 +94,12 @@ namespace WebBaiGiang.Migrations
                     b.Property<int?>("HocPhanId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsClone")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("OriginalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -139,8 +145,14 @@ namespace WebBaiGiang.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsClone")
+                        .HasColumnType("bit");
+
                     b.Property<double?>("MaxPoint")
                         .HasColumnType("float");
+
+                    b.Property<int?>("OriginalId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -149,6 +161,8 @@ namespace WebBaiGiang.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK__BaiTap__3214EC07210C887D");
+
+                    b.HasIndex("OriginalId");
 
                     b.ToTable("BaiTap", (string)null);
                 });
@@ -411,8 +425,9 @@ namespace WebBaiGiang.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("KhoaId")
-                        .HasColumnType("int");
+                    b.Property<int>("KhoaId")
+                        .HasColumnType("int")
+                        .HasColumnName("Khoa_id");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -746,6 +761,15 @@ namespace WebBaiGiang.Migrations
                     b.Navigation("HocPhan");
                 });
 
+            modelBuilder.Entity("WebBaiGiang.Models.BaiTap", b =>
+                {
+                    b.HasOne("WebBaiGiang.Models.BaiGiang", "Original")
+                        .WithMany()
+                        .HasForeignKey("OriginalId");
+
+                    b.Navigation("Original");
+                });
+
             modelBuilder.Entity("WebBaiGiang.Models.BaiTapLopHoc", b =>
                 {
                     b.HasOne("WebBaiGiang.Models.BaiTap", "BaiTap")
@@ -840,7 +864,9 @@ namespace WebBaiGiang.Migrations
                 {
                     b.HasOne("WebBaiGiang.Models.Khoa", "Khoa")
                         .WithMany("LopHocs")
-                        .HasForeignKey("KhoaId");
+                        .HasForeignKey("KhoaId")
+                        .IsRequired()
+                        .HasConstraintName("FK_LopHoc_Khoa");
 
                     b.HasOne("WebBaiGiang.Models.HocPhan", "Subjects")
                         .WithMany("LopHocs")

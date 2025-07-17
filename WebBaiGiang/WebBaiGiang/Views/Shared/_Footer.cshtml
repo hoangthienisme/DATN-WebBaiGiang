@@ -1,19 +1,15 @@
 ﻿@model WebBaiGiang.Models.ThongTinWeb
 <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-@* <link href="~/css/footer.css" rel="stylesheet" /> *@
 <footer class="footer text-white pt-5 pb-3" style="background: linear-gradient(135deg, #1e3c72 0%, #98652a29 100%")>
     <div class="container footer-container">
 
-        <!-- Sứ mệnh và ảnh động -->
         <div class="row footer-section mb-4 align-items-center">
             <div class="col-md-8">
                 <h5 class="fw-bold mb-2">@Model.Name</h5>
                 <p class="mission fs-5">@Model.Description</p>
             </div>
         </div>
-
-        <!-- Điều hướng & Liên hệ -->
         <div class="row footer-nav text-white mb-4">
             <div class="col-md-4 footer-column">
                 <h5 class="fw-bold mb-3">Về chúng tôi</h5>
@@ -41,7 +37,6 @@
             </div>
         </div>
 
-        <!-- Mạng xã hội -->
         <div class="footer-social text-center mb-4">
             <h5 class="fw-bold mb-3">Theo dõi chúng tôi</h5>
 
@@ -80,18 +75,17 @@
             }
 
             .footer-bottom {
-                font-size: 1rem; /* Tăng kích thước chữ (1rem ~ 16px) */
+                font-size: 1rem; 
             }
 
                 .footer-bottom .copyright-text {
                     font-weight: 500;
-                    font-size: 1.1rem; /* To hơn mặc định */
+                    font-size: 1.1rem;
                     text-align: center;
                     line-height: 1.8;
                 }
 
         </style>
-        <!-- Bản quyền -->
         <div class="footer-bottom text-center border-top border-light pt-3 mt-4">
             <p class="mb-0 text-light small">
                 © @DateTime.Now.Year @Model.TenTruong.

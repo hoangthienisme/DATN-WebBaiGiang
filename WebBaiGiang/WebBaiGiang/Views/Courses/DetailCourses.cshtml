@@ -570,30 +570,33 @@
             </button>
         }
 
-        @if (Model.BaiGiangsChuaCo?.Any() == true)
+        @if (User.IsInRole("Teacher"))
         {
-            <div class="position-relative d-inline-block">
-                <button class="btn btn-primary" type="button" style="padding: 10px 10px;" onclick="toggleAddForm()">➕ Thêm bài giảng vào lớp</button>
+            if (Model.BaiGiangsChuaCo?.Any() == true)
+            {
+                <div class="position-relative d-inline-block">
+                    <button class="btn btn-primary" type="button" style="padding: 10px 10px;" onclick="toggleAddForm()">➕ Thêm bài giảng vào lớp</button>
 
-                <div id="addFormContainer" class="dropdown-box p-3 shadow-sm border rounded bg-white mt-2" style="display: none; min-width: 280px; position: absolute; z-index: 1000;">
-                    <form asp-action="ThemBaiGiangVaoLop" asp-controller="Courses" method="post">
-                        <input type="hidden" name="lopHocId" value="@Model.Id" />
-                        <select name="selectedBaiGiangIds" class="form-select mb-2" multiple size="5">
-                            @foreach (var bg in Model.BaiGiangsChuaCo)
-                            {
-                                <option value="@bg.Id">@bg.Title</option>
-                            }
-                        </select>
-                        <button type="submit" class="btn btn-success w-100">Xác nhận thêm</button>
-                    </form>
+                    <div id="addFormContainer" class="dropdown-box p-3 shadow-sm border rounded bg-white mt-2" style="display: none; min-width: 280px; position: absolute; z-index: 1000;">
+                        <form asp-action="ThemBaiGiangVaoLop" asp-controller="Courses" method="post">
+                            <input type="hidden" name="lopHocId" value="@Model.Id" />
+                            <select name="selectedBaiGiangIds" class="form-select mb-2" multiple size="5">
+                                @foreach (var bg in Model.BaiGiangsChuaCo)
+                                {
+                                    <option value="@bg.Id">@bg.Title</option>
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-success w-100">Xác nhận thêm</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="alert alert-info mt-4">Tất cả bài giảng đã được gán cho lớp này.</div>
+            }
+        }
 
-        }
-        else
-        {
-            <div class="alert alert-info mt-4">Tất cả bài giảng đã được gán cho lớp này.</div>
-        }
 
     </div>
 
@@ -625,7 +628,7 @@
                         <div class="dropdown" data-dropdown-id="@item.Id">
                             <div class="icon-three-dots" onclick="togglePostDropdown(@item.Id)"></div>
                             <div class="dropdown-content">
-                                <button type="button" onclick="showConfirmModalById('confirmDeleteBaiGiangModal', @item.Id, @Model.Id, '/Courses/DetailCourses/@Model.Id#contentTab')">Xóa</button>
+                                <button type="button" onclick="showConfirmModalById('confirmDeleteBaiGiangModal', @item.Id, @Model.Id, '/Courses/DetailCourses/@Model.Id#contentTab')">Xóa khỏi lớp học này</button>
 
                             </div>
 
@@ -639,7 +642,7 @@
 {
     ModalId = "confirmDeleteBaiGiangModal",
     Message = "Bạn có chắc muốn xóa bài giảng?",
-    ActionUrl = Url.Action("XoaBaiGiang", "GiangVien"),
+    ActionUrl = Url.Action("DeleteLectureFromClass", "GiangVien"),
     ConfirmButtonText = "XÓA",
     CancelButtonText = "HỦY",
     DataId = 0,

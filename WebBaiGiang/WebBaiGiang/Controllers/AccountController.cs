@@ -70,7 +70,7 @@ namespace WebBaiGiang.Controllers
 
             if (user == null)
             {
-                // ✅ Tạo user mới
+                //  Tạo user mới
                 user = new NguoiDung
                 {
                     Name = name,
@@ -431,7 +431,7 @@ namespace WebBaiGiang.Controllers
             user.Gender = model.Gender;
             user.UpdateDate = DateTime.Now;
 
-            // ✅ Upload avatar nếu có
+            //  Upload avatar nếu có
             if (AvatarFile != null && AvatarFile.Length > 0)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/uploads");
@@ -447,7 +447,7 @@ namespace WebBaiGiang.Controllers
 
             _context.SaveChanges();
 
-            // ✅ Cập nhật lại claims
+            //  Cập nhật lại claims
             var claims = new List<Claim>
     {
         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),

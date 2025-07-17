@@ -25,7 +25,7 @@ namespace WebBaiGiang.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Courses(string? search, int page = 1)
+        public async Task<IActionResult> Courses(string? search, int? subjectsId, int page = 1)
         {
             int pageSize = 6;
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -37,8 +37,12 @@ namespace WebBaiGiang.Controllers
 
             // Truy vấn gốc
             var myCoursesQuery = _context.LopHocs
-                .Where(l => l.IsActive && l.SinhVienLopHocs.Any(gv => gv.IdSv == userId));
-
+                .Where(l => l.IsActive && l.Subjects.IsActive && l.SinhVienLopHocs.Any(gv => gv.IdSv == userId));
+            // Lọc theo học phần nếu có
+            if (subjectsId.HasValue)
+            {
+                myCoursesQuery = myCoursesQuery.Where(l => l.SubjectsId == subjectsId.Value);
+            }
             // Nếu có tìm kiếm, lọc theo tên hoặc mô tả
             if (!string.IsNullOrEmpty(search))
             {
@@ -63,7 +67,10 @@ namespace WebBaiGiang.Controllers
 
             var paginatedCourses = await PhanTrang<LopHoc>.CreateAsync(myCoursesQuery, page, pageSize);
             ViewBag.Search = search;
-
+            ViewBag.SubjectsId = subjectsId;
+            ViewBag.HocPhans = await _context.HocPhans
+           .Where(h => h.IsActive)
+           .ToListAsync();
             return View(paginatedCourses);
         }
 
